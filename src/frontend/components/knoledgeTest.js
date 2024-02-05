@@ -64,7 +64,7 @@ function KnoledgeTest() {
       description: "Timeless luxury and legendary hospitality in exotic Lombok",
       valid: "Valid from  05-01-2023 to 28-03-2024",
     },
-    {
+    { 
       title: "Mandarin Oriental Guangzou",
       phone: "7779020705",
       description: "Timeless luxury and legendary hospitality in exotic Lombok",
