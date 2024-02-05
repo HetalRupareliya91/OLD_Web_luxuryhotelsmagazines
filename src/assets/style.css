@@ -4666,7 +4666,7 @@ button.btn-default {
 	padding: 10px 5px;
 	color: #fff;
 	text-transform: capitalize;
-	/* border-radius: 5px; */
+	border-radius: 0px;
 	transition: 0.3s ease;
 }
 
@@ -4689,7 +4689,7 @@ a.btn.btn-block.btn-default {
 	padding: 10px 5px;
 	color: #fff;
 	text-transform: capitalize;
-	border-radius: 5px;
+	border-radius: 0px;
 	transition: 0.3s ease;
 }
 
@@ -4724,10 +4724,9 @@ a.btn.btn-block.btn-default {
 .card {
 	border: 1px solid #dbdbdb;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
-	margin: 0 -15px;
-
+	/* margin: 0 -15px; */
 	transition: all 0.4s ease-in-out 0s;
-	margin: 0px 10px;
+	/* margin: 0px 10px; */
 	border-radius: 12px;
 }
 
@@ -5413,7 +5412,7 @@ form {
 }
 
 .heading1 {
-	font-size: 24px;
+	font-size: 23px;
 	color: #ffff;
 	font-weight: 600;
 	letter-spacing: 2px;
@@ -6162,8 +6161,18 @@ button .subscribe_text {
 }
 .room-details-aminites .aminites{
 	/* border: 1px solid #2d2a2a; */
-	margin: 10px;
+	margin: 0px 0px 25px 0px;
 	
+}
+.aminites-icon{
+	color: #b5191f	;
+}
+.most-popular-facilites .facilites{
+	/* border: 1px solid #2d2a2a; */
+	margin: 0px 0px 25px 0px;
+}
+.most-popular-facilites p {
+    margin: -4px 5px 0px 5px;
 }
 .room-details-aminites p {
     margin: -4px 5px 0px 5px;
@@ -6275,6 +6284,9 @@ button a{
 	width: 20%;
 }
 
+.most-popular-facilites-row .col-section{
+	width: 20%;
+}
 .tabs-section h1{
 	text-transform: capitalize !important;
 	text-transform: capitalize !important;
@@ -6439,10 +6451,9 @@ ul.dropdown-menu a:hover {
 }
 
 .card-inner-section-background {
-    text-align: center;
 	background-image: url(../assets/img/redtexure.jpg);
     color: #fff;
-    padding: 42px 10px;
+    padding: 42px 10px 0px 10px;
     font-weight: 500;
     min-height: 181px;
 	

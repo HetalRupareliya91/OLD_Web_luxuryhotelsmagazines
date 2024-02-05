@@ -33,9 +33,7 @@ function AdvertiseWithUs() {
             <NewFor/>
             <Tabs/>
             <AdvertiseWhatWeDosection/>
-             {/* <Advertise /> */}
             <Advertise />
-            {/* <AdvertiseTestimonial/> */}
             <AdvertiseWhatWeDo />
             <CallToAction />
             <Footer />

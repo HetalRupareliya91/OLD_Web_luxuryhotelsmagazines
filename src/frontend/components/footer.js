@@ -38,19 +38,19 @@ function Footer(){
                        <h6>About Us</h6>
                        <p><a href="/our-team" className="footer-links">Our Team</a></p>
                        <p><a href="/about-us" className="footer-links">About Us</a></p>
-                    <p><a href="hotels-selection" className="footer-links">Luxury Hotel Selection</a></p>
-                    <p><a href="hotels-editions" className="footer-links">Luxury Hotels Editions</a></p>
+                    <p><a href="/hotels-selection" className="footer-links">Luxury Hotel Selection</a></p>
+                    <p><a href="/hotels-editions" className="footer-links">Luxury Hotels Editions</a></p>
                     </div>
                  </Col>
                  <Col lg={3}>
                     <div className="ft-newslatter">
                        <h6>ADVERTISERS</h6>
-                       <p><a href="distribution" className="footer-links">Distribution</a></p>
-                       <p><a href="userprofile" className="footer-links">Publish Hotels News</a></p>
-                       <p><a href="userprofile" className="footer-links">Publish News </a></p>
-                       <p><a href="mediapack" className="footer-links">Media Pack</a></p>
-                       <p><a href="advertise-with-us" className="footer-links">Advertise With Us</a></p>
-                       <p><a href="signup" className="footer-links">Create Hotel Profile</a></p>
+                       <p><a href="/distribution" className="footer-links">Distribution</a></p>
+                       <p><a href="/publish-news-pr" className="footer-links">Publish Hotels News</a></p>
+                       <p><a href="/userprofile" className="footer-links">Publish News </a></p>
+                       <p><a href="/mediapack" className="footer-links">Media Pack</a></p>
+                       <p><a href="/advertise-with-us" className="footer-links">Advertise With Us</a></p>
+                       <p><a href="/signup" className="footer-links">Create Hotel Profile</a></p>
                       
                     </div>
                  </Col>
@@ -58,9 +58,9 @@ function Footer(){
                     <div className="ft-contact">
                        <h6>Connect with Us</h6>
                        <ul>
-                          <li><FaAddressBook /><a href="contact-us">Contact Us </a></li>
-                          <li><FaPhone /><a href="tel:1234567890">(12) 345 67890</a></li>
-                          <li><FaEnvelope /><a href="mailto:info@luxuryhotelsmagazines.com">info@luxuryhotelsmagazines.com</a></li>
+                          <li><FaAddressBook/><a href="contact-us">Contact Us </a></li>
+                          <li><FaPhone/><a href="tel:1234567890">(12) 345 67890</a></li>
+                          <li><FaEnvelope/><a href="mailto:info@luxuryhotelsmagazines.com">info@luxuryhotelsmagazines.com</a></li>
                   
                        </ul>
                     </div>

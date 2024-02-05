@@ -2,21 +2,22 @@ import React, { useEffect, useState } from "react";
 import { FaBlog, FaDollarSign, FaHotel, FaPowerOff, FaUser } from 'react-icons/fa';
 import News1 from '../../assets/img/news1.jpg'
 
-import { Col, Image, Nav, NavItem, NavLink, Row ,Card,CardBody} from 'react-bootstrap';
+import { Col, Image, Nav, NavItem, NavLink, Row ,Card,CardBody, Container} from 'react-bootstrap';
 import API, { isUserLoggedIn } from "../../utils";
 import { useNavigate } from "react-router-dom";
 import AllHotels from "../pages/userprofile/allHotels";
 import AllBlogs from "../pages/userprofile/allBlogs";
 import AddBlogs from "../pages/userprofile/addBlogs";
 import AddHotel from "../pages/userprofile/addHotel";
-import PersionalInformation from "../pages/userprofile/persionalInformation";
 import EditHotel from "../pages/editHotel";
 import axios from "axios";
 import SpecialOffers from "../pages/userprofile/addSpecialOffers";
-function UserSidebar (){
+import Header from "./header";
+import Footer from "./footer";
+import PersionalInformation from "../pages/userprofile/persionalInformation";
 
-
-  const [showEditHotelForm, setShowEditHotelForm] = useState(false);
+function NewsSidebar(){
+    const [showEditHotelForm, setShowEditHotelForm] = useState(false);
 
     const navigate = useNavigate()
     const [currentSection, setCurrentSection] = useState('myProfile');
@@ -74,7 +75,10 @@ function UserSidebar (){
       };
     return(
 <>
-        <div id="sidebar" className="col-col-3 col-lg-2 d-col-block  sidebar">
+<Header/>
+<section>
+    <Container className="d-flex">
+    <div id="sidebar" className="col-col-3 col-lg-2 d-col-block  sidebar">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -89,13 +93,13 @@ function UserSidebar (){
           <Nav className="flex-column">
             <NavItem className="nav-item">
               <NavLink
-                className={`nav-link sidebar-list ${currentSection === 'myHotels' ? 'active' : ''
+                className={`nav-link sidebar-list ${currentSection === 'myNews' ? 'active' : ''
                   }`}
                 to="#"
-                onClick={() => showSection('myHotels')}
+                onClick={() => showSection('myNews')}
               >
                 <FaHotel/>
-                My Hotel
+                My News
               </NavLink>
             </NavItem><hr className="sidebar-line" />
             <NavItem className="nav-item">
@@ -157,17 +161,7 @@ function UserSidebar (){
           <Row>
             <Col lg={12}>
               <ul className='d-flex'>
-                <li className="nav-item">
-                  <a
-                    className={`nav-link sidebar-list ${currentSection === 'myHotels' ? 'active' : ''
-                      }`}
-                    href="/userprofile"
-                    onClick={() => showSection('myHotels')}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path fill="#f2f2f2" d="M0 32C0 14.3 14.3 0 32 0H480c17.7 0 32 14.3 32 32s-14.3 32-32 32V448c17.7 0 32 14.3 32 32s-14.3 32-32 32H304V464c0-26.5-21.5-48-48-48s-48 21.5-48 48v48H32c-17.7 0-32-14.3-32-32s14.3-32 32-32V64C14.3 64 0 49.7 0 32zm96 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H112c-8.8 0-16 7.2-16 16zM240 96c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H240zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H368c-8.8 0-16 7.2-16 16zM112 192c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V208c0-8.8-7.2-16-16-16H112zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V208c0-8.8-7.2-16-16-16H240c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V208c0-8.8-7.2-16-16-16H368zM328 384c13.3 0 24.3-10.9 21-23.8c-10.6-41.5-48.2-72.2-93-72.2s-82.5 30.7-93 72.2c-3.3 12.8 7.8 23.8 21 23.8H328z" /></svg>
-                    My Hotel
-                  </a>
-                </li>
+             
                 <li className="nav-item">
                   <a
                     className={`nav-link sidebar-list ${currentSection === 'myBlogs' ? 'active' : ''
@@ -201,12 +195,12 @@ function UserSidebar (){
 
       <div id="content">
             <div id="welcomeMessage" >
-            {currentSection === 'myHotels' && !showEditHotelForm && (
-              <div id="myHotels" >
-                <button className='userprofilebuttons' >All Hotels</button>
-                <button className='userprofilebuttons' onClick={() => showSection('addHotels')} >Add Hotel</button>
+            {currentSection === 'myNews' && !showEditHotelForm && (
+              <div id="myNews" >
+                <button className='userprofilebuttons' >All News</button>
+                <button className='userprofilebuttons' onClick={() => showSection('addHotels')} >Add News</button>
            
-                  <AllHotels onEditClick={handleEditButtonClick} />
+                  <AllBlogs onEditClick={handleEditButtonClick} />
 
               </div>
  )}
@@ -228,9 +222,8 @@ function UserSidebar (){
 
 {currentSection === 'addBlogs' && !showEditHotelForm && (
               <div id="addBlogs">
-              {/* <AddBlogs /> */}
+              <AddBlogs />
 
-              <SpecialOffers/>
                 
               </div>
                )}
@@ -251,10 +244,12 @@ function UserSidebar (){
           
             </div>
           </div>
+    </Container>
+</section>
 
-
-         
+<Footer/>
 </>
-);
+    );
 }
-export default UserSidebar;
+
+export default NewsSidebar;

@@ -161,7 +161,7 @@ function PersionalInformation(){
 
                       </div>
                     </div>
-                    <div className="card mt-3">
+                    {/* <div className="card mt-3">
                       <div className="card-body">
                         <ul className="list-group list-group-flush">
                           <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap px-2">
@@ -176,9 +176,9 @@ function PersionalInformation(){
                         </ul>
 
                       </div>
-                    </div>
+                    </div> */}
                     <div className='text-center'>
-                      <div className="mt-3"><a className="btn btn-block btn-default w-50 " href="/subscription">View All</a></div>
+                      <div className="mt-3"><a className="btn btn-block btn-default w-50 " href="/subscription">View All Packages</a></div>
                     </div>
                   </Col>
                 </Row></>

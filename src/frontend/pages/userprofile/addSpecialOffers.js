@@ -6,7 +6,7 @@ import { stateToHTML } from 'draft-js-export-html';
 import axios from "axios";
 import API from "../../../utils";
 import PayPalButton from "../../components/paypal";
-function AddBlogs() {
+function SpecialOffers() {
   const [hotelEditorState, setHotelEditorState] = useState(EditorState.createEmpty());
   const [blogEditorState, setBlogEditorState] = useState(EditorState.createEmpty());
 
@@ -285,221 +285,8 @@ function AddBlogs() {
 
   return (
     <>
-      {/* <h3 className="mb-4">Add A New Blog</h3> */}
       <Form id="addBlogForm" onSubmit={handleAddBlogs}>
-        <Row className="mb-3">
-
-        <Col lg={6}>
-            <div className="select-option">
-              <select id="newsType" name="newsType" value={formData.newsType}
-                onChange={handleInputChange} className="sidebar-input" >
-                <option value="select">Select News Type</option>
-                <option value="hotelNews">Hotel News</option>
-                <option value="generalnews">General News</option>
-                
-              </select>
-
-            </div>
-          </Col>
-          <Col lg={6}>
-            <Form.Control
-              className="sidebar-input"
-              type="text"
-              id="businessName"
-              name="businessName"
-              placeholder='Name Of Business'
-              value={formData.businessName}
-              onChange={handleInputChange}
-              style={{ borderColor: validationErrors.businessName ? "red" : "" }}
-            />
-            {validationErrors.businessName && (
-              <div style={{ color: "red", textAlign: "left" }}>
-                {validationErrors.businessName}
-              </div>
-            )}
-          </Col>
-          <Col lg={6}>
-            <div className="select-option">
-              <select id="country"
-                name="country"
-                className="sidebar-input"
-                value={formData.country}
-                onChange={handleInputChange}
-                style={{ borderColor: validationErrors.country ? "red" : "" }}
-              >
-
-                <option value="country">Name Of Country</option>
-                <option value="Kyrgyzstan">Kyrgyzstan</option>
-                <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
-                <option value="Latvia">Latvia</option>
-                <option value="Lebanon">Lebanon</option>
-                <option value="Lesotho">Lesotho</option>
-                <option value="Liberia">Liberia</option>
-                <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
-                <option value="Liechtenstein">Liechtenstein</option>
-                <option value="Lithuania">Lithuania</option>
-                <option value="Luxembourg">Luxembourg</option>
-                <option value="Macao">Macao</option>
-              </select>
-              {validationErrors.country && (
-                <div style={{ color: "red", textAlign: "left" }}>
-                  {validationErrors.country}
-                </div>
-              )}
-            </div>
-          </Col>
-          <Col lg={6}>
-            <Form.Control
-              className="sidebar-input"
-              type="text"
-              id="fullName"
-              name="fullName"
-              placeholder='Your Full Name'
-              value={formData.fullName}
-              onChange={handleInputChange}
-              style={{ borderColor: validationErrors.fullName ? "red" : "" }}
-            />
-            {validationErrors.fullName && (
-              <div style={{ color: "red", textAlign: "left" }}>
-                {validationErrors.fullName}
-              </div>
-            )}
-          </Col>
-       
-          <Col lg={6} md={6} className="mb-3">
-              <select
-               className="sidebar-input"
-               id="catagory"
-                name="catagory"
-                placeholder='News Catagory '
-                value={formData.catagory}
-                onChange={handleInputChange}
-              >
-                <option value="0">Select Category</option>
-                <option value="1">Airlines/Flights</option>
-                <option value="2">Cars</option>
-                <option value="3">Fashion/Jewellery</option>
-                <option value="4">Health/Beauty</option>
-                <option value="5">Hotels/Resorts</option>
-                <option value="6">Leadership</option>
-                <option value="7">Luxury life Style</option>
-                <option value="8">Properties</option>
-                <option value="9">Restaurants/Bars</option>
-                <option value="10">Travel</option>
-                <option value="11">Yachts/Boats</option>
-              </select>
-             
-          </Col>
-
-          <Col lg={6}>
-            <Form.Control
-              className="sidebar-input"
-              type="text"
-              id="blogTitle"
-              name="blogTitle"
-              placeholder='News Title'
-              value={formData.blogTitle}
-              onChange={handleInputChange}
-              style={{ borderColor: validationErrors.blogTitle ? "red" : "" }}
-            />
-            {validationErrors.blogTitle && (
-              <div style={{ color: "red", textAlign: "left" }}>
-                {validationErrors.blogTitle}
-              </div>
-            )}
-          </Col>
-
-          <Col lg={6}>
-            <Form.Control
-              className="sidebar-input"
-              type="email"
-              id="email"
-              name="email"
-              placeholder='Your Email Address'
-              value={formData.email}
-              onChange={handleInputChange}
-              style={{ borderColor: validationErrors.email ? "red" : "" }}
-            />
-
-            {validationErrors.email && (
-              <div style={{ color: "red", textAlign: "left" }}>
-                {validationErrors.email}
-              </div>
-            )}
-
-          </Col>
-          <Col lg={6}>
-            <Form.Control
-              className="sidebar-input"
-              type="text"
-              id="youtubeLink"
-              name="youtubeLink"
-              placeholder='Youtube Link (optional)'
-              value={formData.youtubeLink}
-              onChange={handleInputChange}
-              style={{ borderColor: validationErrors.youtubeLink ? "red" : "" }}
-            />
-
-            {validationErrors.youtubeLink && (
-              <div style={{ color: "red", textAlign: "left" }}>
-                {validationErrors.youtubeLink}
-              </div>
-            )}
-
-          </Col>
-
-          <Col lg={6}>
-            <Form.Control
-              className="sidebar-input"
-              id="image"
-              name="image"
-              type="file"
-              placeholder="News Image"
-              value={formData.image}
-              onChange={handleimageChange}
-              style={{ borderColor: validationErrors.image ? "red" : "" }}
-            />
-            {validationErrors.image && (
-              <div style={{ color: "red", textAlign: "left" }}>
-                {validationErrors.image}
-              </div>
-            )}
-          </Col>
-        </Row>
-       
-       
-
-        {/* <Row className=" mb-3">
-
-          <Col lg={12}>
-            <Form.Control
-              className="sidebar-input"
-              id="image"
-              name="image"
-              type="file"
-              value={formData.image}
-              onChange={handleimageChange}
-              style={{ borderColor: validationErrors.image ? "red" : "" }}
-            />
-            {validationErrors.image && (
-              <div style={{ color: "red", textAlign: "left" }}>
-                {validationErrors.image}
-              </div>
-            )}
-          </Col>
-        </Row> */}
-        <Row className=" mb-3">
-
-          <Col lg={12}>
-            <Editor
-              editorState={hotelEditorState}
-              onEditorStateChange={handleHotelEditorChange}
-              value={formData.hotelDescriptionHTML}
-              onChange={handleInputChange}
-            />
-          </Col>
-        </Row>
-
+      
         <div className='text-center mb-3'>
           <h5>YOU CAN ADD A “SPECIAL OFFER” HERE. (*non-obligatory)</h5>
         </div>
@@ -590,7 +377,7 @@ function AddBlogs() {
         <Row className=" mb-3">
          
           <Col lg={6}>
-            <button type="submit" >Add Special Offer</button>
+            <button type="submit" >Add News</button>
           </Col>
         </Row>
         <div className="text-center">
@@ -606,4 +393,4 @@ function AddBlogs() {
     </>
   );
 }
-export default AddBlogs;
+export default SpecialOffers;

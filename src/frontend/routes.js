@@ -33,6 +33,8 @@ import EditHotel from "./pages/editHotel";
 import MagazineDetails from "./pages/luxuryMagazineDetails";
 import ModalComponent from "./modalPopUp/newsLetterPopup";
 import AllHotels from "./pages/userprofile/allHotels";
+import PublishNews from "./pages/userprofile/publishNews";
+import NewsSidebar from "./components/newsSidebar";
 
 
 function RoutesPage() {
@@ -71,7 +73,11 @@ function RoutesPage() {
       <Route exact path="/forgot-password" element={<ForgotPassword />} />
       <Route exact path="/edit-hotel-profile" element={<EditHotel />} />
       <Route exact path="/magazine-details" element={<MagazineDetails />} />
-      {/* <Route exact path="/userprofile/myhotel" element={<AllHotels />} /> */}
+      <Route exact path="/magazine-details" element={<MagazineDetails />} />
+      <Route exact path="/publish-news-pr" element={<NewsSidebar />} />
+
+      <Route exact path="/userprofile/hotels" element={<AllHotels />} />
+      
       
 
 

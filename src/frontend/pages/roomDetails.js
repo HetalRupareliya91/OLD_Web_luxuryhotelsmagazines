@@ -2,22 +2,21 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { Col, Container, Form, Image, Row } from "react-bootstrap";
-import { FaEnvelope, FaFacebook,  FaTwitter, FaWhatsapp, FaTelegram, FaLinkedin, FaSnapchat, FaEye, FaHeart, FaBuilding, FaSpaceShuttle, FaHome, FaList, FaPencilAlt, FaWifi } from 'react-icons/fa';
-import News3 from '../../assets/img/news3.jpg'
-import News4 from '../../assets/img/news4.jpg'
+import { FaEnvelope, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaWhatsapp, FaTelegram, FaLinkedin, FaSnapchat, FaEye, FaHeart, FaMapMarker, FaBuilding, FaSpaceShuttle, FaHome, FaList, FaPencilAlt, FaWifi, FaTiktok, FaViber, FaFacebookMessenger, FaSwimmingPool, FaBars, FaWineBottle, FaCloudMeatball, FaTableTennis, FaRedRiver, FaRestroom, FaFootballBall, FaConciergeBell, FaFileSignature, FaGlasses, FaRProject } from 'react-icons/fa';
+
+
+
 import News5 from '../../assets/img/news5.jpg'
 import News6 from '../../assets/img/news6.jpg'
 import Logo from "../../assets/img/logo.svg"
+// import video from "../../assets/videos/hotelVideo.mp4"
 import API from "../../utils";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { GeoAltFill } from "react-bootstrap-icons";
+import { FileEarmarkCheckFill, GeoAltFill } from "react-bootstrap-icons";
 import Review from "../components/hotelReview";
+import HotelSlider from "../components/youMayLikeHotel";
 function RoomDetails() {
-
-
-
-    
     const { hotelId } = useParams();
     console.log(hotelId);
 
@@ -61,7 +60,7 @@ function RoomDetails() {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8">
-                         
+
                             <div className="row ">
                                 <div className="col-lg-4">
                                     <div className="row">
@@ -78,8 +77,8 @@ function RoomDetails() {
                                 <div className="col-lg-12 text-end ">
                                     <h4 className="mt-4">Jumeirah Al Qasr Hotel </h4>
                                     <div className="d-flex justify-content-end"><GeoAltFill className="m-0 locaton-icon" />
-                      <p>Kuwait</p></div>
-                             
+                                        <p>Kuwait</p></div>
+
                                 </div>
                             </div>
                         </div>
@@ -104,7 +103,7 @@ function RoomDetails() {
 
                             <div className="rd-text">
                                 <div className="rd-title">
-                                <GeoAltFill className="m-0 locaton-icon" /> Location
+                                    <GeoAltFill className="m-0 locaton-icon" /> Location
                                 </div>
 
 
@@ -199,16 +198,21 @@ function RoomDetails() {
                                 </div>
 
                                 <div className="row">
-                                    <div className="col-lg-8"><p className="f-para sharethis mt-2"><i aria-hidden="true"><FaFacebook /></i>
-                                        <i aria-hidden="true"><FaTwitter /></i><i aria-hidden="true"><FaWhatsapp /></i><i aria-hidden="true"><FaTelegram /></i><i aria-hidden="true"><FaLinkedin /></i><i aria-hidden="true"><FaSnapchat /></i><i aria-hidden="true"><FaEnvelope /></i>
+                                    <div className="col-lg-8"><p className="f-para sharethis mt-2">
+                                        <i aria-hidden="true"><FaFacebook /></i>
+                                        <i aria-hidden="true"><FaInstagram /></i>
+                                        <i aria-hidden="true"><FaTwitter /></i>
+                                        <i aria-hidden="true"><FaWhatsapp /></i>
+                                        <i aria-hidden="true"><FaTelegram /></i>
+                                        <i aria-hidden="true"><FaLinkedin /></i>
+                                        <i aria-hidden="true"><FaSnapchat /></i>
+                                        <i aria-hidden="true"><FaTiktok /></i>
+                                        <i aria-hidden="true"><FaViber /></i>
+                                        <i aria-hidden="true"><FaFacebookMessenger /></i>
+                                        <i aria-hidden="true"><FaEnvelope /></i>
+                                        
                                     </p></div>
-                                    {/* <div className="col-lg-4 mt-3">
-
-                                        <p className="f-para likeview mt-2">
-                                            <i aria-hidden="true">&nbsp;5 <FaEye /></i>
-                                            <i aria-hidden="true">&nbsp;10 <FaHeart /></i>
-                                        </p>
-                                    </div> */}
+                    
                                 </div>
 
 
@@ -254,141 +258,187 @@ function RoomDetails() {
                                 <div className="mt-4">
                                     <h2>Hotel Website Visits</h2>
 
-                                    <p className="f-para likeview mt-4 d-flex justify-content-around">
-                                            <i aria-hidden="true"><FaEye />&nbsp;10 Views</i>
-                                            <i aria-hidden="true"><FaHeart />&nbsp;5 Likes</i>
-                                        </p>
+                              <div className="d-flex justify-content-around">
+                                
+                              </div>
+
+                                    <p className="f-para likeview mt-2 d-flex justify-content-around">
+                                        <i aria-hidden="true"><FaEye />&nbsp;10 Views</i>
+                                        <i aria-hidden="true"><FaHeart />&nbsp;5 Likes</i>
+                                    </p>
+                                    <p className="f-para likeview mt-2 d-flex justify-content-around">
+                                        <i aria-hidden="true"><FaRProject />&nbsp;8 Reviews </i>
+                                        <i aria-hidden="true"><FileEarmarkCheckFill />&nbsp;2 votes </i>
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
                         <div className="room-details-aminites">
                             <div className="text-center m-4">
-                                <h1>Hotel Aminites</h1>
-                            
+                                <h1>Hotel Amenities</h1>
+
                             </div>
-                           <div>
+                            <div>
 
 
-                            <Row className="room-details-aminites-row">
-                                <Col lg={3} className="col-section">
-                                    <div className="aminites d-flex">
-                                        <FaWifi className="m-0"/>
-                                        <p>Numbers Of Rooms</p>
-                                    </div>
-                                </Col>
-                                <Col lg={3} className="col-section">
-                                    <div className="aminites d-flex">
-                                        <FaWifi className="m-0"/>
-                                        <p> swimming pool:1</p>
-                                    </div>
-                                </Col>
-                                <Col lg={3} className="col-section">
-                                    <div className="aminites d-flex">
-                                        <FaWifi className="m-0"/>
-                                        <p> Bars :1</p>
-                                    </div>
-                                </Col>
-                                <Col lg={3} className="col-section">
-                                    <div className="aminites d-flex">
-                                        <FaWifi className="m-0"/>
-                                        <p>Kids club</p>
-                                    </div>
-                                </Col>
-                                <Col lg={3} className="col-section">
-                                    <div className="aminites d-flex">
-                                        <FaWifi className="m-0"/>
-                                        <p> Teens Club</p>
-                                    </div>
-                                </Col>
-                                <Col lg={3} className="col-section">
-                                    <div className="aminites d-flex">
-                                        <FaWifi className="m-0"/>
-                                        <p> Private driver</p>
-                                    </div>
-                                </Col>
-
-                                <Col lg={3} className="col-section">
-                                    <div className="aminites d-flex">
-                                        <FaWifi className="m-0"/>
-                                        <p> Room service</p>
-                                    </div>
-                                </Col>
-
-                                <Col lg={3} className="col-section">
-                                    <div className="aminites d-flex">
-                                        <FaWifi className="m-0"/>
-                                        <p> Sport classes</p>
-                                    </div>
-                                </Col>
-
-                                <Col lg={3} className="col-section">
-                                    <div className="aminites d-flex">
-                                        <FaWifi className="m-0"/>
-                                        <p> Concierge service
-</p>
-                                    </div>
-                                </Col>
-                                <Col lg={3} className="col-section">
-                                    <div className="aminites d-flex">
-                                        <FaWifi className="m-0"/>
-                                        <p> Fitness center</p>
-                                    </div>
-                                </Col>
-                            </Row>
-
-                        
-                           </div>
-                        </div>
-
-
-                        <Review/>
-                        <div className="alternate-hotels mt-3">
-                            <div className="text-center m-4">
-                                <h1>You May Also Like</h1>
-                            </div>
-                            <div className="card-deck">
-                                <Row>
-                                    <Col lg={4}>
-                                        <div className="card">
-                                            <Image className="card-img-top" src={News5} alt="Card image cap" />
-                                            <div className="card-body">
-                                                <h5 className="card-title">Londa Residences Cyprus</h5>
-                                                <h6 className="card-title">India</h6>
-                                                <p className="card-text">7.8/10 (Good)</p>
-                                                <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                                            </div>
+                                <Row className="room-details-aminites-row">
+                                    <Col lg={3} className="col-section">
+                                        <div className="aminites d-flex">
+                                            <FaWifi className="aminites-icon m-0" />
+                                            <p>Numbers Of Rooms</p>
                                         </div>
                                     </Col>
-                                    <Col lg={4}>
-                                        <div className="card">
-                                            <img className="card-img-top" src={News1} alt="Card image cap" />
-                                            <div className="card-body">
-                                                <h5 className="card-title">Hotel Taj</h5>
-                                                <h6 className="card-title">England</h6>
-                                                <p className="card-text">7.8/10 (Good)</p>
-                                                <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                                            </div>
+                                    <Col lg={3} className="col-section">
+                                        <div className="aminites d-flex">
+                                            <FaSwimmingPool className="aminites-icon m-0" />
+                                            <p> swimming pool:1</p>
                                         </div>
                                     </Col>
-                                    <Col lg={4}>
-                                        <div className="card">
-                                            <img className="card-img-top" src={News2} alt="Card image cap" />
-                                            <div className="card-body">
-                                                <h5 className="card-title">Hotel Taj</h5>
-                                                <h6 className="card-title">Dubai</h6>
-                                                <p className="card-text">7.8/10 (Good)</p>
-                                                <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                                            </div>
+                                    <Col lg={3} className="col-section">
+                                        <div className="aminites d-flex">
+                                            <FaWineBottle className="aminites-icon m-0" />
+                                            <p> Bars :1</p>
+                                        </div>
+                                    </Col>
+                                    <Col lg={3} className="col-section">
+                                        <div className="aminites d-flex">
+                                            <FaCloudMeatball className="aminites-icon m-0" />
+                                            <p>Kids club</p>
+                                        </div>
+                                    </Col>
+                                    <Col lg={3} className="col-section">
+                                        <div className="aminites d-flex">
+                                            <FaTableTennis className="aminites-icon m-0" />
+                                            <p> Teens Club</p>
+                                        </div>
+                                    </Col>
+                                    <Col lg={3} className="col-section">
+                                        <div className="aminites d-flex">
+                                            <FaRedRiver className="aminites-icon m-0" />
+                                            <p> Private driver</p>
+                                        </div>
+                                    </Col>
+
+                                    <Col lg={3} className="col-section">
+                                        <div className="aminites d-flex">
+                                            <FaRestroom className="aminites-icon m-0" />
+                                            <p> Room service</p>
+                                        </div>
+                                    </Col>
+
+                                    <Col lg={3} className="col-section">
+                                        <div className="aminites-icon aminites d-flex">
+                                            <FaFootballBall className="aminites-icon m-0" />
+                                            <p> Sport classes</p>
+                                        </div>
+                                    </Col>
+
+                                    <Col lg={3} className="col-section">
+                                        <div className="aminites d-flex">
+                                            <FaConciergeBell className="aminites-icon m-0" />
+                                            <p> Concierge service
+                                            </p>
+                                        </div>
+                                    </Col>
+                                    <Col lg={3} className="col-section">
+                                        <div className="aminites d-flex">
+                                            <FaFileSignature className="aminites-icon m-0" />
+                                            <p> Fitness center</p>
                                         </div>
                                     </Col>
                                 </Row>
+
+
                             </div>
                         </div>
+
+
+                        <div className="most-popular-facilites">
+                            <div className="text-center m-4">
+                                <h1>Most Popular Facilites</h1>
+
+                            </div>
+                            <div>
+
+
+                                <Row className="most-popular-facilites-row">
+                                    <Col lg={3} className="col-section">
+                                        <div className="facilites d-flex">
+                                            <FaWifi className="aminites-icon m-0" />
+                                            <p>Outdoor swimming pool</p>
+                                        </div>
+                                    </Col>
+                                    <Col lg={3} className="col-section">
+                                        <div className="facilites d-flex">
+                                            <FaSwimmingPool className="aminites-icon m-0" />
+                                            <p>Fitness center</p>
+                                        </div>
+                                    </Col>
+                                    <Col lg={3} className="col-section">
+                                        <div className="facilites d-flex">
+                                            <FaWineBottle className="aminites-icon m-0" />
+                                            <p>Non-smiking rooms</p>
+                                        </div>
+                                    </Col>
+                                    <Col lg={3} className="col-section">
+                                        <div className="facilites d-flex">
+                                            <FaCloudMeatball className="aminites-icon m-0" />
+                                            <p>Spa & Wellness</p>
+                                        </div>
+                                    </Col>
+                                    <Col lg={3} className="col-section">
+                                        <div className="facilites d-flex">
+                                            <FaTableTennis className="aminites-icon m-0" />
+                                            <p>Restaurants</p>
+                                        </div>
+                                    </Col>
+                                    <Col lg={3} className="col-section">
+                                        <div className="facilites d-flex">
+                                            <FaRedRiver className="aminites-icon m-0" />
+                                            <p>Tea/coffee maker in all rooms</p>
+                                        </div>
+                                    </Col>
+
+                                    <Col lg={3} className="col-section">
+                                        <div className="facilites d-flex">
+                                            <FaRestroom className="aminites-icon m-0" />
+                                            <p>Bar</p>
+                                        </div>
+                                    </Col>
+
+                                    <Col lg={3} className="col-section">
+                                        <div className="facilites d-flex">
+                                            <FaFootballBall className="aminites-icon m-0" />
+                                            <p>Good breakfasty</p>
+                                        </div>
+                                    </Col>
+
+                                    <Col lg={3} className="col-section">
+                                        <div className="facilites d-flex">
+                                            <FaConciergeBell className="aminites-icon m-0" />
+                                            <p> 
+                                            </p>
+                                        </div>
+                                    </Col>
+                                    <Col lg={3} className="col-section">
+                                        <div className="facilites d-flex">
+                                            <FaFileSignature className="aminites-icon m-0" />
+                                            <p>Childern's Cots</p>
+                                        </div>
+                                    </Col>
+                                </Row>
+
+
+                            </div>
+                        </div>
+
+
+                        <Review />
+
                     </div>
+
+                    <HotelSlider/>
                 </div>
             </section>
             <Footer />

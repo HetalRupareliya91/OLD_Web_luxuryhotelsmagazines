@@ -53,15 +53,14 @@ function Advertise() {
                                         <div className="text-center ">
                                             <p className="heading1">Video Banner (Home Page)</p>
                                             <p className="heading">(Minimum Term 3 months)</p>
-                                            <p className="heading">€80/month
-                                            </p>
-                                            <p className="heading">
-                                                *Original price 450</p>
-                                            <p className="heading">
-                                                *Offer valid till 31-12-2023
-                                            </p>
+                                            
                                         </div>
+                                        <div className="text-end">
+                                    <p className="heading">€80/month </p>
                                     </div>
+                                    </div>
+                                   
+
 
                                     <div className="card-inner-section-textarea ">
                                         <div className="text-center" >
@@ -81,6 +80,11 @@ function Advertise() {
                                             <li>Seamless direct bookings on your website</li>
                                         </ul>
                                         <div className="text-center">
+                                        <p >
+                                               <b> *Original price 450 </b></p>
+                                            <p >
+                                               <b> *Offer valid till 31-12-2023</b>
+                                            </p>
                                             <button className="w-50"> <a className="subscribe_text" href="/publish-hotel-news">Subscribe Now</a></button>
                                         </div>
                                     </div>
@@ -94,14 +98,12 @@ function Advertise() {
                                         <div className="text-center ">
                                             <p className="heading1">Animated Banner</p>
                                             <p className="heading">(Minimum Term of 3 months)</p>
-                                            <p className="heading">€80/month
-                                            </p>
-                                            <p className="heading">
-                                                *Original price 450</p>
-                                            <p className="heading">
-                                                *Offer valid till 31-12-2023
-                                            </p>
+                                           
+                                         
                                         </div>
+                                        <div className="text-end">
+                                    <p className="heading">€80/month </p>
+                                    </div>
                                     </div>
 
                                     <div className="card-inner-section-textarea ">
@@ -121,6 +123,11 @@ function Advertise() {
                                             <li>Seamless direct bookings on your website</li>
                                         </ul>
                                         <div className="text-center">
+                                        <p >
+                                               <b> *Original price 450 </b></p>
+                                            <p >
+                                               <b> *Offer valid till 31-12-2023</b>
+                                            </p>
                                             <button className="w-50"> <a className="subscribe_text" href="/publish-hotel-news">Subscribe Now</a></button>
                                         </div>
                                     </div>
@@ -133,14 +140,12 @@ function Advertise() {
                                         <div className="text-center ">
                                             <p className="heading1">Hotel Profile</p>
                                             <p className="heading">(Minimum Term of 6 months)</p>
-                                            <p className="heading">€99 for 6 months !
-                                            </p>
-                                            <p className="heading">
-                                            *Original price 399</p>
-                                            <p className="heading">
-                                                *Offer valid till 31-12-2023
-                                            </p>
+                                        
                                         </div>
+                                        <div className="text-end">
+                                        <p className="heading">€99 for 6 months !
+                                            </p>
+                                            </div>
                                     </div>
 
                                     <div className="card-inner-section-textarea ">
@@ -166,6 +171,11 @@ function Advertise() {
                                             {/* <li>Links to the Hotel website for convenient bookings</li>  */}
                                         </ul>
                                         <div className="text-center">
+                                        <p >
+                                            <b>*Original price 399 </b></p>
+                                            <p >
+                                                <b>*Offer valid till 31-12-2023</b>
+                                            </p>
                                             <button className="w-50"> <a className="subscribe_text" href="/publish-hotel-news">Subscribe Now</a></button>
                                         </div>
                                     </div>
@@ -178,14 +188,11 @@ function Advertise() {
                                         <div className="text-center ">
                                             <p className="heading1">Hotel Profile</p>
                                             <p className="heading">(Annual Plan)</p>
-                                            <p className="heading">€199 per Year
-                                            </p>
-                                            <p className="heading">
-                                            *Original price 499</p>
-                                            <p className="heading">
-                                                *Offer valid till 31-12-2023
-                                            </p>
+                                           
                                         </div>
+                                        <div className="text-end">
+                                        <p className="heading">€199 per Year </p>                         
+                                             </div>
                                     </div>
 
                                     <div className="card-inner-section-textarea ">
@@ -205,6 +212,11 @@ function Advertise() {
 
                                         </ul>
                                         <div className="text-center">
+                                        <p >
+                                            <b>*Original price 499</b></p>
+                                            <p >
+                                             <b>   *Offer valid till 31-12-2023</b>
+                                            </p>
                                             <button className="w-50"> <a className="subscribe_text" href="/publish-hotel-news">Subscribe Now</a></button>
                                         </div>
                                     </div>
@@ -214,17 +226,15 @@ function Advertise() {
                                 <div className="card-inner-section" >
 
                                     <div className="card-inner-section-background ">
-                                        <div className="text-center ">
-                                            <p className="heading1">Post Your Business PR or News</p>
-                                            <p className="heading">(Unlimited Period of Time)</p>
-                                            <p className="heading">€15 per News or PR!
+                                        <div>
+                                            <p className="heading1 text-center">Post Your Business PR/News</p>
+                                            <p className="heading text-center ">(Unlimited Period of Time)</p>
+                                        
+                                        </div >
+                                        <div className="text-end">
+                                        <p className="heading">€15 per News or PR!
                                             </p>
-                                            <p className="heading">
-                                                *Original price 450</p>
-                                            <p className="heading">
-                                                *Offer valid till 31-12-2023
-                                            </p>
-                                        </div>
+                                            </div>
                                     </div>
 
                                     <div className="card-inner-section-textarea ">
@@ -244,6 +254,11 @@ function Advertise() {
                                             <li>Seamless direct bookings on your website</li>
                                         </ul>
                                         <div className="text-center">
+                                        <p >
+                                               <b> *Original price 450</b></p>
+                                            <p >
+                                               <b> *Offer valid till 31-12-2023</b>
+                                            </p>
                                             <button className="w-50"> <a className="subscribe_text" href="/publish-hotel-news">Subscribe Now</a></button>
                                         </div>
                                     </div>

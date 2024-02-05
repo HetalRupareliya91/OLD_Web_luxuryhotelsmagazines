@@ -2,7 +2,9 @@ import React from "react";
 import { Col, Container, Row ,Image} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import icons from "../../../assets/img/magazines/RETAILERS-LOGOS-4.png";
+import CountUp from "react-countup";
 function OurStory (){
+    
 return(
 <section className="our-story-section spad">
 
@@ -36,19 +38,19 @@ return(
 
             <div className="numbers-div">
                 <div>
-                    <p className="numbersp">215</p>
+                    <p className="numbersp"> <CountUp end={215} /></p>
                     <p className="contentp">ISSUES</p>
                 </div>
                 <div>
-                    <p className="numbersp">100000</p>
+                    <p className="numbersp"><CountUp end={100000} /></p>
                     <p className="contentp">READERS PER ISSUE</p>
                 </div>
                 <div>
-                    <p className="numbersp">163000</p>
+                    <p className="numbersp"><CountUp end={163000} /></p>
                     <p className="contentp">SOCIAL FOLLOWERS</p>
                 </div>
                 <div>
-                    <p className="numbersp">1500000</p>
+                    <p className="numbersp"><CountUp end={1500000} /></p>
                     <p className="contentp">PAGE VIEWS PER MONTH</p>
                 </div>
 
