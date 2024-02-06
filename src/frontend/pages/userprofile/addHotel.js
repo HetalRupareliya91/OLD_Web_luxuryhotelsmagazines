@@ -1,15 +1,21 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useMemo} from "react";
 import { Col, Container, Form, Image, Nav, ProgressBar, Row } from 'react-bootstrap';
 import API from "../../../utils";
 import { EditorState, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { stateToHTML } from 'draft-js-export-html';
-
+import Select from 'react-select'
+import CountryList from 'react-select-country-list'
 function AddHotel() {
 
-
+    const [value, setValue] = useState('')
+    const options = useMemo(() => CountryList().getData(), [])
+  
+    const changeHandler = value => {
+      setValue(value)
+    }
     
     const [hotelEditorState, setHotelEditorState] = useState(EditorState.createEmpty());
     const [locationEditorState, setlocationEditorState] = useState(EditorState.createEmpty());
@@ -623,29 +629,19 @@ function AddHotel() {
 
                         <Col lg={6}>
                             <Form.Label>Name Of Country</Form.Label>
-                            <div className="select-option">
-                                <select id="country"
-                                    name="country" className="sidebar-input" value={formData.country}
-                                    onChange={handleInputChange} style={{ borderColor: validationErrors.country ? "red" : "" }}>
-                                    <option value="Kyrgyzstan">Name Of Country</option>
-                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
-                                    <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
-                                    <option value="Latvia">Latvia</option>
-                                    <option value="Lebanon">Lebanon</option>
-                                    <option value="Lesotho">Lesotho</option>
-                                    <option value="Liberia">Liberia</option>
-                                    <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
-                                    <option value="Liechtenstein">Liechtenstein</option>
-                                    <option value="Lithuania">Lithuania</option>
-                                    <option value="Luxembourg">Luxembourg</option>
-                                    <option value="Macao">Macao</option>
-                                </select>
+                         
+                                <Select 
+                                   
+                                    options={options} value={value} onChange={changeHandler}
+                                    style={{ borderColor: validationErrors.country ? "red" : "" }}>
+                                    
+                                </Select>
                                 {validationErrors.country && (
                                     <div style={{ color: "red", textAlign: "left" }}>
                                         {validationErrors.country}
                                     </div>
                                 )}
-                            </div>
+                            
                         </Col>
                     </Row>
 
@@ -812,7 +808,103 @@ function AddHotel() {
                     <Row className="mb-3">
                 {renderAmenitiesInputs()}
             </Row>
-                        
+                    <Row>
+
+                    <h5>Hotel Facilities</h5>
+                    <Col lg={3} md={4}  className="mb-3">
+                        <Form.Group className='d-flex order-2'>
+                            <Form.Check
+                                type="checkbox"
+                                name=""
+                                label="Outdoor swimming pool"
+                                className=''
+                            />
+                        </Form.Group>
+                        </Col>
+
+                        <Col lg={3} md={4}  className="mb-3">
+                        <Form.Group className='d-flex order-2'>
+                            <Form.Check
+                                type="checkbox"
+                                name=""
+                                label="Fitness center"
+                                className=''
+                            />
+                        </Form.Group>
+                        </Col>
+                        <Col lg={3} md={4}  className="mb-3">
+                        <Form.Group className='d-flex order-2'>
+                            <Form.Check
+                                type="checkbox"
+                                name=""
+                                label="Non-smiking rooms"
+                                className=''
+                            />
+                        </Form.Group>
+                        </Col>
+                        <Col lg={3} md={4}  className="mb-3">
+                        <Form.Group className='d-flex order-2'>
+                            <Form.Check
+                                type="checkbox"
+                                name=""
+                                label="Spa & Wellness"
+                                className=''
+                            />
+                        </Form.Group>
+                        </Col>
+
+                        <Col lg={3} md={4}  className="mb-3">
+                        <Form.Group className='d-flex order-2'>
+                            <Form.Check
+                                type="checkbox"
+                                name=""
+                                label="Restaurants"
+                                className=''
+                            />
+                        </Form.Group>
+                        </Col>
+                        <Col lg={3} md={4}  className="mb-3">
+                        <Form.Group className='d-flex order-2'>
+                            <Form.Check
+                                type="checkbox"
+                                name=""
+                                label="Tea/coffee maker in all rooms"
+                                className=''
+                            />
+                        </Form.Group>
+                        </Col>
+                        <Col lg={3} md={4}  className="mb-3">
+                        <Form.Group className='d-flex order-2'>
+                            <Form.Check
+                                type="checkbox"
+                                name=""
+                                label="Bar"
+                                className=''
+                            />
+                        </Form.Group>
+                        </Col>
+                        <Col lg={3} md={4}  className="mb-3">
+                        <Form.Group className='d-flex order-2'>
+                            <Form.Check
+                                type="checkbox"
+                                name=""
+                                label="Good breakfasty"
+                                className=''
+                            />
+                        </Form.Group>
+                        </Col>
+                        <Col lg={3} md={4}  className="mb-3">
+                        <Form.Group className='d-flex order-2'>
+                            <Form.Check
+                                type="checkbox"
+                                name=""
+                                label="Childern's Cots"
+                                className=''
+                            />
+                        </Form.Group>
+                        </Col>
+
+                        </Row>    
                     
                     <Row className="mb-3">
                         <Col lg={3}>

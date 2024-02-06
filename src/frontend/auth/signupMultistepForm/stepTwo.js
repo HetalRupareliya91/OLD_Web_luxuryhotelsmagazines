@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import { FaEuroSign } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 function StepTwo() {
     return(
@@ -26,7 +27,7 @@ function StepTwo() {
                   </div>
 
                   <div className="pricingTable-sign-up">
-                      <a href="#" className="btn btn-block btn-default">Pay With Card <i aria-hidden="true"></i></a>  
+                      <NavLink to="#" className="btn btn-block btn-default">Pay With Card <i aria-hidden="true"></i></NavLink>  
                   </div>
               </div>
           </Col>

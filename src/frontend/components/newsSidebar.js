@@ -198,19 +198,19 @@ function NewsSidebar(){
             {currentSection === 'myNews' && !showEditHotelForm && (
               <div id="myNews" >
                 <button className='userprofilebuttons' >All News</button>
-                <button className='userprofilebuttons' onClick={() => showSection('addHotels')} >Add News</button>
+                <button className='userprofilebuttons' onClick={() => showSection('addNews')} >Add News</button>
            
                   <AllBlogs onEditClick={handleEditButtonClick} />
 
               </div>
  )}
-  {currentSection === 'myBlogs' && !showEditHotelForm && (
+  {/* {currentSection === 'myBlogs' && !showEditHotelForm && (
               <div id="myBlogs" style={{ display: currentSection === 'myBlogs' ? 'block' : 'none' }}>
                 <button className='userprofilebuttons'  >All Special Offers</button>
                 <button className='userprofilebuttons' onClick={() => showSection('addBlogs')}>Add Special Offers</button>
                  <AllBlogs />
               </div>
-              )}
+              )} */}
 
 
 {currentSection === 'myProfile' && !showEditHotelForm && (
@@ -220,21 +220,21 @@ function NewsSidebar(){
 
 )}
 
-{currentSection === 'addBlogs' && !showEditHotelForm && (
-              <div id="addBlogs">
+{currentSection === 'addNews' && !showEditHotelForm && (
+              <div id="addNews">
               <AddBlogs />
 
                 
               </div>
                )}
           
-          {currentSection === 'addHotels' && !showEditHotelForm && (
+          {/* {currentSection === 'addHotels' && !showEditHotelForm && (
               <div id="addHotels" style={{ display: currentSection === 'addHotels' ? 'block' : 'none' }}>
-                {/* <MultiStep activeStep={0} > */}
+               
               <AddHotel/>
-                {/* {/* </MultiStep>         */}
+                
               </div>
-              )}
+              )} */}
 
               {showEditHotelForm && (
         <div id="editHotelForm" >

@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Container, Image, Row } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 function AdvertiseWhatWeDo(){
 
@@ -13,7 +14,7 @@ function AdvertiseWhatWeDo(){
                         <p>Continue Reading</p>
                         </div>
                     <div className="text-center">
-                    <h2><a href="what-we-do" style={{ color: "#e41d25" }}>WHAT WE DO</a></h2>
+                    <h2><NavLink to="/what-we-do" style={{ color: "#e41d25" }}>WHAT WE DO</NavLink></h2>
                     </div>
                 </div>
                 </div>
@@ -26,7 +27,7 @@ function AdvertiseWhatWeDo(){
                     <div className="text-center">
                         <p>Looks Great?</p></div>
                     <div className="text-center">
-                        <h2><a href="contact-us">CONTACT US</a></h2>
+                        <h2><NavLink to="/contact-us">CONTACT US</NavLink></h2>
                     </div>
                 </div>
                 </div>

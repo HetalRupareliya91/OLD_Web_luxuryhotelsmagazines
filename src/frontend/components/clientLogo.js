@@ -17,6 +17,8 @@ import StRaphael from "../../assets/img/whowithwork/St Raphael.png";
 import Apollonia from "../../assets/img/whowithwork/The Royal Apollonia.png";
 import axios from "axios";
 import API from "../../utils";
+import { NavLink } from "react-router-dom";
+import { Image } from "react-bootstrap";
 
 
 function ClientLogo() {
@@ -56,9 +58,9 @@ function ClientLogo() {
         <div className="slider">
         {apiData.map((logo, index) => (
           <div className="item" key={index}>
-            <a href="">
-              <img alt={`logo-${index}`} src={logo} />
-            </a>
+            <NavLink to="">
+              <Image alt={`logo-${index}`} src={logo} />
+            </NavLink>
           </div>
         ))}
         </div>

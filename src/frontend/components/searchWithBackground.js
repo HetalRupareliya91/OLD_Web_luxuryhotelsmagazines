@@ -73,7 +73,7 @@ function SearchWithBackground(){
                        </div>
 
 
-                       {searchResults.length > 0 && searchResults !== 'undefined' && (
+                       {searchResults && searchResults.length > 0  && (
                    <div className="search-results autocom-box ">
                      {/* <h2>Search Results:</h2> */}
                      <ul>

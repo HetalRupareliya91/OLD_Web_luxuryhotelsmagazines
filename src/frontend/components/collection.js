@@ -7,6 +7,7 @@ import News5 from '../../assets/img/news5.jpg';
 import News6 from '../../assets/img/news6.jpg';
 import News7 from '../../assets/img/news7.jpg';
 import { Col, Container, Row, Image } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 function Collections() {
     const sliderSettings = {
@@ -51,9 +52,9 @@ function Collections() {
                                 <div className="img-dec">{item.title}</div>
                                 <div className="thumbnail">
                                     <div>
-                                        <a href="/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux" className="readmore">
+                                        <NavLink to="/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux" className="readmore">
                                             Read More
-                                        </a>
+                                        </NavLink>
                                     </div>
                                     <Image src={item.image} />
                                 </div>

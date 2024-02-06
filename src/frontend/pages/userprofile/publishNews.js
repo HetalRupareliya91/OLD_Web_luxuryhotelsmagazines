@@ -9,7 +9,6 @@ function PublishNews(){
 
     return(
 <>
-        <Header/>
         <section className="spad">
             <h1 className="text-center">PUBLISH HOTEL NEWS/PR</h1>
 
@@ -19,7 +18,6 @@ function PublishNews(){
 
             </Container>
         </section>
-        <Footer/>
         </>
     );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../../assets/img/logo.svg";
 import { Col, Container, Row } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 function CallToAction (){
     return(
 <section >
@@ -11,9 +12,9 @@ function CallToAction (){
                 <Row className=" align-items-center">
                     <Col lg={3} xs={12}>
                      <div className="logo mt-3 mb-0">
-                        <a href="/">
+                        <NavLink to="/">
                         <img src={Logo} alt=""/>
-                        </a>
+                        </NavLink>
                      </div>                 
                         </Col>
                     <Col  xs={12} sm={6} lg={4} xl={3} >
@@ -26,7 +27,7 @@ function CallToAction (){
                         <form id="footer-newsletter" className="d-flex  ">
                             <input type="text" className="form-control newsletteremailfield" name="email" id="emailsignupAddr" placeholder="Your email address"/>
                             <input type="hidden" id="footerToken" className="tokenfield" name="token"/>
-                            <button type="submit" id="sitefooter_emailsignup" className="btn btn-default emailsignup" name="emailPopupSubscribe" href="/signup">Sign up</button>
+                            <button type="submit" id="sitefooter_emailsignup" className="btn btn-default emailsignup" name="emailPopupSubscribe" ><NavLink to="/signup">Sign up</NavLink> </button>
                         </form>
                     </Col>
                 </Row>

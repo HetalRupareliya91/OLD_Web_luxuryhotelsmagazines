@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import { Col, Container, Row } from "react-bootstrap";
 import Team1 from "../../assets/img/team/65402_TanyaCEO.webp";
@@ -17,16 +17,85 @@ import Team12 from "../../assets/img/team/235443_team2.webp";
 
 import Footer from "../components/footer";
 import CallToAction from "../components/callToAction";
+import axios from "axios";
+import API from "../../utils";
 function OurTeam() {
+    const [apiData,setApiData]=useState("")
+    const [teamData,setTeamData]=useState("")
+ 
+          const  type="team"
+       
+        useEffect(() => {
+            const fetchDetails = async (e) => {
+                if (e) e.preventDefault();
+        
+                try {
+                    const response = await axios.post(
+                        `${API.BASE_URL}${API.ENDPOINTS.singlePageDetails}`,
+                        {
+                            type: type,  
+                        },
+                        {
+                            headers: {
+                                Authorization: "hXuRUGsEGuhGf6KM",
+                            },
+                        }
+                    );
+        
+                    const data = response.data;
+                    console.log("myData", data);
+                    if (data.status === true) {
+                        setApiData(data.data.details);
+                    } else {
+                        console.error("signup failed:");
+                    }
+                } catch (error) {
+                    console.error("Error:", error.message);
+                }
+            };
+        
+            fetchDetails();
+            fetchTeam()
+        }, []);
 
+
+        const fetchTeam = async (e) => {
+            const token = localStorage.getItem("token");
+            if (e) e.preventDefault();
+    
+            try {
+                const response = await axios.get(
+                    `${API.BASE_URL}${API.ENDPOINTS.allTeam}`,
+                    
+                    {
+                        headers: {
+
+                            "Authorization": "Bearer " + token,
+                            // Authorization: "hXuRUGsEGuhGf6KM",
+                        },
+                    }
+                );
+    
+                const data = response.data;
+                console.log("myData", data);
+                if (data.status === true) {
+                    setTeamData(data.data);
+                } else {
+                    console.error("signup failed:");
+                }
+            } catch (error) {
+                console.error("Error:", error.message);
+            }
+        };
+    
     return (
         <>
             <Header />
             <section className="my-5">
                 <Container>
-                    <h1 className="text-center">MEET THE TEAM</h1>
+                    <h1 className="text-center">{apiData.title}</h1>
                     <div className="hotel-selection my-4">
-                        <p>We are very pleased and proud to be working closely with the below group of Luxury Magazine staff and team members, who are responsible for running our offices and Luxury Hotels Brand around the world. Without them, we're nothing</p>
+                        <p>{apiData.content}</p>
                     </div>
                 </Container>
             </section>

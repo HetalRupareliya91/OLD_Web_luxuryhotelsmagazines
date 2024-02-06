@@ -10,6 +10,7 @@ import Magazines2 from "../../../assets/img/magazines/magazines2.webp"
 import Magazines3 from "../../../assets/img/magazines/magazines3.webp"
 import Hero3 from "../../../assets/img/hero/hero-3.jpg";
 import textureimage from "../../../assets/img/redtexure.jpg"
+import { NavLink } from "react-router-dom";
 
 
 function Advertise() {
@@ -42,11 +43,10 @@ function Advertise() {
                 <section className="spad">
                     <h1 className="text-center text-white mb-4">Our Packages</h1>
                     <Container className="adv-container">
-
                         <Slider {...sliderSettings}>
 
 
-                            <div>
+                            <div className="scrollable-content">
                                 <div className="card-inner-section" >
 
                                     <div className="card-inner-section-background ">
@@ -85,13 +85,13 @@ function Advertise() {
                                             <p >
                                                <b> *Offer valid till 31-12-2023</b>
                                             </p>
-                                            <button className="w-50"> <a className="subscribe_text" href="/publish-hotel-news">Subscribe Now</a></button>
+                                            <button className="w-50"> <NavLink className="subscribe_text" to="/publish-video-banner">Subscribe Now</NavLink></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div>
+                            <div className="scrollable-content">
                                 <div className="card-inner-section" >
 
                                     <div className="card-inner-section-background ">
@@ -128,12 +128,12 @@ function Advertise() {
                                             <p >
                                                <b> *Offer valid till 31-12-2023</b>
                                             </p>
-                                            <button className="w-50"> <a className="subscribe_text" href="/publish-hotel-news">Subscribe Now</a></button>
+                                            <button className="w-50"> <a className="subscribe_text" href="/publish-animated-banner">Subscribe Now</a></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div className="scrollable-content">
                                 <div className="card-inner-section" >
 
                                     <div className="card-inner-section-background ">
@@ -176,12 +176,12 @@ function Advertise() {
                                             <p >
                                                 <b>*Offer valid till 31-12-2023</b>
                                             </p>
-                                            <button className="w-50"> <a className="subscribe_text" href="/publish-hotel-news">Subscribe Now</a></button>
+                                            <button className="w-50"> <NavLink className="subscribe_text" to="/signup">Subscribe Now</NavLink></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div className="scrollable-content">
                                 <div className="card-inner-section" >
 
                                     <div className="card-inner-section-background ">
@@ -217,12 +217,12 @@ function Advertise() {
                                             <p >
                                              <b>   *Offer valid till 31-12-2023</b>
                                             </p>
-                                            <button className="w-50"> <a className="subscribe_text" href="/publish-hotel-news">Subscribe Now</a></button>
+                                            <button className="w-50"> <NavLink className="subscribe_text" to="/signup">Subscribe Now</NavLink></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div className="scrollable-content">
                                 <div className="card-inner-section" >
 
                                     <div className="card-inner-section-background ">
@@ -259,7 +259,7 @@ function Advertise() {
                                             <p >
                                                <b> *Offer valid till 31-12-2023</b>
                                             </p>
-                                            <button className="w-50"> <a className="subscribe_text" href="/publish-hotel-news">Subscribe Now</a></button>
+                                            <button className="w-50"> <NavLink className="subscribe_text" to="/publish-news-pr">Subscribe Now</NavLink></button>
                                         </div>
                                     </div>
                                 </div>
@@ -269,7 +269,7 @@ function Advertise() {
                      
                         </Slider>
 
-
+                       
                     </Container>
                 </section>
 

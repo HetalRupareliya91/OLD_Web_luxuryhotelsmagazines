@@ -7,7 +7,7 @@ import { FaAddressBook, FaChild, FaDatabase, FaEuroSign, FaFacebookSquare, FaGlo
 import MultiStep from "react-multistep";
 import StepOne from "./signupMultistepForm/stepOne";
 import StepTwo from "./signupMultistepForm/stepTwo";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ReCAPTCHA from "react-google-recaptcha";
 import API from "../../utils";
@@ -239,7 +239,7 @@ function Signup() {
 
 
                                             <div className="footer_line mt-3">
-                                                <h6>Already have an account? <a className="page_move_btn" href="/login">Login</a></h6>
+                                                <h6>Already have an account? <NavLink className="page_move_btn" to="/login">Login</NavLink></h6>
                                             </div>
                                             <div className="float-center">
 
@@ -305,10 +305,10 @@ function Signup() {
                                                     </div>
                                                     <div className="pricingContent">
 
-                                                    </div>
+                                                    </div>  
 
                                                     <div className="pricingTable-sign-up">
-                                                        <a href="#" className="btn btn-block btn-default">Pay With Card <i aria-hidden="true"></i></a>
+                                                        <NavLink to="#" className="btn btn-block btn-default">Pay With Card <i aria-hidden="true"></i></NavLink>
                                                     </div>
                                                 </div>
                                             </Col>
@@ -330,7 +330,7 @@ function Signup() {
                                                     </div>
 
                                                     <div className="pricingTable-sign-up">
-                                                        <a href="#" className="btn btn-block btn-default">Pay With Card <i aria-hidden="true"></i></a>
+                                                        <NavLink to="#" className="btn btn-block btn-default">Pay With Card <i aria-hidden="true"></i></NavLink>
                                                     </div>
                                                 </div>
                                             </Col>

@@ -4,7 +4,7 @@ import { Col, Container, Form, Row ,Button} from "react-bootstrap";
 import Header from "../components/header";
 import axios from "axios";
 import API, { isUserLoggedIn } from "../../utils";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa";
 
 function Login() {
@@ -94,7 +94,6 @@ function Login() {
    };
 
    const handleLogin = async (e) => {
-      console.log("helloow")
       e.preventDefault();
       setEmailError("");
       setPasswordError("");
@@ -132,18 +131,18 @@ function Login() {
                },
             }
          );
-
          if (response.data.status === true) {
             
             localStorage.setItem("token", response.data.token)
             localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userId',response.data.data.id);
             setShowEmailForm(false);
       //   setShowOTPForm(true);
       navigate("/userprofile");
       
             console.log(response.data.message);
          } else {
-            console.error("Login failed:");
+            console.error(response.data.message);
             const errorMessage = response.data.message || "Login failed. Please try again.";
          document.getElementById("loginErrorMessage").innerText = errorMessage;
          }
@@ -214,7 +213,7 @@ function Login() {
                                  </div>
                               )}
                               <div className="text-end mb-3">
-                                 <a className="forgot-password" href="forgot-password">Forgot Password</a>
+                                 <NavLink className="forgot-password" to="/forgot-password">Forgot Password</NavLink>
                               </div>
                               
                                                   <button type="submit" name="user_login_submit" className="auth_btn" onClick={handleLogin}>Log in</button>                          
@@ -227,7 +226,7 @@ function Login() {
                              
                                  <div className="footer_line mt-3">
                               <h6 id="loginErrorMessage" style={{ color: "red" }}></h6>
-                                 <h6>Don't have an account? <a className="page_move_btn" href="/signup"  >Sign up</a></h6>
+                                 <h6>Don't have an account? <NavLink className="page_move_btn" to="/signup"  >Sign up</NavLink></h6>
                               </div>
                            </Form>
                             {/* )}  */}

@@ -12,7 +12,7 @@ const PublishAnimatedBanner = () => {
                     <div className="auth_container">
 
                         <div>
-                            <h2>Publish Animated Banner</h2>
+                            <h1>Publish Animated Banner</h1>
 
                             <Form>
                                 <Row>

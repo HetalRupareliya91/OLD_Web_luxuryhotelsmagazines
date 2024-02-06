@@ -56,17 +56,15 @@ function Search() {
                    />
                    <i className="fa fa-building" aria-hidden="true"></i>
                  </div>
-                 {searchResults.length > 0 && searchResults !== 'undefined' && (
-                   <div className="search-results autocom-box ">
-                     {/* <h2>Search Results:</h2> */}
-                     <ul>
-                       {searchResults.map((result) => (
-                         <li key={result.id}>{result.hotel_title}</li>
-                         // Add other properties as needed
-                       ))}
-                     </ul>
-                   </div>
-                 )}
+                 {searchResults && searchResults.length > 0 && (
+    <div className="search-results autocom-box">
+      <ul>
+        {searchResults.map((result) => (
+          <li key={result.id}>{result.hotel_title}</li>
+        ))}
+      </ul>
+    </div>
+  )}
                </Col>
  
                <Col lg={5}>

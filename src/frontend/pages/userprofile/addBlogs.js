@@ -7,6 +7,7 @@ import axios from "axios";
 import API from "../../../utils";
 import PayPalButton from "../../components/paypal";
 function AddBlogs() {
+  const uid = localStorage.getItem("userId")
   const [hotelEditorState, setHotelEditorState] = useState(EditorState.createEmpty());
   const [blogEditorState, setBlogEditorState] = useState(EditorState.createEmpty());
 
@@ -75,7 +76,7 @@ function AddBlogs() {
     offerValidTo: '',
     offerValidFrom: '',
     blogContent: '',
-    user_id: 2,
+    user_id: uid,
     status:"1",
     catagory:"DGFGYUGFU",
     editor_choice:"fgufg",
@@ -83,6 +84,7 @@ function AddBlogs() {
     news_likes:"fifhisfghkjfghf",
     hotelDescriptionHTML: '', 
   blogContentHTML: '',
+  special_offers:1,
   });
 
   const [validationErrors, setValidationErrors] = useState({
@@ -136,7 +138,7 @@ function AddBlogs() {
     formDatas.append('email_address', formData.email);
     formDatas.append('news_title', formData.blogTitle);
     formDatas.append('youtube_link', formData.youtubeLink);
-    formDatas.append('news_image', image);
+    formDatas.append('news_images', image);
     formDatas.append('news_desc', formData.hotelDescriptionHTML);
     formDatas.append('offer_title', formData.offerTitle);
     // formDatas.append('offerCountry', formData.offerCountry);
@@ -153,6 +155,7 @@ function AddBlogs() {
     formDatas.append('editor_choice', formData.editor_choice);
     formDatas.append('news_likes', formData.news_likes);
     formDatas.append('news_views', formData.news_views);
+    formDatas.append('special_offers', formData.special_offers);
     try {
       const response = await axios.post(
         `${API.BASE_URL}${API.ENDPOINTS.createNews}`,

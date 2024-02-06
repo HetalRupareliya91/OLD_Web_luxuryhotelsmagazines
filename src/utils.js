@@ -34,7 +34,10 @@ const API = {
       distributionDetails:"all-distibutor-detail",
 
     // single_page_details
-    singlePageDetails:"single_page_details"
+    singlePageDetails:"get_single_page_details",
+
+    // all team
+    allTeam:"all-team",
       },
     }; 
 

@@ -3,7 +3,7 @@ import { Col, Container, Form, Image, Row } from "react-bootstrap";
 import ReCAPTCHA from "react-google-recaptcha";
 import API from "../../../utils";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function StepOne({ onNext }) {
     const navigate = useNavigate();
@@ -95,7 +95,7 @@ function StepOne({ onNext }) {
     
     
   <div className="footer_line mt-3">
-                              <h6>Already have an account? <a className="page_move_btn" href="/login">Login</a></h6>
+                              <h6>Already have an account? <NavLink className="page_move_btn" to="/login">Login</NavLink></h6>
                            </div>
                            <div className="float-end">
                            <button type="submit"  onSubmit={handleSignup}>Signup</button>
