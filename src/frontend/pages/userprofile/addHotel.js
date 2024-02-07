@@ -9,13 +9,13 @@ import { stateToHTML } from 'draft-js-export-html';
 import Select from 'react-select'
 import CountryList from 'react-select-country-list'
 function AddHotel() {
-
+        const user_id=localStorage.getItem("userId");
     const [value, setValue] = useState('')
     const options = useMemo(() => CountryList().getData(), [])
   
-    const changeHandler = value => {
-      setValue(value)
-    }
+    const changeHandler = selectedOption => {
+        setValue(selectedOption); 
+      }
     
     const [hotelEditorState, setHotelEditorState] = useState(EditorState.createEmpty());
     const [locationEditorState, setlocationEditorState] = useState(EditorState.createEmpty());
@@ -26,6 +26,8 @@ function AddHotel() {
     const [additionalInformationEditorState, setAdditionalInformationEditorState] = useState(EditorState.createEmpty());
     const [descriptionEditorState, setDescriptionEditorState] = useState(EditorState.createEmpty());
     const [aminitesData, setAminitesData]=useState("")
+    const [facilitiesData, setFacilitiesData]=useState("")
+
     // const [blogEditorState, setBlogEditorState] = useState(EditorState.createEmpty());
     const [currentStep, setCurrentStep] = useState(1);
 
@@ -129,6 +131,7 @@ function AddHotel() {
         outdoorSwimmingPool: "",
         bars: "",
         amenitiesList: [],
+        facilitiesList: [],
         otherInformation1: "",
         otherInformation2: "",
 
@@ -138,7 +141,7 @@ function AddHotel() {
         contact2: { name: "", email: "", contactInformation: "" },
         contact3: { name: "", email: "", contactInformation: "" },
         offerTitle: "",
-        phoneNumber: "",
+        phone_number: "",
         offerValidFrom: "",
         offerValidTo: "",
         description: "",
@@ -202,23 +205,23 @@ function AddHotel() {
         const token = localStorage.getItem("token");
         e.preventDefault();
         const formDataObject = new FormData();
-        formDataObject.append('user_id', 3);
+        formDataObject.append('user_id', user_id);
         formDataObject.append('hotel_title', formData.hotelName);
         formDataObject.append('website', formData.hotelWebsite);
         formDataObject.append('youtube_link', formData.youtubeLink);
-        formDataObject.append('country', formData.country);
+        formDataObject.append('country', value ? value.value : '');
         formDataObject.append('address', formData.location);
-        formDataObject.append('contact_no', formData.contactInformation);
+        formDataObject.append('contact_no', 956449494);
         formDataObject.append('hotel_images', image);
         formDataObject.append('about_hotel', formData.aboutHotel);
         formDataObject.append('rooms_and_suites', formData.roomsAndSuites);
         formDataObject.append('restaurent_bars', formData.restaurantsAndBars);
         formDataObject.append('spa_wellness', formData.spaAndWellness);
         formDataObject.append('other_facilities', formData.otherFacilities);
-        formDataObject.append('numberOfRooms', formData.numberOfRooms);
-        formDataObject.append('numberOfRestaurants', formData.numberOfRestaurants);
-        formDataObject.append('outdoorSwimmingPool', formData.outdoorSwimmingPool);
-        formDataObject.append('bars', formData.bars);
+        // formDataObject.append('numberOfRooms', formData.numberOfRooms);
+        // formDataObject.append('numberOfRestaurants', formData.numberOfRestaurants);
+        // formDataObject.append('outdoorSwimmingPool', formData.outdoorSwimmingPool);
+        // formDataObject.append('bars', formData.bars);
         formDataObject.append('email', "rohit@gmail.com");
         formDataObject.append('otherInformation1', formData.otherInformation1);
         formDataObject.append('otherInformation2', formData.otherInformation2);
@@ -234,7 +237,7 @@ function AddHotel() {
         }
 
         formDataObject.append('offer_title', formData.offerTitle);
-        formDataObject.append('contact_no', formData.phoneNumber);
+        formDataObject.append('phone_number', formData.phone_number);
         formDataObject.append('from_date', formData.offerValidFrom);
         formDataObject.append('to_date', formData.offerValidTo);
         formDataObject.append('description', formData.description);
@@ -244,18 +247,20 @@ function AddHotel() {
         formDataObject.append('special_offer_to_homepage', formData.addSpecialOfferToHomepage);
         formDataObject.append('home_page_spotlight', formData.addHotelToHomePageSpotlight);
 
-        for (const amenity of formData.amenitiesList) {
-            // formDataObject.append(`amities[${amenity.id}]`, amenity.checked || false);
-        }
+       
 
         const amenitiesArray = formData.amenitiesList.map((amenity) => ({
             [amenity.id]: amenity.checked || false
         }));
         formDataObject.append('amities', JSON.stringify(amenitiesArray));
-        const notCheckedAmenities = formData.amenitiesList.filter(amenity => !amenity.checked);
-        for (const amenity of notCheckedAmenities) {
-            // formDataObject.append(`amities[${amenity.id}]`, false);
-        }
+
+
+        const facilitiesArray = formData.facilitiesList.map((facility) => ({
+            [facility.id]: facility.checked || false
+        }));
+        formDataObject.append('facilities', JSON.stringify(facilitiesArray));
+
+       
         try {
             const response = await axios.post(
 
@@ -268,10 +273,9 @@ function AddHotel() {
                     },
                 }
             );
-            if (response.status === 200) {
-                console.log("hotel added successfully");
+            if (response.data.status === true) {
             } else {
-                console.error("Failed to add hotel");
+                console.error(response.data.message);
             }
         } catch (error) {
             console.error("Error:", error.message);
@@ -332,6 +336,36 @@ function AddHotel() {
 
     useEffect(() => {
         fetchAmenities();
+    }, []);
+
+
+    const fetchfacilities = async () => {
+        const token = localStorage.getItem("token");
+        try {
+            const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allhotelfacilities}`, {
+                headers: {
+                    "Authorization": "Bearer " + token,
+                },
+            });
+            const data = response.data;
+            console.log('facilites data:', data);
+            if (data.status === true && Array.isArray(data.data)) {
+                setFacilitiesData(data)
+                setFormData((prevData) => ({
+                    ...prevData,
+                    facilitiesList: data.data,
+                }));
+
+            } else {
+                console.error('Invalid format: Facilities data is not an array.');
+            }
+        } catch (error) {
+            console.error('Error fetching Facilities:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchfacilities();
     }, []);
 
 
@@ -551,6 +585,7 @@ function AddHotel() {
                                 id={`amenityCheckbox_${index}`}
                                 label={amenity.title}
                                 className='me-3'
+                                onChange={handleInputChange}
                             />
                         </Form.Group>
                         {validationErrors[amenity.title] && (
@@ -564,6 +599,30 @@ function AddHotel() {
         });
     
         return [...numberInputs, ...checkboxInputs];
+    };
+    
+    const renderFacilitiesInput = () => {
+        const checkboxInputs = [];
+    
+        formData.facilitiesList.forEach((facility, index) => {
+                checkboxInputs.push(
+                    <Col lg={3} md={4} key={index} className="mb-3">
+                        <Form.Group className='d-flex order-2'>
+                            <Form.Check
+                                type="checkbox"
+                                id={`facilityCheckbox_${index}`}
+                                label={facility.title}
+                                className='me-3'
+                                onChange={handleInputChange}
+                            />
+                        </Form.Group>
+                       
+                    </Col>
+                );
+            
+        });
+    
+        return [...checkboxInputs];
     };
     
 
@@ -811,99 +870,7 @@ function AddHotel() {
                     <Row>
 
                     <h5>Hotel Facilities</h5>
-                    <Col lg={3} md={4}  className="mb-3">
-                        <Form.Group className='d-flex order-2'>
-                            <Form.Check
-                                type="checkbox"
-                                name=""
-                                label="Outdoor swimming pool"
-                                className=''
-                            />
-                        </Form.Group>
-                        </Col>
-
-                        <Col lg={3} md={4}  className="mb-3">
-                        <Form.Group className='d-flex order-2'>
-                            <Form.Check
-                                type="checkbox"
-                                name=""
-                                label="Fitness center"
-                                className=''
-                            />
-                        </Form.Group>
-                        </Col>
-                        <Col lg={3} md={4}  className="mb-3">
-                        <Form.Group className='d-flex order-2'>
-                            <Form.Check
-                                type="checkbox"
-                                name=""
-                                label="Non-smiking rooms"
-                                className=''
-                            />
-                        </Form.Group>
-                        </Col>
-                        <Col lg={3} md={4}  className="mb-3">
-                        <Form.Group className='d-flex order-2'>
-                            <Form.Check
-                                type="checkbox"
-                                name=""
-                                label="Spa & Wellness"
-                                className=''
-                            />
-                        </Form.Group>
-                        </Col>
-
-                        <Col lg={3} md={4}  className="mb-3">
-                        <Form.Group className='d-flex order-2'>
-                            <Form.Check
-                                type="checkbox"
-                                name=""
-                                label="Restaurants"
-                                className=''
-                            />
-                        </Form.Group>
-                        </Col>
-                        <Col lg={3} md={4}  className="mb-3">
-                        <Form.Group className='d-flex order-2'>
-                            <Form.Check
-                                type="checkbox"
-                                name=""
-                                label="Tea/coffee maker in all rooms"
-                                className=''
-                            />
-                        </Form.Group>
-                        </Col>
-                        <Col lg={3} md={4}  className="mb-3">
-                        <Form.Group className='d-flex order-2'>
-                            <Form.Check
-                                type="checkbox"
-                                name=""
-                                label="Bar"
-                                className=''
-                            />
-                        </Form.Group>
-                        </Col>
-                        <Col lg={3} md={4}  className="mb-3">
-                        <Form.Group className='d-flex order-2'>
-                            <Form.Check
-                                type="checkbox"
-                                name=""
-                                label="Good breakfasty"
-                                className=''
-                            />
-                        </Form.Group>
-                        </Col>
-                        <Col lg={3} md={4}  className="mb-3">
-                        <Form.Group className='d-flex order-2'>
-                            <Form.Check
-                                type="checkbox"
-                                name=""
-                                label="Childern's Cots"
-                                className=''
-                            />
-                        </Form.Group>
-                        </Col>
-
+                   {renderFacilitiesInput()}
                         </Row>    
                     
                     <Row className="mb-3">
@@ -1043,7 +1010,7 @@ function AddHotel() {
                                 onChange={handleInputChange} required />
                         </Col>
                         <Col lg={6}>
-                            <input className="sidebar-input" type="text" id="phoneNumber" name="phoneNumber" placeholder="Contact Phone Nunmber" value={formData.phoneNumber}
+                            <input className="sidebar-input" type="text" id="phone_number" name="phone_number" placeholder="Contact Phone Nunmber" value={formData.phone_number}
                                 onChange={handleInputChange} required />
                         </Col>
                     </Row>

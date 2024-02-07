@@ -20,7 +20,7 @@ import { GeoAltFill } from "react-bootstrap-icons";
  function BlogDetails() {
 
     const { news_id } = useParams();
-  console.log(news_id);
+//   console.log(news_id);
 
   const [postData, setPostData] = useState(null);
 

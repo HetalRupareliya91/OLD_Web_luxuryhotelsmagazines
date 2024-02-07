@@ -80,7 +80,7 @@ function AllBlogs() {
 
   const handleimageChange = (e) => {
     const file = e.target.files[0];
-    console.log("Selected File:", file);
+    // console.log("Selected File:", file);
     setImage(file);
 
   };

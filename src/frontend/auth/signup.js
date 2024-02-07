@@ -71,7 +71,7 @@ function Signup() {
             );
 
             if (response.data.status === true) {
-                console.log("signup successful:");
+                // console.log("signup successful:");
             } else {
                 console.error("signup failed:");
             }

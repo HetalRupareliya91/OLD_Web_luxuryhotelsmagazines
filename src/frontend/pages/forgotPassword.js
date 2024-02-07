@@ -42,7 +42,7 @@ function ForgotPassword() {
           },
         }
       );
-      console.log(response.data)
+      // console.log(response.data)
       // Check the response from the API
       if (response.data.status == true) {
         // API call successful, move to the next step
@@ -130,7 +130,7 @@ function ForgotPassword() {
       // Check if the password reset was successful
       if (response.data.status === true) {
         // Password reset successful, you may redirect the user or show a success message
-        console.log("Password reset successful");
+        // console.log("Password reset successful");
       } else {
         // Handle API error, show an error message, etc.
         console.error("Password reset failed:", response.data.message);

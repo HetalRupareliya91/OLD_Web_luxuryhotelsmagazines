@@ -17,43 +17,102 @@ import { FileEarmarkCheckFill, GeoAltFill } from "react-bootstrap-icons";
 import Review from "../components/hotelReview";
 import HotelSlider from "../components/youMayLikeHotel";
 function RoomDetails() {
+    const [aminitesData, setAminitesData]=useState([])
+    const [facilitiesData, setFacilitiesData]=useState([])
+
     const { hotelId } = useParams();
     console.log(hotelId);
 
-    const [postData, setPostData] = useState(null);
+    const [postData, setPostData] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
+          const token = localStorage.getItem("token");
+          try {
+            // Make a POST request with the id
+            const response = await axios.post(
+              `${API.BASE_URL}${API.ENDPOINTS.editHotel}`,
+              { hotel_id: hotelId },
+              {
+                headers: {
+                  "Authorization": "Bearer " + token,
+                },
+              }
+            );
+    
+            const data = response.data;
+    
+            if (data.status === true) {
+              
+              setPostData ( data.data);
 
-            const token = localStorage.getItem("token");
-            try {
-                // Make a POST request with the id
-                const response = await axios.post(
-                    `${API.BASE_URL}${API.ENDPOINTS.editHotel}`,
-                    { hotel_id: hotelId },
-                    {
-                        headers: {
-                            "Authorization": "Bearer " + token,
-                        },
-                    }
-                );
-
-                const responseData = response.data;
-
-                if (responseData.status === true) {
-                    setPostData(responseData.data);
-                } else {
-                    console.error('Failed to fetch post data');
-                }
-            } catch (error) {
-                console.error('Error:', error.message);
+              
+            } else {
+              console.error('Failed to fetch post data');
             }
+          } catch (error) {
+            console.error('Error:', error.message);
+          }
         };
-
+    
         if (hotelId) {
-            fetchData();
+          fetchData();
         }
-    }, [hotelId]);
+      }, [hotelId]);
+    
+     
+      const fetchAmenities = async () => {
+        const token = localStorage.getItem("token");
+        try {
+            const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allHotelAmenities}`, {
+                headers: {
+                    "Authorization": "Bearer " + token,
+                },
+            });
+            const data = response.data;
+            console.log('Amenities data:', data);
+            if (data.status === true && Array.isArray(data.data)) {
+                setAminitesData(data)
+                
+
+            } else {
+                console.error('Invalid format: Amenities data is not an array.');
+            }
+        } catch (error) {
+            console.error('Error fetching amenities:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchAmenities();
+    }, []);
+
+
+    const fetchfacilities = async () => {
+        const token = localStorage.getItem("token");
+        try {
+            const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allhotelfacilities}`, {
+                headers: {
+                    "Authorization": "Bearer " + token,
+                },
+            });
+            const data = response.data;
+            console.log('facilites data:', data);
+            if (data.status === true && Array.isArray(data.data)) {
+                setFacilitiesData(data)
+                
+            } else {
+                console.error('Invalid format: Facilities data is not an array.');
+            }
+        } catch (error) {
+            console.error('Error fetching Facilities:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchfacilities();
+    }, []);
+
     return (
         <><Header />
             <section className="room-details-section spad">
@@ -75,9 +134,9 @@ function RoomDetails() {
 
                             <div className="row">
                                 <div className="col-lg-12 text-end ">
-                                    <h4 className="mt-4">Jumeirah Al Qasr Hotel </h4>
+                                    <h4 className="mt-4">{postData.hotel_title} </h4>
                                     <div className="d-flex justify-content-end"><GeoAltFill className="m-0 locaton-icon" />
-                                        <p>Kuwait</p></div>
+                                        <p>{postData.country}</p></div>
 
                                 </div>
                             </div>
@@ -92,13 +151,8 @@ function RoomDetails() {
                         <div className="col-lg-8">
                             <div className="rd-text">
 
-                                <p className="f-para">Motorhome or Trailer that is the question for you. Here are some of the
-                                    advantages and disadvantages of both, so you will be confident when purchasing an RV.
-                                    When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or fifth
-                                    wheeler? The advantages and disadvantages of both are studied so that you can make your
-                                    choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
-                                    achievement of a lifetime. It can be similar to sojourning with your residence as you
-                                    search the various sites of our great land, America.</p>
+                              
+                              <p dangerouslySetInnerHTML={{ __html: postData.about_hotel }} />
                             </div>
 
                             <div className="rd-text">
@@ -107,28 +161,16 @@ function RoomDetails() {
                                 </div>
 
 
-                                <p className="f-para">Motorhome or Trailer that is the question for you. Here are some of the
-                                    advantages and disadvantages of both, so you will be confident when purchasing an RV.
-                                    When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or fifth
-                                    wheeler? The advantages and disadvantages of both are studied so that you can make your
-                                    choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
-                                    achievement of a lifetime. It can be similar to sojourning with your residence as you
-                                    search the various sites of our great land, America.</p>
+                                <p dangerouslySetInnerHTML={{ __html: postData.address }} />
 
                             </div>
                             <div className="rd-text">
                                 <div className="rd-title">
                                     <i aria-hidden="true"><FaBuilding /></i> Rooms & Suites
                                 </div>
+                                
 
-
-                                <p className="f-para">Motorhome or Trailer that is the question for you. Here are some of the
-                                    advantages and disadvantages of both, so you will be confident when purchasing an RV.
-                                    When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or fifth
-                                    wheeler? The advantages and disadvantages of both are studied so that you can make your
-                                    choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
-                                    achievement of a lifetime. It can be similar to sojourning with your residence as you
-                                    search the various sites of our great land, America.</p>
+                                <p dangerouslySetInnerHTML={{ __html: postData.rooms_and_suites }} />
 
                             </div>
                             <div className="rd-text">
@@ -137,14 +179,7 @@ function RoomDetails() {
                                 </div>
 
 
-                                <p className="f-para">Motorhome or Trailer that is the question for you. Here are some of the
-                                    advantages and disadvantages of both, so you will be confident when purchasing an RV.
-                                    When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or fifth
-                                    wheeler? The advantages and disadvantages of both are studied so that you can make your
-                                    choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
-                                    achievement of a lifetime. It can be similar to sojourning with your residence as you
-                                    search the various sites of our great land, America.</p>
-
+                              <p dangerouslySetInnerHTML={{ __html: postData.restaurent_bars }} />
                             </div>
                             <div className="rd-text">
                                 <div className="rd-title">
@@ -152,13 +187,7 @@ function RoomDetails() {
                                 </div>
 
 
-                                <p className="f-para">Motorhome or Trailer that is the question for you. Here are some of the
-                                    advantages and disadvantages of both, so you will be confident when purchasing an RV.
-                                    When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or fifth
-                                    wheeler? The advantages and disadvantages of both are studied so that you can make your
-                                    choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
-                                    achievement of a lifetime. It can be similar to sojourning with your residence as you
-                                    search the various sites of our great land, America.</p>
+                                <p dangerouslySetInnerHTML={{ __html: postData.spa_wellness }} />
 
                             </div>
                             <div className="rd-text">
@@ -167,13 +196,7 @@ function RoomDetails() {
                                 </div>
 
 
-                                <p className="f-para">Motorhome or Trailer that is the question for you. Here are some of the
-                                    advantages and disadvantages of both, so you will be confident when purchasing an RV.
-                                    When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or fifth
-                                    wheeler? The advantages and disadvantages of both are studied so that you can make your
-                                    choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
-                                    achievement of a lifetime. It can be similar to sojourning with your residence as you
-                                    search the various sites of our great land, America.</p>
+                               <p dangerouslySetInnerHTML={{ __html: postData.other_facilities }} />
 
                             </div>
                             <div className="rd-text">
@@ -182,13 +205,7 @@ function RoomDetails() {
                                 </div>
 
 
-                                <p className="f-para">Motorhome or Trailer that is the question for you. Here are some of the
-                                    advantages and disadvantages of both, so you will be confident when purchasing an RV.
-                                    When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or fifth
-                                    wheeler? The advantages and disadvantages of both are studied so that you can make your
-                                    choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
-                                    achievement of a lifetime. It can be similar to sojourning with your residence as you
-                                    search the various sites of our great land, America.</p>
+                                <p className="f-para">{postData?.aditional_information}</p>
 
                             </div>
 

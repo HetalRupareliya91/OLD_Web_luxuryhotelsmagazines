@@ -33,7 +33,7 @@ function Blogs (){
         );
   
         if (response.status === 200) {
-           console.log("signup successful:");
+          //  console.log("signup successful:");
         } else {
            console.error("signup failed:");
         }
@@ -53,7 +53,7 @@ function Blogs (){
             }
           });
           const data = response.data;
-          console.log(data)
+          // console.log(data)
           if (data.status === true) {
             setApiData(data.data);
           } else {

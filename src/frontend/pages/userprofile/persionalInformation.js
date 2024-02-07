@@ -37,7 +37,7 @@ function PersionalInformation(){
       }
       );
       const data = response.data;
-      console.log("sfbfjbffb" ,data)
+      // console.log("sfbfjbffb" ,data)
       if (data.status === true) {
         setApiData(data.profile_data);
         setFormData({

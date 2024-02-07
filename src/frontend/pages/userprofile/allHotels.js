@@ -33,7 +33,7 @@ function AllHotels( { onEditClick }){
 
   const fetchAllHotels = async () => {
     const token = localStorage.getItem("token");
-    console.log(token);
+    // console.log(token);
     try {
       const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allHotels}`, {
         headers: {
@@ -43,7 +43,7 @@ function AllHotels( { onEditClick }){
       const data = response.data;
       if (data.status === true) {
         setApiData(data.data);
-        console.log(data)
+        // console.log(data)
       } else {
         console.error("Failed to fetch data");
       }
@@ -98,6 +98,7 @@ function AllHotels( { onEditClick }){
   
   const handleEditButtonClick = (hotel) => {
     setSelectedHotel(hotel);
+    setHotelId(hotel.id)
     setShowEditForm(true);
     onEditClick();
 

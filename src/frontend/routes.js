@@ -29,12 +29,12 @@ import PublishAnimatedBanner from "./pages/publishAnimatedBanner";
 import PublishHotelNews from "./pages/publishHotelNews";
 import KitDetail from "./pages/kitDetail";
 import ForgotPassword from "./pages/forgotPassword";
-import EditHotel from "./pages/editHotel";
 import MagazineDetails from "./pages/luxuryMagazineDetails";
 import ModalComponent from "./modalPopUp/newsLetterPopup";
 import AllHotels from "./pages/userprofile/allHotels";
 import PublishNews from "./pages/userprofile/publishNews";
 import NewsSidebar from "./components/newsSidebar";
+import EditHotel from "./pages/userprofile/editHotel";
 
 
 function RoutesPage() {

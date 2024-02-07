@@ -37,7 +37,7 @@ function StepOne({ onNext }) {
   
            if (response.status === 200) {
               navigate("/home");
-              console.log("signup successful:");
+            //   console.log("signup successful:");
            } else {
               console.error("signup failed:");
            }

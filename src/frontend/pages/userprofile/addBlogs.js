@@ -22,7 +22,7 @@ function AddBlogs() {
 
   const handleimageChange = (e) => {
     const file = e.target.files[0];
-    console.log("Selected File:", file);
+    // console.log("Selected File:", file);
     setImage(file);
 
   };
@@ -169,7 +169,7 @@ function AddBlogs() {
       );
 
       if (response.status === 200) {
-        console.log("news  added successfully");
+        // console.log("news  added successfully");
       } else {
         console.error("Failed to add news");
       }

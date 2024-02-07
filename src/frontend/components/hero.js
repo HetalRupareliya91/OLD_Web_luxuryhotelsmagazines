@@ -61,7 +61,7 @@ function Hero() {
       await page.render({ canvasContext: context, viewport }).promise;
       const imageDataUrl = canvas.toDataURL("image/png");
       images.push(imageDataUrl);
-      console.log("imags" ,images);
+      // console.log("imags" ,images);
 
     }
     setPdfImages(images);

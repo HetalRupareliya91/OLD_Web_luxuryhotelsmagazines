@@ -25,10 +25,10 @@ function HotelSearch(){
             }
           });
           const data = response.data;
-          console.log(data)
+          // console.log(data)
           if (data.status === true) {
             setApiData(data.data);
-            console.log(data)
+            // console.log(data)
           } else {
             console.error("Failed to fetch data");
           }

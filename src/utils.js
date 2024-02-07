@@ -20,7 +20,7 @@ const API = {
       deleteNews:"delete-news",
       allMagazines:"all-hotel-magazines",
       viewNews:"views-news",
-      editHotel:"edit-hotels",
+      // editHotel:"edit-hotels",
       upateHotels:"update-hotels",
       forgetPassword:"reset_password",
       varifyOtp:"verify_otp",
@@ -30,6 +30,8 @@ const API = {
       logout:"user-logout",
       homeInfo:"edit_home_info",
 
+      allhotelfacilities:"all-hotel-facilities",
+
       //distribution
       distributionDetails:"all-distibutor-detail",
 
@@ -38,6 +40,15 @@ const API = {
 
     // all team
     allTeam:"all-team",
+
+    // get about us detail
+    aboutUs:"edit-about-us",
+
+
+    // hotel
+
+    editHotel:"edit-hotels"
+
       },
     }; 
 

@@ -10,7 +10,7 @@ import AllBlogs from "../pages/userprofile/allBlogs";
 import AddBlogs from "../pages/userprofile/addBlogs";
 import AddHotel from "../pages/userprofile/addHotel";
 import PersionalInformation from "../pages/userprofile/persionalInformation";
-import EditHotel from "../pages/editHotel";
+import EditHotel from "../pages/userprofile/editHotel";
 import axios from "axios";
 import SpecialOffers from "../pages/userprofile/addSpecialOffers";
 function UserSidebar (){
@@ -21,11 +21,11 @@ function UserSidebar (){
     const navigate = useNavigate()
     const [currentSection, setCurrentSection] = useState('myProfile');
     const showSection = (section) => {
-        console.log("dsidshihgfiugfuygfy")
+        // console.log("dsidshihgfiugfuygfy")
         setCurrentSection(section);
 
         setShowEditHotelForm(false);
-        console.log(section)
+        // console.log(section)
       };
 
       const handleLogout = async (e) => {
@@ -50,7 +50,7 @@ function UserSidebar (){
             localStorage.removeItem("isLoggedIn");
             navigate("/login")
               
-              console.log(response.data.message);
+              // console.log(response.data.message);
            } else {
               console.error("Logout failed:");
               const errorMessage = response.data.message || "Logout failed. Please try again.";

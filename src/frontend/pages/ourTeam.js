@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/header";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Image, Row } from "react-bootstrap";
 import Team1 from "../../assets/img/team/65402_TanyaCEO.webp";
 import Team2 from "../../assets/img/team/team1.jpg";
 import Team3 from "../../assets/img/team/team2.jpg";
@@ -19,9 +19,10 @@ import Footer from "../components/footer";
 import CallToAction from "../components/callToAction";
 import axios from "axios";
 import API from "../../utils";
+import { NavLink } from "react-router-dom";
 function OurTeam() {
     const [apiData,setApiData]=useState("")
-    const [teamData,setTeamData]=useState("")
+    const [teamData, setTeamData] = useState([]);
  
           const  type="team"
        
@@ -43,7 +44,7 @@ function OurTeam() {
                     );
         
                     const data = response.data;
-                    console.log("myData", data);
+                    // console.log("myData", data);
                     if (data.status === true) {
                         setApiData(data.data.details);
                     } else {
@@ -77,7 +78,7 @@ function OurTeam() {
                 );
     
                 const data = response.data;
-                console.log("myData", data);
+                // console.log("myData", data);
                 if (data.status === true) {
                     setTeamData(data.data);
                 } else {
@@ -91,14 +92,27 @@ function OurTeam() {
     return (
         <>
             <Header />
-            <section className="my-5">
-                <Container>
-                    <h1 className="text-center">{apiData.title}</h1>
-                    <div className="hotel-selection my-4">
-                        <p>{apiData.content}</p>
-                    </div>
-                </Container>
-            </section>
+            <section className="my-3">
+    <Container>
+        <Row>
+            {teamData.map((member, index) => (
+                <Col lg={4} md={6} key={index}>
+                    <NavLink to="">
+                        <div className="team-member">
+                            <Image src={member.image} alt="image" />
+                            <div className="px-3">
+                                <h5 className="mt-3">{member.name}</h5>
+                                <div className="d-flex">
+                                    <p>{member.position}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </NavLink>
+                </Col>
+            ))}
+        </Row>
+    </Container>
+</section>
 
             <section className="my-3">
                 <Container>

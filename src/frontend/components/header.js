@@ -60,7 +60,7 @@ function Header() {
         localStorage.removeItem("isLoggedIn");
         navigate("/login")
           
-          console.log(response.data.message);
+          // console.log(response.data.message);
        } else {
           console.error("Logout failed:");
           const errorMessage = response.data.message || "Logout failed. Please try again.";

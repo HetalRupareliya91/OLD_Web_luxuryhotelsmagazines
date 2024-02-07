@@ -79,7 +79,7 @@ function Distribution() {
             }
           });
           const data = response.data;   
-          console.log(data);
+        //   console.log(data);
           if (data.status === true) {
             setData(data.data);
           } else {
