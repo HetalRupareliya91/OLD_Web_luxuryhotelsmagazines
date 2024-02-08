@@ -13,6 +13,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import API from "../../utils";
 
 function Signup() {
+    const [errorMessage, setErrorMessage] = useState("");
+
     const [step, setStep] = useState(1);
     const [progress, setProgress] = useState(0);
     const [otpInputs, setOtpInputs] = useState(["", "", "", "", "", ""]);
@@ -71,9 +73,10 @@ function Signup() {
             );
 
             if (response.data.status === true) {
-                // console.log("signup successful:");
+                nextStep();
+
             } else {
-                console.error("signup failed:");
+                setErrorMessage(response.data.message || "Signup failed");
             }
         } catch (error) {
             console.error("Error:", error.message);
@@ -134,7 +137,7 @@ function Signup() {
 
         if (isValid) {
             handleSignup();
-            nextStep();
+            // nextStep();
         }
     };
 
@@ -246,6 +249,11 @@ function Signup() {
                                             <button onClick={(e) =>handleSignupClick(e)} >
                                         Signup
                                     </button>
+                                    {errorMessage && (
+                    <div style={{ color: "red", marginTop: "10px" }}>
+                        {errorMessage}
+                    </div>
+                )}
                                             </div>
                                         </Form>
                                     </>}

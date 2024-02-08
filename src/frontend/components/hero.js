@@ -69,32 +69,34 @@ function Hero() {
   
 
   return (
-    <section className="hero-section">
-      <Container>
-        <div className="hero-slider">
-          <Row>
-            <Col lg={4} md={4} className="mt-3">
-              <Carousel activeIndex={sliderIndex} onSelect={handleSelect}>
-                {sliderData.map((magazine, index) => (
-                  <Carousel.Item key={index}>
-                    <img src={magazine.thumbnail} alt={`Slide ${index + 1}`} className="slider-img" />
-                  </Carousel.Item>
-                ))}
-              </Carousel>
-            </Col>
-            <Col lg={8} md={8} className="mt-3">
-              <Carousel activeIndex={sliderIndex} onSelect={handleSelect}>
-                {pdfImages.map((image, index) => (
-                  <Carousel.Item key={index}>
-                    <img src={image} alt={`PDF Slide ${index + 1}`} className="pdf-img" />
-                  </Carousel.Item>
-                ))}
-              </Carousel>
-            </Col>
-          </Row>
-        </div>
-      </Container>
-    </section>
+    // <section className="hero-section">
+    //   <Container>
+    //     <div className="hero-slider">
+    //       <Row>
+    //         <Col lg={4} md={4} className="mt-3">
+    //           <Carousel activeIndex={sliderIndex} onSelect={handleSelect}>
+    //             {sliderData.map((magazine, index) => (
+    //               <Carousel.Item key={index}>
+    //                 <img src={magazine.thumbnail} alt={`Slide ${index + 1}`} className="slider-img" />
+    //               </Carousel.Item>
+    //             ))}
+    //           </Carousel>
+    //         </Col>
+    //         <Col lg={8} md={8} className="mt-3">
+    //           <Carousel activeIndex={sliderIndex} onSelect={handleSelect}>
+    //             {pdfImages.map((image, index) => (
+    //               <Carousel.Item key={index}>
+    //                 <img src={image} alt={`PDF Slide ${index + 1}`} className="pdf-img" />
+    //               </Carousel.Item>
+    //             ))}
+    //           </Carousel>
+    //         </Col>
+    //       </Row>
+    //     </div>
+    //   </Container>
+    // </section>
+    <>
+    </>
   );
 }
 

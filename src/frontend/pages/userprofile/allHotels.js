@@ -4,7 +4,6 @@ import News1 from '../../../assets/img/news1.jpg'
 import News2 from '../../../assets/img/news2.jpg'
 import axios from "axios";
 import API from "../../../utils";
-import HotelDeleteAlert from "./hotelDeleteAlert";
 import { useNavigate } from "react-router-dom";
 
 function AllHotels( { onEditClick }){
@@ -23,10 +22,7 @@ function AllHotels( { onEditClick }){
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  const handleOpenModal = (hotel) => {
-    setHotelId(hotel.id)
-    setShowModal(true);
-  };
+  
 
 
   
@@ -136,7 +132,6 @@ function AllHotels( { onEditClick }){
                 <div className='d-flex all-hotel-btns'>
                   <button className='me-1 btn-default' onClick={() => handleViewButtonClick(hotel)}>View</button>
                   <button className='me-1 btn-default' onClick={() => handleEditButtonClick(hotel)} >Edit</button>
-                  <button className='me-1 btn-default' onClick={() => handleOpenModal(hotel)}>Delete</button>
                 </div>
               </Col>
             </Row>
@@ -163,12 +158,7 @@ function AllHotels( { onEditClick }){
           <a onClick={() => paginate(currentPage + 1)}>Next <i className="fa fa-long-arrow-right"></i></a>
         </div>
       </div>
-      <HotelDeleteAlert
-    hotel_id={hotelId} 
-       showModal={showModal}
-       handleCloseModal={handleCloseModal}
      
-      />
 
       </>
     );

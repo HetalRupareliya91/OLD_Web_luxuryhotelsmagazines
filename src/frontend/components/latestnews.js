@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -8,8 +8,11 @@ import News6 from '../../assets/img/news6.jpg';
 import News7 from '../../assets/img/news7.jpg';
 import { Col, Container, Image, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import API from '../../utils';
 
 function LatestNews() {
+    const [newsData,setNewsData]=useState([])
     const sliderSettings = {
         dots: true,
         infinite: true,
@@ -31,31 +34,59 @@ function LatestNews() {
          },
        ],
      };
-    const newsItems = [
-        { id: 1, image: News4, title: 'Jumeirah Al Qasr Hotel, Dubai' },
-        { id: 2, image: News5, title: 'Jumeirah Al Qasr Hotel, Dubai' },
-        { id: 3, image: News6, title: 'Jumeirah Al Qasr Hotel, Dubai' },
-        { id: 4, image: News7, title: 'Jumeirah Al Qasr Hotel, Dubai' },
-        { id: 5, image: News7, title: 'Jumeirah Al Qasr Hotel, Dubai' },
-    ];
+ 
 
+    const fetchLatestNews = async () => {
+   
+        try {
+          const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.homeApi}`,
+          {
+            Hotel_count: 0, 
+            magazine_count: 0, 
+            News_count:7,
+          },
+          
+          {
+            headers: {
+              Authorization: "hXuRUGsEGuhGf6KM",
+            }
+          });
+          const responseData = response.data;
+         
+         console.log("",responseData)
+          if (responseData.status === true) {
+          setNewsData(responseData.data.news );
+    
+          } else {
+            console.error("Failed to fetch data");
+          }
+        } catch (error) {
+          console.error("Error:", error.message);
+        }
+      };
+
+      useEffect(() => {
+        fetchLatestNews();
+        
+      }, []);
+    
     return (
         <section className="spad">
             <Container>
                 <h1 className="text-center mb-5">Latest News</h1>
 
                 <Slider {...sliderSettings}>
-                    {newsItems.map((item) => (
-                        <div key={item.id}>
+                {newsData.map((news, index) => (
+                        <div key={index}>
                             <figure>
-                                <div className="img-dec">{item.title}</div>
+                                <div className="img-dec">{news.bussiness_name}</div>
                                 <div className="thumbnail">
                                     <div>
                                         <Link to="blog-details" className="readmore">
                                             Read More
                                         </Link>
                                     </div>
-                                    <Image src={item.image} alt="" />
+                                    <Image src={news.news_image} alt="" />
                                 </div>
                             </figure>
                         </div>

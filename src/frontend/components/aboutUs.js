@@ -19,9 +19,11 @@ import axios from "axios";
 import API from "../../utils";
 function AboutUs() {
   const [aboutData, setAboutData] = useState("");
-
+  const [hotels, setHotels] = useState([]);
   useEffect(() => {
     fetchAboutDetails();
+    fetchRecentHotels();
+    
   }, []);
   const fetchAboutDetails = async () => {
    
@@ -58,6 +60,38 @@ function AboutUs() {
     return tempElement.textContent || tempElement.innerText || "";
   };
 
+
+  const fetchRecentHotels = async () => {
+   
+    try {
+      const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.homeApi}`,
+      {
+        Hotel_count: 7, 
+        magazine_count: 0, 
+        News_count:0,
+      },
+      
+      {
+        headers: {
+          Authorization: "hXuRUGsEGuhGf6KM",
+        }
+      });
+      const responseData = response.data;
+     
+     console.log("fdhfdihgihgfiu",responseData)
+      if (responseData.status === true) {
+      setHotels(responseData.data.hotels );
+
+      } else {
+        console.error("Failed to fetch data");
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  };
+
+
+
     return(
         <>
             <section className="aboutus-section spad">
@@ -65,75 +99,52 @@ function AboutUs() {
           <div className="hp-room-items">
             <h1 className="text-center mb-4">Recently Added Hotels</h1>
             <Row>
-              <Col lg={3} md={6}>
-                <figure>
-                <div className="img-dec">Jumeirah Al Qasr Hotel, Dubai</div>
-
-                  <div className="thumbnail">
-                    <div>
-                      <Link to="/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux" className="readmore">Read More</Link>
-                    </div>
-                    <Image src={News1} alt="" />
-                  </div>
-
-                </figure>
-              </Col>
-              <Col lg={6} md={6}>
-                <figure>
-                  <div className="img-dec">Jumeirah Al Qasr Hotel, Dubai</div>
-                  <div className="thumbnail">
-                    <div><Link to="/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux" className="readmore">Read More</Link></div>
-                    <Image src={News2} alt="" />
-                  </div>
-                </figure>
-              </Col>
-              <Col lg={3} md={6}>
-                <figure>
-                  <div className="img-dec">Jumeirah Al Qasr Hotel, Dubai</div>
-                  <div className="thumbnail">
-                    <div><Link to="/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux" className="readmore">Read More</Link></div>
-                    <Image src={News3} alt=""/>
-                  </div>
-                </figure>
-              </Col>
-
-              <Col lg={3} md={6}>
-                    <figure>
-                        <div className="img-dec">Jumeirah Al Qasr Hotel, Dubai</div>
-                       <div className="thumbnail">
-                          <div><Link to="/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux" className="readmore">Read More</Link></div>
-                          <Image src={News4} alt=""/>
-                       </div>
-                    </figure>
-                 </Col>
-                 <Col lg={3} md={6}>
-                    <figure>
-                        <div className="img-dec">Jumeirah Al Qasr Hotel, Dubai</div>  
-                       <div className="thumbnail">
-                          <div><Link to="/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux" className="readmore">Read More</Link></div>
-                          <Image src={News5} alt=""/>
-                       </div>
-                    </figure>
-                 </Col>
-                 <Col lg={3} md={6}>
-                    <figure>
-                        <div className="img-dec">Jumeirah Al Qasr Hotel, Dubai</div>
-                       <div className="thumbnail">
-                          <div><Link to="/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux" className="readmore">Read More</Link></div>
-                          <Image src={News6} alt=""/>
-                       </div>
-                    </figure>
-                 </Col>
-                 <Col lg={3} md={6}>
-                    <figure>
-                        <div className="img-dec">Jumeirah Al Qasr Hotel, Dubai</div>
-                       <div className="thumbnail">
-                          <div><Link to="/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux" className="readmore">Read More</Link></div>
-                          <Image src={News7} alt=""/>
-                       </div>
-                    </figure>
-                 </Col>
-            </Row>
+  {hotels.map((hotel, index) => (
+    <React.Fragment key={index}>
+      {index === 1 ? (
+        <Col lg={6}>
+          {/* Render the larger image for index 1 */}
+          <figure>
+            <div className="img-dec">{hotel.hotel_title}</div>
+            <div className="thumbnail">
+              <div>
+                <Link
+                  to={`/hotel-details/${hotel.id}/${hotel.country}/${hotel.hotel_title}`}
+                  className="readmore"
+                >
+                  Read More
+                </Link>
+              </div>
+              {hotel.hotel_images && hotel.hotel_images[0] && (
+                <Image src={hotel.hotel_images[0]} alt={hotel.hotel_title} />
+              )}
+            </div>
+          </figure>
+        </Col>
+      ) : (
+        <Col key={index} lg={3}>
+          {/* Render smaller images for other indices */}
+          <figure>
+            <div className="img-dec">{hotel.hotel_title}</div>
+            <div className="thumbnail">
+              <div>
+                <Link
+                  to={`/hotel-details/${hotel.id}/${hotel.country}/${hotel.hotel_title}`}
+                  className="readmore"
+                >
+                  Read More
+                </Link>
+              </div>
+              {hotel.hotel_images && hotel.hotel_images[0] && (
+                <Image src={hotel.hotel_images[0]} alt={hotel.hotel_title} />
+              )}
+            </div>
+          </figure>
+        </Col>
+      )}
+    </React.Fragment>
+  ))}
+</Row>
               
            </div>
         

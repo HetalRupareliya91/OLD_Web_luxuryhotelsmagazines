@@ -47,7 +47,12 @@ const API = {
 
     // hotel
 
-    editHotel:"edit-hotels"
+    editHotel:"edit-hotels",
+    updateHotel:"update-hotels",
+    updateSingleHotelImage:"update_single_hotel_image",
+deleteSingleHotelImage:"delete_single_hotel_image",
+addMultipleImage:"add_multiple_images_hotels",
+    homeApi:"home"
 
       },
     }; 

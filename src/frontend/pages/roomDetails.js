@@ -73,8 +73,7 @@ function RoomDetails() {
             console.log('Amenities data:', data);
             if (data.status === true && Array.isArray(data.data)) {
                 setAminitesData(data)
-                
-
+            
             } else {
                 console.error('Invalid format: Amenities data is not an array.');
             }
