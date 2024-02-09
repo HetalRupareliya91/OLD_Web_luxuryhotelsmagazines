@@ -4380,7 +4380,7 @@ color: white;
 }
 
 .hotel-profile-div .details-div .time-left {
-	width: 64%;
+	width: 70%;
 	background-color: #b5191fff;
 	color: #fff;
 	padding: 10px;
@@ -4699,7 +4699,7 @@ button.btn-default {
 	color: #fff;
 	text-transform: capitalize;
 	/* border-radius: 5px; */
-	transition: 0.3s e
+	transition: 0.3s 
 }
 
 a.btn.btn-block.btn-default {

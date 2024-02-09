@@ -16,7 +16,9 @@ import Footer from "../components/footer";
 import axios from "axios";
 import API from "../../utils";
 function Distribution() {
+    const [magazine,setMagazine]=useState([])
     const [data , setData]=useState("")
+    const [distributorData, setDistributorData]=useState([])
     const sliderRef = useRef(null);
 
     const sliderSettings = {
@@ -41,34 +43,6 @@ function Distribution() {
         ],
     };
 
-    const deals = [
-        {
-            title: "Luxury Hotels Cyprus & Greece  ",
-            image: magazineImage
-        },
-        {
-            title: "Mandarin Oriental Guangzou",
-            image: magazineImage
-        },
-        {
-            title: "Mandarin Oriental Guangzou",
-            image: magazineImage
-        },
-        {
-            title: "Mandarin Oriental Guangzou",
-            image: magazineImage
-        },
-        {
-            title: "Mandarin Oriental Guangzou",
-            image: magazineImage
-        },
-        {
-            title: "Mandarin Oriental Guangzou",
-            image: magazineImage
-        },
-
-    ];
-   
       const fetchDistributionDetails = async () => {
         const token = localStorage.getItem("token");
     
@@ -89,9 +63,66 @@ function Distribution() {
           console.error("Error:", error.message);
         }
       };
+
+
+
+      const fetchDistributionMagazineDetails = async () => {
+        const token = localStorage.getItem("token");
+    
+        try {
+          const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allDistribution}`, {
+            headers: {
+              "Authorization": "Bearer " + token,
+            }
+          });
+          const data = response.data;   
+        //   console.log(data);
+          if (data.status === true) {
+            setDistributorData(data.data);
+          } else {
+            console.error("Failed to fetch data");
+          }
+        } catch (error) {
+          console.error("Error:", error.message);
+        }
+      };
       useEffect(() => {
         fetchDistributionDetails();
+        fetchDistributionMagazineDetails()
+        fetchRecentMagazine()
       }, []);
+
+
+      const fetchRecentMagazine = async () => {
+   
+        try {
+          const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.homeApi}`,
+          {
+            Hotel_count: 0, 
+            magazine_count: 5, 
+            News_count:0,
+          },
+          
+          {
+            headers: {
+              Authorization: "hXuRUGsEGuhGf6KM",
+            }
+          });
+          const responseData = response.data;
+         
+         console.log("fdhfdihgihgfiu",responseData)
+          if (responseData.status === true) {
+            setMagazine(responseData.data.magazines );
+    
+          } else {
+            console.error("Failed to fetch data");
+          }
+        } catch (error) {
+          console.error("Error:", error.message);
+        }
+      };
+    
+    
 
     return (
         <>
@@ -115,134 +146,59 @@ function Distribution() {
                         <div className="text-center mb-4">
                             <h1>{data.length > 0 ? data[0].title : ""}</h1>
                         </div>
-                        <div >
-                            <div className="text-center"><h5 className="mb-4 "style={{textTransform:"uppercase" ,color:"#000"}} >Luxury Hotels Dubai And Abu Dhabi</h5></div>
-                            <Row>
-                                <Col lg={6} md={6}>
-                                    <div>
-                                        <Image src={magazineImage} />
-                                    </div>
-                                </Col>
-                                <Col lg={6} md={6} className="content-section">
-                                    <div className="d-flex justify-content-between mx-4 mt-3">
-                                        <div>
-                                            <p>Hard Copies</p>
-                                            <p>120,000</p>
-                                        </div>
-                                        <div>
-                                            <p>Digital Copies</p>
-                                            <p>4,5 Million Readers</p>
-                                        </div>
-                                    </div>
-                                    <div className="listing">
-                                        <ul >
-                                            <li>
-                                                In every Room of 40 Luxury Hotels across Dubai & Abu Dhabi
-                                            </li>
-                                            <li>
-                                                Digital edition garners 4-5 million downloads per Edition
-                                            </li>
-                                            <li>
-                                                romotion extended to 89 countries
-                                            </li>
-                                            <li>
-                                                Digital copies with your Ads sent to our 1 million subscribers
-                                            </li>
-                                            <li>
-                                                our Ads will be Promoted across our 13 Social Networks  reaching 13 Million Subscribers every month
-                                                qYour 2 Ads will be Promoted on Lux
-                                            </li>
-                                            <li>
-                                                Your 2 Ads will be Promoted on Luxury Hotels Magazine Online Platform
-                                            </li>
-                                            <li>Wide distribution on Luxury Yachts in Cyprus, Greece, Monaco, Dubai, and Abu Dhabi Marinas.</li>
-                                            <li>Six-months FREE Hotel profile with (Special offer) on Luxury Hotels Magazine Online Platform</li>
-
-                                            <li>Each hotel will be nominated and voted on by our readers as “The Best & Most Luxury Hotel of the Year" with access to data on the voting clients</li>
-
-                                        </ul>
-                                    </div>
-
-                                    <div>
-                                        <div>
-                                            <p>Geographic Spread:</p>
-                                            <p>100% Dubai & Abu Dhabi</p>
-                                        </div>
-                                        <div>
-
-                                        <button className="w-50"> <a href="/kit-detail">Click Here</a></button>
-                                        </div>
-                                    </div>
-
-                                </Col>
-                            </Row>
-                        </div>
-
-                        <div className="mt-5">
-                            <div className="text-center">
-                                <h5 className="mb-4" style={{textTransform:"uppercase" ,color:"#000"}}>Luxury Hotels Europe</h5>
-                            </div>
-                            <Row>
-                                <Col lg={6} md={6} className="order-2">
-                                    <div>
-                                        <Image src={magazineImage} />
-                                    </div>
-                                </Col>
-                                <Col lg={6} md={6} className="content-section order-1 ">
-                                    <div className="d-flex justify-content-between mx-4 mt-3">
-                                        <div>
-                                            <p>Hard Copies</p>
-                                            <p>120,000</p>
-                                        </div>
-                                        <div>
-                                            <p>Digital Copies</p>
-                                            <p>4,5 Million Readers</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="listing">
-                                        <ul >
-                                            <li>
-                                                In every Room of 40 Luxury Hotels across Dubai & Abu Dhabi
-                                            </li>
-                                            <li>
-                                                Digital edition garners 4-5 million downloads per Edition
-                                            </li>
-                                            <li>
-                                                romotion extended to 89 countries
-                                            </li>
-                                            <li>
-                                                Digital copies with your Ads sent to our 1 million subscribers
-                                            </li>
-                                            <li>
-                                                our Ads will be Promoted across our 13 Social Networks  reaching 13 Million Subscribers every month
-                                                qYour 2 Ads will be Promoted on Lux
-                                            </li>
-                                            <li>
-                                                Your 2 Ads will be Promoted on Luxury Hotels Magazine Online Platform
-                                            </li>
-                                            <li>Wide distribution on Luxury Yachts in Cyprus, Greece, Monaco, Dubai, and Abu Dhabi Marinas.</li>
-                                            <li>Six-months FREE Hotel profile with (Special offer) on Luxury Hotels Magazine Online Platform</li>
-
-                                            <li>Each hotel will be nominated and voted on by our readers as “The Best & Most Luxury Hotel of the Year" with access to data on the voting clients</li>
-
-                                        </ul>
-                                    </div>
-
-                                    <div>
-                                        <div>
-                                            <p>Geographic Spread:</p>
-                                            <p>100% Dubai & Abu Dhabi</p>
-                                        </div>
-                                        <div>
-
-                                        <button className="w-50"> <a href="/kit-detail">Click Here</a></button>
-                                        </div>
-                                    </div>
-
-                                </Col>
-                            </Row>
-                        </div>                        
+                        {distributorData.map((edition) => (
+      <div key={edition.id}>
+        <div className="text-center mb-4">
+          <h1 className="mt-4">{edition.title}</h1>
+        </div>
+        <div>
+          {/* <div className="text-center">
+            <h5 className="mb-4" style={{ textTransform: "uppercase", color: "#000" }}>
+              {edition.category}
+            </h5>
+          </div> */}
+          <Row>
+            <Col lg={6} md={6}>
+              <div>
+                <Image src={edition.hotel_image} alt={edition.title} />
+              </div>
+            </Col>
+            <Col lg={6} md={6} className="content-section">
+              <div className="d-flex justify-content-between mx-4 mt-3">
+                <div>
+                  <p>Hard Copies</p>
+                  <p>120,000</p>
+                </div>
+                <div>
+                  <p>Digital Copies</p>
+                  <p>4.5 Million Readers</p>
+                </div>
+              </div>
+              <div className="listing">
+              <ul>
+                          {edition.hotel_description && typeof edition.hotel_description === "string"
+                            ? edition.hotel_description.split('\n').map((item, index) => (
+                                <li key={index}>{item}</li>
+                              ))
+                            : <li>Hotel description not available</li>}
+                        </ul>
+              </div>
+              <div>
+                <div>
+                  <p>Geographic Spread:</p>
+                  <p>100% Dubai & Abu Dhabi</p>
+                </div>
+                <div>
+                  <button className="w-50">
+                    <a href={edition.link}>Click Here</a>
+                  </button>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
+    ))}                      
                     </div>
                     <Row>
                         <Col md={12} className="text-center py-5">
@@ -266,15 +222,16 @@ function Distribution() {
                     </div> */}
 
                     <Slider {...sliderSettings} ref={sliderRef}>
-                        {deals.map((deal, index) => (
+                        {magazine.map((magazine, index) => (
+                           
                             <div key={index} className="text-center exclusive-deals distribution-slider p-0">
                                 <div>              <a>
-                                    <Image src={deal.image} />
+                                    <Image src={magazine.thumbnail} />
                                 </a>
                                 </div>
 
                                 <div className="mt-3 mb-3">
-                                    <span className="valid">{deal.title}</span>
+                                    <span className="valid">{magazine.title}</span>
                                 </div>
 
                             </div>

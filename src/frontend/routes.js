@@ -69,7 +69,7 @@ function RoutesPage() {
       <Route exact path="/publish-video-banner" element={<PublishVideoBanner />} />
       <Route exact path="/publish-animated-banner" element={<PublishAnimatedBanner />} />
       <Route exact path="/publish-hotel-news" element={<PublishHotelNews />} />
-      <Route exact path="/kit-detail" element={<KitDetail />} />
+      <Route exact path="/kit-detail/:media_kit_id/:media_kit_name" element={<KitDetail />} />
       <Route exact path="/forgot-password" element={<ForgotPassword />} />
       <Route exact path="/edit-hotel-profile" element={<EditHotel />} />
       <Route exact path="/magazine-details" element={<MagazineDetails />} />

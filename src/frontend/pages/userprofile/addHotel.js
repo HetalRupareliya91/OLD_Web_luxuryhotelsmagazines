@@ -164,7 +164,7 @@ function AddHotel() {
         if (type === "checkbox") {
             // Check if the checkbox is related to an amenity
             const isAmenityCheckbox = formData.amenitiesList.some(amenity => amenity.title === name);
-
+console.log("isAmenityCheckbox",isAmenityCheckbox)
             if (isAmenityCheckbox) {
                 // If it's an amenity checkbox, update the state accordingly
                 setFormData((prevData) => ({

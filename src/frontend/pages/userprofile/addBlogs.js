@@ -3,7 +3,7 @@ import { EditorState, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import { Col, Form, Row } from "react-bootstrap";
 import { stateToHTML } from 'draft-js-export-html';
-import axios from "axios";
+import axios from "axios";  
 import API from "../../../utils";
 import PayPalButton from "../../components/paypal";
 function AddBlogs() {

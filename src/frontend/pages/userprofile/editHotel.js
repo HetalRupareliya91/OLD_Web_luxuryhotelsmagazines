@@ -17,7 +17,8 @@ import htmlToDraft from 'html-to-draftjs';
 import EditImageModal from "./EditImageModal";
 import DeleteModalImage from "./deleteImageModal";
 import AddImageHotel from "./AddImageModal";
-function EditHotel() {
+function EditHotel({ hotel_id, onClose }) {
+    console.log("Hotel ID:", hotel_id);
     const user_id = localStorage.getItem("userId");
     const [value, setValue] = useState('')
     const options = useMemo(() => CountryList().getData(), [])
@@ -641,13 +642,14 @@ function EditHotel() {
     };
     
 
-      const handeFetchData = async () => {
+      const handeFetchData = async (hotel_id) => {
         const token = localStorage.getItem("token");
         try {
           const response = await axios.post(
             `${API.BASE_URL}${API.ENDPOINTS.editHotel}`,
             {
-              hotel_id: 3,
+            
+            hotel_id,
             },
             {
               headers: {
@@ -715,7 +717,7 @@ function EditHotel() {
       };
       
       useEffect(() => {
-        handeFetchData();
+        handeFetchData(hotel_id);
       }, []);
       
    

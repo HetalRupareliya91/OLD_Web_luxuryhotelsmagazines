@@ -93,7 +93,13 @@ function OurTeam() {
         <>
             <Header />
             <section className="my-3">
+                
     <Container>
+
+        <div className="text-center">
+
+            <h1>{apiData.title}</h1>
+        </div>
         <Row>
             {teamData.map((member, index) => (
                 <Col lg={4} md={6} key={index}>

@@ -34,9 +34,12 @@ const API = {
 
       //distribution
       distributionDetails:"all-distibutor-detail",
+      allDistribution:"all-distibutor",
 
     // single_page_details
     singlePageDetails:"get_single_page_details",
+
+    singlepagedetails:"single_page_details",    
 
     // all team
     allTeam:"all-team",
@@ -52,7 +55,15 @@ const API = {
     updateSingleHotelImage:"update_single_hotel_image",
 deleteSingleHotelImage:"delete_single_hotel_image",
 addMultipleImage:"add_multiple_images_hotels",
-    homeApi:"home"
+    homeApi:"home",
+
+
+    // all media kit
+    allMedia:"all-media-kit",
+    editMediaKit:"edit-media-kit",
+
+    // magazine
+    allMagazine:"all-hotel-magazines",
 
       },
     }; 

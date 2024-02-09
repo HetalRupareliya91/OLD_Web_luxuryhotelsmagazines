@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import SocialImage from "../../assets/img/mediapack/social.png";
@@ -6,7 +6,38 @@ import DigitalImage from "../../assets/img/mediapack/degitalpack.jpg";
 import mediapackimage from "../../assets/img/mediapack/computer.webp"
 import Footer from "../components/footer";
 import CallToAction from "../components/callToAction";
+import axios from "axios";
+import API from "../../utils";
+import { NavLink } from "react-router-dom";
 function Mediapack() {
+const [mediapack, setMediaPack]=useState([])
+    const fetchMediaPack = async () => {
+        const token = localStorage.getItem("token");
+        try {
+          const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allMedia}`,
+          {
+            headers: {
+                "Authorization": "Bearer " + token,
+            }
+          });
+          const responseData = response.data;
+         
+         console.log("fdhfdihgihgfiu",responseData)
+          if (responseData.status === true) {
+            setMediaPack(responseData.data );
+    
+          } else {
+            console.error("Failed to fetch data");
+          }
+        } catch (error) {
+          console.error("Error:", error.message);
+        }
+      };
+    
+      useEffect(() => {
+        fetchMediaPack();
+       
+      }, []);
     return (
         <>
             <Header />
@@ -18,115 +49,20 @@ function Mediapack() {
 
             <section className="my-3 media-pack-section">
                 <Container>
-                    <Row >
-                        <Col lg={6} md={6} className="media-pack-cols p-0" > 
-                                <div>
-                                <a href="/kit-detail">
-                                    <Image src={SocialImage} alt="image" />
-                                    <div className="px-3 ">
-                                        <h5 className="mt-3">
-        Social Network Content Management, Influencer and Ambassador Program...</h5>
-                                    </div>
-                                    </a>
-                                </div>
-
-                            
-                        </Col>
-
-                        <Col lg={6} md={6}  className="media-pack-cols p-0">
-                        <div >
-                            <a href="/kit-detail">
-                              
-                                    <img src={DigitalImage} alt="image"/>
-                                    <div className="px-3">
-                                        <h5 className="mt-3">
-        Hotels Media Kit- Luxury Hotels Digital and Printed version 2024...</h5>
-                                    </div>
-                            
-                            </a>
-                            </div>
-                        </Col>
-                        <Col lg={6} md={6} className="media-pack-cols p-0" >
-                        <div>
-                            <a href="/kit-detail">
-                              
-                                    <img src={mediapackimage} alt="image" />
-                                    <div className="px-3">
-                                        <h5 className="mt-3">
-                                        MACS EURO DOHA INTERNATIONAL AIRPORT - ADVERTISING OPPORTUNITIES 2023...</h5>
-                                    </div>
-                                
-                            </a>
-                            </div>
-                        </Col>
-
-                        <Col lg={6} md={6}  className="media-pack-cols p-0">
-                        <div >
-                            <a href="/kit-detail">
-                               
-                                    <img src={DigitalImage} alt="image"/>
-                                    <div className="px-3">
-                                        <h5 className="mt-3">
-                                        QATAR MEDIA KIT 2023 MACS...</h5>
-                                  
-                                </div>
-                            </a>
-                            </div>
-                        </Col><Col lg={6} md={6}  className="media-pack-cols p-0">
-                        <div>
-                            <a href="/kit-detail">
-                              
-                                    <img src={mediapackimage} alt="image" />
-                                    <div className="px-3">
-                                        <h5 className="mt-3">
-                                        LUFTHANSA MAGAZINE 2023 MACS...</h5>
-                                    </div>
-                               
-                            </a>
-                            </div>
-                        </Col>
-
-                        <Col lg={6} md={6}  className="media-pack-cols p-0">
-                        <div >
-                            <a href="/kit-detail">
-                               
-                                    <img src={mediapackimage} alt="image"/>
-                                    <div className="px-3">
-                                        <h5 className="mt-3">
-        Hotels Media Kit- Luxury Hotels Digital and Printed version 2024...</h5>
-                                    </div>
-                               
-                            </a>
-                            </div>
-                        </Col><Col lg={6} md={6} className="media-pack-cols p-0" >
-                        <div>
-                            <a href="/kit-detail">
-                              
-                                    <img src={mediapackimage} alt="image" />
-                                    <div className="px-3">
-                                        <h5 className="mt-3">
-        Social Network Content Management, Influencer and Ambassador Program...</h5>
-                                    </div>
-                                
-                            </a>
-                            </div>
-                        </Col>
-
-                        <Col lg={6} md={6}  className="media-pack-cols p-0 ">
-                        <div>
-                            <a href="/kit-detail">
-                              
-                                    <img src={DigitalImage} alt="image"/>
-                                    <div className="px-3">
-                                        <h5 className="mt-3">
-        Hotels Media Kit- Luxury Hotels Digital and Printed version 2024...</h5>
-                                   
-                                </div>
-                                
-                            </a>
-                            </div>
-                        </Col>
-                    </Row>
+                <Row>
+            {mediapack.map((item) => (
+              <Col lg={6} md={6} key={item.id} className="media-pack-cols p-0">
+                <div>
+                  <NavLink to={`/kit-detail/${item.id}/${item.title}`}>
+                    <Image src={item.media_kit_image} alt={item.title} />
+                    <div className="px-3">
+                      <h5 className="mt-3">{item.title}</h5>
+                    </div>
+                  </NavLink>
+                </div>
+              </Col>
+            ))}
+          </Row>
                 </Container>                
             </section>
 

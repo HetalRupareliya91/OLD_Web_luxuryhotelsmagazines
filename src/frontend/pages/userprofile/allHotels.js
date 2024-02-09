@@ -16,15 +16,12 @@ function AllHotels( { onEditClick }){
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(2);
   const [showModal, setShowModal] = useState(false);
-  const[hotelId, setHotelId]=useState("")
+  const[hotel_id, setHotelId]=useState("")
 
 
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  
-
-
   
 
   const fetchAllHotels = async () => {
@@ -96,7 +93,7 @@ function AllHotels( { onEditClick }){
     setSelectedHotel(hotel);
     setHotelId(hotel.id)
     setShowEditForm(true);
-    onEditClick();
+    onEditClick(hotel.id);
 
     
   };

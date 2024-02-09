@@ -14,7 +14,7 @@ import EditHotel from "../pages/userprofile/editHotel";
 import axios from "axios";
 import SpecialOffers from "../pages/userprofile/addSpecialOffers";
 function UserSidebar (){
-
+  const [hotelid, setHotelId] = useState(null);
 
   const [showEditHotelForm, setShowEditHotelForm] = useState(false);
 
@@ -68,8 +68,8 @@ function UserSidebar (){
         }
       }, []);
 
-      const handleEditButtonClick = () => {
-        // Do something when the "Edit" button is clicked
+      const handleEditButtonClick = (hotel_id) => {
+        setHotelId(hotel_id);
         setShowEditHotelForm(true);
       };
     return(
@@ -245,7 +245,7 @@ function UserSidebar (){
 
               {showEditHotelForm && (
         <div id="editHotelForm" >
-          <EditHotel onClose={() => setShowEditHotelForm(false)} />
+          <EditHotel hotel_id={hotelid} onClose={() => setShowEditHotelForm(false)} />
         </div>
          )}
           

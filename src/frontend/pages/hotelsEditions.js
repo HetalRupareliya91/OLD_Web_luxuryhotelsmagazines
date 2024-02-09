@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import Magazines1 from  "../../assets/img/magazines/magazines.webp"
@@ -9,9 +9,71 @@ import { FaFacebook, FaGoogle, FaPinterest, FaTwitter } from "react-icons/fa";
 import CallToAction from "../components/callToAction";
 import Footer from "../components/footer";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import API from "../../utils";
 
 
 function HotelEditions(){
+    
+    const [magazineData,setMagazineData]=useState([])
+    const [apiData,setApiData]=useState("")
+    const  type="hotelmagazine"
+ 
+  useEffect(() => {
+      const fetchDetails = async (e) => {
+          if (e) e.preventDefault();
+  
+          try {
+              const response = await axios.post(
+                  `${API.BASE_URL}${API.ENDPOINTS.singlePageDetails}`,
+                  {
+                      type: type,  
+                  },
+                  {
+                      headers: {
+                          Authorization: "hXuRUGsEGuhGf6KM",
+                      },
+                  }
+              );
+  
+              const data = response.data;
+              // console.log("myData", data);
+              if (data.status === true) {
+                  setApiData(data.data.details);
+              } else {
+                  console.error("signup failed:");
+              }
+          } catch (error) {
+              console.error("Error:", error.message);
+          }
+      };
+  
+      fetchDetails();
+      fetchMagazines()
+  }, []);
+
+  
+  const fetchMagazines = async () => {
+    const token = localStorage.getItem("token");
+      try {
+        const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allMagazine}`, {
+          headers: {
+             "Authorization": "Bearer " + token,
+          }
+        });
+        const data = response.data;
+        // console.log(data)
+        if (data.status === true) {
+          setMagazineData(data.data);
+          // console.log(data)
+        } else {
+          console.error("Failed to fetch data");
+        }
+      } catch (error) {
+        console.error("Error:", error.message);
+      }
+    };
+  
 
     return(
 <>
@@ -22,7 +84,7 @@ function HotelEditions(){
    
     
 <div className="MagazineContent text-center">
-<h1 className="mb-3">LUXURY MAGAZINES</h1>
+<h1 className="mb-3">{apiData.title}</h1>
 </div>
 
 <div className="MagazineContent">
@@ -50,6 +112,25 @@ Each Edition Rotation Program: Your hotel becomes one of the 40 most luxurious h
 
 
 <Row className="rowPadding">
+      {magazineData.map(magazine => (
+        <Col lg={3} key={magazine.id}>
+          <div className="magazineContent1">
+            <Link to="/magazine-details">
+              <Image src={magazine.thumbnail} alt={magazine.title} />
+              <p>{magazine.title}</p>
+            </Link>
+            <ul className="social-icons d-flex">
+              <li style={{ backgroundColor: "#29c5f6", margin: "3px" }}><a><FaTwitter /></a></li>
+              <li style={{ backgroundColor: "#516eab", margin: "3px" }}><a><FaFacebook /></a></li>
+              <li style={{ backgroundColor: "#eb4026", margin: "3px" }}><a><FaGoogle /></a></li>
+              <li style={{ backgroundColor: "#ca212a", margin: "3px" }}><a><FaPinterest /></a></li>
+            </ul>
+          </div>
+        </Col>
+      ))}
+    </Row>
+
+{/* <Row className="rowPadding">
 
     <Col lg={3}>
         <div className="magazineContent1">
@@ -200,7 +281,7 @@ Each Edition Rotation Program: Your hotel becomes one of the 40 most luxurious h
 
     
 
-</Row>
+</Row> */}
 
 
 </Container>
