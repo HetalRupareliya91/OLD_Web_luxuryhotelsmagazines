@@ -65,6 +65,12 @@ addMultipleImage:"add_multiple_images_hotels",
     // magazine
     allMagazine:"all-hotel-magazines",
 
+    // newsletter
+    newsLetter:"CreateNewsLetter",
+
+    // voting-details
+    
+addVotingDetails:"add_voting_details",
       },
     }; 
 

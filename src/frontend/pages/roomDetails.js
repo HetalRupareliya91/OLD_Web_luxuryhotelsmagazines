@@ -16,6 +16,7 @@ import { useParams } from "react-router-dom";
 import { FileEarmarkCheckFill, GeoAltFill } from "react-bootstrap-icons";
 import Review from "../components/hotelReview";
 import HotelSlider from "../components/youMayLikeHotel";
+import VotingForm from "../components/votingForm";
 function RoomDetails() {
     const [aminitesData, setAminitesData]=useState([])
     const [facilitiesData, setFacilitiesData]=useState([])
@@ -239,25 +240,9 @@ function RoomDetails() {
                                 <img src={Logo} alt="" className="w-50" />
                             </div>
                             <div className=" ">
-                                <Form action="#" className="contact-form">
-                                    <Row className="row">
-                                        <Col lg={12} >
-                                            <h5 className="text-center px-4 mt-0">VOTE FOR THE BEST LUXURY HOTELS OF THE YEAR</h5>
-                                            <input type="text" placeholder="Your Full Name" />
-                                        </Col>
-                                        <Col lg={12}>
-                                            <input type="text" placeholder="Your Email" />
-                                        </Col>
-                                        <Col lg={12}>
-                                            <textarea placeholder="Describe Your Experience"></textarea>
-                                            <button type="submit" className=" btn-default-submit ">Submit Now</button>
-                                        </Col>
-                                    </Row>
-                                </Form>
-
-                                {/* <div className="youtube-video mt-3">
-                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/D0UnqGm_miA?si=qnB4y7REmVnd-Lyv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                </div> */}
+                              
+                                <VotingForm  hotelId={hotelId}/>
+                               
 
                                 <div className="locationmap mt-3">
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29759.049789885605!2d72.75953112132576!3d21.196876856223426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c351ceae251%3A0x1d35b30f855a2c36!2sAdajan%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1703916461865!5m2!1sen!2sin" width="100%" height="450" style={{ border: "0", allowfullscreen: "", loading: "lazy", referrerpolicy: "no-referrer-when-downgrade" }}></iframe>
