@@ -12,12 +12,12 @@ import { NavLink } from "react-router-dom";
 function Mediapack() {
 const [mediapack, setMediaPack]=useState([])
     const fetchMediaPack = async () => {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
         try {
           const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allMedia}`,
           {
             headers: {
-                "Authorization": "Bearer " + token,
+              Authorization: "hXuRUGsEGuhGf6KM",
             }
           });
           const responseData = response.data;

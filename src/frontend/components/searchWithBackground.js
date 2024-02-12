@@ -3,7 +3,7 @@ import { Col, Container, Form, Image, Row } from 'react-bootstrap';
 import axios from 'axios';
 import API from '../../utils';
 import { FaSearch } from 'react-icons/fa';
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 function SearchWithBackground(){
   
   const navigate = useNavigate();  
@@ -80,7 +80,7 @@ function SearchWithBackground(){
                        {searchResults.map((result) => (
                         
                          <li  key={result.id}
-                         onClick={() => handleSearchResultClick(result.hotel_title)}><a href="hotel-details/9/kuwait/symphony-style-hotel">{result.hotel_title}</a></li>
+                         onClick={() => handleSearchResultClick(result.hotel_title)}><NavLink to={(`/hotel-details/${result.id}/${result.country}/${result.hotel_title}`)}>{result.hotel_title}</NavLink></li>
                          // Add other properties as needed
                        ))}
                      </ul>

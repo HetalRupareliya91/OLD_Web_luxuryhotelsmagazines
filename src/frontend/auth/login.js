@@ -136,6 +136,7 @@ function Login() {
             localStorage.setItem("token", response.data.token)
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('userId',response.data.data.id);
+            localStorage.setItem('userName',response.data.data.name);
             setShowEmailForm(false);
       //   setShowOTPForm(true);
       navigate("/userprofile");

@@ -134,18 +134,11 @@ function AddHotel() {
         facilitiesList: [],
         otherInformation1: "",
         otherInformation2: "",
-
         otherInformation3: "",
         otherInformation4: "",
         contact1: { name: "", email: "", contactInformation: "" },
         contact2: { name: "", email: "", contactInformation: "" },
         contact3: { name: "", email: "", contactInformation: "" },
-        offerTitle: "",
-        phone_number: "",
-        offerValidFrom: "",
-        offerValidTo: "",
-        description: "",
-        redeemLink: "",
         addHotelToHomePageLatestNews: "",
         addHotelToHomePageHotelLatestNews: "",
         addSpecialOfferToHomepage: "",
@@ -218,6 +211,7 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
         formDataObject.append('restaurent_bars', formData.restaurantsAndBars);
         formDataObject.append('spa_wellness', formData.spaAndWellness);
         formDataObject.append('other_facilities', formData.otherFacilities);
+        formDataObject.append('additionalInformation', formData.additionalInformation);
         // formDataObject.append('numberOfRooms', formData.numberOfRooms);
         // formDataObject.append('numberOfRestaurants', formData.numberOfRestaurants);
         // formDataObject.append('outdoorSwimmingPool', formData.outdoorSwimmingPool);
@@ -236,12 +230,7 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
             formDataObject.append(`contact[${i}]`, formData[`contact${i}`].contactInformation);
         }
 
-        formDataObject.append('offer_title', formData.offerTitle);
-        formDataObject.append('phone_number', formData.phone_number);
-        formDataObject.append('from_date', formData.offerValidFrom);
-        formDataObject.append('to_date', formData.offerValidTo);
-        formDataObject.append('description', formData.description);
-        formDataObject.append('redeem_link', formData.redeemLink);
+      
         formDataObject.append('home_page_latest_news', formData.addHotelToHomePageLatestNews);
         formDataObject.append('hotel_latest_news', formData.addHotelToHomePageHotelLatestNews);
         formDataObject.append('special_offer_to_homepage', formData.addSpecialOfferToHomepage);
@@ -314,7 +303,7 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
         try {
             const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allHotelAmenities}`, {
                 headers: {
-                    "Authorization": "Bearer " + token,
+                    Authorization: "hXuRUGsEGuhGf6KM",
                 },
             });
             const data = response.data;
@@ -344,7 +333,7 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
         try {
             const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allhotelfacilities}`, {
                 headers: {
-                    "Authorization": "Bearer " + token,
+                    Authorization: "hXuRUGsEGuhGf6KM",
                 },
             });
             const data = response.data;
@@ -631,8 +620,8 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
             <div className="mb-3">
                 {currentStep === 1 && <h4 className="stepform-heading">Hotel Details</h4>}
                 {currentStep === 2 && <h4 className="stepform-heading">Hotel Contacts</h4>}
-                {currentStep === 3 && <h4 className="stepform-heading">Special Offer</h4>}
-                {currentStep === 4 && <h4 className="stepform-heading">Home Page Addon</h4>}
+                {currentStep === 3 && <h4 className="stepform-heading">Home Page Addon</h4>}
+                {/* {currentStep === 4 && <h4 className="stepform-heading">Home Page Addon</h4>} */}
 
             </div>
             <ProgressBar now={progress} label={`${progress}%`} className="ProgressBar h-25 mb-3" />
@@ -916,7 +905,7 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
                         </Col>
                         <Col lg={4}>
                             <Form.Control className="sidebar-input"
-                                type="email"
+                                type="text"
                                 id="email"
                                 name="email"
                                 placeholder=" Email"
@@ -948,7 +937,8 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
                                 onChange={(e) => handleChange("contact2", "name", e.target.value)} />
                         </Col>
                         <Col lg={4}>
-                            <Form.Control type="email"
+                            <Form.Control type="text"
+                            className="sidebar-input"
                                 id="email"
                                 name="email"
                                 placeholder=" Email"
@@ -957,6 +947,7 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
                         </Col>
                         <Col lg={4}>
                             <Form.Control type="text"
+                            className="sidebar-input"
                                 id="contactInformation"
                                 name="contactInformation"
                                 placeholder="Contact Information"
@@ -978,7 +969,8 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
                                 onChange={(e) => handleChange("contact3", "name", e.target.value)} />
                         </Col>
                         <Col lg={4}>
-                            <Form.Control type="email"
+                            <Form.Control type="text"
+                            className="sidebar-input"
                                 id="email"
                                 name="email"
                                 placeholder=" Email"
@@ -987,6 +979,7 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
                         </Col>
                         <Col lg={4}>
                             <Form.Control type="text"
+                            className="sidebar-input"
                                 id="contactInformation"
                                 name="contactInformation"
                                 placeholder="Contact Information"
@@ -1005,57 +998,83 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
                 </div>}
                 {currentStep === 3 && <div>
                     <Row className='mb-3'>
-                        <Col lg={6}>
-                            <input className="sidebar-input" type="text" id="offerTitle" name="offerTitle" placeholder="Offer Title" value={formData.offerTitle}
-                                onChange={handleInputChange} required />
-                        </Col>
-                        <Col lg={6}>
-                            <input className="sidebar-input" type="text" id="phone_number" name="phone_number" placeholder="Contact Phone Nunmber" value={formData.phone_number}
-                                onChange={handleInputChange} required />
+                        <Col>
+                            <h6>
+                                Add Hotel to The Home Page Latest News?
+                            </h6>
+                            <div className="select-option">
+                                <select id="addHotelToHomePageLatestNews" className="sidebar-input" name="addHotelToHomePageLatestNews" value={formData.addHotelToHomePageLatestNews}
+                                    onChange={handleInputChange}>
+                                    <option value="Kyrgyzstan">No</option>
+                                    <option value="Display For 1 Week (+10 Euro)">Display For 1 Week (+10 Euro)</option>
+                                    <option value="">Display For 1 Month (+25 Euro)</option>
+
+                                </select>
+                            </div>
                         </Col>
                     </Row>
 
                     <Row className='mb-3'>
-                        <Col lg={6}>
-                            <input className="sidebar-input" type="date" id="offerValidFrom" name="offerValidFrom" value={formData.offerValidFrom}
-                                onChange={handleInputChange} required />
-                        </Col>
-                        <Col lg={6}>
-                            <input className="sidebar-input" type="date" id="offerValidTo" name="offerValidTo" value={formData.offerValidTo}
-                                onChange={handleInputChange} required />
-                        </Col>
-                    </Row>
-                    <Row className='mb-3'>
-                        <Col lg={12}>
-                            {/* <textarea className="sidebar-input" rows={4} placeholder="Description" name="description" value={formData.description}
-                            onChange={handleInputChange} required /> */}
-                            <label>Description</label>
-                            <Editor
-                                editorState={descriptionEditorState}
-                                onEditorStateChange={handleDescriptionEditorState}
-                                value={formData.description}
-                                onChange={handleInputChange}
-                            />
+                        <Col>
+                            <h6>
+                                Add Hotel to The Home Page Hotel Latest News?
+                            </h6>
+                            <div className="select-option">
+                                <select id="addHotelToHomePageHotelLatestNews" className="sidebar-input" name="addHotelToHomePageHotelLatestNews" value={formData.addHotelToHomePageHotelLatestNews}
+                                    onChange={handleInputChange}
+                                >
+                                    <option value="No">No</option>
+                                    <option value="DisplayFor1Week(+10 Euro)">Display For 1 Week (+10 Euro)</option>
+                                    <option value="DisplayFor1Month(+25 Euro)">Display For 1 Month (+25 Euro)</option>
 
+                                </select>
+                            </div>
                         </Col>
                     </Row>
                     <Row className='mb-3'>
-                        <Col lg={12}>
-                            <input type="text" id='redeemLink' name='redeemLink' className="sidebar-input" placeholder='Redeem Link' value={formData.redeemLink}
-                                onChange={handleInputChange}
-                            />
+                        <Col>
+                            <h6 className="third-child">
+                                Add Special Offer to The Homepage?
+                            </h6>
+                            <div className="select-option">
+                                <select id="addSpecialOfferToHomepage" className="sidebar-input" name="addSpecialOfferToHomepage" value={formData.addSpecialOfferToHomepage}
+                                    onChange={handleInputChange}>
+                                    <option value="No">No</option>
+                                    <option value="DisplayFor1Week(+10 Euro)">Display For 1 Week (+10 Euro)</option>
+                                    <option value="DisplayFor1Month(+25 Euro)">Display For 1 Month (+25 Euro)</option>
+
+                                </select>
+                            </div>
                         </Col>
                     </Row>
+                    <Row className='mb-3'>
+                        <Col>
+                            <h6>
+                                Add hotel to The Home Page Recently Added Hotels?
+                            </h6>
+                            <div className="select-option">
+                                <select id="addHotelToHomePageSpotlight" className="sidebar-input" name="addHotelToHomePageSpotlight" value={formData.addHotelToHomePageSpotlight}
+                                    onChange={handleInputChange}
+                                >
+                                    <option value="No">No</option>
+                                    <option value="DisplayFor1Week(+10 Euro)">Display For 1 Week (+10 Euro)</option>
+                                    <option value="DisplayFor1Month(+25 Euro)">Display For 1 Month (+25 Euro)</option>
+
+                                </select>
+                            </div>
+                        </Col>
+                    </Row>
+
                     <div className="text-end">
                         <button onClick={prevStep} >
                             Previous
                         </button>
-                        <button onClick={nextStep} >
-                            next
+                        <button onClick={handleCreateHotel}>
+                            Submit
                         </button>
                     </div>
                 </div>}
-                {currentStep === 4 && <div>
+                {/* {currentStep === 4 && <div>
                     <Row className='mb-3'>
                         <Col>
                             <h6>
@@ -1132,7 +1151,7 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
                             Submit
                         </button>
                     </div>
-                </div>}
+                </div>} */}
 
             </Form>
         </>

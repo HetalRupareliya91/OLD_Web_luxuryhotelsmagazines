@@ -44,7 +44,7 @@ function RoutesPage() {
       <Route exact path="/" element={<IndexPage />} />
       <Route exact path="/home" element={<IndexPage />} />
       <Route exact path="/news-search" element={<Blogs />} />
-      <Route exact path="/Blog-details/" element={<BlogDetails />} />
+      <Route exact path="/news-details/:newsId/:newsName" element={<BlogDetails />} />
       <Route exact path="/hotel-search" element={<Rooms />} />
       <Route exact path="/hotel-details/:hotelId/:country/:hotelname" element={<RoomDetails />} />
       <Route exact path="/login" element={<Login />} />
@@ -72,8 +72,8 @@ function RoutesPage() {
       <Route exact path="/kit-detail/:media_kit_id/:media_kit_name" element={<KitDetail />} />
       <Route exact path="/forgot-password" element={<ForgotPassword />} />
       <Route exact path="/edit-hotel-profile" element={<EditHotel />} />
-      <Route exact path="/magazine-details" element={<MagazineDetails />} />
-      <Route exact path="/magazine-details" element={<MagazineDetails />} />
+      <Route exact path="/magazine-details/:hotel_magazine_id/:hotel_magazine_name" element={<MagazineDetails />} />
+      {/* <Route exact path="/magazine-details" element={<MagazineDetails />} /> */}
       <Route exact path="/publish-news-pr" element={<NewsSidebar />} />
 
       <Route exact path="/userprofile/hotels" element={<AllHotels />} />

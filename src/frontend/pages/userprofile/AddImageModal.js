@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import API from '../../../utils';
 
-const AddImageHotel = ({ show, handleClose,  }) => {
+const AddImageHotel = ({ show, handleClose,hotel_id ,editFunction }) => {
     // const [imageFile, setImageFile] = useState([]);
     const [imageFiles, setImageFiles] = useState([]);
 
@@ -18,7 +18,7 @@ const AddImageHotel = ({ show, handleClose,  }) => {
         const formDataObject = new FormData();
 
         // formDataObject.append('key', selectedImageIndex);
-        formDataObject.append('hotel_id', 3);
+        formDataObject.append('hotel_id', hotel_id);
         imageFiles.forEach((file, index) => {
             formDataObject.append(`hotel_image[${index}]`, file);
         });
@@ -35,6 +35,7 @@ const AddImageHotel = ({ show, handleClose,  }) => {
 
             if (response.data.status === true) {
                 handleClose()
+                editFunction(hotel_id)
                 // setHotelImages(response.data.data.hotel_images)
                 const apiData = response.data.data;
             } else {

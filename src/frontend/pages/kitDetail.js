@@ -16,7 +16,7 @@ function KitDetail() {
 
     useEffect(() => {
         const fetchData = async () => {
-          const token = localStorage.getItem("token");
+          // const token = localStorage.getItem("token");
           try {
             // Make a POST request with the id
             const response = await axios.post(
@@ -24,7 +24,7 @@ function KitDetail() {
               { media_kit_id: media_kit_id },
               {
                 headers: {
-                  "Authorization": "Bearer " + token,
+                  Authorization: "hXuRUGsEGuhGf6KM",
                 },
               }
             );

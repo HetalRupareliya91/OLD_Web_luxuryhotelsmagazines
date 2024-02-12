@@ -31,12 +31,7 @@ function Header() {
     navigate("/login")
   };
 
-  const ClearUserDataFromLocalStorage = () => {
-    localStorage.removeItem("isLoggedIn");
-    navigate("/login")
 
-
-  };
 
   const handleLogout = async (e) => {
 
@@ -58,6 +53,8 @@ function Header() {
        if (response.data.status === true) {
         localStorage.removeItem("token");
         localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
         navigate("/login")
           
           // console.log(response.data.message);

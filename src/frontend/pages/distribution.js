@@ -44,12 +44,12 @@ function Distribution() {
     };
 
       const fetchDistributionDetails = async () => {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
     
         try {
           const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.distributionDetails}`, {
             headers: {
-              "Authorization": "Bearer " + token,
+              Authorization: "hXuRUGsEGuhGf6KM",
             }
           });
           const data = response.data;   
@@ -67,12 +67,12 @@ function Distribution() {
 
 
       const fetchDistributionMagazineDetails = async () => {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
     
         try {
           const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allDistribution}`, {
             headers: {
-              "Authorization": "Bearer " + token,
+              Authorization: "hXuRUGsEGuhGf6KM",
             }
           });
           const data = response.data;   

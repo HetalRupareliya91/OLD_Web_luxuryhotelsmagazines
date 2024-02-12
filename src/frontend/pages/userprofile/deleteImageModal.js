@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import API from '../../../utils';
 
-const DeleteModalImage = ({ show, handleClose, selectedImageIndex }) => {
+const DeleteModalImage = ({ show, handleClose, selectedImageIndex,hotel_id,editFunction }) => {
     const [imageFile, setImageFile] = useState(null);
 
     const handleFileChange = (e) => {
@@ -17,7 +17,7 @@ const DeleteModalImage = ({ show, handleClose, selectedImageIndex }) => {
         const formDataObject = new FormData();
 
         formDataObject.append('key', selectedImageIndex);
-        formDataObject.append('hotel_id', 3);
+        formDataObject.append('hotel_id', hotel_id);
         // formDataObject.append('hotel_image', imageFile);
 
         try {
@@ -33,6 +33,7 @@ const DeleteModalImage = ({ show, handleClose, selectedImageIndex }) => {
 
             if (response.data.status === true) {
                 handleClose()
+                editFunction(hotel_id)
                 // setHotelImages(response.data.data.hotel_images)
                 const apiData = response.data.data;
             } else {

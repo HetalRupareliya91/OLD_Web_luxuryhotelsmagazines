@@ -45,11 +45,11 @@ function Blogs (){
     const [apiData, setApiData] = useState([]);
 
     const fetchAllNewsData = async () => {
-      const token = localStorage.getItem("token");
+      // const token = localStorage.getItem("token");
         try {
           const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allNews}`, {
             headers: {
-               "Authorization": "Bearer " + token,
+              Authorization: "hXuRUGsEGuhGf6KM",
             }
           });
           const data = response.data;
@@ -89,13 +89,13 @@ function Blogs (){
         <Row>
   {apiData.map((news) => (
     <Col key={news.id} lg={4} md={6}>
-      <a href="/blog-details/">
+      <a href="/news-details/9/Grand Opening ceremony">
         <div className="room-item">
           <img src={Rooms4} alt="" />
           <div className="ri-text">
             <h4>{news.news_title}</h4>
             <p>{news.country}</p>
-            <a href="/blog-details/" className="primary-btn">More Details</a>
+            <a href="/news-details/9/Grand Opening ceremony" className="primary-btn">More Details</a>
           </div>
         </div>
       </a>

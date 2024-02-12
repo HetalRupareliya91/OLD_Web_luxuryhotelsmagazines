@@ -73,7 +73,7 @@ function LatestNews() {
     return (
         <section className="spad">
             <Container>
-                <h1 className="text-center mb-5">Latest News</h1>
+                <h1 className="text-center mb-5">HOTEL'S LATEST NEWS</h1>
 
                 <Slider {...sliderSettings}>
                 {newsData.map((news, index) => (

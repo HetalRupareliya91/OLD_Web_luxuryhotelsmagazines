@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import API from '../../../utils';
 
-const EditImageModal = ({ show, handleClose, selectedImageIndex }) => {
+const EditImageModal = ({ show, handleClose, selectedImageIndex,hotel_id}) => {
     const [imageFile, setImageFile] = useState(null);
 
     const handleFileChange = (e) => {
@@ -17,7 +17,7 @@ const EditImageModal = ({ show, handleClose, selectedImageIndex }) => {
         const formDataObject = new FormData();
 
         formDataObject.append('key', selectedImageIndex);
-        formDataObject.append('hotel_id', 3);
+        formDataObject.append('hotel_id', hotel_id);
         formDataObject.append('hotel_image', imageFile);
 
         try {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { Col, Container, Form, Image, Row } from "react-bootstrap";
-import { FaEnvelope, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaWhatsapp, FaTelegram, FaLinkedin, FaSnapchat, FaEye, FaHeart, FaMapMarker, FaBuilding, FaSpaceShuttle, FaHome, FaList, FaPencilAlt, FaWifi, FaTiktok, FaViber, FaFacebookMessenger, FaSwimmingPool, FaBars, FaWineBottle, FaCloudMeatball, FaTableTennis, FaRedRiver, FaRestroom, FaFootballBall, FaConciergeBell, FaFileSignature, FaGlasses, FaRProject } from 'react-icons/fa';
+import { FaEnvelope, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaWhatsapp, FaTelegram, FaLinkedin, FaSnapchat, FaEye, FaHeart, FaMapMarker, FaBuilding, FaSpaceShuttle, FaHome, FaList, FaPencilAlt, FaWifi, FaSwimmingPool, FaBars, FaWineBottle, FaCloudMeatball, FaTableTennis, FaRedRiver, FaRestroom, FaFootballBall, FaConciergeBell, FaFileSignature, FaGlasses, FaRProject } from 'react-icons/fa';
 
 
 
@@ -12,11 +12,12 @@ import Logo from "../../assets/img/logo.svg"
 // import video from "../../assets/videos/hotelVideo.mp4"
 import API from "../../utils";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { FileEarmarkCheckFill, GeoAltFill } from "react-bootstrap-icons";
 import Review from "../components/hotelReview";
 import HotelSlider from "../components/youMayLikeHotel";
 import VotingForm from "../components/votingForm";
+import ShareThisButtons from "../components/shareButtons";
 function RoomDetails() {
     const [aminitesData, setAminitesData]=useState([])
     const [facilitiesData, setFacilitiesData]=useState([])
@@ -28,7 +29,7 @@ function RoomDetails() {
 
     useEffect(() => {
         const fetchData = async () => {
-          const token = localStorage.getItem("token");
+        //   const token = localStorage.getItem("token");
           try {
             // Make a POST request with the id
             const response = await axios.post(
@@ -36,7 +37,7 @@ function RoomDetails() {
               { hotel_id: hotelId },
               {
                 headers: {
-                  "Authorization": "Bearer " + token,
+                    Authorization: "hXuRUGsEGuhGf6KM",
                 },
               }
             );
@@ -63,11 +64,11 @@ function RoomDetails() {
     
      
       const fetchAmenities = async () => {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
         try {
             const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allHotelAmenities}`, {
                 headers: {
-                    "Authorization": "Bearer " + token,
+                    Authorization: "hXuRUGsEGuhGf6KM",
                 },
             });
             const data = response.data;
@@ -89,11 +90,11 @@ function RoomDetails() {
 
 
     const fetchfacilities = async () => {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
         try {
             const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allhotelfacilities}`, {
                 headers: {
-                    "Authorization": "Bearer " + token,
+                    Authorization: "hXuRUGsEGuhGf6KM",
                 },
             });
             const data = response.data;
@@ -142,7 +143,7 @@ function RoomDetails() {
                             </div>
                         </div>
                         <div className="col-lg-4 ">
-                            <iframe width="100%" height="450" src="https://www.youtube.com/embed/D0UnqGm_miA?si=qnB4y7REmVnd-Lyv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe width="100%" height="450" src={postData.youtube_link} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
@@ -195,17 +196,16 @@ function RoomDetails() {
                                     <i aria-hidden="true"><FaList /></i> Other Facilities
                                 </div>
 
-
-                               <p dangerouslySetInnerHTML={{ __html: postData.other_facilities }} />
+                           <p dangerouslySetInnerHTML={{ __html: postData.other_facilities }} />
 
                             </div>
                             <div className="rd-text">
                                 <div className="rd-title">
                                     <i aria-hidden="true"><FaPencilAlt /></i>  Additional information
                                 </div>
+                                
 
-
-                                <p className="f-para">{postData?.aditional_information}</p>
+                                <p dangerouslySetInnerHTML={{ __html: postData.aditional_information }} />
 
                             </div>
 
@@ -214,7 +214,9 @@ function RoomDetails() {
                                     <i className="fa fa-share-alt" aria-hidden="true"></i> Share This
                                 </div>
 
-                                <div className="row">
+                                <ShareThisButtons/>
+
+                                {/* <div className="row">
                                     <div className="col-lg-8"><p className="f-para sharethis mt-2">
                                         <i aria-hidden="true"><FaFacebook /></i>
                                         <i aria-hidden="true"><FaInstagram /></i>
@@ -230,7 +232,7 @@ function RoomDetails() {
                                         
                                     </p></div>
                     
-                                </div>
+                                </div> */}
 
 
                             </div>
@@ -248,8 +250,8 @@ function RoomDetails() {
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29759.049789885605!2d72.75953112132576!3d21.196876856223426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c351ceae251%3A0x1d35b30f855a2c36!2sAdajan%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1703916461865!5m2!1sen!2sin" width="100%" height="450" style={{ border: "0", allowfullscreen: "", loading: "lazy", referrerpolicy: "no-referrer-when-downgrade" }}></iframe>
                                 </div>
                                 <div className="row  ">
-                                    <div className="col-lg-6 mt-3 text-center"><button className=" btn-default w-100">Book Online</button></div>
-                                    <div className="col-lg-6 mt-3 text-center"><button className=" btn-default w-100">Visit Website</button>
+                                    <div className="col-lg-6 mt-3 text-center"><button className=" btn-default w-100"><NavLink to={postData.website}>Book Online </NavLink></button></div>
+                                    <div className="col-lg-6 mt-3 text-center"><button className=" btn-default w-100"><NavLink to={postData.website}>Visit Website </NavLink></button>
 
                                     </div>
                                     <div className="col-lg-12 mt-3 text-center"><a href="/pricing-plan"><button className=" btn-default w-100">Claim Listing</button></a>

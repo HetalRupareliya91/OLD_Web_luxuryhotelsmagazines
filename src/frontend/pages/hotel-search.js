@@ -17,11 +17,11 @@ function HotelSearch(){
     const [apiData, setApiData] = useState([]);
 
     const fetchAllHotels = async () => {
-      const token = localStorage.getItem("token");
+      // const token = localStorage.getItem("token");
         try {
           const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allHotels}`, {
             headers: {
-               "Authorization": "Bearer " + token,
+              Authorization: "hXuRUGsEGuhGf6KM",
             }
           });
           const data = response.data;
@@ -102,13 +102,13 @@ function HotelSearch(){
 {apiData.map((hotel) => (
 
   <Col key={hotel.id} lg={4} md={6}>
-    <a href={`/hotel-details/9/kuwait/symphony-style-hotel`}>
+    <a href={`/hotel-details/${hotel.id}/${hotel.country}/${hotel.hotel_title}`}>
       <div className="room-item">
-        <img src={Rooms5} alt="" />
+        <img src={hotel.hotel_images[0]} alt="" />
         <div className="ri-text">
           <h4>{hotel.hotel_title}</h4>
           <p>{hotel.country}</p>
-          <a href={`/hotel-details/9/kuwait/symphony-style-hotel`} className="primary-btn">More Details</a>
+          <a href={`/hotel-details/${hotel.id}/${hotel.country}/${hotel.hotel_title}`} className="primary-btn">More Details</a>
         </div>
       </div>
     </a>

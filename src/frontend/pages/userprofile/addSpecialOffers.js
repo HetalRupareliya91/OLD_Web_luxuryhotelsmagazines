@@ -377,7 +377,7 @@ function SpecialOffers() {
         <Row className=" mb-3">
          
           <Col lg={6}>
-            <button type="submit" >Add News</button>
+            <button type="submit" >Add Special Offers</button>
           </Col>
         </Row>
         <div className="text-center">

@@ -10,7 +10,7 @@ function AboutUsPage() {
     const [apiData,setApiData]=useState([])
 
     const fetchDetails = async (e) => {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
         if (e) e.preventDefault();
 
         try {
@@ -18,7 +18,7 @@ function AboutUsPage() {
                 `${API.BASE_URL}${API.ENDPOINTS.aboutUs}`,
                 {
                     headers: {
-                        "Authorization": "Bearer " + token,
+                        Authorization: "hXuRUGsEGuhGf6KM",
                     },
                 }
             );

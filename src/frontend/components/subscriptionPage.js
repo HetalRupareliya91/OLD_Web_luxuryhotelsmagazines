@@ -23,7 +23,7 @@ function SubsriptionPage(){
         <div className="w3-sidebar w3-bar-block  w3-card">
           <button className={`w3-bar-item w3-button tablink ${activeTab === 'Zoom' ? 'w3-red' : ''}`} onClick={() => openLink('Zoom')}><i className="fa fa-globe" aria-hidden="true"></i> User Subscription</button>
           <button className={`w3-bar-item w3-button tablink ${activeTab === 'Zoom2' ? 'w3-red' : ''}`} onClick={() => openLink('Zoom2')}><i className="fa fa-globe" aria-hidden="true"></i> Hotel Subscription</button>
-          <button className={`w3-bar-item w3-button tablink ${activeTab === 'Zoom3' ? 'w3-red' : ''}`} onClick={() => openLink('Zoom3')}><i className="fa fa-globe" aria-hidden="true"></i> Blog Subscription</button>
+          <button className={`w3-bar-item w3-button tablink ${activeTab === 'Zoom3' ? 'w3-red' : ''}`} onClick={() => openLink('Zoom3')}><i className="fa fa-globe" aria-hidden="true"></i> News Subscription</button>
         </div>
         <div className="zoom-content">
           <div id="Zoom" className={`w3-container city w3-animate-zoom p-5 ${activeTab === 'Zoom' ? '' : 'hidden'}`}>

@@ -127,7 +127,7 @@ import { GeoAltFill } from "react-bootstrap-icons";
                     <div className="col-lg-4">
                     {/* <h4 >Categories</h4>  */}
                     <div className="text-center">
-                    <h4 className="mb-3">CATEGARIES</h4></div>
+                    <h4 className="mb-3">CATEGORIES</h4></div>
                     <div className="category-div">
                        
                         <Row className="mt-2 mb-2">

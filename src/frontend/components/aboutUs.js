@@ -78,7 +78,7 @@ function AboutUs() {
       });
       const responseData = response.data;
      
-     console.log("fdhfdihgihgfiu",responseData)
+    //  console.log("fdhfdihgihgfiu",responseData)
       if (responseData.status === true) {
       setHotels(responseData.data.hotels );
 

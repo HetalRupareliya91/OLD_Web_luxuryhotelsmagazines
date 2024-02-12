@@ -19,6 +19,7 @@ import DeleteModalImage from "./deleteImageModal";
 import AddImageHotel from "./AddImageModal";
 function EditHotel({ hotel_id, onClose }) {
     console.log("Hotel ID:", hotel_id);
+    
     const user_id = localStorage.getItem("userId");
     const [value, setValue] = useState('')
     const options = useMemo(() => CountryList().getData(), [])
@@ -154,12 +155,6 @@ function EditHotel({ hotel_id, onClose }) {
         contact1: { name: "", email: "", contactInformation: "" },
         contact2: { name: "", email: "", contactInformation: "" },
         contact3: { name: "", email: "", contactInformation: "" },
-        offerTitle: "",
-        phone_number: "",
-        offerValidFrom: "",
-        offerValidTo: "",
-        description: "",
-        redeemLink: "",
         addHotelToHomePageLatestNews: "",
         addHotelToHomePageHotelLatestNews: "",
         addSpecialOfferToHomepage: "",
@@ -220,7 +215,7 @@ function EditHotel({ hotel_id, onClose }) {
         e.preventDefault();
         const formDataObject = new FormData();
         
-        formDataObject.append('hotel_id', 1);
+        formDataObject.append('hotel_id', hotel_id);
         formDataObject.append('user_id', user_id);
         formDataObject.append('hotel_title', formData.hotelName);
         formDataObject.append('website', formData.hotelWebsite);
@@ -251,13 +246,6 @@ function EditHotel({ hotel_id, onClose }) {
             formDataObject.append(`email[${i}]`, formData[`contact${i}`].email);
             formDataObject.append(`contact[${i}]`, formData[`contact${i}`].contactInformation);
         }
-
-        formDataObject.append('offer_title', formData.offerTitle);
-        formDataObject.append('phone_number', formData.phone_number);
-        formDataObject.append('from_date', formData.offerValidFrom);
-        formDataObject.append('to_date', formData.offerValidTo);
-        formDataObject.append('description', formData.description);
-        formDataObject.append('redeem_link', formData.redeemLink);
         formDataObject.append('home_page_latest_news', formData.addHotelToHomePageLatestNews);
         formDataObject.append('hotel_latest_news', formData.addHotelToHomePageHotelLatestNews);
         formDataObject.append('special_offer_to_homepage', formData.addSpecialOfferToHomepage);
@@ -326,11 +314,11 @@ function EditHotel({ hotel_id, onClose }) {
     });
 
     const fetchAmenities = async () => {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
         try {
             const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allHotelAmenities}`, {
                 headers: {
-                    "Authorization": "Bearer " + token,
+                    Authorization: "hXuRUGsEGuhGf6KM",
                 },
             });
             const data = response.data;
@@ -356,11 +344,11 @@ function EditHotel({ hotel_id, onClose }) {
 
 
     const fetchfacilities = async () => {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
         try {
             const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allhotelfacilities}`, {
                 headers: {
-                    "Authorization": "Bearer " + token,
+                    Authorization: "hXuRUGsEGuhGf6KM",
                 },
             });
             const data = response.data;
@@ -643,7 +631,7 @@ function EditHotel({ hotel_id, onClose }) {
     
 
       const handeFetchData = async (hotel_id) => {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
         try {
           const response = await axios.post(
             `${API.BASE_URL}${API.ENDPOINTS.editHotel}`,
@@ -653,7 +641,7 @@ function EditHotel({ hotel_id, onClose }) {
             },
             {
               headers: {
-                Authorization: "Bearer " + token,
+                Authorization: "hXuRUGsEGuhGf6KM",
               },
             }
           );
@@ -760,8 +748,8 @@ function EditHotel({ hotel_id, onClose }) {
                     <div className="mb-3">
                 {currentStep === 1 && <h4 className="stepform-heading">Hotel Details</h4>}
                 {currentStep === 2 && <h4 className="stepform-heading">Hotel Contacts</h4>}
-                {currentStep === 3 && <h4 className="stepform-heading">Special Offer</h4>}
-                {currentStep === 4 && <h4 className="stepform-heading">Home Page Addon</h4>}
+                {currentStep === 3 && <h4 className="stepform-heading">Home Page Addon</h4>}
+                {/* {currentStep === 4 && <h4 className="stepform-heading"></h4>} */}
 
             </div>
             <ProgressBar now={progress} label={`${progress}%`} className="ProgressBar h-25 mb-3" />
@@ -1160,59 +1148,137 @@ function EditHotel({ hotel_id, onClose }) {
                         </button>
                     </div>
                 </div>}
-                {currentStep === 3 && <div>
+                {currentStep === 3 &&
+                //  <div>
+                //     <Row className='mb-3'>
+                //         <Col lg={6}>
+                //             <input className="sidebar-input" type="text" id="offerTitle" name="offerTitle" placeholder="Offer Title" value={formData.offerTitle}
+                //                 onChange={handleInputChange} required />
+                //         </Col>
+                //         <Col lg={6}>
+                //             <input className="sidebar-input" type="text" id="phone_number" name="phone_number" placeholder="Contact Phone Nunmber" value={formData.phone_number}
+                //                 onChange={handleInputChange} required />
+                //         </Col>
+                //     </Row>
+
+                //     <Row className='mb-3'>
+                //         <Col lg={6}>
+                //             <input className="sidebar-input" type="date" id="offerValidFrom" name="offerValidFrom" value={formData.offerValidFrom}
+                //                 onChange={handleInputChange} required />
+                //         </Col>
+                //         <Col lg={6}>
+                //             <input className="sidebar-input" type="date" id="offerValidTo" name="offerValidTo" value={formData.offerValidTo}
+                //                 onChange={handleInputChange} required />
+                //         </Col>
+                //     </Row>
+                //     <Row className='mb-3'>
+                //         <Col lg={12}>
+                           
+                //             <label>Description</label>
+                //             <Editor
+                //                 editorState={descriptionEditorState}
+                //                 onEditorStateChange={handleDescriptionEditorState}
+                //                 value={formData.description}
+                //                 onChange={handleInputChange}
+                //             />
+
+                //         </Col>
+                //     </Row>
+                //     <Row className='mb-3'>
+                //         <Col lg={12}>
+                //             <input type="text" id='redeemLink' name='redeemLink' className="sidebar-input" placeholder='Redeem Link' value={formData.redeemLink}
+                //                 onChange={handleInputChange}
+                //             />
+                //         </Col>
+                //     </Row>
+                //     <div className="text-end">
+                //         <button onClick={prevStep} >
+                //             Previous
+                //         </button>
+                //         <button onClick={nextStep} >
+                //             next
+                //         </button>
+                //     </div>
+                // </div>}
+                <div>
                     <Row className='mb-3'>
-                        <Col lg={6}>
-                            <input className="sidebar-input" type="text" id="offerTitle" name="offerTitle" placeholder="Offer Title" value={formData.offerTitle}
-                                onChange={handleInputChange} required />
-                        </Col>
-                        <Col lg={6}>
-                            <input className="sidebar-input" type="text" id="phone_number" name="phone_number" placeholder="Contact Phone Nunmber" value={formData.phone_number}
-                                onChange={handleInputChange} required />
+                        <Col>
+                            <h6>
+                                Add Hotel to The Home Page Latest News?
+                            </h6>
+                            <div className="select-option">
+                                <select id="addHotelToHomePageLatestNews" className="sidebar-input" name="addHotelToHomePageLatestNews" value={formData.addHotelToHomePageLatestNews}
+                                    onChange={handleInputChange}>
+                                    <option value="Kyrgyzstan">No</option>
+                                    <option value="Display For 1 Week (+10 Euro)">Display For 1 Week (+10 Euro)</option>
+                                    <option value="">Display For 1 Month (+25 Euro)</option>
+
+                                </select>
+                            </div>
                         </Col>
                     </Row>
 
                     <Row className='mb-3'>
-                        <Col lg={6}>
-                            <input className="sidebar-input" type="date" id="offerValidFrom" name="offerValidFrom" value={formData.offerValidFrom}
-                                onChange={handleInputChange} required />
-                        </Col>
-                        <Col lg={6}>
-                            <input className="sidebar-input" type="date" id="offerValidTo" name="offerValidTo" value={formData.offerValidTo}
-                                onChange={handleInputChange} required />
-                        </Col>
-                    </Row>
-                    <Row className='mb-3'>
-                        <Col lg={12}>
-                            {/* <textarea className="sidebar-input" rows={4} placeholder="Description" name="description" value={formData.description}
-                            onChange={handleInputChange} required /> */}
-                            <label>Description</label>
-                            <Editor
-                                editorState={descriptionEditorState}
-                                onEditorStateChange={handleDescriptionEditorState}
-                                value={formData.description}
-                                onChange={handleInputChange}
-                            />
+                        <Col>
+                            <h6>
+                                Add Hotel to The Home Page Hotel Latest News?
+                            </h6>
+                            <div className="select-option">
+                                <select id="addHotelToHomePageHotelLatestNews" className="sidebar-input" name="addHotelToHomePageHotelLatestNews" value={formData.addHotelToHomePageHotelLatestNews}
+                                    onChange={handleInputChange}
+                                >
+                                    <option value="No">No</option>
+                                    <option value="DisplayFor1Week(+10 Euro)">Display For 1 Week (+10 Euro)</option>
+                                    <option value="DisplayFor1Month(+25 Euro)">Display For 1 Month (+25 Euro)</option>
 
+                                </select>
+                            </div>
                         </Col>
                     </Row>
                     <Row className='mb-3'>
-                        <Col lg={12}>
-                            <input type="text" id='redeemLink' name='redeemLink' className="sidebar-input" placeholder='Redeem Link' value={formData.redeemLink}
-                                onChange={handleInputChange}
-                            />
+                        <Col>
+                            <h6 className="third-child">
+                                Add Special Offer to The Homepage?
+                            </h6>
+                            <div className="select-option">
+                                <select id="addSpecialOfferToHomepage" className="sidebar-input" name="addSpecialOfferToHomepage" value={formData.addSpecialOfferToHomepage}
+                                    onChange={handleInputChange}>
+                                    <option value="No">No</option>
+                                    <option value="DisplayFor1Week(+10 Euro)">Display For 1 Week (+10 Euro)</option>
+                                    <option value="DisplayFor1Month(+25 Euro)">Display For 1 Month (+25 Euro)</option>
+
+                                </select>
+                            </div>
                         </Col>
                     </Row>
+                    <Row className='mb-3'>
+                        <Col>
+                            <h6>
+                                Add hotel to The Home Page Recently Added Hotels?
+                            </h6>
+                            <div className="select-option">
+                                <select id="addHotelToHomePageSpotlight" className="sidebar-input" name="addHotelToHomePageSpotlight" value={formData.addHotelToHomePageSpotlight}
+                                    onChange={handleInputChange}
+                                >
+                                    <option value="No">No</option>
+                                    <option value="DisplayFor1Week(+10 Euro)">Display For 1 Week (+10 Euro)</option>
+                                    <option value="DisplayFor1Month(+25 Euro)">Display For 1 Month (+25 Euro)</option>
+
+                                </select>
+                            </div>
+                        </Col>
+                    </Row>
+
                     <div className="text-end">
                         <button onClick={prevStep} >
                             Previous
                         </button>
-                        <button onClick={nextStep} >
-                            next
+                        <button onClick={handleUpdateHotel}>
+                            Submit
                         </button>
                     </div>
                 </div>}
-                {currentStep === 4 && <div>
+                {/* {currentStep === 4 && <div>
                     <Row className='mb-3'>
                         <Col>
                             <h6>
@@ -1289,7 +1355,7 @@ function EditHotel({ hotel_id, onClose }) {
                             Submit
                         </button>
                     </div>
-                </div>}
+                </div>} */}
 
             </Form>
 
@@ -1304,17 +1370,24 @@ function EditHotel({ hotel_id, onClose }) {
         show={showEditModal}
         handleClose={handleCloseModal}
         selectedImageIndex={selectedImageIndex}
+        editFunction={handeFetchData}
+        hotel_id={hotel_id}
       />
       
       <DeleteModalImage
         show={showDeleteModal}
         handleClose={handleCloseModal}
         selectedImageIndex={selectedImageIndex}
+        editFunction={handeFetchData}
+        hotel_id={hotel_id}
+
       />
         <AddImageHotel
         show={showAddImageModal}
         handleClose={handleCloseModal}
         selectedImageIndex={selectedImageIndex}
+        editFunction={handeFetchData}
+        hotel_id={hotel_id}
       />
         </>
     )

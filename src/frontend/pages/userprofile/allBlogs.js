@@ -45,10 +45,7 @@ function AllBlogs() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  const handleOpenModal = (news) => {
-    setnewsId(news.id)
-    setShowModal(true);
-  };
+ 
   const handleHotelEditorChange = (editorState) => {
     setHotelEditorState(editorState);
     const contentState = editorState.getCurrentContent();
@@ -88,11 +85,11 @@ function AllBlogs() {
   
 
   const fetchAllNewsData = async () => {
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
     try {
       const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allNews}`, {
         headers: {
-          "Authorization": "Bearer " + token,
+          Authorization: "hXuRUGsEGuhGf6KM",
         }
       });
       const data = response.data;
@@ -128,7 +125,7 @@ function AllBlogs() {
   };
   const handleViewButtonClick = (news) => {
     // Navigate to the room-details page with the news id in the URL
-    navigate(`/blog-details/${news.id}`);
+    navigate(`/news-details/${news.id}`);
   };
 
   const formatDate = (dateString) => {
@@ -225,7 +222,6 @@ function AllBlogs() {
                   <div className='d-flex all-hotel-btns'>
                     <button className='me-1 btn-default'onClick={() => handleViewButtonClick(news)}>View</button>
                     <button className='me-1 btn-default'  onClick={() => handleEditButtonClick(news)}>Edit</button>
-                    <button className='me-1 btn-default' onClick={() => handleOpenModal(news)}>Delete</button>
                   </div>
                 </Col>
               </Row>

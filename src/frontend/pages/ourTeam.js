@@ -71,8 +71,8 @@ function OurTeam() {
                     {
                         headers: {
 
-                            "Authorization": "Bearer " + token,
-                            // Authorization: "hXuRUGsEGuhGf6KM",
+                            // "Authorization": "Bearer " + token,
+                            Authorization: "hXuRUGsEGuhGf6KM",
                         },
                     }
                 );

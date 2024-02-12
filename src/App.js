@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <RoutesPage />
-      {isModalVisible && <ModalComponent />}
+      {/* {isModalVisible && <ModalComponent />} */}
     </>
   );
 }

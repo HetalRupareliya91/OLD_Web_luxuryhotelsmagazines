@@ -64,6 +64,7 @@ addMultipleImage:"add_multiple_images_hotels",
 
     // magazine
     allMagazine:"all-hotel-magazines",
+    editHotelMagazine:"edit-hotel-magazines",
 
     // newsletter
     newsLetter:"CreateNewsLetter",

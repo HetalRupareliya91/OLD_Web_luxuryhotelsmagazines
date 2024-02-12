@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaBlog, FaDollarSign, FaHotel, FaPowerOff, FaUser } from 'react-icons/fa';
+import { FaBlog, FaDollarSign, FaHotel, FaPowerOff, FaUser, FaUserCircle } from 'react-icons/fa';
 import News1 from '../../assets/img/news1.jpg'
 
 import { Col, Image, Nav, NavItem, NavLink, Row ,Card,CardBody} from 'react-bootstrap';
@@ -15,7 +15,8 @@ import axios from "axios";
 import SpecialOffers from "../pages/userprofile/addSpecialOffers";
 function UserSidebar (){
   const [hotelid, setHotelId] = useState(null);
-
+  
+  const userName = localStorage.getItem("userName");
   const [showEditHotelForm, setShowEditHotelForm] = useState(false);
 
     const navigate = useNavigate()
@@ -48,6 +49,8 @@ function UserSidebar (){
            if (response.data.status === true) {
             localStorage.removeItem("token");
             localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("userName");
+            localStorage.removeItem("userId");
             navigate("/login")
               
               // console.log(response.data.message);
@@ -81,9 +84,10 @@ function UserSidebar (){
         <div className="sidebar-sticky desktopmenu">
 
           <div className="text-center">
-            <Image id="userImage" src={News1} alt="User Image" />
-            <h5 className="text-light">Adam Milne</h5>
-            <h6 className="text-light">Traveller</h6>
+            {/* <Image id="userImage" src={News1} alt="User Image" /> */}
+            <FaUserCircle id="userImage"/>
+            <h5 className="text-light">{userName}</h5>
+            {/* <h6 className="text-light">Traveller</h6> */}
           </div>
           <hr className="sidebar-line" />
           <Nav className="flex-column">

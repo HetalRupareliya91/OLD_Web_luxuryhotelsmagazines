@@ -30,7 +30,7 @@ function AllHotels( { onEditClick }){
     try {
       const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allHotels}`, {
         headers: {
-          "Authorization": "Bearer " + token,
+          Authorization: "hXuRUGsEGuhGf6KM",
         }
       });
       const data = response.data;

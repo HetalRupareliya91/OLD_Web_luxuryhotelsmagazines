@@ -54,11 +54,11 @@ function HotelEditions(){
 
   
   const fetchMagazines = async () => {
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
       try {
         const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allMagazine}`, {
           headers: {
-             "Authorization": "Bearer " + token,
+            Authorization: "hXuRUGsEGuhGf6KM",
           }
         });
         const data = response.data;
@@ -115,7 +115,7 @@ Each Edition Rotation Program: Your hotel becomes one of the 40 most luxurious h
       {magazineData.map(magazine => (
         <Col lg={3} key={magazine.id}>
           <div className="magazineContent1">
-            <Link to="/magazine-details">
+            <Link to={`/magazine-details/${magazine.id}/${magazine.title}`}>
               <Image src={magazine.thumbnail} alt={magazine.title} />
               <p>{magazine.title}</p>
             </Link>
