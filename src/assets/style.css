@@ -122,7 +122,7 @@ ol {
 .section-title {
 	text-align: center;
 	margin-bottom: 22px;
-	width: 75%;
+	width: 450px;
 }
 
 .section-title span {
@@ -610,7 +610,7 @@ ol {
 .hero-section {
 	position: relative;
 	/* padding-top: 60px; */
-	padding-bottom: 550px;
+	padding-bottom: 490px;
 }
 
 .hero-section .container {
@@ -649,7 +649,7 @@ ol {
 	position: relative;
 	margin-top: 20px;
 	z-index: 10;
-	border: 1px solid #1a151538;
+	border: 2px solid #b5191f;
 	/* box-shadow: 0px 0px 35px -12px grey; */
 }
 
@@ -841,11 +841,11 @@ ol {
 .services-section {
 	border-top: 1px solid #e5e5e5;
 
-	padding-top: 60px;
-    padding-bottom: 60px;
-    background-image: linear-gradient(to right, #f2c5b4, #eec3a9, #f2c078, #f5bb4f);
-    background-size: cover;
-    background-repeat: no-repeat;
+	/* padding-top: 60px; */
+    padding-bottom: 80px;
+    /* background-image: linear-gradient(to right, #f2c5b4, #eec3a9, #f2c078, #f5bb4f); */
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
 }
 
 .services-section .section-title {
@@ -3238,7 +3238,7 @@ padding: 0px 0px !important;
 		padding: 1px 1px 1px 1px;
 		border-radius: 24px;
 		position: relative;
-		margin-top: 230px;
+		margin-top: 70px;
 		z-index: 10;
 		box-shadow: 0px 0px 35px -12px grey;
 	}
@@ -5197,6 +5197,7 @@ form {
 	padding: 10px;
 }
 
+
 .exclusive-deals h6 {
 	color: #846316;
 	font-weight: 600;
@@ -5293,7 +5294,7 @@ form {
 .video-background {
 	position: relative;
 	width: 100%;
-	height: 95vh;
+	height: 530px;
 	overflow: hidden;
 }
 
@@ -5306,10 +5307,11 @@ form {
 
 .text-overlay {
 	position: absolute;
-	top: 15%;
+	/* top: 15%; */
 	left: 8%;
 	color: #ffffff !important;
 	font-size: 18px;
+	padding: 40px 0px;
 
 }
 
@@ -5524,7 +5526,6 @@ form {
 .adv-container .flip-box-inner{
 	position: relative;
 	width: 100%;
-	/* min-height: 400px; */
 	text-align: center;
 	transition: transform 0.8s;
 	transform-style: preserve-3d;

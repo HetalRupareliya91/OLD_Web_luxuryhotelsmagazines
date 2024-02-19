@@ -1,6 +1,8 @@
 import React from "react";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import { Parallax } from "react-parallax";
+import Hero3 from "../../../assets/img/hero/hero-3.jpg";
+
 import { FaPhoneSquare, FaStar } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -8,7 +10,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Magazines1 from "../../../assets/img/magazines/magazines.webp"
 import Magazines2 from "../../../assets/img/magazines/magazines2.webp"
 import Magazines3 from "../../../assets/img/magazines/magazines3.webp"
-import Hero3 from "../../../assets/img/hero/hero-3.jpg";
 import textureimage from "../../../assets/img/redtexure.jpg"
 import { NavLink } from "react-router-dom";
 

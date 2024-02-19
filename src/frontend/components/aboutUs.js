@@ -173,8 +173,7 @@ function AboutUs() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-        </div>
-        <Container>
+               <Container>
           <div className="text-overlay">
             <Row >
               <Col lg={6} >
@@ -229,6 +228,8 @@ function AboutUs() {
           </Row> */}
           </div>
         </Container>
+        </div>
+   
       </section>
 
       {/* <Parallax blur={5} bgImage={HeroImage} bgImageAlt="the cat" strength={350}>
