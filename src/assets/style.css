@@ -6797,7 +6797,7 @@ height: 50px;
 }
 .topics {
     display: flex;
-	flex-wrap: wrap;
+	flex-wrap: wrap; 
 }
 .text-heading-button {
     margin-top: 95px!important;
