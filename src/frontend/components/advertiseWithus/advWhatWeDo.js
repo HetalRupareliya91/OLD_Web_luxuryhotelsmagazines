@@ -12,7 +12,7 @@ import Magazines4 from "../../../assets/img/magazines/magazines4.webp"
 import Hero3 from "../../../assets/img/hero/hero-3.jpg";
 import magazineImage from "../../../assets/img/advertise/advmagazineimg.png"
 import { NavLink } from "react-router-dom";
-function Advertise() {
+function Advertise() { 
     const sliderSettings = {
         dots: true,
         infinite: true,

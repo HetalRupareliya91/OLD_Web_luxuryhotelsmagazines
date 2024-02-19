@@ -36,5 +36,4 @@ function NewFor() {
         </section>
     );
 }
-
 export default NewFor;
