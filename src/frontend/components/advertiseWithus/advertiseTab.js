@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Logo from '../../../assets/img/logo.svg';
 import Hero3 from "../../../assets/img/hero/hero-3.jpg";
 import { Parallax } from "react-parallax";
-
+// AdvertiseTab
 function AdvertiseTabs() {
   const [activeTab, setActiveTab] = useState("Zoom");
 
