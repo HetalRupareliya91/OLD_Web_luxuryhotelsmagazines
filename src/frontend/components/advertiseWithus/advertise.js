@@ -5,7 +5,7 @@ import Hero3 from "../../../assets/img/hero/hero-3.jpg";
 
 import { FaPhoneSquare, FaStar } from "react-icons/fa";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Magazines1 from "../../../assets/img/magazines/magazines.webp"
 import Magazines2 from "../../../assets/img/magazines/magazines2.webp"

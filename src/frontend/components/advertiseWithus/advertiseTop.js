@@ -5,7 +5,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import { FaBook, FaBookOpen, FaHandshake, FaLaptopMedical, FaLeaf, FaQuestionCircle, FaTrophy } from "react-icons/fa";
 import HeroImage3 from "../../../assets/img/hero/hero-1.jpg"
 function AdvertiseTop() {
-
     return (
         <Parallax blur={0} bgImage={HeroImage3} bgImageAlt="the cat" strength={300}>
             <section className="advertise-top-section" >
