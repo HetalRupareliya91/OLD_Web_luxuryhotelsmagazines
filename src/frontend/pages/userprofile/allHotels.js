@@ -7,29 +7,32 @@ import API from "../../../utils";
 import { useNavigate } from "react-router-dom";
 
 function AllHotels( { onEditClick }){
-  
+  const userId = localStorage.getItem("userId");
+
   const [selectedHotel, setSelectedHotel] = useState(null);
   const [showEditForm, setShowEditForm] = useState(false);
 
   const navigate = useNavigate();
-  const [apiData, setApiData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [apiData, setApiData] = useState("");
   const [postsPerPage] = useState(2);
   const [showModal, setShowModal] = useState(false);
   const[hotel_id, setHotelId]=useState("")
 
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+
   
 
   const fetchAllHotels = async () => {
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
     // console.log(token);
     try {
-      const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allHotels}`, {
+      const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.userHotel}`, 
+      {
+        user_id:userId,
+      },
+      {
         headers: {
+          // "Authorization": "Bearer " + token,
           Authorization: "hXuRUGsEGuhGf6KM",
         }
       });
@@ -49,10 +52,7 @@ function AllHotels( { onEditClick }){
     fetchAllHotels();
   }, []);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = apiData.slice(indexOfFirstPost, indexOfLastPost);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
   // const handleViewClick = async (hotel) => {
   //   try {
@@ -104,57 +104,45 @@ function AllHotels( { onEditClick }){
   };
     return(
         <>
-        {currentPosts.map((hotel) => (
+     
       <Row  className='hotel-profile-div mt-4'>
+      {apiData && (
+         <>
+         
+         
         <Col lg={4}>
           <div className='image-div'>
-            <Image src={News1} alt={`Hotel `} />
+            <Image src={apiData.hotel_images[0]} alt={`Hotel `} />
           </div>
         </Col>
 
         <Col lg={8}>
           <div className='details-div mt-4'>
             <div className='mb-3'>
-              <h4>{hotel.hotel_title}</h4>
-              <h6>Created at: {formatDate(hotel.created_at)}</h6>
-              <h5>Package expiry: {formatDate(hotel.created_at)}</h5>
+              <h4>{apiData.hotel_title}</h4>
+              <h6>Created at: {formatDate(apiData.created_at)}</h6>
+              <h5>Package expiry: {formatDate(apiData.created_at)}</h5>
             </div>
             <Row className='mt-5'>
               <Col lg={8} className='mt-2'>
                 <div className='time-left '>
-                  <span>Time Left: {formatDate(hotel.created_at)}</span>
+                  <span>Time Left: {formatDate(apiData.created_at)}</span>
                 </div>
               </Col>
-              <Col lg={4} className='mt-2'>
+              <Col lg={4} className='mt-2'> 
                 <div className='d-flex all-hotel-btns'>
-                  <button className='me-1 btn-default' onClick={() => handleViewButtonClick(hotel)}>View</button>
-                  <button className='me-1 btn-default' onClick={() => handleEditButtonClick(hotel)} >Edit</button>
+                  <button className='me-1 btn-default' onClick={() => handleViewButtonClick(apiData)}>View</button>
+                  <button className='me-1 btn-default' onClick={() => handleEditButtonClick(apiData)} >Edit</button>
                 </div>
               </Col>
             </Row>
           </div>
         </Col>
+        </>
+          )}
       </Row>
-     ))} 
-    
-    
-      <div className="col-lg-12">
-        <div className="room-pagination">
-          {apiData.length > postsPerPage &&
-            Array.from({ length: Math.ceil(apiData.length / postsPerPage) }).map((_, index) => (
-              <a
-                key={index}
-               
-                className={index + 1 === currentPage ? 'active' : ''}
-                onClick={() => paginate(index + 1)}
-              >
-                {index + 1}
-              </a>
-            ))}
-          {/* Example: Next page button */}
-          <a onClick={() => paginate(currentPage + 1)}>Next <i className="fa fa-long-arrow-right"></i></a>
-        </div>
-      </div>
+   
+   
      
 
       </>

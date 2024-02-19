@@ -14,9 +14,15 @@ import API from "../../utils";
 
 function Signup() {
     const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
+    const [responseMessage , setResponseMessgae] = useState("");
+    const [userId, setUserId] = useState(null);
 
     const [step, setStep] = useState(1);
     const [progress, setProgress] = useState(0);
+
+    const [otpError, setOtpError] = useState("");
+
     const [otpInputs, setOtpInputs] = useState(["", "", "", "", "", ""]);
     const otpRefs = useRef(Array(6).fill(null).map(() => React.createRef()));
     const nextStep = (e) => {
@@ -25,6 +31,44 @@ function Signup() {
         updateProgress(); 
     };
 
+
+    const handleOTPSubmit = async () => {
+        navigate("/login")
+        // const isOtpValid = otpInputs.every((value) => /^\d+$/.test(value) && value.length === 1);
+    
+        // if (!isOtpValid) {
+        //   setOtpError("Invalid OTP format");
+        //   return;
+        // }
+        // try {
+    
+        //   const formDataObject = new FormData();
+        //   formDataObject.append('user_id', userId);
+        //   formDataObject.append('new_otp', otpInputs.join(""));
+        //   const response = await axios.post(
+        //     `${API.BASE_URL}${API.ENDPOINTS.varifyOtp}`,
+        //     formDataObject,
+    
+        //     {
+        //       headers: {
+        //         Authorization: "hXuRUGsEGuhGf6KM",
+        //       },
+        //     }
+        //   );
+    
+        //   if (response.data.status === true) {
+            
+        //     // setShowOTPForm(false);
+        //     // setShowPasswordForm(true);
+        //   } else {
+        //     console.error("API call failed:", response.data.message);
+        //   }
+        // } catch (error) {
+        //   // Handle axios error (e.g., network error)
+        //   console.error("Error:", error.message);
+        // }
+      };
+    
 
     const handleOtpInputChange = (index, value) => {
         const newOtpInputs = [...otpInputs];
@@ -42,7 +86,6 @@ function Signup() {
         updateProgress(); 
     };
 
-    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: "",
@@ -73,6 +116,8 @@ function Signup() {
             );
 
             if (response.data.status === true) {
+                setResponseMessgae(response.data.message)
+                setUserId(response.data.data.id);
                 nextStep();
 
             } else {
@@ -252,6 +297,13 @@ function Signup() {
                                     {errorMessage && (
                     <div style={{ color: "red", marginTop: "10px" }}>
                         {errorMessage}
+
+                        
+                    </div>
+                )}
+                   {responseMessage && (
+                    <div style={{ color: "green", marginTop: "10px" }}>
+                        {responseMessage}
                     </div>
                 )}
                                             </div>
@@ -359,10 +411,10 @@ function Signup() {
                                 {step > 1 && (
                                     <>
                                         <div className="float-end">
-                                            <button onClick={(e) => prevStep(e)} >
+                                            <button onClick={(e) => prevStep(e)} className="me-3" >
                                                 Previous
                                             </button>
-                                            <button onClick={(e) => nextStep(e)} >
+                                            <button onClick={(e) => handleOTPSubmit(e)} >
                                                 Submit
                                             </button>
                                         </div>
@@ -381,193 +433,7 @@ function Signup() {
                     </div></Col>
                 </Row>
             </Container>
-            <section className="signup_numbers">
-                <Container>
-                    <h2 className="pt30"> LuxuryHotelsMagazines.com in numbers</h2>
-                    <Row className="py-5">
-                        <Col lg={3}>
-                            <div>
-                                <h1>
-                                    550K+
-                                </h1>
-                                <p>
-                                    Explore over 570,000 luxury hotel listings worldwide, with 50 new additions every day
-                                </p>
-                            </div>
-                        </Col>
-                        <Col lg={3}>
-                            <div>
-                                <h1>
-                                    89+
-                                </h1>
-                                <p>
-                                    We proudly serve 89 countries worldwide, and our presence continues to grow every day
-                                </p>
-                            </div>
-                        </Col>
-                        <Col lg={3}>
-                            <div>
-                                <h1>
-                                    13M+
-                                </h1>
-                                <p>
-                                    Monthly users will see your Hotel Profile on our 13 Social Networks, ensuring unparalleled exposure and visibility for your Hotel
-                                </p>
-                            </div>
-                        </Col>
-                        <Col lg={3}>
-                            <div>
-                                <h1>
-                                    1M+
-                                </h1>
-                                <p>
-                                    We will promote your hotel to our over 1 Million subscribers, allowing them to book directly without your hotel paying any commissions to us
-                                </p>
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
-            </section>
-            <section className="signup_benefits spad">
-                <Container>
-                    <h2> Benefits of working with us</h2>
-                    <Row className="pt30">
-                    <Col lg={4} className="mb-5">
-                            <div className="benefits-block">
-                                <FaRedoAlt className="benefits-icon" />
-                                <h4>
-                                    Each Edition Rotation Program
-                                </h4>
-                                <p>
-                                    Your hotel will be one of the top 40 most luxurious hotels which will guarantee the flow of bookings and occupancy ranging from 800,000 to 1 million tourists annually.
-                                </p>
-                            </div>
-                        </Col>
-                        <Col lg={4} className="mb-5">
-                            <div className="benefits-block">
-                                <FaRecycle className="benefits-icon" />
-                                <h4>
-                                    Zero commission charges
-                                </h4>
-                                <p>
-                                    The hotel receives the full amount from all bookings made.
-                                </p>
-                            </div>
-                        </Col>
-                            <Col lg={4} className="mb-5">
-                                <div className="benefits-block">
-                                    <FaGlobe className="benefits-icon" />
-                                    <h4>
-                                        Global exposure
-                                    </h4>
-                                    <p>
-                                        Utilizing our AI technology, your hotel profile will be automatically shared with our extensive network of over 1 million subscribers.
-                                    </p>
-                                </div>
-                            </Col>
-                            <Col lg={4} className="mb-5">
-                                <div className="benefits-block">
-                                    <FaChild className="benefits-icon" />
-                                    <h4>
-                                        Global Reach
-                                    </h4>
-                                    <p>
-                                        Published & Promoted in 89 countries, integrating online (70%) and print (30%) components.
-                                    </p>
-                                </div>
-                            </Col>
-                        <Col lg={4} className="mb-5">
-                            <div className="benefits-block">
-                                <FaInternetExplorer className="benefits-icon" />
-                                <h4>
-                                    Extensive Digital Presence
-                                </h4>
-                                <p>
-                                    Our magazines are available as free downloads on 5 independent digital platforms, attracting 4-5 million readers per edition.
-                                </p>
-                            </div>
-                        </Col>
-                        <Col lg={4} className="mb-5">
-                            <div className="benefits-block">
-                                <FaFacebookSquare className="benefits-icon" />
-                                <h4>
-                                    Social Media Engagement
-                                </h4>
-                                <p>
-                                    We actively promote all of our hotels on 13 social networks, engaging with 13 million monthly users.
-                                </p>
-                            </div>
-                        </Col>
-                        <Col lg={4} className="mb-5">
-                            <div className="benefits-block">
-                                <FaNewspaper className="benefits-icon" />
-                                <h4>
-                                    Flexibility to add Exclusive Offers
-                                </h4>
-                                <p>
-                                    Could be published & changed any time during the year.
-                                </p>
-                            </div>
-                        </Col>
-                        <Col lg={4} className="mb-5">
-                            <div className="benefits-block">
-                                <FaAddressBook className="benefits-icon" />
-                                <h4>
-                                    Effortless Bookings
-                                </h4>
-                                <p>
-                                    Every hotel ad in the printed version is accompanied by QR codes with direct access to your website for easy bookings.
-                                </p>
-                            </div>
-                        </Col>
-                        <Col lg={4} className="mb-5">
-                            <div className="benefits-block">
-                                <FaDatabase className="benefits-icon" />
-                                <h4>
-                                    Data Analysis
-                                </h4>
-                                <p>
-                                    Demonstrate that this program has increased direct bookings for each hotel by an impressive 60%.
-                                </p>
-                            </div>
-                        </Col>
-                        <Col lg={4} className="mb-5">
-                            <div className="benefits-block">
-                                <FaTrophy className="benefits-icon" />
-                                <h4>
-                                    Recognition
-                                </h4>
-                                <p>
-                                    Each hotel could be nominated by our readers as "The Best Luxury Hotel of the Year," and Hotel could have access to data on the voting clients.
-                                </p>
-                            </div>
-                        </Col>
-
-                        <Col lg={4} className="mb-5">
-                            <div className="benefits-block">
-                                <FaChild className="benefits-icon" />
-                                <h4>
-                                    Global Reach
-                                </h4>
-                                <p>
-                                    Published & Promoted in 89 countries, integrating online (70%) and print (30%) components.
-                                </p>
-                            </div>
-                        </Col>
-                        <Col lg={4} className="mb-5">
-                            <div className="benefits-block">
-                                <FaGlobe className="benefits-icon" />
-                                <h4>
-                                    Global exposure
-                                </h4>
-                                <p>
-                                    Utilizing our AI technology, your hotel profile will be automatically shared with our extensive network of over 1 million subscribers.
-                                </p>
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
-            </section>
+          
             <Footer />
         </>
 

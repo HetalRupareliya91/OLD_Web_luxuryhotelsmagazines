@@ -8,14 +8,13 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { stateToHTML } from 'draft-js-export-html';
 import Select from 'react-select'
 import CountryList from 'react-select-country-list'
+import CountryDropdown from "../../components/countryDropDown";
 function AddHotel() {
         const user_id=localStorage.getItem("userId");
-    const [value, setValue] = useState('')
-    const options = useMemo(() => CountryList().getData(), [])
-  
-    const changeHandler = selectedOption => {
-        setValue(selectedOption); 
-      }
+        const [selectedCountry, setSelectedCountry] = useState('');
+        const handleCountryChange = (selectedCountry) => {
+          setSelectedCountry(selectedCountry);
+        };
     
     const [hotelEditorState, setHotelEditorState] = useState(EditorState.createEmpty());
     const [locationEditorState, setlocationEditorState] = useState(EditorState.createEmpty());
@@ -157,7 +156,7 @@ function AddHotel() {
         if (type === "checkbox") {
             // Check if the checkbox is related to an amenity
             const isAmenityCheckbox = formData.amenitiesList.some(amenity => amenity.title === name);
-console.log("isAmenityCheckbox",isAmenityCheckbox)
+        
             if (isAmenityCheckbox) {
                 // If it's an amenity checkbox, update the state accordingly
                 setFormData((prevData) => ({
@@ -175,10 +174,14 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
                 }));
             }
         } else {
-            // For non-checkbox inputs, update the state as before
+            // For number inputs, update the state with the amenity id and value
             setFormData((prevData) => ({
                 ...prevData,
                 [name]: value,
+                amenitiesList: prevData.amenitiesList.map(amenity => ({
+                    ...amenity,
+                    value: amenity.title === name ? value : amenity.value,
+                })),
             }));
         }
     };
@@ -202,10 +205,10 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
         formDataObject.append('hotel_title', formData.hotelName);
         formDataObject.append('website', formData.hotelWebsite);
         formDataObject.append('youtube_link', formData.youtubeLink);
-        formDataObject.append('country', value ? value.value : '');
+        formDataObject.append('country', selectedCountry);
         formDataObject.append('address', formData.location);
         formDataObject.append('contact_no', 956449494);
-        formDataObject.append('hotel_images', image);
+        formDataObject.append('hotel_images[]', image);
         formDataObject.append('about_hotel', formData.aboutHotel);
         formDataObject.append('rooms_and_suites', formData.roomsAndSuites);
         formDataObject.append('restaurent_bars', formData.restaurantsAndBars);
@@ -239,7 +242,7 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
        
 
         const amenitiesArray = formData.amenitiesList.map((amenity) => ({
-            [amenity.id]: amenity.checked || false
+            [amenity.id]: amenity.type === '2' ? amenity.value : amenity.checked || false,
         }));
         formDataObject.append('amities', JSON.stringify(amenitiesArray));
 
@@ -678,12 +681,14 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
                         <Col lg={6}>
                             <Form.Label>Name Of Country</Form.Label>
                          
-                                <Select 
+                                {/* <Select 
                                    
                                     options={options} value={value} onChange={changeHandler}
                                     style={{ borderColor: validationErrors.country ? "red" : "" }}>
                                     
-                                </Select>
+                                </Select> */}
+                                <CountryDropdown onCountryChange={handleCountryChange} />
+
                                 {validationErrors.country && (
                                     <div style={{ color: "red", textAlign: "left" }}>
                                         {validationErrors.country}
@@ -724,7 +729,7 @@ console.log("isAmenityCheckbox",isAmenityCheckbox)
                     <Row className=" mb-3">
                         <Col lg={12}>
                             <label>Hotel Image</label>
-                            <Form.Control className="sidebar-input" type="file" id="hotelImage" name="hotelImage" placeholder="Hotel Image" value={formData.hotelImage}
+                            <Form.Control className="sidebar-input" type="file" id="hotelImage"  accept="image/*"   multiple name="hotelImage" placeholder="Hotel Image" 
                                 onChange={handleimageChange} style={{ borderColor: validationErrors.hotelImage ? "red" : "" }}
                             />
                             {validationErrors.hotelImage && (

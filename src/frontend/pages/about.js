@@ -44,16 +44,21 @@ function AboutUsPage() {
         <>
             <Header />
             <section className="about-content my-5">
+            <div className="page-headings mb-4 ">
+<div className="heading-section">
+<h1 className="">{apiData.title}</h1>
+</div>
+</div>
                 <Container>
                     {apiData && (
                         <>
-                            <h1 className="text-center">{apiData.title}</h1>
                             <Row>
                                 <Col className="my-4" md={4}>
                                     <Image src={apiData.about_image} alt={apiData.title} />
                                 </Col>
                                 <Col className="my-4" md={8}>
-                                    <p className="my-2">{apiData.about_content}</p>
+                                    {/* <p className="my-2">{apiData.about_content}</p> */}
+                                    <p className="my-2" dangerouslySetInnerHTML={{ __html: apiData.about_content}} />
                                 </Col>
                             </Row>
                         </>

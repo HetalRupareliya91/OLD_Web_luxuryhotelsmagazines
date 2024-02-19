@@ -35,6 +35,7 @@ import AllHotels from "./pages/userprofile/allHotels";
 import PublishNews from "./pages/userprofile/publishNews";
 import NewsSidebar from "./components/newsSidebar";
 import EditHotel from "./pages/userprofile/editHotel";
+import BenifitsWorkingWithUs from "./components/benifitsWorkingWithUs";
 
 
 function RoutesPage() {
@@ -77,6 +78,8 @@ function RoutesPage() {
       <Route exact path="/publish-news-pr" element={<NewsSidebar />} />
 
       <Route exact path="/userprofile/hotels" element={<AllHotels />} />
+      <Route exact path="/benifits-working-with-us" element={<BenifitsWorkingWithUs />} />
+      
       
       
 

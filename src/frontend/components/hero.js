@@ -1,30 +1,26 @@
-
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Carousel } from "react-bootstrap";
 import axios from "axios";
 import API from "../../utils";
-import { getDocument } from 'pdfjs-dist/webpack';
-// import pdffile from "../../assets/pdf/kashbah.pdf"
-import magazineImage1 from "../../assets/img/magazines/magazineImage1.webp"
-import magazineImage2 from "../../assets/img/magazines/magazineImage2.webp"
-import magazineImage3 from "../../assets/img/magazines/magazineImage3.webp"
-
-import 'pdfjs-dist/web/pdf_viewer.css';
 
 function Hero() {
   const [sliderData, setSliderData] = useState([]);
   const [sliderIndex, setSliderIndex] = useState(0);
-  const [pdfImages, setPdfImages] = useState([]);
-  const imagesArray = [magazineImage1, magazineImage2, magazineImage3,magazineImage1, magazineImage2, magazineImage3,magazineImage3,magazineImage1,magazineImage1, magazineImage2, magazineImage3,magazineImage1, magazineImage2, magazineImage3,magazineImage3,magazineImage1 ];
+  const [activeFileImages, setActiveFileImages] = useState([]);
   const handleSelect = (selectedIndex) => {
     setSliderIndex(selectedIndex);
+  };
+
+  const handleSlide = (selectedIndex) => {
+    setSliderIndex(selectedIndex);
+    setActiveFileImages(sliderData[selectedIndex].file_image || []);
   };
 
   useEffect(() => {
     fetchMagazines();
   }, []);
 
-  const fetchMagazines = async () => {  
+  const fetchMagazines = async () => {
     const token = localStorage.getItem("token");
 
     try {
@@ -34,9 +30,9 @@ function Hero() {
         },
       });
       const data = response.data;
-      // console.log("Magazines data:", data);
       if (data.status === true) {
         setSliderData(data.data);
+        setActiveFileImages(data.data[0].file_image || []);
       } else {
         console.error("Failed to fetch data");
       }
@@ -45,37 +41,34 @@ function Hero() {
     }
   };
 
- 
-
   return (
     <>
-    <section className="hero-section">
-      <Container>
-        <div className="hero-slider">
-          <Row>
-            <Col lg={4} md={4} className="mt-3">
-              <Carousel activeIndex={sliderIndex} onSelect={handleSelect}>
-                {sliderData.map((magazine, index) => (
-                  <Carousel.Item key={index}>
-                    <img src={magazine.thumbnail} alt={`Slide ${index + 1}`} className="slider-img" />
-                  </Carousel.Item>
-                ))}
-              </Carousel>
-            </Col>
-            <Col lg={8} md={8} className="mt-3">
-              <Carousel activeIndex={sliderIndex} onSelect={handleSelect}>
-                {imagesArray.map((image, index) => (
-                  <Carousel.Item key={index}>
-                    <img src={image} alt={`PDF Slide ${index + 1}`} className="pdf-img" />
-                  </Carousel.Item>
-                ))}
-              </Carousel>
-            </Col>
-          </Row>
-        </div>
-      </Container>
-    </section>
-   
+      <section className="hero-section">
+        <Container>
+          <div className="hero-slider">
+            <Row>
+              <Col lg={4} md={4} className="mt-3">
+                <Carousel activeIndex={sliderIndex} onSelect={handleSelect} onSlide={handleSlide}  interval={null} >
+                  {sliderData.map((magazine, index) => (
+                    <Carousel.Item key={index}>
+                      <img src={magazine.thumbnail} alt={`Slide ${index + 1}`} className="slider-img" />
+                    </Carousel.Item>
+                  ))}
+                </Carousel>
+              </Col>
+              <Col lg={8} md={8} className="mt-3">
+                <Carousel>
+                  {activeFileImages.map((image, index) => (
+                    <Carousel.Item key={index}>
+                      <img src={image} alt={`Image ${index + 1}`} className="pdf-img" />
+                    </Carousel.Item>
+                  ))}
+                </Carousel>
+              </Col>
+            </Row>
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

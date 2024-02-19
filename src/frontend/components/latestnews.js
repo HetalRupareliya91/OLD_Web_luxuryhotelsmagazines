@@ -7,7 +7,7 @@ import News5 from '../../assets/img/news5.jpg';
 import News6 from '../../assets/img/news6.jpg';
 import News7 from '../../assets/img/news7.jpg';
 import { Col, Container, Image, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import API from '../../utils';
 
@@ -72,19 +72,25 @@ function LatestNews() {
     
     return (
         <section className="spad">
+              <div className="page-headings mb-4">
+<div className="heading-section">
+<h1 className="">HOTEL'S LATEST NEWS</h1>
+</div>
+</div>
             <Container>
-                <h1 className="text-center mb-5">HOTEL'S LATEST NEWS</h1>
 
                 <Slider {...sliderSettings}>
                 {newsData.map((news, index) => (
                         <div key={index}>
                             <figure>
-                                <div className="img-dec">{news.bussiness_name}</div>
+                            {/* <div className="img-dec"><span className="img-dec-country">{hotel.country}</span><div className="coutryname">{hotel.hotel_title}</div></div> */}
+
+                                <div className="img-dec"><span className="img-dec-country">{news.country}</span><div className="coutryname">{news.bussiness_name}</div></div>
                                 <div className="thumbnail">
                                     <div>
-                                        <Link to="blog-details" className="readmore">
+                                        <NavLink to="/news-details/9/Grand Opening ceremony" className="readmore">
                                             Read More
-                                        </Link>
+                                        </NavLink>
                                     </div>
                                     <Image src={news.news_image} alt="" />
                                 </div>

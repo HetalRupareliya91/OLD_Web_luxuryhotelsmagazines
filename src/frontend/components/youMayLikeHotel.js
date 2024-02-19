@@ -15,31 +15,27 @@ const HotelSlider = () => {
     {
       image: News5,
       title: 'Londa Residences Cyprus',
-      location: 'England',
-      rating: '7.8/10 (Good)',
-      description: 'This card has supporting text below as a natural lead-in to additional content.',
+      date:"2023-07-19"
     },
     {
       image: News1,
       title: 'Hotel Taj',
-      location: 'England',
-      rating: '7.8/10 (Good)',
-      description: 'This card has supporting text below as a natural lead-in to additional content.',
+      date:"2023-08-19"
+     
     },
     {
       image: News2,
       title: 'Hotel Taj',
-      location: 'England',
-      rating: '7.8/10 (Good)',
-      description: 'This card has supporting text below as a natural lead-in to additional content.',
+      date:"2023-09-19"
+      
     },
 
     {
         image: News5,
         title: 'Londa Residences Cyprus',
-        location: 'England',
-        rating: '7.8/10 (Good)',
-        description: 'This card has supporting text below as a natural lead-in to additional content.',
+        date:"2023-10-19"
+
+
       },
   ];
 
@@ -49,6 +45,20 @@ const HotelSlider = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -62,10 +72,8 @@ const HotelSlider = () => {
             <Image className="card-img-top" src={hotel.image} alt="Card image cap" />
             <div className="card-body">
               <h5 className="card-title">{hotel.title}</h5>
-              <h6 className="card-title">{hotel.location}</h6>
-              <p className="card-text">{hotel.rating}</p>
-              <p className="card-text">{hotel.description}</p>
-              <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+              <h6 className="card-title">{hotel.date}</h6>
+             
             </div>
           </div>
         ))}

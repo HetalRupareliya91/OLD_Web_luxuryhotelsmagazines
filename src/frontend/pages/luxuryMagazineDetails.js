@@ -12,6 +12,8 @@ import API from "../../utils";
 function MagazineDetails (){
     const { hotel_magazine_id } = useParams();
     const [postData, setPostData] = useState([]);
+    const [filePdf, setFilePdf] = useState([]);
+
     useEffect(() => {
         const fetchData = async () => {
           // const token = localStorage.getItem("token");
@@ -33,7 +35,7 @@ function MagazineDetails (){
               
               setPostData ( data.message);
 
-              
+              setFilePdf(data.message.file_pdf)
             } else {
               console.error('Failed to fetch post data');
             }
@@ -55,12 +57,17 @@ function MagazineDetails (){
         
         <Header/>
 <section className="spad">
+<div className="page-headings mb-4 ">
+<div className="heading-section">
+<h1 className="">
+    LUXURY MAGAZINES - DETAIL
+    </h1></div>
+</div>
+          
     <Container>
 <div className="text-center">
 
-    <h1 className="pb-5">
-    LUXURY MAGAZINES - DETAIL
-    </h1>
+
 
     <div className="mb-3 text-end">
         <button>
@@ -72,20 +79,21 @@ function MagazineDetails (){
 
 </div>
 {/* <iframe src={pdf} frameborder="0" width="100%" height="1200px"></iframe> */}
- <Row>
-
- <Col md={12}>
-                            <center>
-                            <iframe src={postData.file_pdf} frameborder="0" width="100%" height="1200px"></iframe>
-                            </center>
-                        </Col>
-
-                        <Col md={12}>
-                            <center>
-                            <iframe src={pdf2} frameborder="0" width="100%" height="1200px"></iframe>
-                            </center>
-                        </Col>
- </Row>
+<Row>
+            {filePdf.map((post ,index) => (
+              <Col md={12} key={index}>
+                <center>
+                  <iframe
+                    src={post}
+                    frameBorder="0"
+                    width="100%"
+                    height="1200px"
+                    // title={`PDF ${post.id}`}
+                  ></iframe>
+                </center>
+              </Col>
+            ))}
+          </Row>
 
 {/* <div class="sharethis-inline-share-buttons"></div> */}
 <ShareThisButtons/>

@@ -81,7 +81,7 @@ function Review() {
         <div >
           <h1 className="text-center mt-5">Guest Review</h1>
           <div>
-            <h3 className="rd-title"><FaList /> Categories:</h3>
+            <h3 className="rd-title"><FaList className="m-0 locaton-icon"/> Categories:</h3>
 
             <Row>
 
@@ -180,20 +180,20 @@ function Review() {
           </div>
         </div>
         <Row className="mt-5 mb-4">
-          <h3 className="mb-4 rd-title"><FaComment /> Select topics to read reviews:</h3>
-          <div className="topics">
-  <span className={`readreview ${activeTopic === 'Breakfast' ? 'active' : ''}`} onClick={() => handleTopicClick("Breakfast")}>{activeTopic === 'Breakfast' ? <FaTimes /> : <FaPlus />} Breakfast</span>
-  <span className={`readreview ${activeTopic === 'Dinner' ? 'active' : ''}`} onClick={() => handleTopicClick("Dinner")}>{activeTopic === 'Dinner' ? <FaTimes /> : <FaPlus />} Dinner</span>
-  <span className={`readreview ${activeTopic === 'Room' ? 'active' : ''}`} onClick={() => handleTopicClick("Room")}>{activeTopic === 'Room' ? <FaTimes /> : <FaPlus />} Room</span>
-  <span className={`readreview ${activeTopic === 'Location' ? 'active' : ''}`} onClick={() => handleTopicClick("Location")}>{activeTopic === 'Location' ? <FaTimes /> : <FaPlus />} Location</span>
-  <span className={`readreview ${activeTopic === 'Pool' ? 'active' : ''}`} onClick={() => handleTopicClick("Pool")}>{activeTopic === 'Pool' ? <FaTimes /> : <FaPlus />} Pool</span>
-</div>
+          <h3 className="mb-4 rd-title"><FaComment className="m-0 locaton-icon"/> Select topics to read reviews:</h3>
+          <ul className="topics">
+  <li className={`readreview ${activeTopic === 'Breakfast' ? 'active' : ''}`}  onClick={() => handleTopicClick("Breakfast")}>{activeTopic === 'Breakfast' ? <FaTimes /> : <FaPlus />} Breakfast</li>
+  <li className={`readreview ${activeTopic === 'Dinner' ? 'active' : ''}`} onClick={() => handleTopicClick("Dinner")}>{activeTopic === 'Dinner' ? <FaTimes /> : <FaPlus />} Dinner</li>
+  <li className={`readreview ${activeTopic === 'Room' ? 'active' : ''}`} onClick={() => handleTopicClick("Room")}>{activeTopic === 'Room' ? <FaTimes /> : <FaPlus />} Room</li>
+  <li className={`readreview ${activeTopic === 'Location' ? 'active' : ''}`} onClick={() => handleTopicClick("Location")}>{activeTopic === 'Location' ? <FaTimes /> : <FaPlus />} Location</li>
+  <li className={`readreview ${activeTopic === 'Pool' ? 'active' : ''}`} onClick={() => handleTopicClick("Pool")}>{activeTopic === 'Pool' ? <FaTimes /> : <FaPlus />} Pool</li>
+</ul>
 
 
         </Row>
         <Row>
           <div>
-            <h3 className="rd-title"><FaHeart /> See what guests loved the most:</h3>
+            <h3 className="rd-title"><FaHeart className="m-0 locaton-icon"/> See what guests loved the most:</h3>
           </div>
           <Col>
             <Slider {...sliderSettings} ref={sliderRef}>

@@ -40,7 +40,7 @@ function Tabs() {
       console.error("Error:", error.message);
     }
   };
-  const [activeTab, setActiveTab] = useState("Zoom");
+  const [activeTab, setActiveTab] = useState("Zoom1");
 
   const openLink = (animName) => {
     setActiveTab(animName);
@@ -60,6 +60,30 @@ function Tabs() {
       </button>
     ));
   };
+
+  const renderZoomContent = () => {
+    return data?.details?.sections.map((section, index) => (
+      <div
+        key={index}
+        id={`Zoom${index + 1}`}
+        className={`w3-container city w3-animate-zoom p-3 ${
+          activeTab === `Zoom${index + 1}` ? '' : 'hidden'
+        }`}
+      >
+        <Image src={Logo} alt="" className="w-50 mb-3" />
+      
+        <iframe
+          width="100%"
+          height="315"
+          src={section.you_tube_link }
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
+      </div>
+    ));
+  };
   return (
     <Parallax blur={0} bgImage={Hero3} bgImageAlt="the cat" strength={300}>
     <section className="special spad tabs-section" data-scrollax-parent="true">
@@ -69,31 +93,15 @@ function Tabs() {
       <div className="text-start mb-4">
 
       <h1 className="mb-3 text-white ">{data?.details?.background_title}</h1>
-<h4 className="text-white">{data?.details?.background_sub_title}</h4>   </div>
-      
+<h4 className="text-white">Unveil New Luxe Getaways Every Week</h4>   </div>
+{/* {data?.details?.background_sub_title} */}
 <div className="w3-sidebar w3-bar-block  w3-card">
             {renderCountryButtons()}
           </div>
 
-
-          
           <div className="zoom-content">
-            <div id="Zoom" className={`w3-container city w3-animate-zoom p-3 ${activeTab === 'Zoom' ? '' : 'hidden'}`}>
-              <Image src={Logo} alt="" className="w-50" />
-              <p className="">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-              <iframe width="100%" height="315" src="https://www.youtube.com/embed/D0UnqGm_miA?si=PdW4fKdvAkI6E_Oc"  title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-            </div>
-            <div id="Zoom2" className={`w3-container city w3-animate-zoom p-3 ${activeTab === 'Zoom1' ? '' : 'hidden'}`}>
-              <Image src={Logo} alt="" className="w-50" />
-              <p className="">industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to </p>
-              <iframe width="100%" height="315" src="https://www.youtube.com/embed/D0UnqGm_miA?si=PdW4fKdvAkI6E_Oc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-            </div>
-            <div id="Zoom3" className={`w3-container city w3-animate-zoom p-3 ${activeTab === 'Zoom2' ? '' : 'hidden'}`}>
-              <Image src={Logo} alt="" className="w-50" />
-              <p className="">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-              <iframe width="100%" height="315" src="https://www.youtube.com/embed/D0UnqGm_miA?si=PdW4fKdvAkI6E_Oc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-            </div>
-          </div>
+          {renderZoomContent()}
+        </div>
        
       </div>
      

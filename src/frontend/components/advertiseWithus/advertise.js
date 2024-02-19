@@ -46,7 +46,7 @@ function Advertise() {
                         <Slider {...sliderSettings}>
 
 
-                            <div className="scrollable-content">
+                      
                                 <div className="card-inner-section" >
 
                                     <div className="card-inner-section-background ">
@@ -61,7 +61,7 @@ function Advertise() {
                                     </div>
                                    
 
-
+                                    <div className="scrollable-content">
                                     <div className="card-inner-section-textarea ">
                                         <div className="text-center" >
                                             <h3>What included</h3>
@@ -79,7 +79,7 @@ function Advertise() {
                                             {/* <li>A remarkable increase in sales by 225%</li> */}
                                             <li>Seamless direct bookings on your website</li>
                                         </ul>
-                                        <div className="text-center">
+                                        <div className="text-center Original-price">
                                         <p >
                                                <b> *Original price 450 </b></p>
                                             <p >
@@ -91,7 +91,7 @@ function Advertise() {
                                 </div>
                             </div>
 
-                            <div className="scrollable-content">
+                            
                                 <div className="card-inner-section" >
 
                                     <div className="card-inner-section-background ">
@@ -105,7 +105,7 @@ function Advertise() {
                                     <p className="heading">€80/month </p>
                                     </div>
                                     </div>
-
+                                    <div className="scrollable-content">
                                     <div className="card-inner-section-textarea ">
                                         <div className="text-center" >
                                             <h3>What included</h3>
@@ -133,7 +133,6 @@ function Advertise() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="scrollable-content">
                                 <div className="card-inner-section" >
 
                                     <div className="card-inner-section-background ">
@@ -147,7 +146,7 @@ function Advertise() {
                                             </p>
                                             </div>
                                     </div>
-
+                                    <div className="scrollable-content">
                                     <div className="card-inner-section-textarea ">
                                         <div className="text-center" >
                                             <h3>What included</h3>
@@ -181,7 +180,7 @@ function Advertise() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="scrollable-content">
+                           
                                 <div className="card-inner-section" >
 
                                     <div className="card-inner-section-background ">
@@ -194,7 +193,7 @@ function Advertise() {
                                         <p className="heading">€199 per Year </p>                         
                                              </div>
                                     </div>
-
+                                    <div className="scrollable-content">
                                     <div className="card-inner-section-textarea ">
                                         <div className="text-center" >
                                             <h3>What included</h3>
@@ -222,7 +221,7 @@ function Advertise() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="scrollable-content">
+                           
                                 <div className="card-inner-section" >
 
                                     <div className="card-inner-section-background ">
@@ -236,7 +235,7 @@ function Advertise() {
                                             </p>
                                             </div>
                                     </div>
-
+                                    <div className="scrollable-content">
                                     <div className="card-inner-section-textarea ">
                                         <div className="text-center" >
                                             <h3>What included</h3>

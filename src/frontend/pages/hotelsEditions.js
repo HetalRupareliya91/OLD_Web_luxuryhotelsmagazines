@@ -79,15 +79,19 @@ function HotelEditions(){
 <>
 <Header/>
 <section className="spad">
+<div className="page-headings mb-4 ">
+<div className="heading-section">
+<h1 className="">{apiData.title}</h1>
+</div>
+</div>
 
 <Container>
    
     
 <div className="MagazineContent text-center">
-<h1 className="mb-3">{apiData.title}</h1>
 </div>
 
-<div className="MagazineContent">
+{/* <div className="MagazineContent">
 <p>
 Luxury Hotels connecting high-end hotels with discerning luxury clientele globally. In the current competitive market, attracting and retaining esteemed clients poses a considerable challenge. We present a solution inspired by successful hotel groups like Marriott, Mandarin Oriental, and Four Seasons—a groundbreaking rotation program that successfully has been implemented for the last 17 years and guarantees to bring visitors to your hotel.
 </p>
@@ -108,7 +112,7 @@ Each Edition Rotation Program: Your hotel becomes one of the 40 most luxurious h
 <li>Data Analysis: Demonstrate that this program has increased direct bookings for each hotel by an impressive 60%.</li>
 <li>Recognition: Each hotel could be nominated by our readers as "The Best & Most Luxury Hotel of the Year," and you will have access to data on the voting clients.</li>
 </ul>
-</div>
+</div> */}
 
 
 <Row className="rowPadding">

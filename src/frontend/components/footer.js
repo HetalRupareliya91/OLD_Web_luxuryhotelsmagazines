@@ -1,9 +1,17 @@
 import React from "react";
 import Logo from "../../assets/img/logo.svg";
 import { FaPhone, FaEnvelope, FaFacebook, FaYoutube, FaInstagram,FaTwitter,FaTripadvisor, FaAddressBook, FaBell} from 'react-icons/fa';
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Image, Row } from "react-bootstrap";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Footer(){
+   const navigate = useNavigate();
+
+   const handlePublishNewsClick = () => {
+   
+      localStorage.setItem("newsLogin", "true");
+      navigate("/login");
+    };
 
     return(
         <>
@@ -16,41 +24,39 @@ function Footer(){
                  <Col lg={3} >
                     <div className="ft-about">
                        <div className="logo">
-                          <a href="/">
-                             <img src={Logo} alt="" className="footer-logo"/>
-                                                     </a>
+                          <NavLink to="/">
+                             <Image src={Logo} alt="" className="footer-logo"/>
+                                                     </NavLink>
+                                                     
                        </div>
-                       <p>BRAND RECOGNITION</p>
+                       <p><NavLink to="/hotels-selection" className="footer-links">Luxury Hotel And Resorts</NavLink></p>
+                    <p><NavLink to="/hotels-editions" className="footer-links">Luxury Hotels Magazines</NavLink></p>
+
+                       {/* <p>BRAND RECOGNITION</p> */}
                       
-                       <ul>
-                          <li className="mb-4"><a href="trademark-registration">Trademark Registry</a></li>
-                          <li><a href="trademark-registration">Branding Registration</a></li>
-                       </ul>
-                       <div className="fa-social">
-                          <a href="https://www.facebook.com/LuxuryHotelsMagazines"><FaFacebook/></a>
-                          <a href="https://www.instagram.com/luxuryhotelsbrand/"><FaInstagram/></a>
-                          <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg'><FaYoutube/></a>
-                       </div>
+                     
                     </div>
                  </Col>
                  <Col lg={3}>
                     <div className="ft-newslatter">
                        <h6>About Us</h6>
-                       <p><a href="/our-team" className="footer-links">Our Team</a></p>
-                       <p><a href="/about-us" className="footer-links">About Us</a></p>
-                    <p><a href="/hotels-selection" className="footer-links">Luxury Hotel Selection</a></p>
-                    <p><a href="/hotels-editions" className="footer-links">Luxury Hotels Editions</a></p>
+                       <p><NavLink to="/our-team" className="footer-links">Our Team</NavLink></p>
+                       <p><NavLink to="/about-us" className="footer-links">About Us</NavLink></p>
+                         <p> <NavLink to="/trademark-registration" className="footer-links">Trademark Registry</NavLink></p>
+                       <p> <NavLink to="/trademark-registration" className="footer-links">Branding Registration</NavLink></p>
+                    
                     </div>
                  </Col>
                  <Col lg={3}>
                     <div className="ft-newslatter">
                        <h6>ADVERTISERS</h6>
-                       <p><a href="/distribution" className="footer-links">Distribution</a></p>
-                       <p><a href="/publish-news-pr" className="footer-links">Publish Hotels News</a></p>
-                       <p><a href="/userprofile" className="footer-links">Publish News </a></p>
-                       <p><a href="/mediapack" className="footer-links">Media Pack</a></p>
-                       <p><a href="/advertise-with-us" className="footer-links">Advertise With Us</a></p>
-                       <p><a href="/signup" className="footer-links">Create Hotel Profile</a></p>
+                       <p><NavLink to="/distribution" className="footer-links">Distribution</NavLink></p>
+                       {/* <p><a href="/publish-news-pr" className="footer-links">Publish Hotels News</a></p> */}
+                       <p><NavLink  to="/login" className="footer-links" onClick={handlePublishNewsClick}>Publish News </NavLink></p>
+                       <p><NavLink to="/mediapack" className="footer-links">Media Pack</NavLink></p>
+                       <p><NavLink to="/advertise-with-us" className="footer-links">Advertise With Us</NavLink></p>
+                       <p><NavLink to="/signup" className="footer-links">List Your Hotel</NavLink></p>
+                         <p><NavLink to="/benifits-working-with-us" className="footer-links">Benifits Working With us</NavLink></p>
                       
                     </div>
                  </Col>
@@ -63,7 +69,14 @@ function Footer(){
                           <li><FaEnvelope/><a href="mailto:info@luxuryhotelsmagazines.com">info@luxuryhotelsmagazines.com</a></li>
                   
                        </ul>
+                       <div className="fa-social">
+                          <a href="https://www.facebook.com/LuxuryHotelsMagazines"><FaFacebook/></a>
+                          <a href="https://www.instagram.com/luxuryhotelsbrand/"><FaInstagram/></a>
+                          <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg'><FaYoutube/></a>
+                       </div>
                     </div>
+                    
+                    
                  </Col>
                  
               </Row>

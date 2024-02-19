@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Image, Row } from "react-bootstrap";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { FaSearch } from "react-icons/fa";
@@ -11,6 +11,7 @@ import Rooms4 from "../../assets/img/room/room-4.jpg"
 import Rooms5 from "../../assets/img/room/room-5.jpg"
 import Rooms6 from "../../assets/img/room/room-6.jpg"
 import SearchWithBackground from "../components/searchWithBackground";
+import { NavLink } from "react-router-dom";
 function Blogs (){
     const [hotelName, setHotelName] = useState('');
     const [country, setCountry] = useState('');
@@ -89,16 +90,16 @@ function Blogs (){
         <Row>
   {apiData.map((news) => (
     <Col key={news.id} lg={4} md={6}>
-      <a href="/news-details/9/Grand Opening ceremony">
+      <NavLink  to="/news-details/9/Grand Opening ceremony">
         <div className="room-item">
-          <img src={Rooms4} alt="" />
+          <Image src={Rooms4} alt="" />
           <div className="ri-text">
             <h4>{news.news_title}</h4>
             <p>{news.country}</p>
-            <a href="/news-details/9/Grand Opening ceremony" className="primary-btn">More Details</a>
+            {/* <a href="/news-details/9/Grand Opening ceremony" className="primary-btn">More Details</a> */}
           </div>
         </div>
-      </a>
+      </NavLink>
     </Col>
   ))}
 </Row>

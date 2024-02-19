@@ -3,7 +3,7 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import Logo from "../../assets/img/logo.svg";
 import { FaEnvelope, FaFacebook, FaYoutube, FaInstagram, FaToggleOn, FaToggleOff, FaBars } from 'react-icons/fa';
 import API, { isUserLoggedIn } from '../../utils';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 function Header() {
 
@@ -99,9 +99,10 @@ function Header() {
           </nav>
           <div id="mobile-menu-wrap"></div>
           <div className="top-social">
-            <a href="https://www.facebook.com/LuxuryHotelsMagazines"><FaFacebook /></a>
-            <a href="https://www.instagram.com/luxuryhotelsbrand/"><FaInstagram /></a>
-            <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg'><FaYoutube /></a>
+            {/* <a href="https://www.facebook.com/LuxuryHotelsMagazines"><FaFacebook /></a> */}
+            {/* <a href="https://www.instagram.com/luxuryhotelsbrand/"><FaInstagram /></a> */}
+            {/* <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg'><FaYoutube /></a> */}
+            <a href="/userprofile" className='menu-content'>List Your Hotels</a>
           </div>
           <ul className="top-widget">
             <li><a href="mailto:Info@LuxuryHotelsMagazines.Com"><i className="fa fa-envelope"></i> info@luxuryhotelsmagazines.com</a></li>
@@ -113,17 +114,33 @@ function Header() {
           <Container>
             <Row>
               <Col lg={6}>
-                <div className="tn-left">
-                  {/* <li><i className="fa fa-phone"></i> (12) 345 67890</li> */}
+                {/* <div className="tn-left">
                   <a href="mailto:Info@LuxuryHotelsMagazines.Com"><i ><FaEnvelope /></i> info@luxuryhotelsmagazines.com</a>
-                </div>
+                </div> */}
               </Col>
               <Col lg={6}>
                 <div className="tn-right">
                   <div className="top-social">
-                    <a href="https://www.facebook.com/LuxuryHotelsMagazines"><FaFacebook /></a>
-                    <a href="https://www.instagram.com/luxuryhotelsbrand/"><FaInstagram /></a>
-                    <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg'><FaYoutube /></a>
+                    {/* <a href="https://www.facebook.com/LuxuryHotelsMagazines"><FaFacebook /></a> */}
+                    {/* <a href="https://www.instagram.com/luxuryhotelsbrand/"><FaInstagram /></a> */}
+                    {/* <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg'><FaYoutube /></a> */}
+                    <a href="/userprofile" className='menu-content'>List Your Hotels</a>
+                     <a href="/news-search" className='menu-content' >Publish News</a>
+                      {isLoggedIn ? (
+                         
+                            <a className='menu-content' onClick={handleLogout}>
+                              Logout
+                            </a>
+                       
+                       
+                        ) :(
+                         
+                            <a href="login" className='menu-content' onClick={handleLoginClick}>
+                              Login
+                            </a>
+                          
+                        ) }
+                     
                   </div>
                   <a href="/hotel-search" className="bk-btn">Find Hotels</a>
                 </div>
@@ -145,16 +162,16 @@ function Header() {
                 <div className="nav-menu">
                   <nav className="mainmenu">
                     <ul>
-                      <li className="active"><a href="/" className='menu-content'>Home</a></li>
+                      <li className="active"><NavLink to="/" className='menu-content'>Home</NavLink></li>
 
                       <li>
-                        <a href="/hotel-search" className='menu-content'>Luxury Hotels/Resorts</a>
+                        <NavLink to="/hotels-selection" className='menu-content'>Luxury Hotels And Resorts</NavLink>
 
                       </li>
-                      <li><a href="/userprofile" className='menu-content'>List Your Hotels</a></li>
+                      {/* <li><a href="/userprofile" className='menu-content'>List Your Hotels</a></li> */}
 
                       <li className="dropdown">
-              <a href="/news-search" className='menu-content' > News</a>
+              <NavLink to="/news-search" className='menu-content' > News</NavLink>
               <ul className="dropdown-menu">
                 <li><a href="#" >General News</a></li>
                 <li><a href="#" >Hotel News</a></li>
@@ -162,7 +179,7 @@ function Header() {
             </li>
                       {/* <li><a href="/">Login</a></li> */}
 
-                      {isLoggedIn ? (
+                      {/* {isLoggedIn ? (
                           <li>
                             <a className='menu-content' onClick={handleLogout}>
                               Logout
@@ -174,7 +191,7 @@ function Header() {
                               Login
                             </a>
                           </li>
-                        ) }
+                        ) } */}
                      
                     </ul>
                   </nav>

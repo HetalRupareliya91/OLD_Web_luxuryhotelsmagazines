@@ -12,7 +12,7 @@ import AddHotel from "../pages/userprofile/addHotel";
 import PersionalInformation from "../pages/userprofile/persionalInformation";
 import EditHotel from "../pages/userprofile/editHotel";
 import axios from "axios";
-import SpecialOffers from "../pages/userprofile/addSpecialOffers";
+import SpecialOffers from "../pages/userprofile/addHotelSpecialOffers";
 function UserSidebar (){
   const [hotelid, setHotelId] = useState(null);
   
@@ -217,8 +217,9 @@ function UserSidebar (){
   {currentSection === 'myBlogs' && !showEditHotelForm && (
               <div id="myBlogs" style={{ display: currentSection === 'myBlogs' ? 'block' : 'none' }}>
                 <button className='userprofilebuttons'  >All Special Offers</button>
-                <button className='userprofilebuttons' onClick={() => showSection('addBlogs')}>Add Special Offers</button>
-                 <AllBlogs />
+                <button className='userprofilebuttons' onClick={() => showSection('addSpecialOffers')}>Add Special Offers</button>
+                 {/* <AllBlogs /> */}
+                 <AllHotels onEditClick={handleEditButtonClick} />
               </div>
               )}
 
@@ -230,8 +231,8 @@ function UserSidebar (){
 
 )}
 
-{currentSection === 'addBlogs' && !showEditHotelForm && (
-              <div id="addBlogs">
+{currentSection === 'addSpecialOffers' && !showEditHotelForm && (
+              <div id="addSpecialOffers">
               {/* <AddBlogs /> */}
 
               <SpecialOffers/>
