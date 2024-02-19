@@ -6481,11 +6481,10 @@ button a {
 	line-height: 2;
 }
 
-.autocom-box {
+.autocom-box{
 	position: absolute;
 	width: 38%;
-
-	background: #fff;
+	background: #fff; 
 	padding:10px 15px;
 	opacity: 1;
 	pointer-events: auto;
