@@ -46,9 +46,9 @@ function Hero() {
       <section className="hero-section">
         <Container>
           <div className="hero-slider">
-            <Row>
+            <Row className="">
               <Col lg={4} md={4} className="mt-3">
-                <Carousel activeIndex={sliderIndex} onSelect={handleSelect} onSlide={handleSlide}  interval={null} >
+                <Carousel activeIndex={sliderIndex} onSelect={handleSelect} onSlide={handleSlide}  >
                   {sliderData.map((magazine, index) => (
                     <Carousel.Item key={index}>
                       <img src={magazine.thumbnail} alt={`Slide ${index + 1}`} className="slider-img" />

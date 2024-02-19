@@ -44,8 +44,6 @@ function Advertise() {
                     <h1 className="text-center text-white mb-4">Our Packages</h1>
                     <Container className="adv-container">
                         <Slider {...sliderSettings}>
-
-
                       
                                 <div className="card-inner-section" >
 

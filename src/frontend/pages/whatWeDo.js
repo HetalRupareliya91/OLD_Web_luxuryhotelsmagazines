@@ -25,10 +25,10 @@ import News5 from '../../assets/img/news5.jpg'
 import Slider from "react-slick";
 import CallToAction from "../components/callToAction";
 import Footer from "../components/footer";
-import Magazines1 from "../../assets/img/magazines/magazines.webp"
-import Magazines2 from "../../assets/img/magazines/magazines2.webp"
-import Magazines3 from "../../assets/img/magazines/magazines3.webp"
-import Magazines4 from "../../assets/img/magazines/magazines4.webp"
+    import Magazines1 from "../../assets/img/magazines/magazines.webp"
+    import Magazines2 from "../../assets/img/magazines/magazines2.webp"
+    import Magazines3 from "../../assets/img/magazines/magazines3.webp"
+    import Magazines4 from "../../assets/img/magazines/magazines4.webp"
 import Header from "../components/header";
 import AdvertiseTestimonial from "../components/advertiseWithus/advertiseTestimonial";
 import HeroImage3 from "../../assets/img/hero/hero-1.jpg"
@@ -125,7 +125,7 @@ function WhatWeDo() {
                         <span className="woodmart-title-container title ">Hover over the options to see more information</span>
                         <span className="right-line"></span>
                     </div>
-
+ 
 
                     <Row className="image-flip-div">
                         <Col lg={3} md={6} className="p-5">

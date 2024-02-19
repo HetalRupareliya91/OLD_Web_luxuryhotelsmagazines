@@ -54,8 +54,7 @@ const VideoBackground = () => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-        </div>
-      <div className="text-overlay">
+             <div className="text-overlay">
       <Row >
                   <Col lg={6}>
                      <div className="about-text">
@@ -80,6 +79,8 @@ const VideoBackground = () => {
                   </Row>
                </div>
        
+        </div>
+   
           
     </section>
 

@@ -8,6 +8,8 @@ import News6 from '../../assets/img/news6.jpg';
 import News7 from '../../assets/img/news7.jpg';
 import { Col, Container, Row, Image } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import { Parallax } from "react-parallax";
+import Hero3 from "../../assets/img/hero/hero-3.jpg";
 
 function Collections() {
     const sliderSettings = {
@@ -41,8 +43,9 @@ function Collections() {
     ];
 
     return (
-        <section className="services-section spad">
-              <div className="page-headings mb-4">
+        <Parallax blur={8} bgImage={Hero3} bgImageAlt="the cat" strength={100} >
+        <section className="services-section ">
+              <div className="page-headings mb-5">
 <div className="heading-section">
 <h1 className="">Best Luxury Hotels Of The Year</h1>
 </div>
@@ -53,7 +56,7 @@ function Collections() {
                     {newsItems.map((item) => (
                         <div key={item.id}>
                             <figure>
-                                                            {/* <div className="img-dec"><span className="img-dec-country">{hotel.country}</span><div className="coutryname">{hotel.hotel_title}</div></div> */}
+                                                          
 
                                 <div className="img-dec"><span className="img-dec-country">{item.country}</span><div className="coutryname">{item.title}</div></div>
                                 <div className="thumbnail">
@@ -70,6 +73,7 @@ function Collections() {
                 </Slider>
             </Container>
         </section>
+        </Parallax>
     );
 }
 
