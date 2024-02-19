@@ -841,11 +841,11 @@ ol {
 .services-section {
 	border-top: 1px solid #e5e5e5;
 
-	/* padding-top: 60px; */
-	padding-bottom: 80px;
-	/* background-image: linear-gradient(to right, #f2c5b4, #eec3a9, #f2c078, #f5bb4f); */
-	/* background-size: cover; */
-	/* background-repeat: no-repeat; */
+	padding-top: 60px;
+    padding-bottom: 60px;
+    background-image: linear-gradient(to right, #f2c5b4, #eec3a9, #f2c078, #f5bb4f);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .services-section .section-title {
@@ -6904,7 +6904,7 @@ ul.dropdown-menu a:hover {
 }
 
 .topics {
-	display: flex;
+    display: flex;
 	flex-wrap: wrap;
 }
 
