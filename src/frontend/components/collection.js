@@ -33,23 +33,29 @@ function Collections() {
      };
 
     const newsItems = [
-        { id: 1, image: News4, title: 'Jumeirah Al Qasr Hotel, Dubai' },
-        { id: 2, image: News5, title: 'Jumeirah Al Qasr Hotel, Dubai' },
-        { id: 3, image: News6, title: 'Jumeirah Al Qasr Hotel, Dubai' },
-        { id: 4, image: News7, title: 'Jumeirah Al Qasr Hotel, Dubai' },
-        { id: 5, image: News7, title: 'Jumeirah Al Qasr Hotel, Dubai' },
+        { id: 1, image: News4, country:"Dubai", title: 'Jumeirah Al Qasr Hotel, Dubai' },
+        { id: 2, image: News5, country:"Germany", title: 'Jumeirah Al Qasr Hotel, Dubai' },
+        { id: 3, image: News6, country:"Kuwait", title: 'Jumeirah Al Qasr Hotel, Dubai' },
+        { id: 4, image: News7, country:"Dubai",  title: 'Jumeirah Al Qasr Hotel, Dubai' },
+        { id: 5, image: News7, country:"Dubai",  title: 'Jumeirah Al Qasr Hotel, Dubai' },
     ];
 
     return (
         <section className="services-section spad">
+              <div className="page-headings mb-4">
+<div className="heading-section">
+<h1 className="">Best Luxury Hotels Of The Year</h1>
+</div>
+</div>
             <Container>
-                <h1 className="text-center mb-5">Best Luxury Hotels Of The Year</h1>
 
                 <Slider {...sliderSettings}>
                     {newsItems.map((item) => (
                         <div key={item.id}>
                             <figure>
-                                <div className="img-dec">{item.title}</div>
+                                                            {/* <div className="img-dec"><span className="img-dec-country">{hotel.country}</span><div className="coutryname">{hotel.hotel_title}</div></div> */}
+
+                                <div className="img-dec"><span className="img-dec-country">{item.country}</span><div className="coutryname">{item.title}</div></div>
                                 <div className="thumbnail">
                                     <div>
                                         <NavLink to="/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux" className="readmore">

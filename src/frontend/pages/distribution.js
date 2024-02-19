@@ -128,12 +128,12 @@ function Distribution() {
         <>
             <Header />
             <section className="distribution-section spad">
-                <Container>
-                    <div className="text-center">
-                    <h1>{data.length > 0 ? data[0].main_page_title : ""}</h1>
-                    </div>
-                 
-                </Container>
+            <div className="page-headings ">
+<div className="heading-section">
+<h1>{data.length > 0 ? data[0].main_page_title : ""}</h1>
+</div>
+</div>
+              
             </section>
 
         
@@ -178,7 +178,7 @@ function Distribution() {
               <ul>
                           {edition.hotel_description && typeof edition.hotel_description === "string"
                             ? edition.hotel_description.split('\n').map((item, index) => (
-                                <li key={index}>{item}</li>
+                                <li key={index} dangerouslySetInnerHTML={{ __html: item}} />
                               ))
                             : <li>Hotel description not available</li>}
                         </ul>
@@ -224,7 +224,7 @@ function Distribution() {
                     <Slider {...sliderSettings} ref={sliderRef}>
                         {magazine.map((magazine, index) => (
                            
-                            <div key={index} className="text-center exclusive-deals distribution-slider p-0">
+                            <div key={index} className="text-center  distribution-slider p-0">
                                 <div>              <a>
                                     <Image src={magazine.thumbnail} />
                                 </a>

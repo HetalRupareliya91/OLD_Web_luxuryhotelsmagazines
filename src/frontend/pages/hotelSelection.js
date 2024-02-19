@@ -13,44 +13,83 @@ import CallToAction from "../components/callToAction";
 
 import axios from "axios";
 import API from "../../utils";
+import { useLocation } from "react-router-dom";
 function HotelSelection(){
+
+  const { state } = useLocation();
+const countryFilter = state?.filter || '';
+
+console.log("dsbsdbgsbgsbgbglgshb",countryFilter)
+
+
   const [apiData,setApiData]=useState("")
   const [hotelData,setHotelData]=useState([])
   const  type="hotelselection"
-       
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
   useEffect(() => {
-      const fetchDetails = async (e) => {
-          if (e) e.preventDefault();
-  
-          try {
-              const response = await axios.post(
-                  `${API.BASE_URL}${API.ENDPOINTS.singlePageDetails}`,
-                  {
-                      type: type,  
-                  },
-                  {
-                      headers: {
-                          Authorization: "hXuRUGsEGuhGf6KM",
-                      },
-                  }
-              );
-  
-              const data = response.data;
-              // console.log("myData", data);
-              if (data.status === true) {
-                  setApiData(data.data.details);
-              } else {
-                  console.error("signup failed:");
-              }
-          } catch (error) {
-              console.error("Error:", error.message);
-          }
-      };
-  
-      fetchDetails();
-      fetchAllHotels()
-  }, []);
+    const fetchDetails = async (e) => {
+        if (e) e.preventDefault();
 
+        try {
+            const response = await axios.post(
+                `${API.BASE_URL}${API.ENDPOINTS.singlePageDetails}`,
+                {
+                    type: type,
+                },
+                {
+                    headers: {
+                        Authorization: "hXuRUGsEGuhGf6KM",
+                    },
+                }
+            );
+
+            const data = response.data;
+            if (data.status === true) {
+                setApiData(data.data.details);
+            } else {
+                console.error("signup failed:");
+            }
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
+    };
+
+    const fetchHotelsByCountry = async () => {
+        try {
+            const response = await axios.post(
+                `${API.BASE_URL}${API.ENDPOINTS.hotelSearch}`,
+                {
+                    country: countryFilter,
+                },
+                {
+                    headers: {
+                        Authorization: "hXuRUGsEGuhGf6KM",
+                    },
+                }
+            );
+
+            const data = response.data;
+            if (data) {
+                setHotelData(data.hotel_data);
+            } else {
+                console.error("Failed to fetch hotels by country");
+            }
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
+    };
+
+    fetchDetails();
+
+    // Check if countryFilter is present, then fetch hotels by country
+    if (countryFilter) {
+        fetchHotelsByCountry();
+    } else {
+        // Fetch all hotels if no country filter is present
+        fetchAllHotels();
+    }
+}, [countryFilter]); // Add countryFilter to the dependency array
 
   
   const fetchAllHotels = async () => {
@@ -74,17 +113,21 @@ function HotelSelection(){
       }
     };
   
-
-
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const handlePageChange = (newPage) => {
+      setCurrentPage(newPage);
+    };
     return(
         <>
 <Header/>
 <section className="spad hotel-selection-section">
-      <Container>
-        {apiData && (
+<div className="page-headings mb-4 ">
+<div className="heading-section">
+{apiData && (
           <>
-            <h1 className="text-center">{apiData.title}</h1>
-            <div className="hotel-selection spad">
+            <h1 className="">{apiData.title}</h1>
+            {/* <div className="hotel-selection spad">
               {apiData.sections.map((section, index) => (
                 <div key={index}>
                   <p>
@@ -92,170 +135,63 @@ function HotelSelection(){
                   </p>
                 </div>
               ))}
-            </div>
+            </div> */}
           </>
-        )}
-      </Container>
+        )}</div>
+</div>
+   
     </section>
 <SearchWithBackground />
 <section className="spad">
   <Container>
     
 <Row >
-
-{hotelData.map((hotel, index) => (
+{hotelData &&  hotelData.length > 0 ? (
+hotelData.slice(startIndex, endIndex).map((hotel, index) => (
               <Col lg={4} md={6} key={index}>
-                <a href="">
+                <a href={`/hotel-details/${hotel.id}/${hotel.country}/${hotel.hotel_title}`}>
                   <div className="room-item selection-img-div">
                     <Image
                     src={hotel.hotel_images[0]} 
                       className="hotel-selection-image"
                       alt="image"
                     />
-                    <div className="px-3">
+              
+                  </div>
+                  <div className="hotel-section-title px-3">
                       <h5 className="mt-3">{hotel.hotel_title}</h5>
                       <div className="d-flex">
                         <GeoAltFill className="m-0 locaton-icon" />
                         <p>{hotel.country}</p>
                       </div>
                     </div>
-                  </div>
                 </a>
               </Col>
-   ))}
-{/*           
-              <Col lg={4} md={6}  >
-                <a href="">
-                  <div className="room-item selection-img-div">
-                    <img src={Rooms4} className="hotel-selection-image " alt="image"/>
-                    <div className="px-3">
-                      <h5 className="mt-3">Six Senses Shaharut</h5>
-                      <div className="d-flex"><GeoAltFill className="m-0 locaton-icon" />
-                      <p>Kuwait</p></div>
-                      
-                    </div>
-                  </div>
-                </a>
-              </Col>
-            
-              <Col lg={4} md={6}  >
-                <a href="">
-                  <div className="room-item selection-img-div">
-                    <img src={Rooms5} alt="image"  className="hotel-selection-image"/>
-                    <div  className="px-3">
-                      <h5 className="mt-3">The Setai Tel Aviv</h5>
-                      <div className="d-flex"><GeoAltFill className="m-0 locaton-icon" />
-                      <p>Kuwait</p></div>
-                      
-                    </div>
-                  </div>
-                </a>
-              </Col>
-              <Col lg={4} md={6}  >
-                <a href="">
-                  <div className="room-item selection-img-div">
-                    <img src={Rooms6} alt="image" className="hotel-selection-image"/>
-                    <div  className="px-3">
-                      <h5 className="mt-3">Symphony Style Hotel, Quorvus Collection</h5>
-                      <div className="d-flex"><GeoAltFill className="m-0 locaton-icon" />
-                      <p>Kuwait</p></div>
-                      
-                    </div>
-                  </div>
-                </a>
-              </Col>
-
-              <Col lg={4} md={6}  >
-                <a href="">
-                  <div className="room-item selection-img-div">
-                    <img src={Rooms4} alt="image" className="hotel-selection-image"/>
-                    <div  className="px-3">
-                      <h5 className="mt-3">Six Senses Shaharut</h5>
-                      <div className="d-flex"><GeoAltFill className="m-0 locaton-icon" />
-                      <p>Kuwait</p></div>
-                      
-                    </div>
-                  </div>
-                </a>
-              </Col>
-
-
-              <Col lg={4} md={6}  >
-                <a href="">
-                  <div className="room-item selection-img-div">
-                    <img src={Rooms5} alt="image" className="hotel-selection-image"/>
-                    <div  className="px-3">
-                      <h5 className="mt-3">Six Senses Shaharut</h5>
-                      <div className="d-flex"><GeoAltFill className="m-0 locaton-icon" />
-                      <p>Kuwait</p></div>
-                      
-                    </div>
-                  </div>
-                </a>
-              </Col>
-              <Col lg={4} md={6}  >
-                <a href="">
-                  <div className="room-item selection-img-div">
-                    <img src={Rooms6} alt="image" className="hotel-selection-image"/>
-                    <div  className="px-3" >
-                      <h5 className="mt-3">Six Senses Shaharut</h5>
-                      <div className="d-flex"><GeoAltFill className="m-0 locaton-icon" />
-                      <p>Kuwait</p></div>
-                      
-                    </div>
-                  </div>
-                </a>
-              </Col>
-              <Col lg={4} md={6}  >
-                <a href="">
-                  <div className="room-item selection-img-div">
-                    <img src={Rooms4} alt="image" className="hotel-selection-image"/>
-                    <div className="px-3" >
-                      <h5 className="mt-3">Six Senses Shaharut</h5>
-                      <div className="d-flex"><GeoAltFill className="m-0 locaton-icon m-0" />
-                      <p>Kuwait</p></div>
-                      
-                    </div>
-                  </div>
-                </a>
-              </Col>
-              <Col lg={4} md={6}  >
-                <a href="">
-                  <div className="room-item selection-img-div">
-                    <img src={Rooms5} alt="image"className="hotel-selection-image"/>
-                    <div  className="px-3">
-                      <h5 className="mt-3">Six Senses Shaharut</h5>
-                      <div className="d-flex"><GeoAltFill className="m-0 locaton-icon" />
-                      <p>Kuwait</p></div>
-                      
-                    </div>
-                  </div>
-                </a>
-              </Col>
-              <Col lg={4} md={6}  >
-                <a href="">
-                  <div className="room-item selection-img-div">
-                    <img src={Rooms6} alt="image"className="hotel-selection-image"/>
-                    <div  className="px-3">
-                      <h5 className="mt-3">Six Senses Shaharut</h5>
-                      <div className="d-flex"><GeoAltFill className="m-0 locaton-icon" />
-                      <p>Kuwait</p></div>
-                      
-                    </div>
-                  </div>
-                </a>
-              </Col> */}
+   ))
+   ) : (
+     <div className="text-center mt-4">
+       <p>No hotels found for the selected country.</p>
+     </div>
+   )}
           </Row>
 
 
           </Container>
-          <div class="col-lg-12">
-                    <div class="room-pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">Next <i class="fa fa-long-arrow-right"></i></a>
-                    </div>
-                </div>
+          {/* <div className="col-lg-12">
+  <div className="room-pagination">
+  {[...Array(Math.ceil((hotelData && hotelData.length) || 0 / itemsPerPage)).keys()].map(
+  (page) => (
+    <a
+      key={page}
+      onClick={() => handlePageChange(page + 1)}
+      className={currentPage === page + 1 ? "active" : ""}
+    >
+      {page + 1}
+    </a>
+  )
+)}
+  </div>
+</div> */}
 </section>
 
 

@@ -54,7 +54,12 @@ function ClientLogo() {
   
     return (
         <section className="spad clientlogosection">
-        <h1 className="text-center mb-5">Who Are We Working With</h1>
+    <div className="page-headings mb-4">
+<div className="heading-section">
+<h1 className="">Who Are We Working With</h1>
+</div>
+</div>
+          
         <div className="slider">
         {apiData.map((logo, index) => (
           <div className="item" key={index}>

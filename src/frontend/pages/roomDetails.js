@@ -5,6 +5,7 @@ import { Col, Container, Form, Image, Row } from "react-bootstrap";
 import { FaEnvelope, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaWhatsapp, FaTelegram, FaLinkedin, FaSnapchat, FaEye, FaHeart, FaMapMarker, FaBuilding, FaSpaceShuttle, FaHome, FaList, FaPencilAlt, FaWifi, FaSwimmingPool, FaBars, FaWineBottle, FaCloudMeatball, FaTableTennis, FaRedRiver, FaRestroom, FaFootballBall, FaConciergeBell, FaFileSignature, FaGlasses, FaRProject } from 'react-icons/fa';
 
 
+import Slider from 'react-slick';
 
 import News5 from '../../assets/img/news5.jpg'
 import News6 from '../../assets/img/news6.jpg'
@@ -19,12 +20,38 @@ import HotelSlider from "../components/youMayLikeHotel";
 import VotingForm from "../components/votingForm";
 import ShareThisButtons from "../components/shareButtons";
 function RoomDetails() {
+
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 1,
+            },
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1,
+            },
+          },
+        ],
+      };
+    
     const [aminitesData, setAminitesData]=useState([])
     const [facilitiesData, setFacilitiesData]=useState([])
+ 
+
 
     const { hotelId } = useParams();
     console.log(hotelId);
-
+const[hotelImages , setImages]=useState([])
     const [postData, setPostData] = useState("");
 
     useEffect(() => {
@@ -47,6 +74,7 @@ function RoomDetails() {
             if (data.status === true) {
               
               setPostData ( data.data);
+              setImages(data.data.hotel_images)
 
               
             } else {
@@ -74,7 +102,7 @@ function RoomDetails() {
             const data = response.data;
             console.log('Amenities data:', data);
             if (data.status === true && Array.isArray(data.data)) {
-                setAminitesData(data)
+                setAminitesData(data.data)
             
             } else {
                 console.error('Invalid format: Amenities data is not an array.');
@@ -114,26 +142,25 @@ function RoomDetails() {
         fetchfacilities();
     }, []);
 
+
+    
+
     return (
         <><Header />
             <section className="room-details-section spad">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-lg-8">
+                    <Row >
+                        <Col lg={8} className="">
+                            
+                        <Slider {...settings}>
+                        {hotelImages.map((hotel, index) => (
+                            <div key={index}>
+                        <img src={hotel} alt="" className="room-details-section-image" />
+                        </div>
+                        ))}
+                             </Slider>
 
-                            <div className="row ">
-                                <div className="col-lg-4">
-                                    <div className="row">
-                                        <div className="col-lg-12 col-6"><img src={News5} alt="" className="mb-2" /></div>
-                                        <div className="col-lg-12 col-6"><img src={News5} alt="" /></div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-8">
-                                    <img src={News5} alt="" />
-                                </div>
-                            </div>
-
-                            <div className="row">
+                             <div className="row">
                                 <div className="col-lg-12 text-end ">
                                     <h4 className="mt-4">{postData.hotel_title} </h4>
                                     <div className="d-flex justify-content-end"><GeoAltFill className="m-0 locaton-icon" />
@@ -141,11 +168,26 @@ function RoomDetails() {
 
                                 </div>
                             </div>
-                        </div>
+                       
+                              </Col>
+                      
+                            {/* <Row >
+                                <Col lg={4}>
+                                    <div className="row">
+                                        <div className="col-lg-12 col-6"><img src={News5} alt="" className="mb-2" /></div>
+                                        <div className="col-lg-12 col-6"><img src={News5} alt="" /></div>
+                                    </div>
+                                </Col>
+                                <div className="col-lg-8">
+                                    <img src={News5} alt="" />
+                                </div>
+                            </Row> */}
+
+                          
                         <div className="col-lg-4 ">
-                            <iframe width="100%" height="450" src={postData.youtube_link} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe width="100%" height="600" src={postData.youtube_link} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
-                    </div>
+                    </Row>
 
                     <div className="row mt-5">
 
@@ -167,7 +209,7 @@ function RoomDetails() {
                             </div>
                             <div className="rd-text">
                                 <div className="rd-title">
-                                    <i aria-hidden="true"><FaBuilding /></i> Rooms & Suites
+                                    <i aria-hidden="true"><FaBuilding  className="m-0 locaton-icon"/></i> Rooms & Suites
                                 </div>
                                 
 
@@ -176,7 +218,7 @@ function RoomDetails() {
                             </div>
                             <div className="rd-text">
                                 <div className="rd-title">
-                                    <i className="fa fa-cutlery" aria-hidden="true"><FaSpaceShuttle /></i>  Restaurants & Bars
+                                    <i className="fa fa-cutlery" aria-hidden="true"><FaSpaceShuttle  className="m-0 locaton-icon"/></i>  Restaurants & Bars
                                 </div>
 
 
@@ -184,7 +226,7 @@ function RoomDetails() {
                             </div>
                             <div className="rd-text">
                                 <div className="rd-title">
-                                    <i aria-hidden="true"><FaHome /></i> Spa & Wellness
+                                    <i aria-hidden="true"><FaHome  className="m-0 locaton-icon"/></i> Spa & Wellness
                                 </div>
 
 
@@ -193,13 +235,13 @@ function RoomDetails() {
                             </div>
                             <div className="rd-text">
                                 <div className="rd-title">
-                                    <i aria-hidden="true"><FaList /></i> Other Facilities
+                                    <i aria-hidden="true"><FaList  className="m-0 locaton-icon"/></i> Other Facilities
                                 </div>
 
                            <p dangerouslySetInnerHTML={{ __html: postData.other_facilities }} />
 
                             </div>
-                            <div className="rd-text">
+                            {/* <div className="rd-text">
                                 <div className="rd-title">
                                     <i aria-hidden="true"><FaPencilAlt /></i>  Additional information
                                 </div>
@@ -207,7 +249,7 @@ function RoomDetails() {
 
                                 <p dangerouslySetInnerHTML={{ __html: postData.aditional_information }} />
 
-                            </div>
+                            </div> */}
 
                             <div className="rd-text">
                                 <div className="rd-title">
@@ -216,23 +258,7 @@ function RoomDetails() {
 
                                 <ShareThisButtons/>
 
-                                {/* <div className="row">
-                                    <div className="col-lg-8"><p className="f-para sharethis mt-2">
-                                        <i aria-hidden="true"><FaFacebook /></i>
-                                        <i aria-hidden="true"><FaInstagram /></i>
-                                        <i aria-hidden="true"><FaTwitter /></i>
-                                        <i aria-hidden="true"><FaWhatsapp /></i>
-                                        <i aria-hidden="true"><FaTelegram /></i>
-                                        <i aria-hidden="true"><FaLinkedin /></i>
-                                        <i aria-hidden="true"><FaSnapchat /></i>
-                                        <i aria-hidden="true"><FaTiktok /></i>
-                                        <i aria-hidden="true"><FaViber /></i>
-                                        <i aria-hidden="true"><FaFacebookMessenger /></i>
-                                        <i aria-hidden="true"><FaEnvelope /></i>
-                                        
-                                    </p></div>
-                    
-                                </div> */}
+                                
 
 
                             </div>
@@ -246,19 +272,11 @@ function RoomDetails() {
                                 <VotingForm  hotelId={hotelId}/>
                                
 
-                                <div className="locationmap mt-3">
+                                {/* <div className="locationmap mt-3">
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29759.049789885605!2d72.75953112132576!3d21.196876856223426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c351ceae251%3A0x1d35b30f855a2c36!2sAdajan%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1703916461865!5m2!1sen!2sin" width="100%" height="450" style={{ border: "0", allowfullscreen: "", loading: "lazy", referrerpolicy: "no-referrer-when-downgrade" }}></iframe>
-                                </div>
-                                <div className="row  ">
-                                    <div className="col-lg-6 mt-3 text-center"><button className=" btn-default w-100"><NavLink to={postData.website}>Book Online </NavLink></button></div>
-                                    <div className="col-lg-6 mt-3 text-center"><button className=" btn-default w-100"><NavLink to={postData.website}>Visit Website </NavLink></button>
+                                </div> */}
 
-                                    </div>
-                                    <div className="col-lg-12 mt-3 text-center"><a href="/pricing-plan"><button className=" btn-default w-100">Claim Listing</button></a>
-                                    </div>
-                                </div>
-
-                                <div className="mt-4">
+<div className="mt-4">
                                     <h2>Hotel Website Visits</h2>
 
                               <div className="d-flex justify-content-around">
@@ -274,6 +292,16 @@ function RoomDetails() {
                                         <i aria-hidden="true"><FileEarmarkCheckFill />&nbsp;2 votes </i>
                                     </p>
                                 </div>
+                                <div className="row  ">
+                                    <div className="col-lg-6 mt-3 text-center"><button className=" btn-default w-100"><FaHeart /><NavLink to={postData.website}>Book Online </NavLink></button></div>
+                                    <div className="col-lg-6 mt-3 text-center"><button className=" btn-default w-100"><FaEye /><NavLink to={postData.website}> Website Visit</NavLink></button>
+
+                                    </div>
+                                    <div className="col-lg-12 mt-3 text-center"><a href="/pricing-plan"><button className=" btn-default w-100">Claim Listing</button></a>
+                                    </div>
+                                </div>
+
+                        
                             </div>
                         </div>
 
@@ -283,75 +311,22 @@ function RoomDetails() {
 
                             </div>
                             <div>
+                            <ul className="amenity_ul">
 
-
-                                <Row className="room-details-aminites-row">
-                                    <Col lg={3} className="col-section">
-                                        <div className="aminites d-flex">
-                                            <FaWifi className="aminites-icon m-0" />
-                                            <p>Numbers Of Rooms</p>
-                                        </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
-                                        <div className="aminites d-flex">
-                                            <FaSwimmingPool className="aminites-icon m-0" />
-                                            <p> swimming pool:1</p>
-                                        </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
-                                        <div className="aminites d-flex">
-                                            <FaWineBottle className="aminites-icon m-0" />
-                                            <p> Bars :1</p>
-                                        </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
-                                        <div className="aminites d-flex">
-                                            <FaCloudMeatball className="aminites-icon m-0" />
-                                            <p>Kids club</p>
-                                        </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
-                                        <div className="aminites d-flex">
-                                            <FaTableTennis className="aminites-icon m-0" />
-                                            <p> Teens Club</p>
-                                        </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
-                                        <div className="aminites d-flex">
-                                            <FaRedRiver className="aminites-icon m-0" />
-                                            <p> Private driver</p>
-                                        </div>
-                                    </Col>
-
-                                    <Col lg={3} className="col-section">
-                                        <div className="aminites d-flex">
-                                            <FaRestroom className="aminites-icon m-0" />
-                                            <p> Room service</p>
-                                        </div>
-                                    </Col>
-
-                                    <Col lg={3} className="col-section">
-                                        <div className="aminites-icon aminites d-flex">
-                                            <FaFootballBall className="aminites-icon m-0" />
-                                            <p> Sport classes</p>
-                                        </div>
-                                    </Col>
-
-                                    <Col lg={3} className="col-section">
-                                        <div className="aminites d-flex">
-                                            <FaConciergeBell className="aminites-icon m-0" />
-                                            <p> Concierge service
-                                            </p>
-                                        </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
-                                        <div className="aminites d-flex">
-                                            <FaFileSignature className="aminites-icon m-0" />
-                                            <p> Fitness center</p>
-                                        </div>
-                                    </Col>
-                                </Row>
-
+                            {/* <Row className="room-details-aminites-row"> */}
+    {aminitesData.map((amenity) => (
+        // <Col lg={3} md={6} className="col-section" key={amenity.id}>
+        
+            <li className="aminites d-flex">
+                <img src={amenity.fullImagePath} alt={amenity.title} className="aminites-icon m-0" />
+               
+                <p>{amenity.title}</p>
+            </li>
+           
+        // </Col>
+    ))}
+{/* </Row> */}
+</ul>
 
                             </div>
                         </div>
@@ -365,77 +340,80 @@ function RoomDetails() {
                             <div>
 
 
-                                <Row className="most-popular-facilites-row">
-                                    <Col lg={3} className="col-section">
+                                <ul className="most-popular-facilites-row">
+                                    <li  className="col-section">
                                         <div className="facilites d-flex">
-                                            <FaWifi className="aminites-icon m-0" />
+                                        <FaSwimmingPool className="aminites-icon m-0" />
                                             <p>Outdoor swimming pool</p>
                                         </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
+                                    </li>
+                                    <li lg={3} className="col-section">
                                         <div className="facilites d-flex">
-                                            <FaSwimmingPool className="aminites-icon m-0" />
-                                            <p>Fitness center</p>
+                                           
+                                             <FaWifi className="aminites-icon m-0" />
+                                            <p>Free Wifi</p>
                                         </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
+                                    </li>
+                                    <li lg={3} className="col-section">
                                         <div className="facilites d-flex">
                                             <FaWineBottle className="aminites-icon m-0" />
-                                            <p>Non-smiking rooms</p>
+                                            <p>Airport Shuttul</p>
                                         </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
+                                    </li>
+                                    <li lg={3} className="col-section">
                                         <div className="facilites d-flex">
                                             <FaCloudMeatball className="aminites-icon m-0" />
-                                            <p>Spa & Wellness</p>
+                                            <p>Family Rooms</p>
                                         </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
+                                    </li>
+                                    <li lg={3} className="col-section">
                                         <div className="facilites d-flex">
                                             <FaTableTennis className="aminites-icon m-0" />
-                                            <p>Restaurants</p>
+                                            <p>Fitness Center</p>
                                         </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
+                                    </li>
+                                    <li lg={3} className="col-section">
                                         <div className="facilites d-flex">
                                             <FaRedRiver className="aminites-icon m-0" />
-                                            <p>Tea/coffee maker in all rooms</p>
+                                            <p>Free Parking</p>
                                         </div>
-                                    </Col>
+                                    </li>
 
-                                    <Col lg={3} className="col-section">
+                                    <li lg={3} className="col-section">
                                         <div className="facilites d-flex">
                                             <FaRestroom className="aminites-icon m-0" />
-                                            <p>Bar</p>
+                                            <p>Spa And Wellness Center</p>
                                         </div>
-                                    </Col>
+                                    </li>
 
-                                    <Col lg={3} className="col-section">
+                                    <li lg={3} className="col-section">
                                         <div className="facilites d-flex">
                                             <FaFootballBall className="aminites-icon m-0" />
-                                            <p>Good breakfasty</p>
+                                            <p>Tea/Cofffee Maker In Rooms</p>
                                         </div>
-                                    </Col>
+                                    </li>
 
-                                    <Col lg={3} className="col-section">
+                                    <li lg={3} className="col-section">
                                         <div className="facilites d-flex">
-                                            <FaConciergeBell className="aminites-icon m-0" />
+                                         
+                                            <FaWineBottle className="aminites-icon m-0" />
                                             <p> 
+                                           Bars
                                             </p>
                                         </div>
-                                    </Col>
-                                    <Col lg={3} className="col-section">
+                                    </li>
+                                    <li lg={3} className="col-section">
                                         <div className="facilites d-flex">
-                                            <FaFileSignature className="aminites-icon m-0" />
-                                            <p>Childern's Cots</p>
+
+                                            <FaConciergeBell className="aminites-icon m-0" />
+                                            <p>Fabulous Breakfast</p>
                                         </div>
-                                    </Col>
-                                </Row>
+                                    </li>
+                                </ul>
 
 
                             </div>
                         </div>
-
 
                         <Review />
 

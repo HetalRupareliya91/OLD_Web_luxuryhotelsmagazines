@@ -42,24 +42,28 @@ const [mediapack, setMediaPack]=useState([])
         <>
             <Header />
             <section className="mt-5 mb-3">
-                <Container>
-                    <h1 className="text-center">Media Pack</h1>
-                </Container>
+            <div className="page-headings ">
+<div className="heading-section">
+<h1 className="">Media Pack</h1>
+</div>
+</div>
+                
             </section>
 
             <section className="my-3 media-pack-section">
                 <Container>
                 <Row>
             {mediapack.map((item) => (
-              <Col lg={6} md={6} key={item.id} className="media-pack-cols p-0">
-                <div>
+              <Col lg={6} md={12} key={item.id} className=" p-0">
+                <div className="media-pack-cols">
                   <NavLink to={`/kit-detail/${item.id}/${item.title}`}>
                     <Image src={item.media_kit_image} alt={item.title} />
-                    <div className="px-3">
-                      <h5 className="mt-3">{item.title}</h5>
-                    </div>
+                   
                   </NavLink>
                 </div>
+                <div className="px-3">
+                      <h5 className="mt-3">{item.title}</h5>
+                    </div>
               </Col>
             ))}
           </Row>

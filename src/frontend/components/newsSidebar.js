@@ -10,7 +10,7 @@ import AllBlogs from "../pages/userprofile/allBlogs";
 import AddBlogs from "../pages/userprofile/addBlogs";
 import AddHotel from "../pages/userprofile/addHotel";
 import axios from "axios";
-import SpecialOffers from "../pages/userprofile/addSpecialOffers";
+import SpecialOffers from "../pages/userprofile/addHotelSpecialOffers";
 import Header from "./header";
 import Footer from "./footer";
 import PersionalInformation from "../pages/userprofile/persionalInformation";

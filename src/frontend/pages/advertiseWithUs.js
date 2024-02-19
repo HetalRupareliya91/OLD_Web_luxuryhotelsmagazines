@@ -11,8 +11,8 @@ import AdvertiseTop from "../components/advertiseWithus/advertiseTop";
 import ClientLogo from "../components/clientLogo";
 import OurStory from "../components/advertiseWithus/ourStory";
 import NewFor from "../components/advertiseWithus/newFor2022";
-import Tabs from "../components/tabs";
 import AdvertiseWhatWeDosection from "../components/advertiseWithus/advWhatWeDo";
+import AdvertiseTabs from "../components/advertiseWithus/advertiseTab";
 function AdvertiseWithUs() {
 
     const [activeTab, setActiveTab] = useState("Zoom");
@@ -31,7 +31,8 @@ function AdvertiseWithUs() {
             <OurStory/>
             <ClientLogo/>
             <NewFor/>
-            <Tabs/>
+            
+            <AdvertiseTabs/>
             <AdvertiseWhatWeDosection/>
             <Advertise />
             <AdvertiseWhatWeDo />

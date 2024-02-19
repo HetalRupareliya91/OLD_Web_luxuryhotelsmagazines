@@ -56,6 +56,7 @@ const API = {
 deleteSingleHotelImage:"delete_single_hotel_image",
 addMultipleImage:"add_multiple_images_hotels",
     homeApi:"home",
+    userHotel:"user_hotel",
 
 
     // all media kit
@@ -72,6 +73,11 @@ addMultipleImage:"add_multiple_images_hotels",
     // voting-details
     
 addVotingDetails:"add_voting_details",
+
+// offer_title
+
+
+addSpecialOffers:"add_special_offer"
       },
     }; 
 

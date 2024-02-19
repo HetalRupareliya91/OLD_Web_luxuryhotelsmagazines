@@ -225,10 +225,7 @@ import { GeoAltFill } from "react-bootstrap-icons";
                                             <img className="card-img-top" src={News5} alt="Card image cap" />
                                             <div className="card-body">
                                                 <h5 className="card-title">Hotel Taj</h5>
-                                                <h6 className="card-title">India</h6>
-                                                <p className="card-text">7.8/10 (Good)</p>
-                                                <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                                               
                                             </div>
                                         </div>
                                     </Col>
@@ -237,10 +234,7 @@ import { GeoAltFill } from "react-bootstrap-icons";
                                             <img className="card-img-top" src={News1} alt="Card image cap" />
                                             <div className="card-body">
                                                 <h5 className="card-title">Hotel Taj</h5>
-                                                <h6 className="card-title">England</h6>
-                                                <p className="card-text">7.8/10 (Good)</p>
-                                                <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                                                
                                             </div>
                                         </div>
                                     </Col>
@@ -249,10 +243,7 @@ import { GeoAltFill } from "react-bootstrap-icons";
                                             <img className="card-img-top" src={News2} alt="Card image cap" />
                                             <div className="card-body">
                                                 <h5 className="card-title">Hotel Taj</h5>
-                                                <h6 className="card-title">Dubai</h6>
-                                                <p className="card-text">7.8/10 (Good)</p>
-                                                <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                                                
                                             </div>
                                         </div>
                                     </Col>

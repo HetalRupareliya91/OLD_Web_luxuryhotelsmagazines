@@ -16,11 +16,14 @@ function ContactUs() {
         <Header/>
         <Parallax blur={0} bgImage={bg2} bgImageAlt="the cat" strength={300}>
             <section className="Contact-us-section spad">
+
+            <div className="page-headings ">
+<div className="heading-section">
+<h1>Contact Us</h1></div>
+</div>
                 <Container>
 
-                    <div className="text-center mb-4">
-                        <h1>Contact Us</h1>
-                    </div>
+                
                     <Row>
                        
                        <Col lg={7}>
@@ -48,13 +51,13 @@ function ContactUs() {
                             </Form.Control>
 
 <Form.Label>
-    message
+    Message
 </Form.Label>
 <Form.Control
     as="textarea"
     rows={4}
     className="mb-3"
-    placeholder="Type your message here..."
+    placeholder="Type your Message here..."
 >
 
 </Form.Control>

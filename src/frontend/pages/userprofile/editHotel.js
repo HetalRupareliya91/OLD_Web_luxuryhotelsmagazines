@@ -649,7 +649,14 @@ function EditHotel({ hotel_id, onClose }) {
           if (response.data.status === true) {
             setHotelImages(response.data.data.hotel_images)
             const apiData = response.data.data;
-            
+    
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                hotelName: apiData.hotel_title || "",
+                hotelWebsite: apiData.website || "",
+                youtubeLink: apiData.youtube_link || "",
+                contry:apiData.country || "",
+              }));
 
             const contentBlock = htmlToDraft(apiData.address);
             if (contentBlock) {
@@ -759,7 +766,7 @@ function EditHotel({ hotel_id, onClose }) {
                             <h1>Image</h1>
                         </div>
 
-                        <div className="text-end">
+                        <div className="text-end mb-5">
     <button onClick={() =>AddImags()} >
         Add New Image
     </button>
@@ -837,7 +844,7 @@ function EditHotel({ hotel_id, onClose }) {
                                 <Select 
                                    
                                     options={options} value={value} onChange={changeHandler}
-                                    style={{ borderColor: validationErrors.country ? "red" : "" }}>
+                                    style={{ borderColor: validationErrors.country ? "red" : "" }} className="drop">
                                     
                                 </Select>
                                 {validationErrors.country && (
@@ -851,7 +858,7 @@ function EditHotel({ hotel_id, onClose }) {
 
                     <Row className=" mb-3">
 
-                        <Col lg={12}>
+                        <Col lg={12} className="textarea1">
                             {/* <input className="sidebar-input" type="text" id="location" name="location" placeholder="Location" value={formData.location}
                             onChange={handleInputChange} /> */}
                             <label>Location</label>
@@ -1139,8 +1146,8 @@ function EditHotel({ hotel_id, onClose }) {
                                 onChange={(e) => handleChange("contact3", "contactInformation", e.target.value)} />
                         </Col>
                     </Row>
-                    <div className="text-end">
-                        <button onClick={prevStep} >
+                    <div className="text-end ">
+                        <button onClick={prevStep} className="me-3">
                             Previous
                         </button>
                         <button onClick={nextStep} >

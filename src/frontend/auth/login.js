@@ -8,7 +8,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa";
 
 function Login() {
-  
+   const newsLogin = localStorage.getItem("newsLogin");
+
    const navigate = useNavigate();
    const [userId, setUserId] = useState(null);
 
@@ -139,9 +140,17 @@ function Login() {
             localStorage.setItem('userName',response.data.data.name);
             setShowEmailForm(false);
       //   setShowOTPForm(true);
-      navigate("/userprofile");
+      // navigate("/userprofile");
+
       
             // console.log(response.data.message);
+
+            if (newsLogin === "true") {
+              navigate("/publish-news-pr");
+            } else {
+              navigate("/userprofile");
+            }
+            localStorage.removeItem("newsLogin")
          } else {
             console.error(response.data.message);
             const errorMessage = response.data.message || "Login failed. Please try again.";
@@ -164,11 +173,15 @@ function Login() {
   
 
    useEffect(() => {
-      if (isUserLoggedIn()) {
-        navigate("/userprofile")
-        return;
+      if (newsLogin === "true") {
+         localStorage.setItem('isLoggedIn', 'false');
+         navigate("/signup")
+ localStorage.setItem('newsLogin', 'false');
+      } else if (isUserLoggedIn()) {
+         navigate("/userprofile")
+         return;
       }
-    }, []);
+   }, [newsLogin]);
    
    return (
       <>
