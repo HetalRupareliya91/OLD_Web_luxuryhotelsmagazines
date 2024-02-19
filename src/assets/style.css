@@ -6486,7 +6486,7 @@ button a {
 	width: 38%;
 
 	background: #fff;
-	padding: 5px;
+	padding:10px 15px;
 	opacity: 1;
 	pointer-events: auto;
 	display: block !important;
