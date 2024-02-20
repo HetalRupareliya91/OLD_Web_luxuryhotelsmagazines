@@ -10,7 +10,7 @@ function Footer(){
    const handlePublishNewsClick = () => {
    
       localStorage.setItem("newsLogin", "true");
-      navigate("/login");
+      navigate("/signup");
     };
 
     return(

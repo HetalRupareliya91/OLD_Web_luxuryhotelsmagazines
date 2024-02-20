@@ -59,6 +59,7 @@ function Advertise() {
                                                 <p className="heading1">Video Banner (Home Page)</p>
                                                 <p className="heading">(Minimum Term 3 months)</p>
                                             </div> */}
+                                            
                                     </div>
 
                                     <div className="flip-box-back">

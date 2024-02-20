@@ -49,6 +49,7 @@ function NewsSidebar(){
            if (response.data.status === true) {
             localStorage.removeItem("token");
             localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("newsLogin");
             navigate("/login")
               
               // console.log(response.data.message);
