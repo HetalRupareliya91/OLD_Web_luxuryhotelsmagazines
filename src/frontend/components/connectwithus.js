@@ -24,12 +24,12 @@ function ConnectWithUS() {
                         </a>
                         <a href="https://www.instagram.com/luxuryhotelsbrand/" target="_blank">@LuxuryHotelsBrand</a>
                     </div>
-                    <div>
+                    {/* <div>
                         <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg' target="_blank" className="fa-link">
                             <FaYoutube />
                         </a>
                         <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg' target="_blank">Youtube</a>
-                    </div>
+                    </div> */}
                     <div>
                         <a href="https://www.facebook.com/LuxuryHotelsMagazines" target="_blank" className="fa-link">
                         <FaPhone />

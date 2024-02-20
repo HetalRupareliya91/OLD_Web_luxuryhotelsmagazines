@@ -5,25 +5,32 @@ import { Parallax } from "react-parallax";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import ReCAPTCHA from "react-google-recaptcha";
-import { FaEnvelope, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaEnvelope, FaFacebook, FaInstagram, FaPhone, FaYoutube } from "react-icons/fa";
 import ConnectWithUS from "../components/connectwithus";
-
+import video from "../../assets/video/video.webm"
 
 function ContactUs() {
 
     return (
         <>
             <Header />
-            <Parallax blur={0} bgImage={bg2} bgImageAlt="the cat" strength={300}>
-                <section className="Contact-us-section spad">
+           
+        
 
-                    <div className="page-headings ">
+                
+                <div class="bg-video-wrap">
+    <video src={video} loop muted autoPlay >
+    </video>
+    
+    <div class="bg_Video">
+    <div className="page-headings">
                         <div className="heading-section">
                             <h1>Contact Us</h1></div>
                     </div>
                     <Container>
                         <Row>
-                            <Col lg={7}>
+                            <Col lg={2}></Col>
+                            <Col lg={8}>
                                 <Form >
 
                                     <Form.Label>
@@ -64,26 +71,59 @@ function ContactUs() {
                                         //   onChange={handleVerification}
                                         />
                                     </div>
-                                    <div >
+                                    <div className="text-center" >
                                         <button className="mt-4 w-25">SUBMIT</button>
 
                                     </div>
                                     <hr></hr>
+                                    <div><h3>Connect With Us </h3></div>
+                <div className="fa-social">
+
+                <div className="d-flex text-center">
+                        <a href="mailto:info@luxuryhotelsmagazines.com" target="_blank" className="fa-link">
+                            <FaEnvelope /></a>
+                        <a href="mailto:info@luxuryhotelsmagazines.com" target="_blank"> info@luxuryhotelsmagazines.com</a>
+                    </div>
+                    <div className="d-flex text-center">
+                        <a href="https://www.facebook.com/LuxuryHotelsMagazines" target="_blank" className="fa-link">
+                            <FaFacebook />
+                        </a>
+                        <a href="https://www.facebook.com/LuxuryHotelsMagazines" target="_blank">@LuxuryHotelsMagazines </a>
+                    </div>
+                 
+                    <div className="d-flex">
+                        <a href="https://www.instagram.com/luxuryhotelsbrand/" target="_blank" className="fa-link">
+                            <FaInstagram />
+                        </a>
+                        <a href="https://www.instagram.com/luxuryhotelsbrand/" target="_blank">@LuxuryHotelsBrand</a>
+                    </div>
+                    {/* <div>
+                        <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg' target="_blank" className="fa-link">
+                            <FaYoutube />
+                        </a>
+                        <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg' target="_blank">Youtube</a>
+                    </div> */}
+                    <div className="d-flex">
+                        <a href="https://www.facebook.com/LuxuryHotelsMagazines" target="_blank" className="fa-link">
+                        <FaPhone />
+                        </a>
+                        <a href="tel:1234567890" target="_blank">(12)34567890</a>
+                    </div>
+                </div>
+                <hr></hr>
 
                                 </Form>
-                            </Col>
 
-                            <Col lg={5}>
-                                <ConnectWithUS />
                             </Col>
+                            <Col lg={2}></Col>
                         </Row>
 
 
 
                     </Container>
+                    </div>
+  </div>
 
-                </section>
-            </Parallax>
 
             <Footer />
         </>

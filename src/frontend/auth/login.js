@@ -123,9 +123,18 @@ function Login() {
       const userData = { email, password };
 
       try {
+
+         let postData = {
+            email: userData.email,
+            password: userData.password,
+        };
+
+        if (newsLogin === "true") {
+            postData.role = "5";
+        }
          const response = await axios.post(
             `${API.BASE_URL}${API.ENDPOINTS.login}`,
-            JSON.stringify(userData),
+            JSON.stringify(postData),
             {
                headers: {
                   Authorization: "hXuRUGsEGuhGf6KM",
@@ -150,7 +159,6 @@ function Login() {
             } else {
               navigate("/userprofile");
             }
-            localStorage.removeItem("newsLogin")
          } else {
             console.error(response.data.message);
             const errorMessage = response.data.message || "Login failed. Please try again.";
@@ -174,9 +182,10 @@ function Login() {
 
    useEffect(() => {
       if (newsLogin === "true") {
-         localStorage.setItem('isLoggedIn', 'false');
-         navigate("/signup")
- localStorage.setItem('newsLogin', 'false');
+         localStorage.removeItem("token")
+         localStorage.removeItem("userId")
+         localStorage.removeItem("userName")
+         localStorage.removeItem("isLoggedIn");
       } else if (isUserLoggedIn()) {
          navigate("/userprofile")
          return;

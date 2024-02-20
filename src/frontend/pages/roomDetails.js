@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { Col, Container, Form, Image, Row } from "react-bootstrap";
-import { FaEnvelope, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaWhatsapp, FaTelegram, FaLinkedin, FaSnapchat, FaEye, FaHeart, FaMapMarker, FaBuilding, FaSpaceShuttle, FaHome, FaList, FaPencilAlt, FaWifi, FaSwimmingPool, FaBars, FaWineBottle, FaCloudMeatball, FaTableTennis, FaRedRiver, FaRestroom, FaFootballBall, FaConciergeBell, FaFileSignature, FaGlasses, FaRProject, FaPhone, FaPhoneSquare } from 'react-icons/fa';
+import { FaEnvelope, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaWhatsapp, FaTelegram, FaLinkedin, FaSnapchat, FaEye, FaHeart, FaMapMarker, FaBuilding, FaSpaceShuttle, FaHome, FaList, FaPencilAlt, FaWifi, FaSwimmingPool, FaBars, FaWineBottle, FaCloudMeatball, FaTableTennis, FaRedRiver, FaRestroom, FaFootballBall, FaConciergeBell, FaFileSignature, FaGlasses, FaRProject, FaPhone, FaPhoneSquare, FaWeight, FaMeetup, FaCloudsmith, FaIntercom } from 'react-icons/fa';
 
 
 import Slider from 'react-slick';
@@ -264,7 +264,7 @@ function RoomDetails() {
 
                             <div className="room-details-aminites">
                                 <div className="text-center m-4">
-                                    <h1>Hotel Amenities</h1>
+                                    <h1>Room Amenities</h1>
 
                                 </div>
                                 <div>
@@ -291,7 +291,7 @@ function RoomDetails() {
 
                             <div className="most-popular-facilites">
                                 <div className="text-center m-4">
-                                    <h1>Most Popular Facilites</h1>
+                                    <h1>Hotel Facilites</h1>
 
                                 </div>
                                 <div>
@@ -346,7 +346,7 @@ function RoomDetails() {
                                         <li lg={3} className="col-section">
                                             <div className="facilites d-flex">
                                                 <FaFootballBall className="aminites-icon m-0" />
-                                                <p>Tea/Cofffee Maker In Rooms</p>
+                                                <p>Pool</p>
                                             </div>
                                         </li>
 
@@ -363,7 +363,43 @@ function RoomDetails() {
                                             <div className="facilites d-flex">
 
                                                 <FaConciergeBell className="aminites-icon m-0" />
-                                                <p>Fabulous Breakfast</p>
+                                                <p>Cooking Classes</p>
+                                            </div>
+                                        </li>
+                                        <li lg={3} className="col-section">
+                                            <div className="facilites d-flex">
+
+                                                <FaWeight className="aminites-icon m-0" />
+                                                <p>
+                                                   Fitness Center
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li lg={3} className="col-section">
+                                            <div className="facilites d-flex">
+
+                                                <FaMeetup className="aminites-icon m-0" />
+                                                <p>
+                                                  Meeting Rooms
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li lg={3} className="col-section">
+                                            <div className="facilites d-flex">
+
+                                                <FaCloudsmith className="aminites-icon m-0" />
+                                                <p>
+                                                 Laundry service
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li lg={3} className="col-section">
+                                            <div className="facilites d-flex">
+
+                                                <FaIntercom className="aminites-icon m-0" />
+                                                <p>
+                                                InterNet
+                                                </p>
                                             </div>
                                         </li>
                                     </ul>

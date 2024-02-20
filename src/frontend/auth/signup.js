@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Hotel from "../../assets/img/hotel1.jpg";
 import { Col, Container, Image, Row, Form, ProgressBar } from "react-bootstrap";
 import Header from "../components/header";
@@ -13,6 +13,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import API from "../../utils";
 
 function Signup() {
+    const newsLogin=localStorage.getItem("newsLogin")
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
     const [responseMessage , setResponseMessgae] = useState("");
@@ -102,12 +103,23 @@ function Signup() {
     };
 
     const handleSignup = async (e) => {
+        debugger
         if (e) e.preventDefault();
 
         try {
+            let postData = {
+                name: formData.name,
+                email: formData.email,
+                password: formData.password,
+                confirm_password: formData.confirm_password,
+            };
+    
+            if (newsLogin === "true") {
+                postData.role = "5";
+            }
             const response = await axios.post(
                 `${API.BASE_URL}${API.ENDPOINTS.signup}`,
-                JSON.stringify(formData),
+                JSON.stringify(postData),
                 {
                     headers: {
                         Authorization: "hXuRUGsEGuhGf6KM",
@@ -118,8 +130,12 @@ function Signup() {
             if (response.data.status === true) {
                 setResponseMessgae(response.data.message)
                 setUserId(response.data.data.id);
-                nextStep();
-
+                if (newsLogin === "true") {
+                    navigate("/login");
+                } else {    
+                    nextStep();
+                }
+localStorage.removeItem("newsLogin")
             } else {
                 setErrorMessage(response.data.message || "Signup failed");
             }
@@ -191,6 +207,16 @@ function Signup() {
         const newProgress = (step / totalSteps) * 100;
         setProgress(newProgress);
     };
+
+    useEffect(() => {
+        if (newsLogin === "true") {
+           localStorage.removeItem("token")
+           localStorage.removeItem("userId")
+           localStorage.removeItem("userName")
+           localStorage.removeItem("isLoggedIn");
+           
+        }
+     }, [newsLogin]);
     return (
         <>
             <Header />

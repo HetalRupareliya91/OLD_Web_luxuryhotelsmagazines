@@ -36,6 +36,7 @@ function Header() {
   const handleLogout = async (e) => {
 
     const token = localStorage.getItem("token");
+    
 
     e.preventDefault();
 
@@ -55,6 +56,7 @@ function Header() {
         localStorage.removeItem("isLoggedIn");
         localStorage.removeItem("userName");
     localStorage.removeItem("userId");
+    localStorage.removeItem("newsLogin");
         navigate("/login")
           
           // console.log(response.data.message);

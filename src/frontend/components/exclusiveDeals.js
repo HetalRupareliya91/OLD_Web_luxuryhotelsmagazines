@@ -88,7 +88,7 @@ function KnoledgeTest() {
   ];
 
   return (
-    <Parallax blur={8} bgImage={Hero3} bgImageAlt="the cat" strength={100} className="advertise-first-section">
+    <Parallax blur={10} bgImage={Hero3} bgImageAlt="the cat" strength={100} className="advertise-first-section">
       <section>
         <div className="page-headings mb-4">
           <div className="heading-section">
