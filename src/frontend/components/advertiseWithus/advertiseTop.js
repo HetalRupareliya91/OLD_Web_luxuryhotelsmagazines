@@ -1,13 +1,61 @@
 import React from "react";
-import { Parallax } from "react-parallax";
-import bg1 from "../../../assets/img/magazines/BG7.jpg"
-import { Col, Container, Row } from "react-bootstrap";
-import { FaBook, FaBookOpen, FaHandshake, FaLaptopMedical, FaLeaf, FaQuestionCircle, FaTrophy } from "react-icons/fa";
-import HeroImage3 from "../../../assets/img/hero/hero-1.jpg"
+import { Col, Container, Row, Image } from "react-bootstrap";
+import Logo from "../../../assets/img/logo.svg"
 function AdvertiseTop() {
     return (
-        <Parallax blur={0} bgImage={HeroImage3} bgImageAlt="the cat" strength={300}>
-            <section className="advertise-top-section" >
+        <><section className="video-background p-0">
+
+            <div className="video-iframe">
+                <iframe
+                    loading="lazy"
+                    style={{ width: "100%" }}
+                    id="ytplayer"
+                    type="text/html"
+                    width="100%"
+                    height="700px"
+                    src="https://www.youtube.com/embed/Q7tavIa_wEA?&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;color=white&amp;controls=0&amp;modestbranding=1&amp;playsinline=1&amp;rel=0&amp;enablejsapi=1&amp;playlist=Q7tavIa_wEA"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                    allowfullscreen
+                >
+                </iframe>
+                <Container>
+                    <div className="text-overlay">
+                        <Row >
+                            <Col lg={6} >
+                                <div className="advertise_text">
+                                    <div className="section-title ">
+                                        {/* <span className="text-white">About Us</span> */}
+                                        <div className="my-3"> <Image src={Logo} />
+                                        </div>
+                                        <p >Unlock global exposure for your luxury hotel on our online platform.
+                                            Targeted marketing, stunning visuals, and seamless booking ensure your property stands out.
+                                        </p>
+                                        <p >Elevate brand prestige, offer personalized service, and access valuable analytics for strategic decisions.
+                                        </p>
+                                        <p >Reach discerning travelers worldwide and maximize bookings effortlessly.
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </Col>
+                            <Col lg={6} className="advertise_overlay">
+                                <div className="text-center">
+                                    <Image src={Logo} />
+                                </div>
+
+                                <div className='text-center mt-4'>
+                                    <h4 >PRESENTS</h4>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </Container>
+            </div>
+
+        </section>
+            {/* <section className="advertise-top-section" >
                 <Container>
                     <div className="main-div">
                         <div className="w-100 " >
@@ -87,8 +135,8 @@ function AdvertiseTop() {
                         </Row>
                     </div>
                 </Container>
-            </section>
-        </Parallax>
+            </section> */}
+        </>
     );
 }
 export default AdvertiseTop;

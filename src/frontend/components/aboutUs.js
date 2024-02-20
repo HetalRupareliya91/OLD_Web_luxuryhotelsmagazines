@@ -180,7 +180,7 @@ function AboutUs() {
                 <div className="about-text">
                   <div className="section-title ">
                     <span className="text-white">About Us</span>
-                    <div className="mt-3"> <Image src={Logo} />
+                    <div className="my-3"> <Image src={Logo} />
                     </div>
                     <p className="f-para text-white">{aboutData?.details?.content}</p>
 

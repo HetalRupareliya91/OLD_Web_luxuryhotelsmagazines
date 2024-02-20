@@ -14,8 +14,8 @@ function OurStory() {
                             <div className="vc_custom_16234106116">
                                 <div>
                                     <h1 className="mb-3">OUR STORY</h1>
-                                    <div className="my-3"> 
-                                    <Image src={Logo}/>
+                                    <div className="my-3">
+                                        <Image src={Logo} />
                                     </div>
                                     <div>
                                         <p className="mb-4">Unlock global exposure for your luxury hotel on our online platform. Targeted marketing, stunning visuals, and seamless booking ensure your property stands out.</p>
@@ -44,7 +44,8 @@ function OurStory() {
                                 </div>
                             </div>
                         </Col>
-
+                    </Row>
+                    <Row>
                         <Col lg={12} className="avail">
                             <div>
                                 <h1 >AVAILABLE IN</h1>
@@ -53,9 +54,18 @@ function OurStory() {
                                 <span className="sep_line">
                                 </span>
                             </div>
-                            <div className="logos">
-                                <Image src={icons}></Image>
+                            <div class="text_container">
+                                <div class="box_text">Waitrose</div>
+                                <div class="box_text">TESCO</div>
+                                <div class="box_text">Sainsbury's</div>
+                                <div class="box_text">MARKERS&<br />SPENCER</div>
+                                <div class="box_text">WHSmith</div>
+                                <div class="box_text">BARNES<br />&NOBEL</div>
                             </div>
+
+                            {/* <div className="logos">
+                                <Image src={icons}></Image>
+                            </div> */}
                         </Col>
                     </Row>
                 </div>

@@ -3,7 +3,7 @@
 @font-face {
 	font-family: 'cabin';
 	src: url('./Cabin-Regular.ttf')
-		/* Add additional formats if needed */ 
+		/* Add additional formats if needed */
 }
 
 /*----------------------------------------*/
@@ -51,7 +51,6 @@ h4 {
 }
 
 
-
 p {
 	font-size: 16px;
 	font-family: "Cabin", sans-serif;
@@ -76,7 +75,6 @@ button {
 	padding: 10px;
 	cursor: pointer;
 }
-
 
 
 img {
@@ -2534,9 +2532,6 @@ h1 {
 	.mobile-view {
 		display: none;
 	}
-
-
-
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -2860,7 +2855,11 @@ h1 {
 /* Tablet Device: 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-
+	.box_text {
+		padding: 10px !important;
+		font-size: 18px !important;
+		font-weight: 500 !important;
+	  }
 	.advertise-top-section .main-div {
 		padding: 60px 0px !important;
 	}
@@ -3049,6 +3048,7 @@ h1 {
 	top: 100px;
 }
 
+
 @media screen and (max-width: 991px) {}
 
 @media only screen and (max-width: 767px) {
@@ -3110,6 +3110,9 @@ h1 {
 	.aboutus-section-present {
 		position: relative;
 		top: 30px;
+	}
+	.advertise_overlay{
+		top: 50px!important;		
 	}
 
 	.slick-prev,
@@ -3573,6 +3576,10 @@ h1 {
 /* Small Mobile: 320px */
 
 @media only screen and (max-width: 479px) {
+	.box_text{
+		padding: 8px!important;
+		font-size: 11px!important;
+	}
 	.footer-section .copyright-option ul li {
 		margin-bottom: 5px;
 	}
@@ -4013,7 +4020,6 @@ li {
 }
 
 
-
 .sidebar-line {
 	color: #fff;
 	background: #fff;
@@ -4187,7 +4193,6 @@ svg {
 	height: 100%;
 	object-fit: cover;
 }
-
 
 
 h2 {
@@ -4695,11 +4700,6 @@ h5 {
 }
 
 
-
-
-
-
-
 .demo {
 	padding: 50px 0;
 	width: 63%;
@@ -4947,7 +4947,6 @@ h2 {
 }
 
 
-
 input {
 	width: 100%;
 	padding: 13px;
@@ -4956,7 +4955,6 @@ input {
 	border-radius: 4px;
 	box-sizing: border-box;
 }
-
 
 
 .signup-section {
@@ -5046,8 +5044,6 @@ input {
 .form-floating {
 	margin: 15px 0;
 }
-
-
 
 
 /* signup */
@@ -5253,9 +5249,11 @@ form {
 	font-weight: 600;
 	font-size: 18px;
 }
-.exclusive-deals .banner .title{
+
+.exclusive-deals .banner .title {
 	margin-top: 40%;
 }
+
 .exclusive-deals a {
 	cursor: pointer;
 
@@ -5280,7 +5278,7 @@ form {
 }
 
 .star-rating span:before {
-	content: "\f148" "\f148" "\f148" "\f148" "\f148";
+	content: "\f148""\f148""\f148""\f148""\f148";
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -5503,7 +5501,6 @@ form {
 }
 
 
-
 .what-we-do .inner-div h2 a {
 
 	font-size: 37px !important;
@@ -5571,8 +5568,9 @@ form {
 	height: 100%;
 	color: #ffff;
 	font-size: 16px;
-	font-weight: 400; 
-	-webkit-backface-visibility: hidden; /* Safari */
+	font-weight: 400;
+	-webkit-backface-visibility: hidden;
+	/* Safari */
 	backface-visibility: hidden;
 }
 
@@ -5590,7 +5588,6 @@ form {
 .flip-box button {
 	margin-top: 10px;
 }
-
 
 
 /* Style the back side */
@@ -6114,7 +6111,7 @@ top: 250px;
 }
 
 /* .adv-container */
- .flip-box-front {
+.flip-box-front {
 	background-size: cover;
 	background-repeat: no-repeat;
 	position: absolute;
@@ -6479,11 +6476,11 @@ button a {
 	line-height: 2;
 }
 
-.autocom-box{
+.autocom-box {
 	position: absolute;
 	width: 38%;
-	background: #fff; 
-	padding:10px 15px;
+	background: #fff;
+	padding: 10px 15px;
 	opacity: 1;
 	pointer-events: auto;
 	display: block !important;
@@ -6582,7 +6579,8 @@ ul.dropdown-menu a:hover {
 	color: #fff !important;
 }
 
-.vc_custom_16234106116 p {
+.vc_custom_16234106116 p ,
+.advertise_text p{
 	color: #fff !important;
 	font-size: 18px;
 	font-weight: 500;
@@ -6646,13 +6644,14 @@ ul.dropdown-menu a:hover {
 }
 
 .card-inner-section-textarea {
-	padding: 40px 30px 40px;
-	background-color: #fff;
+	padding: 15px 15px 20px 28px;
+    background-color: #fff;
 }
 
 .card-inner-section-textarea ul li {
 	list-style: square;
-	line-height: 2;
+	/* line-height: 2; */
+	color:#000;
 }
 
 
@@ -6901,26 +6900,74 @@ ul.dropdown-menu a:hover {
 }
 
 .topics {
-    display: flex;
+	display: flex;
 	flex-wrap: wrap;
 }
 
 .text-heading-button {
 	margin-top: 95px !important;
 }
-	
-.btn_nav{
+
+.btn_nav {
 	background-color: #b5191f;
-color: #fff;
-padding: 10px 15px;
-font-size: 14px;
+	color: #fff;
+	padding: 10px 15px;
+	font-size: 14px;
 }
-.btn_nav:hover{
+
+.btn_nav:hover {
 	background-color: #fff;
-color: #b5191f;
+	color: #b5191f;
 	font-weight: 600;
 	border: 1px solid #b5191f;
 }
+
 .mt-40 {
-margin-top: 40px!important;
+	margin-top: 40px !important;
 }
+
+
+.advertise_overlay {
+	position: relative;
+	top: 150px;
+}
+
+.advertise_text {
+	text-align: center;
+	padding: 0px 0px;
+}
+
+.advertise_text .section-title {
+	margin-top: 60px;
+}
+
+.advertise-text p {
+	color: #fff !important;
+	font-size: 18px !important;
+	font-weight: 500;
+	line-height: 28px;
+}
+
+.flip-box-front video {
+	max-width: 100%;
+	max-height: 100%;
+  }
+  .package h3 {
+	color:#000;
+}
+.text_container {
+	display: flex;
+	flex-wrap: wrap;
+  }
+  
+  .box_text {
+    padding: 15px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+    font-family: inherit;
+	white-space: normal;
+  }
+  
