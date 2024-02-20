@@ -37,7 +37,6 @@ function AdvertiseTop() {
                                         <p >Reach discerning travelers worldwide and maximize bookings effortlessly.
                                         </p>
                                     </div>
-
                                 </div>
                             </Col>
                             <Col lg={6} className="advertise_overlay">

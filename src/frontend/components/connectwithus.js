@@ -1,7 +1,6 @@
 import React from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { FaBell, FaEnvelope, FaFacebook, FaInstagram, FaPhone, FaYoutube } from "react-icons/fa";
-
 function ConnectWithUS() {
     return (
         <>
@@ -13,7 +12,7 @@ function ConnectWithUS() {
                             <FaFacebook />
                         </a>
                         <a href="https://www.facebook.com/LuxuryHotelsMagazines" target="_blank">@LuxuryHotelsMagazines </a>
-                        </div>
+                    </div>
                     <div>
                         <a href="mailto:info@luxuryhotelsmagazines.com" target="_blank" className="fa-link">
                             <FaEnvelope /></a>
@@ -29,15 +28,17 @@ function ConnectWithUS() {
                         <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg' target="_blank" className="fa-link">
                             <FaYoutube />
                         </a>
-                        <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg' target="_blank">Youtube</a></div>
-                        <div>
-                        <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg' target="_blank" className="fa-link">
-                            <FaPhone />
+                        <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg' target="_blank">Youtube</a>
+                    </div>
+                    <div>
+                        <a href="https://www.facebook.com/LuxuryHotelsMagazines" target="_blank" className="fa-link">
+                        <FaPhone />
                         </a>
-                        <a  target="_blank" href="tel:1234567890">(12) 345 67890</a></div>
+                        <a href="tel:1234567890" target="_blank">(12)34567890</a>
+                    </div>
                 </div>
                 <hr></hr>
-                <div className="fa-social">
+                {/* <div className="fa-social">
                     <div>
                         <a href='subscribe-to-news' target="_blank" className="fa-link">
                             <FaBell />
@@ -61,7 +62,7 @@ function ConnectWithUS() {
                     </div>
 
 
-                </div>
+                </div> */}
             </Form>
         </>
     );
