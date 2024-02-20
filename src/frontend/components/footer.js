@@ -56,7 +56,7 @@ function Footer(){
                        <p><NavLink to="/mediapack" className="footer-links">Media Pack</NavLink></p>
                        <p><NavLink to="/advertise-with-us" className="footer-links">Advertise With Us</NavLink></p>
                        <p><NavLink to="/signup" className="footer-links">List Your Hotel</NavLink></p>
-                         <p><NavLink to="/benifits-working-with-us" className="footer-links">Benifits Working With us</NavLink></p>
+                         <p><NavLink to="/benifits-working-with-us" className="footer-links">Collaborative Advantages</NavLink></p>
                       
                     </div>
                  </Col>
@@ -65,7 +65,7 @@ function Footer(){
                        <h6>Connect with Us</h6>
                        <ul>
                           <li><FaAddressBook/><a href="contact-us">Contact Us </a></li>
-                          <li><FaPhone/><a href="tel:1234567890">(12) 345 67890</a></li>
+                          {/* <li><FaPhone/><a href="tel:1234567890">(12) 345 67890</a></li> */}
                           <li><FaEnvelope/><a href="mailto:info@luxuryhotelsmagazines.com">info@luxuryhotelsmagazines.com</a></li>
                   
                        </ul>

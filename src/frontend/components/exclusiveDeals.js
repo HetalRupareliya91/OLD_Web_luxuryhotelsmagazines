@@ -46,56 +46,44 @@ function KnoledgeTest() {
     {
       title: "GRACIAN BAY HOTEL",
       phone: "35723 842000",
-      description: "Timeless luxury and legendary hospitality in exotic Lombok",
+      subtitle:" LONG STAY BONUS ",
+      description: "Book 7 nights and more and save!",
       valid: "Valid from  05-01-2023 to 28-03-2024",
     },
     {
-      title: "Mandarin Oriental Guangzou",
-      phone: "7779020705",
-      description: "Timeless luxury and legendary hospitality in exotic Lombok",
+      title: "Mandarin Oriental, Hongkong ",
+      phone: "+85225220111",
+      subtitle:"FANtastic 60 ",
+      description: "Celebrate Mandarin Oriental, Hong Kong’s 60th Anniversary with an exclusive 2-night consecutive stay special offers in Club.",
       valid: "Valid from  05-01-2023 to 28-03-2024",
     },
     {
-      title: "Mandarin Oriental Guangzou",
-      phone: "7779020705",
-      description: "Timeless luxury and legendary hospitality in exotic Lombok",
+      title: "The Oberoi Beach Resort ",
+      phone: "623706138444",
+      subtitle:" Timeless luxury and legendary hospitality in exotic Lombok  ",
+      description: "Stay with us for three or five nights at The Oberoi Beach Resort, Lombok. For the holiday of a lifetime.",
       valid: "Valid from  05-01-2023 to 28-03-2024",
     },
     {
-      title: "Mandarin Oriental Guangzou",
-      phone: "7779020705",
-      description: "Timeless luxury and legendary hospitality in exotic Lombok",
+      title: "Porto Sani Hotel, Greece ",
+      phone: "+3022374099200",
+      subtitle:"10% Off Your Booking ",
+      description: "Enjoy 10% off your booking when you book to stay with us on the specific dates above.",
       valid: "Valid from  05-01-2023 to 28-03-2024",
     },
     {
-      title: "Mandarin Oriental Guangzou",
-      phone: "7779020705",
-      description: "Timeless luxury and legendary hospitality in exotic Lombok",
+      title: "The Mount Athos Resort ",
+      phone: "306957211137",
+      subtitle:"Join our loyalty club",
+      description: "Become a member of our loyalty club and gain exclusive offer benefits!",
       valid: "Valid from  05-01-2023 to 28-03-2024",
     },
-    {
-      title: "Mandarin Oriental Guangzou",
-      phone: "7779020705",
-      description: "Timeless luxury and legendary hospitality in exotic Lombok",
-      valid: "Valid from  05-01-2023 to 28-03-2024",
-    },
+    
     {
       title: "RAFFLES UDAIPUR",
-      phone: "7779020705",
-      content: "RISE AND SHINE",
-      description: "When you stay in one of our exquisite suites or villas, you will receive a free breakfast for two to start your day beautifully",
-      valid: "Valid from  05-01-2023 to 28-03-2024",
-    },
-    {
-      title: "Mandarin Oriental Guangzou",
-      phone: "7779020705",
-      description: "Timeless luxury and legendary hospitality in exotic Lombok",
-      valid: "Valid from  05-01-2023 to 28-03-2024",
-    },
-    {
-      title: "Mandarin Oriental Guangzou",
-      phone: "7779020705",
-      description: "Timeless luxury and legendary hospitality in exotic Lombok",
+      phone: "+9180017233537",
+      subtitle:"RISE AND SHINE",
+      description: "When you stay in one of our exquisite suites or villas, you will receive a free breakfast for two to start your day beautifully.Offer Includes:;  Accommodation, Buffet breakfast, Use of health fitness and pool facilities and Complimentary Wi-Fi                                ",
       valid: "Valid from  05-01-2023 to 28-03-2024",
     },
 
@@ -122,8 +110,9 @@ function KnoledgeTest() {
                       <div className="banner">
                         <a>
                           <h6 className="title">{deal.title}</h6>
-                        </a>
+                        </a> 
                       </div>
+                      <div className="mt-4"><NavLink to='/hotel-details' className="my-3 btn_nav">CLAIM</NavLink></div>
                     </div>
 
                     <div class="flip-box-back">
@@ -137,7 +126,7 @@ function KnoledgeTest() {
                       </div>
                       <div>
                         <a>
-                          <h6>{deal.description}</h6>
+                          <h6 className="subtitle">{deal.subtitle}</h6>
                         </a>
                       </div>
                       <div>
@@ -145,15 +134,15 @@ function KnoledgeTest() {
                       </div>
                       <hr className="m-0" />
                       <div>
-                        <span>
-                          Stay with us for three or five nights at The Oberoi Beach Resort,
-                          Lombok. For the holiday of a lifetime.
-                        </span>
+                        <a>
+                          <h6>{deal.description}</h6>
+                        </a>
                       </div>
+                      <div className="mt-4"><NavLink className="my-3 btn_nav">CLAIM</NavLink></div>
                     </div>                  
                   </div>
                 </div>
-                <NavLink to='/hotel-details' className="my-3 btn_nav">CLAIM</NavLink>
+              
               </div>
             ))}
           </Slider>

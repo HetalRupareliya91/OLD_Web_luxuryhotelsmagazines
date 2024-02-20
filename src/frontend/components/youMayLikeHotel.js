@@ -9,6 +9,7 @@ import News2 from '../../assets/img/news2.jpg'
 import News5 from '../../assets/img/news5.jpg'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { NavLink } from 'react-router-dom';
 
 const HotelSlider = () => {
   const hotels = [
@@ -68,6 +69,7 @@ const HotelSlider = () => {
       </div>
       <Slider {...settings}>
         {hotels.map((hotel, index) => (
+          <NavLink to ="/hotel-details/18/India/THE%20LODHI">
           <div key={index} className="card">
             <Image className="card-img-top" src={hotel.image} alt="Card image cap" />
             <div className="card-body">
@@ -76,6 +78,7 @@ const HotelSlider = () => {
              
             </div>
           </div>
+          </NavLink>
         ))}
       </Slider>
     </div>

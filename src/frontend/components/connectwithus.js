@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { FaBell, FaEnvelope, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaBell, FaEnvelope, FaFacebook, FaInstagram, FaPhone, FaYoutube } from "react-icons/fa";
 
 function ConnectWithUS() {
     return (
@@ -30,6 +30,11 @@ function ConnectWithUS() {
                             <FaYoutube />
                         </a>
                         <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg' target="_blank">Youtube</a></div>
+                        <div>
+                        <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg' target="_blank" className="fa-link">
+                            <FaPhone />
+                        </a>
+                        <a  target="_blank" href="tel:1234567890">(12) 345 67890</a></div>
                 </div>
                 <hr></hr>
                 <div className="fa-social">
