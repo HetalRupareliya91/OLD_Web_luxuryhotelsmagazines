@@ -4677,12 +4677,26 @@ h5 {
 }
 
 .likeview i {
-	border: 1px solid #80808052;
-	padding: 9px 18px 9px 9px;
-	margin-right: 6px;
+    padding: 6px 18px 6px 8px;
+	border: 1px solid #856200;
+	/* padding: 9px 18px 9px 9px; */
+	/* margin-right: 6px; */
 	font-size: 24px;
-	border-radius: 15px;
-	color: #b5191fff;
+	border-radius: none;
+	color: #ffff;
+	background-color: #856200;
+}
+.likeview i:hover {
+    padding: 6px 18px 6px 8px;
+	border: 1px solid #000;
+
+	font-size: 24px;
+	border-radius: none;
+	color: #ffff;
+	background-color: #000;
+}
+.likeview i a{
+	color: #ffff;
 }
 
 .fa-facebook {
@@ -4800,8 +4814,8 @@ button.btn-default-submit {
 
 button.btn-default {
 	/* margin: 0 auto; */
-	background: #856200;
-	border: 1px solid #856200;
+	background: #b5191fff;
+	border: 1px solid #b5191fff;
 	padding: 10px 5px;
 	color: #fff;
 	text-transform: capitalize;
@@ -5238,26 +5252,32 @@ form {
 }
 
 .exclusive-deals {
-	border: 1px solid #846316;
+	/* border: 1px solid #846316; */
 	border-radius: 5px;
 	padding: 10px;
 }
-
+.exclusive-deals .subtitle{
+	color: #ffff;
+	font-weight: 600;
+	font-size: 17px;
+	margin: 10px 0px;
+}
 
 .exclusive-deals h6 {
 	color: #846316;
 	font-weight: 600;
-	font-size: 18px;
+	font-size: 17px;
+	margin: 10px 0px;
 }
-
-.exclusive-deals .banner .title {
-	margin-top: 40%;
+.exclusive-deals .banner .title{
+	margin-top: 35%;
 }
 
 .exclusive-deals a {
 	cursor: pointer;
 
 }
+
 
 .exclusive-deals .phone-icon {
 	font-size: 35px;
@@ -5273,7 +5293,7 @@ form {
 	color: #fff;
 	padding: 42px 10px 0px 10px;
 	font-weight: 500;
-	min-height: 270px;
+	min-height: 260px;
 
 }
 
@@ -6971,3 +6991,42 @@ ul.dropdown-menu a:hover {
 	white-space: normal;
   }
   
+.exclusive-deals .flip-box-back{
+
+	width: 100%;
+	height: 100%;
+	color: #ffff;
+	font-size: 16px;
+	font-weight: 400; 
+	-webkit-backface-visibility: hidden; /* Safari */
+	backface-visibility: hidden;
+}
+.exclusive-deals .flip-box-front , .exclusive-deals .flip-box-back {
+    border: 1px solid #846316;
+    padding: 9px !important;
+	border-radius: 5px;
+}
+.hotel-details-exclusive-offer{
+	border: 2px solid #cb9028;
+	padding: 10px;
+}
+.hotel-details-exclusive-offer .phone-icon {
+	font-size: 35px;
+	color: #b5191fff;
+}
+.hotel-details-exclusive-offer h4{
+	color: #846316 ;
+}
+
+.hotel-details-exclusive-offer .span-div{
+	font-size: 18px;
+	color: #846316;
+	padding: 10px 15px;
+	background-color: ffff;
+}
+
+.hotel-details-exclusive-offer .contact{
+	color: #846316;
+	font-size: 18px;
+}
+

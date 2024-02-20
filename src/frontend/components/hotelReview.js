@@ -79,7 +79,7 @@ function Review() {
     <section>
       <Container>
         <div >
-          <h1 className="text-center mt-5">Guest Review</h1>
+          <h1 className="text-center mt-5">Guest Reviews</h1>
           <div>
             <h3 className="rd-title"><FaList className="m-0 locaton-icon"/> Categories:</h3>
 
