@@ -13,7 +13,7 @@ import Logo from "../../assets/img/logo.svg"
 // import video from "../../assets/videos/hotelVideo.mp4"
 import API from "../../utils";
 import axios from "axios";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { FileEarmarkCheckFill, GeoAltFill } from "react-bootstrap-icons";
 import Review from "../components/hotelReview";
 import HotelSlider from "../components/youMayLikeHotel";
@@ -47,7 +47,8 @@ function RoomDetails() {
     const [aminitesData, setAminitesData] = useState([])
     const [facilitiesData, setFacilitiesData] = useState([])
 
-
+    const location = useLocation();
+    const showOfferSection = location.state && location.state.showOfferSection;
 
     const { hotelId } = useParams();
     console.log(hotelId);
@@ -407,7 +408,7 @@ function RoomDetails() {
                                 <div className="row  ">
                                     <div className="col-lg-12 mt-3 text-center"><button className=" btn-default w-100"><FaHeart /><NavLink to={postData.website}>Book Online </NavLink></button></div>
                                 </div>
-
+{showOfferSection && (
 <div className="text-center mt-3 hotel-details-exclusive-offer">
 <div >
     <h4>EXCLUSIVE OFFER</h4>
@@ -422,6 +423,7 @@ function RoomDetails() {
 <hr className="m-0" />
 <button className="mt-3"><NavLink>Reedem</NavLink></button>
 </div>
+ )}
 
                             </div>
                         </div>

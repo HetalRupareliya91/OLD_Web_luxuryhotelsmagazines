@@ -4681,6 +4681,15 @@ h5 {
 	color: #ffff;
 	background-color: #856200;
 }
+.likeview i:hover {
+    padding: 6px 18px 6px 8px;
+	border: 1px solid #000;
+
+	font-size: 24px;
+	border-radius: none;
+	color: #ffff;
+	background-color: #000;
+}
 .likeview i a{
 	color: #ffff;
 }

@@ -102,17 +102,7 @@ function NewsSidebar(){
                 My News
               </NavLink>
             </NavItem><hr className="sidebar-line" />
-            <NavItem className="nav-item">
-              <a
-                className={`nav-link sidebar-list ${currentSection === 'myBlogs' ? 'active' : ''
-                  }`}
-                href="#"
-                onClick={() => showSection('myBlogs')}
-              >
-                <FaBlog/>
-                My Special Offers
-              </a>
-            </NavItem><hr className="sidebar-line" />
+           
             <NavItem >
               <a
                 className={`nav-link sidebar-list ${currentSection === 'myProfile' ? 'active' : ''

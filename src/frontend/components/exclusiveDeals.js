@@ -7,8 +7,9 @@ import "slick-carousel/slick/slick-theme.css";
 import { Parallax } from "react-parallax";
 import Hero3 from "../../assets/img/hero/hero-3.jpg";
 import { NavLink } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 function KnoledgeTest() {
+  const navigate = useNavigate();
   const sliderRef = useRef(null);
 
   const sliderSettings = {
@@ -34,14 +35,10 @@ function KnoledgeTest() {
     ],
   };
 
-  // const handlePrev = () => {
-  //   sliderRef.current.slickPrev();
-  // };
-
-  // const handleNext = () => {
-  //   sliderRef.current.slickNext();
-  // };
-
+  const handleClaimClick = () => {
+    // Set a flag in the state to indicate that the offer section should be shown
+    navigate('hotel-details/13/Cyprus/LONDA%20RESIDENCES%20CYPRUS', { state: { showOfferSection: true } });
+  };
   const deals = [
     {
       title: "GRACIAN BAY HOTEL",
@@ -112,7 +109,7 @@ function KnoledgeTest() {
                           <h6 className="title">{deal.title}</h6>
                         </a> 
                       </div>
-                      <div className="mt-4"><NavLink to='/hotel-details' className="my-3 btn_nav">CLAIM</NavLink></div>
+                      <div className="mt-4"><button onClick={handleClaimClick} className="my-3 btn_nav">CLAIM</button></div>
                     </div>
 
                     <div class="flip-box-back">
@@ -138,7 +135,7 @@ function KnoledgeTest() {
                           <h6>{deal.description}</h6>
                         </a>
                       </div>
-                      <div className="mt-4"><NavLink className="my-3 btn_nav">CLAIM</NavLink></div>
+                      <div className="mt-4"><button className="my-3 btn_nav" onClick={handleClaimClick} >CLAIM</button></div>
                     </div>                  
                   </div>
                 </div>
