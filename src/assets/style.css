@@ -1,11 +1,9 @@
-/*----------------------------------------*/
-
 /* Template default CSS
 /*----------------------------------------*/
 @font-face {
 	font-family: 'cabin';
 	src: url('./Cabin-Regular.ttf')
-		/* Add additional formats if needed */
+		/* Add additional formats if needed */ 
 }
 
 /*----------------------------------------*/
