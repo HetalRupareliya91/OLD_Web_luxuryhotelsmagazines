@@ -5,24 +5,16 @@ import API from "../../utils";
 
 function Hero() {
   const [sliderData, setSliderData] = useState([]);
-  const [sliderIndex, setSliderIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [activeFileImages, setActiveFileImages] = useState([]);
-  const handleSelect = (selectedIndex) => {
-    setSliderIndex(selectedIndex);
-  };
-
-  const handleSlide = (selectedIndex) => {
-    setSliderIndex(selectedIndex);
-    setActiveFileImages(sliderData[selectedIndex].file_image || []);
-  };
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchMagazines();
   }, []);
 
   const fetchMagazines = async () => {
-    const token = localStorage.getItem("token");
-
     try {
       const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allMagazines}`, {
         headers: {
@@ -32,44 +24,62 @@ function Hero() {
       const data = response.data;
       if (data.status === true) {
         setSliderData(data.data);
-        setActiveFileImages(data.data[0].file_image || []);
+        setActiveFileImages(data.data[0]?.file_image || []); // Initialize activeFileImages with the first item's images
+        setLoading(false);
       } else {
-        console.error("Failed to fetch data");
+        setError("Failed to fetch data");
+        setLoading(false);
       }
     } catch (error) {
-      console.error("Error:", error.message);
+      setError(error.message);
+      setLoading(false);
     }
   };
 
+  const handleSelect = (selectedIndex) => {
+    setActiveIndex(selectedIndex);
+    setActiveFileImages(sliderData[selectedIndex]?.file_image || []);
+    console.log(activeFileImages);
+  };
+
   return (
-    <>
-      <section className="hero-section">
-        <Container>
-          <div className="hero-slider">
-            <Row className="">
-              <Col lg={4} md={4} className="mt-3">
-                <Carousel activeIndex={sliderIndex} onSelect={handleSelect} onSlide={handleSlide}  >
+    <section className="hero-section">
+      <Container>
+        <div className="hero-slider">
+          <Row>
+            <Col lg={4} md={4} className="mt-3">             
+                <Carousel activeIndex={activeIndex} onSelect={handleSelect}>
                   {sliderData.map((magazine, index) => (
                     <Carousel.Item key={index}>
-                      <img src={magazine.thumbnail} alt={`Slide ${index + 1}`} className="slider-img" />
+                      <img
+                        src={magazine.thumbnail}
+                        alt={`Slide ${index + 1}`}
+                        className="slider-img"
+                      />
                     </Carousel.Item>
                   ))}
                 </Carousel>
-              </Col>
-              <Col lg={8} md={8} className="mt-3">
+            </Col>
+            <Col lg={8} md={8} className="mt-3">
+              {/* Render child carousel only when activeFileImages is available */}
+              {activeFileImages.length > 0 && (
                 <Carousel>
                   {activeFileImages.map((image, index) => (
                     <Carousel.Item key={index}>
-                      <img src={image} alt={`Image ${index + 1}`} className="pdf-img" />
+                      <img
+                        src={image}
+                        alt={`Image ${index + 1}`}
+                        className="pdf-img"
+                      />
                     </Carousel.Item>
                   ))}
                 </Carousel>
-              </Col>
-            </Row>
-          </div>
-        </Container>
-      </section>
-    </>
+              )}
+            </Col>
+          </Row>
+        </div>
+      </Container>
+    </section>
   );
 }
 

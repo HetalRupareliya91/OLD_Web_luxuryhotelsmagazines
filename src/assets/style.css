@@ -2580,7 +2580,7 @@ h1 {
 	}
 
 	.canvas-open {
-		position: absolute;
+		position: fixed;
 		right: 40px;
 		top: 25px;
 		font-size: 32px;
@@ -2589,7 +2589,7 @@ h1 {
 		color: #19191a;
 		line-height: 33px;
 		text-align: center;
-		z-index: 100;
+		z-index: 2000;
 		display: block;
 		cursor: pointer;
 	}
@@ -2822,6 +2822,7 @@ h1 {
 		left: 0;
 		opacity: 1;
 		visibility: visible;
+		z-index: 2000;
 	}
 
 
@@ -7080,4 +7081,28 @@ ul.dropdown-menu a:hover {
 	margin: auto;
 	z-index: 3;
 	
+  }
+
+  .placeholder {
+	background-color: #f0f0f0;
+	width: 100%;
+	height: 100%;
+	animation: pulse 1s infinite alternate; /* Add a simple pulse animation */
+  }
+  
+  @keyframes pulse {
+	0% {
+	  opacity: 0.5;
+	}
+	100% {
+	  opacity: 1;
+	}
+  }
+  .fa-bars-container {
+	z-index: 1000;
+	position: sticky;
+	top: 0;
+  }
+  .sticky-top{
+	background-color: #fff;
   }
