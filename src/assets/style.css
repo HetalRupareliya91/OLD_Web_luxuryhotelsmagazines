@@ -5585,7 +5585,7 @@ form {
 	text-align: center;
 	transition: transform 0.8s;
 	transform-style: preserve-3d;
-	/* height: 657px; */
+	height: 657px;
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
