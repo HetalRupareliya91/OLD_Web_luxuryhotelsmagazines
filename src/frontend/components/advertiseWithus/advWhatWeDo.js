@@ -40,9 +40,9 @@ function Advertise() {
             <Parallax blur={8} bgImage={Hero3} bgImageAlt="the cat" strength={100} className="advertise-first-section">
                 <section className="spad">
 
-                    <Container className="adv-container">
-                        <div className="text-white text-center">
-                            <h1>What We Do </h1>
+                    <Container className="whatwedo-container">
+                        <div className="text-center">
+                            <h1 className="text-white">What We Do </h1>
                         </div>
 
                         <div className="text-center liner-continer mt-3">

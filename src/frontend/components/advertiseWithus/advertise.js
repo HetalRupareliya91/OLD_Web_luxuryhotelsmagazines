@@ -77,13 +77,6 @@ function Advertise() {
                                                 <li>Detailed Google Analytics reports</li>
                                                 <li>A remarkable increase in sales by 225%</li>
                                             </ul>
-                                            <div className="text-center Original-price">
-                                                <p >
-                                                    <b> *Original price 550 </b></p>
-                                                <p >
-                                                    <b> *Offer valid till 31-12-2024</b>
-                                                </p>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -117,14 +110,7 @@ function Advertise() {
                                                 <li>Seamless direct bookings on your website</li>
                                                 <li>Detailed Google Analytics reports</li>
                                                 <li>A remarkable increase in sales by 225%</li>
-                                            </ul>
-                                            <div className="text-center">
-                                                <p >
-                                                    <b> *Original price 450 </b></p>
-                                                <p >
-                                                    <b> *Offer valid till 31-12-2023</b>
-                                                </p>
-                                            </div>
+                                            </ul>                                            
                                         </div>
                                     </div>
                                 </div>
@@ -160,13 +146,6 @@ function Advertise() {
                                                 <li>No commission is charged&nbsp;</li>
                                                 <li>Nomination for voting in "The Best Luxury Hotel of the Year" award</li>
                                             </ul>
-                                            <div className="text-center">
-                                                <p >
-                                                    <b>*Original price 399 </b></p>
-                                                <p >
-                                                    <b>*Offer valid till 31-12-2024</b>
-                                                </p>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -202,13 +181,6 @@ function Advertise() {
                                                 <li>No commission is charged</li>
                                                 <li>Nomination for voting in "The Best Luxury Hotel of the Year" award</li>
                                             </ul>
-                                            <div className="text-center">
-                                                <p >
-                                                    <b>*Original price 499</b></p>
-                                                <p >
-                                                    <b>   *Offer valid till 31-12-2023</b>
-                                                </p>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -241,13 +213,6 @@ function Advertise() {
                                                 <li>Your PR/News staying Permanently, with no time limit</li>
                                                 <li>Links to your Website and Social Media&nbsp;</li>
                                             </ul>
-                                            <div className="text-center">
-                                                <p >
-                                                    <b> *Original price 450</b></p>
-                                                <p >
-                                                    <b> *Offer valid till 31-12-2023</b>
-                                                </p>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

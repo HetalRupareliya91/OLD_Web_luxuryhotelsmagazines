@@ -44,7 +44,7 @@ function Footer(){
                        <p><NavLink to="/about-us" className="footer-links">About Us</NavLink></p>
                          <p> <NavLink to="/trademark-registration" className="footer-links">Trademark Registry</NavLink></p>
                        <p> <NavLink to="/trademark-registration" className="footer-links">Branding Registration</NavLink></p>
-                    
+                       <p><NavLink to="/benifits-working-with-us" className="footer-links">Collaborative Advantages</NavLink></p>
                     </div>
                  </Col>
                  <Col lg={3}>
@@ -56,7 +56,6 @@ function Footer(){
                        <p><NavLink to="/mediapack" className="footer-links">Media Pack</NavLink></p>
                        <p><NavLink to="/advertise-with-us" className="footer-links">Advertise With Us</NavLink></p>
                        <p><NavLink to="/signup" className="footer-links">List Your Hotel</NavLink></p>
-                         <p><NavLink to="/benifits-working-with-us" className="footer-links">Collaborative Advantages</NavLink></p>
                       
                     </div>
                  </Col>
