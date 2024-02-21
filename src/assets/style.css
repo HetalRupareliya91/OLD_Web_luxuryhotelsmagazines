@@ -7022,15 +7022,12 @@ ul.dropdown-menu a:hover {
 	-webkit-backface-visibility: hidden; /* Safari */
 	backface-visibility: hidden;
 }
-.exclusive-deals .flip-box-front  {
+.exclusive-deals .flip-box-front,.exclusive-deals .flip-box-back  {
     border: 1px solid #846316;
+	padding: 9px !important;
 	border-radius: 5px;
 }
-.exclusive-deals .flip-box-back {
-    border: 1px solid #846316;
-    padding: 9px !important;
-	border-radius: 5px;
-}
+
 .hotel-details-exclusive-offer{
 	border: 2px solid #cb9028;
 	padding: 10px;
