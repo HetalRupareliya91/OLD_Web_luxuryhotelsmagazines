@@ -183,7 +183,7 @@ function Header() {
                       <li className="active"><NavLink to="/" className='menu-content'>Home</NavLink></li>
 
                       <li>
-                        <NavLink to="/hotels-selection" className='menu-content'>Luxury Hotels And Resorts</NavLink>
+                        <NavLink to="/hotel-search" className='menu-content'>Luxury Hotels And Resorts</NavLink>
 
                       </li>
                       {/* <li><a href="/userprofile" className='menu-content'>List Your Hotels</a></li> */}

@@ -11,7 +11,7 @@ function AddBlogs() {
   const [hotelEditorState, setHotelEditorState] = useState(EditorState.createEmpty());
   const [blogEditorState, setBlogEditorState] = useState(EditorState.createEmpty());
 
-  const [image, setImage] = useState(null)
+  const [image, setImage] = useState([])
   const handleInputChange = (e) => {
     const { name, value } = e.target || {};;
     setFormData({
@@ -19,12 +19,9 @@ function AddBlogs() {
       [name]: value,
     });
   };
-
   const handleimageChange = (e) => {
-    const file = e.target.files[0];
-    // console.log("Selected File:", file);
-    setImage(file);
-
+    const files = e.target.files;
+    setImage((prevImages) => [...prevImages, ...files]);
   };
 
   // const handleFileChange = (e) => {
@@ -62,29 +59,19 @@ function AddBlogs() {
   const [formData, setFormData] = useState({
     newsType:'',
     businessName: '',
-    country: '',
-    fullName: '',
+   fullName: '',
     email: '',
     blogTitle: '',
     youtubeLink: '',
     image: [],
     hotelDescription: '',
-    offerTitle: '',
-    contactPhoneNumber: '',
-    phoneNumber: '',
-    link: '',
-    offerValidTo: '',
-    offerValidFrom: '',
-    blogContent: '',
-    user_id: uid,
-    status:"1",
-    catagory:"DGFGYUGFU",
-    editor_choice:"fgufg",
-    news_views:"fdhjgffbjhfbf",
-    news_likes:"fifhisfghkjfghf",
+       user_id: uid,
+    // status:"1",
+    catagory:"",
+    editor_choice:"ffggruygre",
+    news_views:"",
+    news_likes:"",
     hotelDescriptionHTML: '', 
-  blogContentHTML: '',
-  special_offers:1,
   });
 
   const [validationErrors, setValidationErrors] = useState({
@@ -95,13 +82,14 @@ function AddBlogs() {
     email: "",
     blogTitle: "",
     youtubeLink: "",
-    image: "",
+   
     offerTitle: "",
     phoneNumber: "",
     contactPhoneNumber: "",
     link: "",
     offerValidFrom: "",
     offerValidTo: "",
+    editor_choice:""
     
   });
 
@@ -133,29 +121,19 @@ function AddBlogs() {
     const formDatas = new FormData();
     formDatas.append('news_type', formData.newsType);
     formDatas.append('bussiness_name', formData.businessName);
-    formDatas.append('country', formData.country);
     formDatas.append('full_name', formData.fullName);
     formDatas.append('email_address', formData.email);
     formDatas.append('news_title', formData.blogTitle);
     formDatas.append('youtube_link', formData.youtubeLink);
-    formDatas.append('news_images', image);
-    formDatas.append('news_desc', formData.hotelDescriptionHTML);
-    formDatas.append('offer_title', formData.offerTitle);
-    // formDatas.append('offerCountry', formData.offerCountry);
-    formDatas.append('contact_no', formData.contactPhoneNumber);
-    formDatas.append('phone_number', formData.phoneNumber);
-
-    formDatas.append('redeem_link', formData.link);
-    formDatas.append('from_date', formData.offerValidFrom);
-    formDatas.append('to_date', formData.offerValidTo);
-    formDatas.append('description', formData.blogContentHTML);
-    formDatas.append('user_id', formData.user_id);
-    formDatas.append('status', formData.status);
+    image.forEach((image, index) => {
+      formDatas.append(`news_images[${index}]`, image);
+    });    formDatas.append('news_desc', formData.hotelDescriptionHTML);
+     formDatas.append('user_id', formData.user_id);
+    // formDatas.append('status', formData.status);
     formDatas.append('catagory', formData.catagory);
     formDatas.append('editor_choice', formData.editor_choice);
     formDatas.append('news_likes', formData.news_likes);
     formDatas.append('news_views', formData.news_views);
-    formDatas.append('special_offers', formData.special_offers);
     try {
       const response = await axios.post(
         `${API.BASE_URL}${API.ENDPOINTS.createNews}`,
@@ -168,7 +146,7 @@ function AddBlogs() {
         }
       );
 
-      if (response.status === 200) {
+      if (response.data.status === true) {
         // console.log("news  added successfully");
       } else {
         console.error("Failed to add news");
@@ -431,7 +409,7 @@ function AddBlogs() {
               name="image"
               type="file"
               placeholder="News Image"
-              value={formData.image}
+              multiple
               onChange={handleimageChange}
               style={{ borderColor: validationErrors.image ? "red" : "" }}
             />

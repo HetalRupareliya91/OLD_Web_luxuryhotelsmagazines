@@ -18,11 +18,11 @@ function ContactUs() {
         
 
                 
-                <div class="bg-video-wrap">
+                <div className="bg-video-wrap">
     <video src={video} loop muted autoPlay >
     </video>
     
-    <div class="bg_Video">
+    <div className="bg_Video">
     <div className="page-headings">
                         <div className="heading-section">
                             <h1>Contact Us</h1></div>
@@ -76,8 +76,8 @@ function ContactUs() {
 
                                     </div>
                                     <hr></hr>
-                                    <div><h3>Connect With Us </h3></div>
-                <div className="fa-social">
+                                    <div className="text-center mb-3"><h1>Connect With Us </h1></div>
+                {/* <div className="fa-social">
 
                 <div className="d-flex text-center">
                         <a href="mailto:info@luxuryhotelsmagazines.com" target="_blank" className="fa-link">
@@ -103,13 +103,30 @@ function ContactUs() {
                         </a>
                         <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg' target="_blank">Youtube</a>
                     </div> */}
-                    <div className="d-flex">
+                    {/* <div className="d-flex">
                         <a href="https://www.facebook.com/LuxuryHotelsMagazines" target="_blank" className="fa-link">
                         <FaPhone />
                         </a>
                         <a href="tel:1234567890" target="_blank">(12)34567890</a>
                     </div>
-                </div>
+                </div>  */}
+
+                <div className="row">
+                  <ul className="text-center">
+                     <li><a className=" contact-us-buttons " href="mailto:info@luxuryhotelsmagazines.com"> <FaEnvelope/> <span className="network-name">info@LuxuryHotelsMagazines.com  </span></a></li>
+                 
+                  </ul>
+                    <ul className="text-center">
+                    <li><a href="https://www.facebook.com/LuxuryHotelsMagazines" target="_blank" className="contact-us-buttons "><FaFacebook/><span className="network-name">@LuxuryHotelsMagazines</span></a></li>
+                  </ul>
+           
+                    <ul className="text-center">
+                    <li><a href="https://www.instagram.com/luxuryhotelsbrand/" target="_blank" className=" contact-us-buttons "><FaInstagram/> <span className="network-name">@LuxuryHotelsBrand</span></a></li>
+                  </ul>
+                  <ul className="text-center">
+                    <li><a href="https://wa.me/+35799799388"  target="_blank" className=" contact-us-buttons "><FaPhone/> <span className="network-name">+35799799388</span></a></li>
+                  </ul> 
+                  </div>
                 <hr></hr>
 
                                 </Form>

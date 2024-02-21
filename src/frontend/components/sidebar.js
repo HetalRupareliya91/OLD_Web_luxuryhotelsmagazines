@@ -7,7 +7,7 @@ import API, { isUserLoggedIn } from "../../utils";
 import { useNavigate } from "react-router-dom";
 import AllHotels from "../pages/userprofile/allHotels";
 import AllBlogs from "../pages/userprofile/allBlogs";
-import AddBlogs from "../pages/userprofile/addBlogs";
+import AddBlogs from "../pages/userprofile/addNews";
 import AddHotel from "../pages/userprofile/addHotel";
 import PersionalInformation from "../pages/userprofile/persionalInformation";
 import EditHotel from "../pages/userprofile/editHotel";

@@ -1,16 +1,10 @@
 import React,{useState,useEffect}  from "react";
 import Header from "../components/header";
 import { Col, Container, Image, Row } from "react-bootstrap";
-import Rooms4 from "../../assets/img/room/room-4.jpg"
-import Rooms5 from "../../assets/img/room/room-5.jpg"
-import Rooms6 from "../../assets/img/room/room-6.jpg"
-import Search from "../components/search";
-// import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { GeoAltFill } from 'react-bootstrap-icons';
 import SearchWithBackground from "../components/searchWithBackground";
 import Footer from "../components/footer";
 import CallToAction from "../components/callToAction";
-
 import axios from "axios";
 import API from "../../utils";
 import { useLocation } from "react-router-dom";
@@ -19,7 +13,6 @@ function HotelSelection(){
   const { state } = useLocation();
 const countryFilter = state?.filter || '';
 
-console.log("dsbsdbgsbgsbgbglgshb",countryFilter)
 
 
   const [apiData,setApiData]=useState("")
@@ -127,15 +120,6 @@ console.log("dsbsdbgsbgsbgbglgshb",countryFilter)
 {apiData && (
           <>
             <h1 className="">{apiData.title}</h1>
-            {/* <div className="hotel-selection spad">
-              {apiData.sections.map((section, index) => (
-                <div key={index}>
-                  <p>
-                    <a>{section.sub_title}:</a> {section.content}
-                  </p>
-                </div>
-              ))}
-            </div> */}
           </>
         )}</div>
 </div>

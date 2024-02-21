@@ -1542,19 +1542,16 @@ h1 {
 	padding-bottom: 80px;
 }
 
-.room-item {
+/* .room-item {
 	margin-bottom: 30px;
+} */
+.news-item{
+	border: 1px solid #846316;
+    padding: 10px;
 }
 
-.room-item img {
-	/* min-width: 100%; */
-	/* height: 240px; */
-}
-
-.room-item .ri-text {
-	border: 1px solid #ebebeb;
-	border-top: none;
-	padding: 24px 24px 30px 28px;
+ .ri-text {
+	margin-top: 15px;
 }
 
 .room-item .ri-text h4 {
@@ -1563,9 +1560,8 @@ h1 {
 	font-size: 16px !important;
 }
 
-.room-item .ri-text h3 {
+ .ri-text h4 {
 	color: #846316;
-	font-weight: 700;
 	margin-bottom: 14px;
 }
 
@@ -3053,7 +3049,19 @@ h1 {
 @media screen and (max-width: 991px) {}
 
 @media only screen and (max-width: 767px) {
-
+	
+	.contact-us-buttons {
+		/* display: inline-block; */
+		background: #856200 !important;
+		color: #000 !important;
+		line-height: 1em !important;
+		line-height: 1em !important;
+		letter-spacing: 0em !important;
+		text-align: center !important;
+		text-transform: lowercase !important;
+		padding: 0.6em !important;
+		
+	}
 	.room-details-section-image {
 		height: 300px !important;
 		width: 100% !important;
@@ -5265,7 +5273,7 @@ form {
 }
 
 .exclusive-deals h6 {
-	color: #846316;
+	color: #fff;
 	font-weight: 600;
 	font-size: 17px;
 	margin: 10px 0px;
@@ -6948,7 +6956,7 @@ ul.dropdown-menu a:hover {
 }
 
 .btn_nav:hover {
-	background-color: #fff;
+	background-color: #fff !important;
 	color: #b5191f;
 	font-weight: 600;
 	border: 1px solid #b5191f;
@@ -7013,7 +7021,11 @@ ul.dropdown-menu a:hover {
 	-webkit-backface-visibility: hidden; /* Safari */
 	backface-visibility: hidden;
 }
-.exclusive-deals .flip-box-front , .exclusive-deals .flip-box-back {
+.exclusive-deals .flip-box-front  {
+    border: 1px solid #846316;
+	border-radius: 5px;
+}
+.exclusive-deals .flip-box-back {
     border: 1px solid #846316;
     padding: 9px !important;
 	border-radius: 5px;
@@ -7106,3 +7118,19 @@ ul.dropdown-menu a:hover {
   .sticky-top{
 	background-color: #fff;
   }
+
+   .contact-us-buttons{ /* display: inline-block; */
+    background: #856200;
+    color: #000;
+    /* font-family: 'PFRegalTextPro', serif !important; */
+    font-size: 1em;
+    line-height: 1em;
+    letter-spacing: .1em;
+    text-align: center;	
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.6em;
+    /* border: 1px solid transparent; */
+    /* transition: all .4s ease; */
+}
+

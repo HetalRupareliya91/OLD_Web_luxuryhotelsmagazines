@@ -15,7 +15,7 @@ import Footer from '../components/footer';
 
 import AllHotels from './userprofile/allHotels';
 import AllBlogs from './userprofile/allBlogs';
-import AddBlogs from './userprofile/addBlogs';
+import AddBlogs from './userprofile/addNews';
 import AddHotel from './userprofile/addHotel';
 import { isUserLoggedIn } from '../../utils';
 import { useNavigate } from 'react-router-dom';

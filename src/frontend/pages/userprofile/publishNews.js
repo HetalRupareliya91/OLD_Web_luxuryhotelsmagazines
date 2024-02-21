@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/header";
-import AddBlogs from "./addBlogs";
+import AddBlogs from "./addNews";
 import Footer from "../../components/footer";
 import { Container } from "react-bootstrap";
 

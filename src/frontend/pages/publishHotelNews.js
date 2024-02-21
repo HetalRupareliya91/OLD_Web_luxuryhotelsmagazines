@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import AddBlogs from './userprofile/addBlogs';
+import AddBlogs from './userprofile/addNews';
 
 const PublishHotelNews = () => {
     return (

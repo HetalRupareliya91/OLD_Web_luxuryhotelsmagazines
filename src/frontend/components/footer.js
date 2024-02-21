@@ -52,7 +52,7 @@ function Footer(){
                        <h6>ADVERTISERS</h6>
                        <p><NavLink to="/distribution" className="footer-links">Distribution</NavLink></p>
                        {/* <p><a href="/publish-news-pr" className="footer-links">Publish Hotels News</a></p> */}
-                       <p><NavLink  to="/login" className="footer-links" onClick={handlePublishNewsClick}>Publish News </NavLink></p>
+                       <p><NavLink className="footer-links" onClick={handlePublishNewsClick}>Publish News </NavLink></p>
                        <p><NavLink to="/mediapack" className="footer-links">Media Pack</NavLink></p>
                        <p><NavLink to="/advertise-with-us" className="footer-links">Advertise With Us</NavLink></p>
                        <p><NavLink to="/signup" className="footer-links">List Your Hotel</NavLink></p>
