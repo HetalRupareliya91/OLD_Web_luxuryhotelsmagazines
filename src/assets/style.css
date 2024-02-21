@@ -5585,7 +5585,7 @@ form {
 	text-align: center;
 	transition: transform 0.8s;
 	transform-style: preserve-3d;
-	height: 657px;
+	/* height: 657px; */
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -6685,13 +6685,12 @@ ul.dropdown-menu a:hover {
 
 .card-inner-section-textarea {
 	padding: 15px 15px 20px 28px;
-    background-color: #fff;
 }
 
 .card-inner-section-textarea ul li {
 	list-style: square;
 	/* line-height: 2; */
-	color:#000;
+	color:#fff;
 }
 
 
@@ -6993,7 +6992,7 @@ ul.dropdown-menu a:hover {
 	max-height: 100%;
   }
   .package h3 {
-	color:#000;
+	color:#fff;
 }
 .text_container {
 	display: flex;
