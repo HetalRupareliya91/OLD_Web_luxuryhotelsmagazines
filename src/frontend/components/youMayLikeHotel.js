@@ -65,7 +65,7 @@ const HotelSlider = () => {
   return (
     <div className="alternate-hotels mt-3">
       <div className="text-center m-4">
-        <h1>You May Also Like</h1>
+        <h1>Best Luxury Hotels Of The Year</h1>
       </div>
       <Slider {...settings}>
         {hotels.map((hotel, index) => (

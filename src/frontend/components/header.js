@@ -27,7 +27,7 @@ function Header() {
 
 
   const handleLoginClick = () => {
-    
+
     navigate("/login")
   };
 
@@ -36,39 +36,39 @@ function Header() {
   const handleLogout = async (e) => {
 
     const token = localStorage.getItem("token");
-    
+
 
     e.preventDefault();
 
     try {
-       const response = await axios.post(
-          `${API.BASE_URL}${API.ENDPOINTS.logout}`,
-          null,
-          {
-            headers: {
-              "Authorization": "Bearer " + token,
-            }
+      const response = await axios.post(
+        `${API.BASE_URL}${API.ENDPOINTS.logout}`,
+        null,
+        {
+          headers: {
+            "Authorization": "Bearer " + token,
           }
-       );
+        }
+      );
 
-       if (response.data.status === true) {
+      if (response.data.status === true) {
         localStorage.removeItem("token");
         localStorage.removeItem("isLoggedIn");
         localStorage.removeItem("userName");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("newsLogin");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("newsLogin");
         navigate("/login")
-          
-          // console.log(response.data.message);
-       } else {
-          console.error("Logout failed:");
-          const errorMessage = response.data.message || "Logout failed. Please try again.";
-       document.getElementById("loginErrorMessage").innerText = errorMessage;
-       }
+
+        // console.log(response.data.message);
+      } else {
+        console.error("Logout failed:");
+        const errorMessage = response.data.message || "Logout failed. Please try again.";
+        document.getElementById("loginErrorMessage").innerText = errorMessage;
+      }
     } catch (error) {
-       console.error("Error:", error.message);
+      console.error("Error:", error.message);
     }
- };
+  };
   return (
     <>
 
@@ -90,13 +90,32 @@ function Header() {
           </div>
           <nav className="mainmenu mobile-menu">
             <ul>
+              <li>
+                {isLoggedIn ? (
+                  <a className='menu-content' onClick={handleLogout}>
+                    Logout
+                  </a>
+                ) : (
+                  <a href="login" className='menu-content' onClick={handleLoginClick}>
+                    Login
+                  </a>
+                )}
+              </li>
+              <li><a href="/userprofile">List Your Hotels</a></li>
+              <li><a href="/news-search">Publish News</a></li>
+            </ul>
+            <ul>
               <li className="active"><a href="/">Home</a></li>
               <li>
                 <a href="/hotel-search">Luxury Hotels/Resorts</a>
               </li>
-              <li><a href="/userprofile">List Your Hotels</a></li>
-              <li><a href="/news-search">Publish Hotel News</a></li>
-              <li><a href="/contact-us">Contact</a></li>
+              <li className="dropdown">
+                <NavLink to="/news-search" className='menu-content' > News</NavLink>
+                <ul className="dropdown-menu">
+                  <li><a href="#" >General News</a></li>
+                  <li><a href="#" >Hotel News</a></li>
+                </ul>
+              </li>
             </ul>
           </nav>
           <div id="mobile-menu-wrap"></div>
@@ -104,14 +123,11 @@ function Header() {
             {/* <a href="https://www.facebook.com/LuxuryHotelsMagazines"><FaFacebook /></a> */}
             {/* <a href="https://www.instagram.com/luxuryhotelsbrand/"><FaInstagram /></a> */}
             {/* <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg'><FaYoutube /></a> */}
-            <a href="/userprofile" className='menu-content'>List Your Hotels</a>
+
           </div>
-          <ul className="top-widget">
-            <li><a href="mailto:Info@LuxuryHotelsMagazines.Com"><i className="fa fa-envelope"></i> info@luxuryhotelsmagazines.com</a></li>
-          </ul>
         </div>
       )}
-      <header className="header-section">
+      <header className="header-section sticky-top">
         <div className="top-nav">
           <Container>
             <Row>
@@ -127,22 +143,22 @@ function Header() {
                     {/* <a href="https://www.instagram.com/luxuryhotelsbrand/"><FaInstagram /></a> */}
                     {/* <a href='https://www.youtube.com/channel/UCxV4ClKpFA95eU-4c8sN3Tg'><FaYoutube /></a> */}
                     <a href="/userprofile" className='menu-content'>List Your Hotels</a>
-                     <a href="/news-search" className='menu-content' >Publish News</a>
-                      {isLoggedIn ? (
-                         
-                            <a className='menu-content' onClick={handleLogout}>
-                              Logout
-                            </a>
-                       
-                       
-                        ) :(
-                         
-                            <a href="login" className='menu-content' onClick={handleLoginClick}>
-                              Login
-                            </a>
-                          
-                        ) }
-                     
+                    <a href="/news-search" className='menu-content' >Publish News</a>
+                    {isLoggedIn ? (
+
+                      <a className='menu-content' onClick={handleLogout}>
+                        Logout
+                      </a>
+
+
+                    ) : (
+
+                      <a href="login" className='menu-content' onClick={handleLoginClick}>
+                        Login
+                      </a>
+
+                    )}
+
                   </div>
                   <a href="/hotel-search" className="bk-btn">Find Hotels</a>
                 </div>
@@ -194,7 +210,7 @@ function Header() {
                             </a>
                           </li>
                         ) } */}
-                     
+
                     </ul>
                   </nav>
                   <div className="nav-right search-switch">

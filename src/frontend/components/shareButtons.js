@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 
 const ShareThisButtons = () => {
   useEffect(() => {
@@ -19,7 +20,12 @@ const ShareThisButtons = () => {
   }, []); // The empty dependency array ensures the effect runs only once when the component mounts
 
   return (
-    <div className="sharethis-inline-share-buttons"></div>
+    <div className="sharethis-inline-share-buttons">
+      {/* Use React Helmet to dynamically set the script */}
+      <Helmet>
+        <script src="https://platform-api.sharethis.com/js/sharethis.js#property=624cc84206b42700194289cc&product=inline-share-buttons" async></script>
+      </Helmet>
+    </div>
   );
 };
 

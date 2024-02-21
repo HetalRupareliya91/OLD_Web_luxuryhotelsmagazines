@@ -89,24 +89,31 @@ const[apiData, setApiData]=useState([])
             <Container>
 
                 <Slider {...sliderSettings}>
-                {apiData.map((hotel ,index) => (
-              <div key={index}>
-                <figure>
-                  <div className="img-dec">
-                    <span className="img-dec-country">{hotel.hotels.country}</span>
-                    <div className="coutryname">{hotel.hotels.hotel_title}</div>
-                  </div>
-                  <div className="thumbnail">
-                    <div>
-                      <NavLink to={`/hotel-details/${hotel.id}/${hotel.hotels.country}/${hotel.hotels.hotel_title}`} className="readmore">
-                        Read More
-                      </NavLink>
-                    </div>
-                    <Image src={hotel.hotels.hotel_images[0]} />
-                  </div>
-                </figure>
-              </div>
-            ))}
+                {apiData.map((hotel, index) => (
+  <div key={index}>
+    <figure>
+      <div className="img-dec">
+        {hotel.hotels && (
+          <>
+            <span className="img-dec-country">{hotel.hotels.country}</span>
+            <div className="coutryname">{hotel.hotels.hotel_title}</div>
+          </>
+        )}
+      </div>
+      <div className="thumbnail">
+        <div>
+          <NavLink
+            to={`/hotel-details/${hotel.id}/${hotel.hotels.country}/${hotel.hotels.hotel_title}`}
+            className="readmore"
+          >
+            Read More
+          </NavLink>
+        </div>
+        <Image src={hotel.hotel_images[0]} />
+      </div>
+    </figure>
+  </div>
+))}
                 </Slider>
             </Container>
         </section>

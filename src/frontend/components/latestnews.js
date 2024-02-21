@@ -85,7 +85,7 @@ function LatestNews() {
                             <figure>
                             {/* <div className="img-dec"><span className="img-dec-country">{hotel.country}</span><div className="coutryname">{hotel.hotel_title}</div></div> */}
 
-                                <div className="img-dec"><span className="img-dec-country">{news.country}</span><div className="coutryname">{news.bussiness_name}</div></div>
+                                <div className="img-dec"><div className="coutryname">{news.bussiness_name}</div></div>
                                 <div className="thumbnail">
                                     <div>
                                         <NavLink to="/news-details/9/Grand Opening ceremony" className="readmore">
