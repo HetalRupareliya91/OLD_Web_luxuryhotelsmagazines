@@ -209,15 +209,15 @@ function AllBlogs() {
             <div className='details-div mt-4'>
               <div className='mb-3'>
                 <h4>{news.news_title}</h4>
-                <h6>Created at {news.created_at}</h6>
-                <h5>Package expiry: {news.updated_at}</h5>
+                <h6>Publish Date: {news.created_at}</h6>
+                {/* <h5>Package expiry: {news.updated_at}</h5> */}
               </div>
               <Row className='mt-5'>
-                <Col lg={8} className='mt-2'>
+                {/* <Col lg={8} className='mt-2'>
                   <div className='time-left '>
                     <span>Time Left: {formatDate(news.created_at)}</span>
                   </div>
-                </Col>
+                </Col> */}
                 <Col lg={4} className='mt-2'>
                   <div className='d-flex all-hotel-btns'>
                     <button className='me-1 btn-default'onClick={() => handleViewButtonClick(news)}>View</button>

@@ -1,21 +1,55 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../components/header';
-import Search from '../components/search';
-import Footer from '../components/footer';
-import Hero from '../components/hero';
-import { Col, Container, Form, Image, Row } from 'react-bootstrap';
-import Rooms4 from "../../assets/img/room/room-4.jpg"
-import Rooms5 from "../../assets/img/room/room-5.jpg"
-import Rooms6 from "../../assets/img/room/room-6.jpg"
-import CallToAction from '../components/callToAction';
-import axios from 'axios';
-import API from '../../utils';
-import { FaSearch } from 'react-icons/fa';
-import SearchWithBackground from '../components/searchWithBackground';
-
+import React,{useState,useEffect}  from "react";
+import Header from "../components/header";
+import { Col, Container, Image, Row } from "react-bootstrap";
+import { GeoAltFill } from 'react-bootstrap-icons';
+import SearchWithBackground from "../components/searchWithBackground";
+import Footer from "../components/footer";
+import CallToAction from "../components/callToAction";
+import axios from "axios";
+import API from "../../utils";
 function HotelSearch(){
-    const [apiData, setApiData] = useState([]);
 
+    const [apiData,setApiData]=useState("")
+    const [hotelData,setHotelData]=useState([])
+    const  type="hotelselection"
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 12;
+    useEffect(() => {
+      const fetchDetails = async (e) => {
+          if (e) e.preventDefault();
+  
+          try {
+              const response = await axios.post(
+                  `${API.BASE_URL}${API.ENDPOINTS.singlePageDetails}`,
+                  {
+                      type: type,
+                  },
+                  {
+                      headers: {
+                          Authorization: "hXuRUGsEGuhGf6KM",
+                      },
+                  }
+              );
+  
+              const data = response.data;
+              if (data.status === true) {
+                  setApiData(data.data.details);
+              } else {
+                  console.error("signup failed:");
+              }
+          } catch (error) {
+              console.error("Error:", error.message);
+          }
+      };
+  
+  
+  
+      fetchDetails();
+      fetchAllHotels();
+  
+  }, []); // Add countryFilter to the dependency array
+  
+    
     const fetchAllHotels = async () => {
       // const token = localStorage.getItem("token");
         try {
@@ -27,7 +61,7 @@ function HotelSearch(){
           const data = response.data;
           // console.log(data)
           if (data.status === true) {
-            setApiData(data.data);
+            setHotelData(data.data);
             // console.log(data)
           } else {
             console.error("Failed to fetch data");
@@ -37,91 +71,80 @@ function HotelSearch(){
         }
       };
     
-      useEffect(() => {
-        fetchAllHotels();
-      }, []);
-    return (
-        <>
- <Header/>
- <section className='all-hotel-section'>
-
-
-           <SearchWithBackground/>
-
-    <section className="rooms-section spad ">
-        <Container>
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
+      };
+      return(
+          <>
+  <Header/>
+  <section className="spad hotel-selection-section">
+  <div className="page-headings mb-4 ">
+  <div className="heading-section">
+  {apiData && (
+            <>
+              <h1 className="">Luxury Hotels and resorts</h1>
+            </>
+          )}</div>
+  </div>
      
- <h1 className="text-center mt-5">Our Hotels</h1>
-            <Row >
-            <Col lg={6} ><h6 style={{lineHeight: "4",marginRight: "6px"}} className='m-0'>Showing 1–12 of 33 results
-  Default sorting</h6>
-   </Col>
-           
-        </Row>
-        {/* <Row >
-           
-              <Col lg={4} md={6}  >
-                <a href="/hotel-details/9/kuwait/symphony-style-hotel">
-                  <div className="room-item">
-                    <img src={Rooms4} alt="" />
-                    <div className="ri-text">
-                      <h4>Symphony Style Hotel, Quorvus Collection</h4>
-                      <p>Kuwait</p>
-                      <a href={`/hotel-details/9/kuwait/symphony-style-hotel`} className="primary-btn">More Details</a>
-                    </div>
-                  </div>
-                </a>
-              </Col>
-          
-              <Col lg={4} md={6}  >
-                <a href="/hotel-details/9/kuwait/grand-hotel-du-palais-royal">
-                  <div className="room-item">
-                    <img src={Rooms6} alt="" />
-                    <div className="ri-text">
-                      <h4>Grand Hotel du Palais Royal</h4>
-                      <p>Kuwait</p>
-                      <a href={`/hotel-details/9/kuwait/grand-hotel-du-palais-royal`} className="primary-btn">More Details</a>
-                    </div>
-                  </div>
-                </a>
-              </Col>
-              <Col lg={4} md={6}  >
-                <a href="/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux">
-                  <div className="room-item">
-                    <img src={Rooms5} alt="" />
-                    <div className="ri-text">
-                      <h4>La Maison des Tetes - Relais & Chateaux</h4>
-                      <p>Kuwait</p>
-                      <a href={`/hotel-details/9/kuwait/la-maison-des-tetes-relais-chateaux`} className="primary-btn">More Details</a>
-                    </div>
-                  </div>
-                </a>
-              </Col>
-          </Row> */}
-  <Row>
-{apiData.map((hotel) => (
+      </section>
+  <SearchWithBackground />
+  <section className="spad">
+    <Container>
+      
+  <Row >
+  {hotelData.map((hotel) => (
 
-  <Col key={hotel.id} lg={4} md={6}>
-    <a href={`/hotel-details/${hotel.id}/${hotel.country}/${hotel.hotel_title}`}>
-      <div className="room-item">
-        <img src={hotel.hotel_images[0]} alt="" />
-        <div className="ri-text">
-          <h4>{hotel.hotel_title}</h4>
-          <p>{hotel.country}</p>
-          <a href={`/hotel-details/${hotel.id}/${hotel.country}/${hotel.hotel_title}`} className="primary-btn">More Details</a>
-        </div>
-      </div>
-    </a>
-  </Col>
-  
+<Col key={hotel.id} lg={4} md={6}>
+  <a href={`/hotel-details/${hotel.id}/${hotel.country}/${hotel.hotel_title}`}>
+  <div className="room-item selection-img-div">
+                    <Image
+                    src={hotel.hotel_images[0]} 
+                      className="hotel-selection-image"
+                      alt="image"
+                    />
+              
+                  </div>
+                  <div className="hotel-section-title px-3">
+                      <h5 className="mt-3">{hotel.hotel_title}</h5>
+                      <div className="d-flex">
+                        <GeoAltFill className="m-0 locaton-icon" />
+                        <p>{hotel.country}</p>
+                      </div>
+                    </div>
+  </a>
+</Col>
+
 ))}
-</Row>
-        </Container>
-    </section>
-    </section>
-    <CallToAction/>
-    <Footer/>
- </>
-    );
-}
-export default HotelSearch;
+            </Row>
+      
+  
+            </Container>
+            {/* <div className="col-lg-12">
+    <div className="room-pagination">
+    {[...Array(Math.ceil((hotelData && hotelData.length) || 0 / itemsPerPage)).keys()].map(
+    (page) => (
+      <a
+        key={page}
+        onClick={() => handlePageChange(page + 1)}
+        className={currentPage === page + 1 ? "active" : ""}
+      >
+        {page + 1}
+      </a>
+    )
+  )}
+    </div>
+  </div> */}
+  </section>
+  
+  
+  <CallToAction/>
+  <Footer/>
+  
+  </>
+      );
+  }
+  export default HotelSearch;
+

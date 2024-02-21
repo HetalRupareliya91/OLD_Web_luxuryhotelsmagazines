@@ -7,7 +7,7 @@ import API, { isUserLoggedIn } from "../../utils";
 import { useNavigate } from "react-router-dom";
 import AllHotels from "../pages/userprofile/allHotels";
 import AllBlogs from "../pages/userprofile/allBlogs";
-import AddBlogs from "../pages/userprofile/addBlogs";
+import AddBlogs from "../pages/userprofile/addNews";
 import AddHotel from "../pages/userprofile/addHotel";
 import axios from "axios";
 import SpecialOffers from "../pages/userprofile/addHotelSpecialOffers";
@@ -18,7 +18,7 @@ import EditHotel from "../pages/userprofile/editHotel";
 
 function NewsSidebar(){
     const [showEditHotelForm, setShowEditHotelForm] = useState(false);
-
+    const userName = localStorage.getItem("userName");
     const navigate = useNavigate()
     const [currentSection, setCurrentSection] = useState('myProfile');
     const showSection = (section) => {
@@ -87,8 +87,8 @@ function NewsSidebar(){
 
           <div className="text-center">
             <Image id="userImage" src={News1} alt="User Image" />
-            <h5 className="text-light">Adam Milne</h5>
-            <h6 className="text-light">Traveller</h6>
+            <h5 className="text-light">{userName}</h5>
+            {/* <h6 className="text-light">Traveller</h6> */}
           </div>
           <hr className="sidebar-line" />
           <Nav className="flex-column">
@@ -135,8 +135,9 @@ function NewsSidebar(){
 
 
                 <Col lg={3} className='col-4'><Image id="userImage" src={News1} alt="User Image" className='ms-2' /></Col>
-                <Col lg={9} className='col-8'><h5 className="text-light">Adam Milne</h5>
-                  <h6 className="text-light">Traveller</h6></Col>
+                <Col lg={9} className='col-8'><h5 className="text-light">{userName}</h5>
+                  {/* <h6 className="text-light">Traveller</h6> */}
+                  </Col>
               </Row>
 
 

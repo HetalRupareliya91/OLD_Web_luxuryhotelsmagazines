@@ -73,9 +73,7 @@ function Blogs (){
 <>
 <Header/>
  {/* <Hero/> */}
- <div className='serch-div'>
- <SearchWithBackground/>
-           </div>
+
 
  <section className="rooms-section spad ">
         <Container>
@@ -91,15 +89,15 @@ function Blogs (){
   {apiData.map((news) => (
     <Col key={news.id} lg={4} md={6}>
       <NavLink  to="/news-details/9/Grand Opening ceremony">
-        <div className="room-item">
+        <div className="news-item">
           <Image src={Rooms4} alt="" />
-          <div className="ri-text">
-            <h4>{news.news_title}</h4>
-            <p>{news.country}</p>
-            {/* <a href="/news-details/9/Grand Opening ceremony" className="primary-btn">More Details</a> */}
-          </div>
+         
         </div>
+        
       </NavLink>
+      <div className="ri-text">
+            <h4>{news.news_title}</h4>
+          </div>
     </Col>
   ))}
 </Row>

@@ -109,7 +109,7 @@ function KnoledgeTest() {
                           <h6 className="title">{deal.title}</h6>
                         </a> 
                       </div>
-                      <div className="mt-4"><button onClick={handleClaimClick} className="my-3 btn_nav">CLAIM</button></div>
+                      <div className="mt-2"><button onClick={handleClaimClick} className="my-3 btn_nav">CLAIM</button></div>
                     </div>
 
                     <div class="flip-box-back">
@@ -135,7 +135,7 @@ function KnoledgeTest() {
                           <h6>{deal.description}</h6>
                         </a>
                       </div>
-                      <div className="mt-4"><button className="my-3 btn_nav" onClick={handleClaimClick} >CLAIM</button></div>
+                      <div className="mt-2"><button className="my-3 btn_nav" onClick={handleClaimClick} >CLAIM</button></div>
                     </div>                  
                   </div>
                 </div>
