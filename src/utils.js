@@ -73,6 +73,8 @@ addMultipleImage:"add_multiple_images_hotels",
     // voting-details
     
 addVotingDetails:"add_voting_details",
+allVotingDetals:"all_voting_details",
+allSpecialOffers:"all_special_offer",
 
 // offer_title
 

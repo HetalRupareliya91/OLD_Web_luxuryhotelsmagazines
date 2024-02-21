@@ -6,7 +6,6 @@ import { EditorState, convertToRaw } from 'draft-js';
 import News1 from '../../../assets/img/news1.jpg'
 import News2 from '../../../assets/img/news2.jpg'
 import { useNavigate } from "react-router-dom";
-import NewsDeleteAlert from "./newsDeleteAlert";
 function AllBlogs() {
   const navigate = useNavigate();
   const [hotelEditorState, setHotelEditorState] = useState(EditorState.createEmpty());
@@ -248,11 +247,7 @@ function AllBlogs() {
         </div>
       </div>
 
-   <NewsDeleteAlert
-    news_id={newsId} 
-    showModal={showModal}
-    handleCloseModal={handleCloseModal}
-   />
+   
     </>
   );
 }

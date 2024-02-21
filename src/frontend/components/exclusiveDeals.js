@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaPhoneSquare } from "react-icons/fa";
 import Slider from "react-slick";
@@ -8,7 +8,42 @@ import { Parallax } from "react-parallax";
 import Hero3 from "../../assets/img/hero/hero-3.jpg";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import API from "../../utils";
 function KnoledgeTest() {
+  const[hotels, sethotels]=useState([])
+  const[apiData, setApiData]=useState([])
+      useEffect(() => {
+          fetchBestLuxuryHotels();
+      
+        }, []);
+        const fetchBestLuxuryHotels = async () => {
+      
+          try {
+            const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allSpecialOffers}`,
+          
+              {
+                headers: {
+                  Authorization: "hXuRUGsEGuhGf6KM",
+                }
+              });
+            const data = response.data;
+      
+      
+            if (data.status === true) {
+              setApiData(data.data)
+              sethotels(data.data.hotels);
+            
+  
+            } else {
+              console.error("Failed to fetch data");
+            }
+          } catch (error) {
+            console.error("Error:", error.message);
+          }
+        };
+      
+
   const navigate = useNavigate();
   const sliderRef = useRef(null);
 
@@ -36,7 +71,6 @@ function KnoledgeTest() {
   };
 
   const handleClaimClick = () => {
-    // Set a flag in the state to indicate that the offer section should be shown
     navigate('hotel-details/13/Cyprus/LONDA%20RESIDENCES%20CYPRUS', { state: { showOfferSection: true } });
   };
   const deals = [

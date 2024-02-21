@@ -65,17 +65,21 @@ function Search() {
 
  
  const handleSearchButtonClick = async () => {
-   await handleSearch();
-   setShowSearchResults(true);
+  if (!hotelName && !selectedCountry) {
+    navigate('/hotels-selection');
+  } else {
+    await handleSearch();
+    setShowSearchResults(true);
 
-   if (searchResults.length > 0) {
-    const selectedHotel = hotelName
-    ? searchResults.find(result => result.hotel_title === hotelName)
-    : searchResults[0];
-  navigate(`/hotel-details/${selectedHotel.id}/${selectedHotel.country}/${selectedHotel.hotel_title}`);
+    if (searchResults.length > 0) {
+      const selectedHotel = hotelName
+        ? searchResults.find(result => result.hotel_title === hotelName)
+        : searchResults[0];
+      navigate(`/hotel-details/${selectedHotel.id}/${selectedHotel.country}/${selectedHotel.hotel_title}`);
+    }
+  }
+};
 
- };
-}
    return (
      <section>
        <Container>

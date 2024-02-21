@@ -36,6 +36,8 @@ import PublishNews from "./pages/userprofile/publishNews";
 import NewsSidebar from "./components/newsSidebar";
 import EditHotel from "./pages/userprofile/editHotel";
 import BenifitsWorkingWithUs from "./components/benifitsWorkingWithUs";
+import GeneralNews from "./pages/userprofile/generalNews";
+import HotelNews from "./pages/userprofile/hotelNews";
 
 
 function RoutesPage() {
@@ -76,6 +78,10 @@ function RoutesPage() {
       <Route exact path="/magazine-details/:hotel_magazine_id/:hotel_magazine_name" element={<MagazineDetails />} />
       {/* <Route exact path="/magazine-details" element={<MagazineDetails />} /> */}
       <Route exact path="/publish-news-pr" element={<NewsSidebar />} />
+
+      <Route exact path="/general-news" element={<GeneralNews />} />
+      <Route exact path="/hotel-news" element={<HotelNews />} />
+
 
       <Route exact path="/userprofile/hotels" element={<AllHotels />} />
       <Route exact path="/benifits-working-with-us" element={<BenifitsWorkingWithUs />} />

@@ -173,10 +173,10 @@ function Header() {
                       {/* <li><a href="/userprofile" className='menu-content'>List Your Hotels</a></li> */}
 
                       <li className="dropdown">
-              <NavLink to="/news-search" className='menu-content' > News</NavLink>
+              <NavLink  className='menu-content' > News</NavLink>
               <ul className="dropdown-menu">
-                <li><a href="#" >General News</a></li>
-                <li><a href="#" >Hotel News</a></li>
+                <li><NavLink to="/general-news" >General News</NavLink></li>
+                <li><NavLink to="hotel-news" >Hotel News</NavLink></li>
               </ul>
             </li>
                       {/* <li><a href="/">Login</a></li> */}

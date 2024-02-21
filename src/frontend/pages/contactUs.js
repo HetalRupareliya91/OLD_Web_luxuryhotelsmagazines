@@ -116,7 +116,7 @@ function ContactUs() {
                      <li><a className=" contact-us-buttons " href="mailto:info@luxuryhotelsmagazines.com"> <FaEnvelope/> <span className="network-name">info@LuxuryHotelsMagazines.com  </span></a></li>
                  
                   </ul>
-                    <ul className="text-center">
+                    {/* <ul className="text-center">
                     <li><a href="https://www.facebook.com/LuxuryHotelsMagazines" target="_blank" className="contact-us-buttons "><FaFacebook/><span className="network-name">@LuxuryHotelsMagazines</span></a></li>
                   </ul>
            
@@ -125,7 +125,7 @@ function ContactUs() {
                   </ul>
                   <ul className="text-center">
                     <li><a href="https://wa.me/+35799799388"  target="_blank" className=" contact-us-buttons "><FaPhone/> <span className="network-name">+35799799388</span></a></li>
-                  </ul> 
+                  </ul>  */}
                   </div>
                 <hr></hr>
 

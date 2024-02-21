@@ -7,6 +7,7 @@ import Footer from "../components/footer";
 import CallToAction from "../components/callToAction";
 import axios from "axios";
 import API from "../../utils";
+import Search from "../components/search";
 function HotelSearch(){
 
     const [apiData,setApiData]=useState("")
@@ -90,7 +91,8 @@ function HotelSearch(){
   </div>
      
       </section>
-  <SearchWithBackground />
+  {/* <SearchWithBackground /> */}
+  <Search/>
   <section className="spad">
     <Container>
       

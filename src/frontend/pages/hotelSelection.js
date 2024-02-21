@@ -8,6 +8,7 @@ import CallToAction from "../components/callToAction";
 import axios from "axios";
 import API from "../../utils";
 import { useLocation } from "react-router-dom";
+import Search from "../components/search";
 function HotelSelection(){
 
   const { state } = useLocation();
@@ -125,7 +126,9 @@ const countryFilter = state?.filter || '';
 </div>
    
     </section>
-<SearchWithBackground />
+{/* <SearchWithBackground /> */}
+
+<Search/>
 <section className="spad">
   <Container>
     

@@ -66,7 +66,7 @@ function AboutUs() {
     try {
       const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.homeApi}`,
         {
-          Hotel_count: 7,
+          Hotel_count: 15,
           magazine_count: 0,
           News_count: 0,
         },
