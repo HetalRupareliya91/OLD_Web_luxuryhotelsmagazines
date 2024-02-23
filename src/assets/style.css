@@ -400,6 +400,18 @@ ol {
 	letter-spacing: 2px;
 }
 
+.bk-btn {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 700;
+	padding: 16px 28px 15px;
+	background: #b5191fff;
+	color: #ffffff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+
 .top-nav .tn-right .language-option {
 	display: inline-block;
 	margin-left: 30px;
@@ -5944,21 +5956,27 @@ ul .social-icons li {
 	padding-right: 40px !important;
 	padding-bottom: 10px !important;
 	padding-left: 40px !important;
-	background-color: #ffffff !important;
+	background-color: #00000054!important;
 	text-align: start;
 }
 
 .vc_column-inner h3 {
+	color: #fff;
 	font-size: 18px;
-	color: #000;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .vc_column-inner p {
-	color: #000;
-	font-size: 16px;
+	color: #fff;
+	font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
 }
 
-.print-campaign-options {
+.print-campaign-options , 
+.digital-campaign-options{
 	padding-top: 60px !important;
 	padding-bottom: 60px !important;
 	background-color: #ffffff !important;
@@ -5968,7 +5986,8 @@ ul .social-icons li {
 
 }
 
-.print-campaign-options .title-subtitle {
+.print-campaign-options .title-subtitle,
+.digital-campaign-options .title-subtitle{
 	text-transform: uppercase;
 	font-size: 24px;
 	line-height: 40px;
@@ -5977,14 +5996,16 @@ ul .social-icons li {
 
 }
 
-.print-campaign-options .liner-continer .woodmart-title-container {
+.print-campaign-options .liner-continer .woodmart-title-container,
+.digital-campaign-options .liner-continer .woodmart-title-container {
 	font-size: 22px;
 	color: #2d2a2a;
 	font-weight: 300px;
 	text-transform: uppercase;
 }
 
-.print-campaign-options .liner-continer .left-line {
+.print-campaign-options .liner-continer .left-line,
+.digital-campaign-options .liner-continer .left-line{
 	display: block;
 	flex: 1 1 auto;
 	border-bottom: 1px solid;
@@ -5992,20 +6013,23 @@ ul .social-icons li {
 
 }
 
-.print-campaign-options .liner-continer .right-line {
+.print-campaign-options .liner-continer .right-line,
+.digital-campaign-options .liner-continer .right-line {
 	display: block;
 	flex: 1 1 auto;
 	border-bottom: 1px solid;
 	border-color: #e8e8e8;
 }
 
-.print-campaign-options .image-flip-div p {
+.print-campaign-options .image-flip-div p,
+.digital-campaign-options .image-flip-div p {
 	font-size: 16px;
 	color: #2d2a2a;
 }
 
-.print-campaign-options .image-flip-div h3 {
-	font-size: 18px;
+.print-campaign-options .image-flip-div h3,
+.digital-campaign-options .image-flip-div h3 {
+	font-size: 20px;
 	color: #2d2a2a;
 }
 
@@ -6068,7 +6092,7 @@ top: 250px;
 	padding: 25px 50px;
 }
 
-.digital-campaign-options {
+/* .digital-campaign-options {
 	margin-top: 0px !important;
 	padding-top: 60px !important;
 	padding-bottom: 60px !important;
@@ -6116,9 +6140,9 @@ top: 250px;
 }
 
 .digital-campaign-options .image-flip-div h3 {
-	font-size: 20px;
+	font-size: 18px;
 	color: #000;
-}
+} */
 
 /* .what-are-you-intersted-in{
 		background-image: url(../assets/img/magazines/BG16.jpg);

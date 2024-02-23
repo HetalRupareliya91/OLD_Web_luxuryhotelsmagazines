@@ -37,6 +37,7 @@ import EditHotel from "./pages/userprofile/editHotel";
 import BenifitsWorkingWithUs from "./components/benifitsWorkingWithUs";
 import GeneralNews from "./pages/userprofile/generalNews";
 import HotelNews from "./pages/userprofile/hotelNews";
+import CampaignDetail from "./pages/campaignDetail";
 
 
 function RoutesPage() {
@@ -66,8 +67,8 @@ function RoutesPage() {
       <Route exact path="/subscribe-to-news" element={<SubscribeToNews />} />
       <Route exact path="/trademark-registration" element={<TrademarkRegistration />} />
       <Route exact path="/contact-us" element={<ContactUs />} />
-      <Route exact path="/subcribe-digital-copy" element={<SubscribeToDigitalCopy />} />
-      <Route exact path="/subcribe-print-copy" element={<SubscribeToPrintCopy />} />
+      <Route exact path="/subscribe-digital-copy" element={<SubscribeToDigitalCopy />} />
+      <Route exact path="/subscribe-print-copy" element={<SubscribeToPrintCopy />} />
       <Route exact path="/publish-video-banner" element={<PublishVideoBanner />} />
       <Route exact path="/publish-animated-banner" element={<PublishAnimatedBanner />} />
       <Route exact path="/publish-news-pr" element={<PublishHotelNews />} />
@@ -77,8 +78,7 @@ function RoutesPage() {
       <Route exact path="/magazine-details/:hotel_magazine_id/:hotel_magazine_name" element={<MagazineDetails />} />
       <Route exact path="/general-news" element={<GeneralNews />} />
       <Route exact path="/hotel-news" element={<HotelNews />} />
-
-
+      <Route exact path="/campaign-detail/:campaignName" element={<CampaignDetail/>} />
       <Route exact path="/userprofile/hotels" element={<AllHotels />} />
       <Route exact path="/benifits-working-with-us" element={<BenifitsWorkingWithUs />} />
       

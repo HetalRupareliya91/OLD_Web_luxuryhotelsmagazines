@@ -17,7 +17,9 @@ function SubscribeToDigitalCopy() {
                     <Container>
                         <h1 className="text-center">SUBSCRIBE TO DIGITAL COPY</h1>
                         <Row>
-                            <Col lg={7}>
+                            <Col lg={2}>
+                            </Col>
+                            <Col lg={8}>
                                 <Form >
 
                                     <Form.Label>
@@ -59,8 +61,7 @@ function SubscribeToDigitalCopy() {
 
                             </Col>
 
-                            <Col lg={5}>
-                               <ConnectWithUS/>
+                            <Col lg={2}>
                             </Col>
                         </Row>
 

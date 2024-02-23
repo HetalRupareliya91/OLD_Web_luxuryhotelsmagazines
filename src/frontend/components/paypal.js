@@ -68,9 +68,9 @@ const ButtonWrapper = ({ showSpinner }) => {
   );
 }
 
-export default function App() {
+export default function PayPalButton() {
   return (
-      <div style={{ maxWidth: "750px", minHeight: "200px" }}>
+      <div style={{ maxWidth: "750px", minHeight: "100px" }}>
           <PayPalScriptProvider options={{ clientId: "test", components: "buttons", currency: "USD" }}>
               <ButtonWrapper showSpinner={false} />
           </PayPalScriptProvider>

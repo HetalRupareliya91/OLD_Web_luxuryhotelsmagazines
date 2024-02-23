@@ -14,15 +14,15 @@ import News2 from '../../assets/img/news2.jpg'
 import News5 from '../../assets/img/news5.jpg'
 import CallToAction from "../components/callToAction";
 import Footer from "../components/footer";
-    import Magazines1 from "../../assets/img/magazines/magazines.webp"
-    import Magazines2 from "../../assets/img/magazines/magazines2.webp"
-  
+import Magazines1 from "../../assets/img/magazines/magazines.webp"
+import Magazines2 from "../../assets/img/magazines/magazines2.webp"
+
 import Header from "../components/header";
 import AdvertiseTestimonial from "../components/advertiseWithus/advertiseTestimonial";
 import HeroImage3 from "../../assets/img/hero/hero-1.jpg"
 import { Parallax } from "react-parallax";
 import bg1 from "../../assets/img/magazines/BG7.jpg"
-import bg2 from "../../assets/img/magazines/BG16.jpg"
+import bg2 from "../../assets/img/hero/hero-3.jpg"
 import WhatWeDoTop from "../components/whatWeDo/whatWeDoTop";
 import WhatWeDoPrint from "../components/whatWeDo/WhatWeDoPrint";
 import Collections from "../components/bestLuxuryHotels";
@@ -30,47 +30,79 @@ import axios from "axios";
 import API from "../../utils";
 import Slider from 'react-slick';
 import { NavLink } from 'react-router-dom';
+import VideoTabs from "../components/whatWeDo/Videotab";
+import PayPalButton from "../components/paypal";
+// import { PayPalButtons } from "../components/paypal";
 
 function WhatWeDo() {
+    const sectionRef = useRef(null);
+    const [hotels, sethotels] = useState([])
+    const [apiData, setApiData] = useState([])
 
-    const[hotels, sethotels]=useState([])
-const[apiData, setApiData]=useState([])
+    const scrollToSection = () => {
+        if (sectionRef.current) {
+            sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     useEffect(() => {
         fetchBestLuxuryHotels();
-    
-      }, []);
-      const fetchBestLuxuryHotels = async () => {
-    
-        try {
-          const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.allVotingDetals}`,
-            {
-              type: "1",
-            },
-    
-            {
-              headers: {
-                Authorization: "hXuRUGsEGuhGf6KM",
-              }
-            });
-          const data = response.data;
-    
-    
-          if (data.status === true) {
-            setApiData(data.data)
-            sethotels(data.data.hotels);
-          
 
-          } else {
-            console.error("Failed to fetch data");
-          }
+    }, []);
+    const fetchBestLuxuryHotels = async () => {
+
+        try {
+            const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.allVotingDetals}`,
+                {
+                    type: "1",
+                },
+
+                {
+                    headers: {
+                        Authorization: "hXuRUGsEGuhGf6KM",
+                    }
+                });
+            const data = response.data;
+
+
+            if (data.status === true) {
+                setApiData(data.data)
+                sethotels(data.data.hotels);
+
+
+            } else {
+                console.error("Failed to fetch data");
+            }
         } catch (error) {
-          console.error("Error:", error.message);
+            console.error("Error:", error.message);
         }
-      };
+    };
 
     const sliderRef = useRef(null);
 
     const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                },
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 1,
+                },
+            },
+        ],
+    };
+
+    const sliderSettings1 = {
         dots: true,
         infinite: true,
         speed: 500,
@@ -136,105 +168,118 @@ const[apiData, setApiData]=useState([])
             <WhatWeDoPrint />
 
             <section className="print-campaign-options spad">
-
-                <Container>
-                    <div className="text-center">
+                {/* <div className="text-center">
                         <Image src={Logo} className="print-campaign-logo"></Image>
+                    </div> */}
+                <div className="page-headings ">
+                    <div className="heading-section">
+                        <h1>Print Campaign Options</h1>
                     </div>
-                    <div className="title-subtitle text-center ">
+                </div>
+                <Container>
 
-                        Print Campaign Options
-                    </div>
-
-                    <div className="liner-continer">
+                    <div className="liner-continer mt-40">
                         <span className="left-line"></span>
                         <span className="woodmart-title-container title ">Hover over the options to see more information</span>
                         <span className="right-line"></span>
                     </div>
- 
+
 
                     <Row className="image-flip-div">
-                        <Col lg={3} md={6} className="p-5">
-                            <div className="text-center">
-                                <h3>Hotel Spread</h3>
+                        <Slider {...sliderSettings1}>
+                            <Col lg={4} md={6} className="p-2">
+                                <div className="text-center">
+                                    <h3>Hotel Spread</h3>
 
-                            </div>
-                            <div className="flip-box">
-                                <div className="flip-box-inner">
-                                    <div className="flip-box-front">
-                                        <Image src={Magazines1} />
-
-
+                                </div>
+                                <div className="flip-box" style={{ minHeight: "300px" }}>
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
+                                            <Image src={Magazines1} />
+                                        </div>
+                                        <div className="flip-box-back">
+                                            <p className="heading">From bookazines and beautiful coffee table books to a ‘how to’ series and a quiz book, LUXURY HOTEL has numerous titles under its belt. We can work with you to publish content in book form. </p>
+                                        </div>
                                     </div>
-                                    <div className="flip-box-back">
-                                        <p className="heading">From bookazines and beautiful coffee table books to a ‘how to’ series and a quiz book, LUXURY HOTEL has numerous titles under its belt. We can work with you to publish content in book form. </p>
-                                    </div>
+
                                 </div>
 
-                            </div>
+                            </Col>
 
-                        </Col>
-
-                        <Col lg={3} md={6} className="p-5">
-                            <div className="text-center">
-                                <h3>Company Ads</h3> </div>
-                            <div className="flip-box">
-                                <div className="flip-box-inner">
-                                    <div className="flip-box-front">
-                                        <Image src={Magazines2} />
-
-
+                            <Col lg={4} md={6} className="p-2">
+                                <div className="text-center">
+                                    <h3>Company Ads</h3> </div>
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
+                                            <Image src={Magazines2} />
+                                        </div>
+                                        <div className="flip-box-back">
+                                            <p className="heading">Sponsor one of our regular features to consistently get in serious travellers. Not only will this raise brand awareness but gives you an opportunity to show your expertise to our readers</p>
+                                        </div>
                                     </div>
-                                    <div className="flip-box-back">
-                                        <p className="heading">Sponsor one of our regular features to consistently get in serious travellers. Not only will this raise brand awareness but gives you an opportunity to show your expertise to our readers</p>
-                                    </div>
+
                                 </div>
 
-                            </div>
+                            </Col>
 
-                        </Col>
-
-
-                        <Col lg={3} md={6} className="p-5">
-                            <div className="text-center">
-                                <h3>Editorial</h3> </div>
-                            <div className="flip-box">
-                                <div className="flip-box-inner">
-                                    <div className="flip-box-front">
-                                        <Image src={Magazines1} />
+                            <Col lg={4} md={6} className="p-2">
+                                <div className="text-center">
+                                    <h3>Editorial</h3> </div>
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
+                                            <Image src={Magazines1} />
+                                        </div>
+                                        <div className="flip-box-back">
+                                            <p className="heading">LUXURY HOTEL can produce a bespoke,  you that gives you the space to showcase all that your brand has to offer in a long-form piece with expert-written copy and stunning visuals.</p>
+                                        </div>
                                     </div>
-                                    <div className="flip-box-back">
-                                        <p className="heading">LUXURY HOTEL can produce a bespoke,  you that gives you the space to showcase all that your brand has to offer in a long-form piece with expert-written copy and stunning visuals.</p>
-                                    </div>
+
                                 </div>
 
-                            </div>
+                            </Col>
 
-                        </Col>
-
-                        <Col lg={3} md={6} className="p-5">
-                            <div >
-                                <h3>Best Hotel Of The Year</h3> </div>
-                            <div className="flip-box">
-                                <div className="flip-box-inner">
-                                    <div className="flip-box-front">
-                                        <Image src={Magazines2} />
-
-
+                            <Col lg={4} md={6} className="p-2">
+                                <div >
+                                    <h3>Best Hotel Of The Year</h3> </div>
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
+                                            <Image src={Magazines2} />
+                                        </div>
+                                        <div className="flip-box-back">
+                                            <p className="heading">Where better to advertise your brand than in  higher design specification and even further distribution (including many of the top UK high street stores).</p>
+                                        </div>
                                     </div>
-                                    <div className="flip-box-back">
-                                        <p className="heading">Where better to advertise your brand than in  higher design specification and even further distribution (including many of the top UK high street stores).</p>
-                                    </div>
+
                                 </div>
 
-                            </div>
+                            </Col>
 
-                        </Col>
+                            <Col lg={4} md={6} className="p-2">
+                                <div className="text-center">
+                                    <h3>Hotel Spread</h3>
 
+                                </div>
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
+                                            <Image src={Magazines1} />
+                                        </div>
+                                        <div className="flip-box-back">
+                                            <p className="heading">From bookazines and beautiful coffee table books to a ‘how to’ series and a quiz book, LUXURY HOTEL has numerous titles under its belt. We can work with you to publish content in book form. </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </Col>
+                        </Slider>
                     </Row>
 
-                    <div className="btn-div text-center ">
-                        <button className="more-info w-25 "><FaQuestionCircle /> MORE INFORMATION</button>
+                    <div className="btn-div text-center mt-40">
+                        <button className="more-info w-25" onClick={scrollToSection}><FaQuestionCircle /> MORE INFORMATION</button>
                     </div>
 
                 </Container>
@@ -278,7 +323,7 @@ const[apiData, setApiData]=useState([])
                                                             (average in 2020)
                                                             682k users per month (average
                                                             peak in 2020)</p>
-                                                        <div className="mb-5"> <button className="w-100"><FaBookOpen />REQUEST DIGITAL ISSUE</button></div>
+                                                        <div className="mb-5"> <button className="w-100"><FaBookOpen />DOWNLOAD DIGITAL CAMPAIGN</button></div>
 
                                                     </Col>
                                                 </Row>
@@ -288,43 +333,7 @@ const[apiData, setApiData]=useState([])
                                     </Col>
                                 </Row>
                             </div>
-
-                            <section className="special spad tabs-section" data-scrollax-parent="true">
-
-
-                                <div className="text-start mb-4">
-
-                                    <h1 className="mb-3 text-white ">NEW FOR 2021</h1>
-                                    <h4 className="text-white">View some of our digital immersive campaigns below</h4>
-                                </div>
-                                <div className="content tabcontainer2">
-                                    <div>
-                                        <div className="w3-sidebar w3-bar-block  w3-card">
-                                            <button className={`w3-bar-item w3-button tablink ${activeTab === 'Zoom' ? 'w3-red' : ''}`} onClick={() => openLink('Zoom')}><i className="fa fa-globe" aria-hidden="true"></i> SPAIN</button>
-                                            <button className={`w3-bar-item w3-button tablink ${activeTab === 'Zoom2' ? 'w3-red' : ''}`} onClick={() => openLink('Zoom2')}><i className="fa fa-globe" aria-hidden="true"></i> QUEENSLAND</button>
-                                            <button className={`w3-bar-item w3-button tablink ${activeTab === 'Zoom3' ? 'w3-red' : ''}`} onClick={() => openLink('Zoom3')}><i className="fa fa-globe" aria-hidden="true"></i> GREAT AMERICAN WEST</button>
-                                        </div>
-                                        <div className="zoom-content">
-                                            <div id="Zoom" className={`w3-container city w3-animate-zoom p-3 ${activeTab === 'Zoom' ? '' : 'hidden'}`}>
-                                                <img src={Logo} alt="" className="w-50" />
-                                                <p className="">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/D0UnqGm_miA?si=PdW4fKdvAkI6E_Oc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                                            </div>
-                                            <div id="Zoom2" className={`w3-container city w3-animate-zoom p-3 ${activeTab === 'Zoom2' ? '' : 'hidden'}`}>
-                                                <img src={Logo} alt="" className="w-50" />
-                                                <p className="">industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to </p>
-                                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/D0UnqGm_miA?si=PdW4fKdvAkI6E_Oc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                                            </div>
-                                            <div id="Zoom3" className={`w3-container city w3-animate-zoom p-3 ${activeTab === 'Zoom3' ? '' : 'hidden'}`}>
-                                                <img src={Logo} alt="" className="w-50" />
-                                                <p className="">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/D0UnqGm_miA?si=PdW4fKdvAkI6E_Oc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </section>
+                            <VideoTabs></VideoTabs>                          
                         </div>
 
                     </Container>
@@ -334,16 +343,21 @@ const[apiData, setApiData]=useState([])
 
             <section className="digital-campaign-options">
 
+                <div className="page-headings ">
+                    <div className="heading-section">
+                        <h1>Digital Campaign Options</h1>
+                    </div>
+                </div>
                 <Container>
-                    <div className="text-center">
+                    {/* <div className="text-center">
                         <Image src={Logo} className="digital-campaign-logo"></Image>
                     </div>
                     <div className="title-subtitle text-center ">
 
                         Digital  Campaign Options
-                    </div>
+                    </div> */}
 
-                    <div className="liner-continer">
+                    <div className="liner-continer mt-40">
                         <span className="left-line"></span>
                         <span className="woodmart-title-container title ">Hover over the options to see more information</span>
                         <span className="right-line"></span>
@@ -351,117 +365,141 @@ const[apiData, setApiData]=useState([])
 
 
                     <Row className="image-flip-div">
-                        <Col lg={4} md={6} className="p-5">
-                            <div className="text-center">
-                                <h3>Video Campaign</h3>
+                        <Slider {...sliderSettings1}>
+                            <Col lg={4} md={6} className="p-2">
+                                <div className="text-center">
+                                    <h3>Video Campaign</h3>
 
-                            </div>
-                            <div className="flip-box">
-                                <div className="flip-box-inner">
-                                    <div className="flip-box-front">
-                                        <Image src={Magazines1} />
+                                </div>
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
+                                            <Image src={Magazines1} />
 
 
+                                        </div>
+                                        <div className="flip-box-back">
+                                            <p className="heading">From bookazines and beautiful coffee table books to a ‘how to’ series and a quiz book, luxury hotel has numerous titles under its belt. We can work with you to publish high-quality evergreen content in book form. </p>
+                                        </div>
                                     </div>
-                                    <div className="flip-box-back">
-                                        <p className="heading">From bookazines and beautiful coffee table books to a ‘how to’ series and a quiz book, luxury hotel has numerous titles under its belt. We can work with you to publish high-quality evergreen content in book form. </p>
-                                    </div>
+
                                 </div>
 
-                            </div>
+                            </Col>
 
-                        </Col>
-
-                        <Col lg={4} md={6} className="p-5">
-                            <div className="text-center">
-                                <h3>Promote Your Video To Luxury Hotel Clientele</h3> </div>
-                            <div className="flip-box">
-                                <div className="flip-box-inner">
-                                    <div className="flip-box-front">
-                                        <Image src={Magazines2} />
+                            <Col lg={4} md={6} className="p-2">
+                                <div className="text-center">
+                                    <h3>Luxury Hotel Clientele</h3> </div>
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
+                                            <Image src={Magazines2} />
 
 
+                                        </div>
+                                        <div className="flip-box-back">
+                                            <p className="heading">Sponsor one of our regular features to consistently get in front of our audience of serious travellers. Not only will this raise brand awareness but gives you an opportunity to show your expertise to our readers   Sponsor one of our regular features to consistently get in front of our audience of serious travellers. Not only will this raise brand awareness but gives you an opportunity.</p>
+                                        </div>
                                     </div>
-                                    <div className="flip-box-back">
-                                        <p className="heading">Sponsor one of our regular features to consistently get in front of our audience of serious travellers. Not only will this raise brand awareness but gives you an opportunity to show your expertise to our readers   Sponsor one of our regular features to consistently get in front of our audience of serious travellers. Not only will this raise brand awareness but gives you an opportunity.</p>
-                                    </div>
+
                                 </div>
 
-                            </div>
-
-                        </Col>
+                            </Col>
 
 
-                        <Col lg={4} md={6} className="p-5">
-                            <div className="text-center">
-                                <h3>Partners & Ambassador Campaign</h3> </div>
-                            <div className="flip-box">
-                                <div className="flip-box-inner">
-                                    <div className="flip-box-front">
-                                        <Image src={Magazines1} />
+                            <Col lg={4} md={6} className="p-2">
+                                <div className="text-center">
+                                    <h3>Partners & Ambassador</h3> </div>
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
+                                            <Image src={Magazines1} />
+                                        </div>
+                                        <div className="flip-box-back">
+                                            <p className="heading">LUXURY HOTEL can produce a bespoke, high-quality print supplement for you that gives you the space to showcase all that your brand has to offer in a long-form piece with expert-written copy and stunning visuals.</p>
+                                        </div>
                                     </div>
-                                    <div className="flip-box-back">
-                                        <p className="heading">LUXURY HOTEL can produce a bespoke, high-quality print supplement for you that gives you the space to showcase all that your brand has to offer in a long-form piece with expert-written copy and stunning visuals.</p>
-                                    </div>
+
                                 </div>
 
-                            </div>
+                            </Col>
 
-                        </Col>
+                            <Col lg={4} md={6} className="p-2">
+                                <div className="text-center">
+                                    <h3>Luxury Hotel Clientele</h3> </div>
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
+                                            <Image src={Magazines2} />
 
+
+                                        </div>
+                                        <div className="flip-box-back">
+                                            <p className="heading">Sponsor one of our regular features to consistently get in front of our audience of serious travellers. Not only will this raise brand awareness but gives you an opportunity to show your expertise to our readers   Sponsor one of our regular features to consistently get in front of our audience of serious travellers. Not only will this raise brand awareness but gives you an opportunity.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Col>
+
+                            <Col lg={4} md={6} className="p-2">
+                                <div className="text-center">
+                                    <h3>Partners & Ambassador</h3> </div>
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
+                                            <Image src={Magazines1} />
+                                        </div>
+                                        <div className="flip-box-back">
+                                            <p className="heading">LUXURY HOTEL can produce a bespoke, high-quality print supplement for you that gives you the space to showcase all that your brand has to offer in a long-form piece with expert-written copy and stunning visuals.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </Col>
+                        </Slider>
                     </Row>
 
-                    <div className="btn-div text-center ">
-                        <button className="w-25 more-info"><FaQuestionCircle /> MORE INFORMATION</button>
+                    <div className="btn-div text-center mt-40">
+                        <button className="w-25 more-info" onClick={scrollToSection}><FaQuestionCircle /> MORE INFORMATION</button>
                     </div>
-
                 </Container>
             </section>
 
-
-
             <Parallax blur={0} bgImage={bg2} bgImageAlt="the cat" strength={300}>
-                <section className="what-are-you-intersted-in spad">
+                <section ref={sectionRef} className="what-are-you-intersted-in spad">
                     <Container>
                         <div>
                             <div className="title-subtitle mt-0 text-center">
-                                What are you interested in?
+                               Submit Your Hotel to Our Luxury Hotels Subscribers for Voting
                             </div>
                             <div className="woodmart-title-container text-center">
-                                Submit the form below and we'll get back to you with the information you requested along with some great examples
+                                Secure Your Chance to Stand Out and Garner Votes from Elite Peers
                             </div>
                             <Form>
 
                                 <Form.Label>
-                                    What Is Your Name
+                                    Your Name
                                 </Form.Label>
                                 <Form.Control
                                     type="text"
                                     className="mb-3"
+                                    placeholder="Your Name"
                                 >
 
                                 </Form.Control>
                                 <Form.Label>
-                                    Your work email
+                                    Your Email
                                 </Form.Label>
                                 <Form.Control
                                     type="text"
                                     className="mb-3"
+                                    placeholder="Your Email"
                                 >
 
                                 </Form.Control>
                                 <Form.Label>
-                                    Which Tourism Board are you representing?
-                                </Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    className="mb-3"
-                                >
-
-                                </Form.Control>
-                               
-                                <Form.Label>
-                                What Hotel or Business Are Your Representing
+                                    What Hotel Are You Representing?
                                 </Form.Label>
                                 <Form.Control
                                     as="textarea"
@@ -469,25 +507,80 @@ const[apiData, setApiData]=useState([])
                                     className="mb-3"
                                     placeholder="Leave Your Message"
                                 />
+
                                 <Form.Label>
-                                    Would you like to request a sample of our latest magazine issue?
+                                    Attach Photos
+                                </Form.Label>
+                                <Form.Control
+                                    type="file"
+                                    className="mb-3"
+                                >
+                                </Form.Control>
+
+                                <Form.Label>
+                                    Attach PDF
+                                </Form.Label>
+                                <Form.Control
+                                    type="file"
+                                    className="mb-3"
+                                >
+                                </Form.Control>
+                                <Form.Label>
+                                    YouTube Link
+                                </Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    className="mb-3"
+                                    placeholder="YouTube Link Here"
+                                >
+                                </Form.Control>
+                                <Form.Label>
+                                    Your Message 
+                                </Form.Label>
+                                <Form.Control
+                                    as="textarea"
+                                    rows={3} // You can adjust the number of rows as needed
+                                    className="mb-3"
+                                    placeholder="Your Message"
+                                />
+                                <Form.Label>
+                                    Would you like to request a sample of our Digital Copy ?
                                 </Form.Label>
                                 <div className="d-flex mb-3">
                                     <Form.Check
-                                        type="checkbox"
-
+                                        type="radio"
                                         name="sampleRequest"
                                         id="sampleRequestYes"
                                         className="pe-3"
+                                        label="Yes"
                                     />
-                                    <Form.Label className="pe-3">YES</Form.Label>
                                     <Form.Check
-                                        type="checkbox"
+                                        type="radio"
                                         name="sampleRequest"
                                         id="sampleRequestNo"
                                         className="pe-3"
+                                        label="No"
                                     />
-                                    <Form.Label>NO</Form.Label>
+                                </div>
+                                <Form.Label>
+                                    Would you like to request a sample of our Print Copy ?
+                                </Form.Label>
+                                <div className="d-flex mb-3">
+                                    <Form.Check
+                                        type="radio"
+                                        name="printRequest"
+                                        id="sampleRequestNo"
+                                        className="pe-3"
+                                        label="Yes"
+                                    />
+
+                                    <Form.Check
+                                        type="radio"
+                                        name="printRequest"
+                                        id="sampleRequestNo"
+                                        className="pe-3"
+                                        label="No"
+                                    />
                                 </div>
 
 
@@ -545,43 +638,80 @@ const[apiData, setApiData]=useState([])
                 </Container>
             </section>
 
+            <Parallax blur={0} bgImage={bg2} bgImageAlt="the cat" strength={300}>
+                <section className="what-are-you-intersted-in spad">
+                    <Container>
+                        <div>
+                            <div className="title-subtitle mt-0 text-center">
+                                Submit Your Hotel As the LUXURY HOTEL of the Year
+                            </div>
+                            <div className="woodmart-title-container text-center">
+                                You can submit your hotel as the Luxury hotel of the Year
+                            </div>
+                            <Form>
 
-             <section className="case-study spad"> 
-               <Container>
-               <div className="text-center">
-                        <h1>Best Luxury Hotels Of The Year</h1>
-                    </div>
-               <Slider {...sliderSettings}>
-                {apiData.map((hotel, index) => (
-  <div key={index}>
-    <figure>
-      <div className="img-dec">
-        {hotel.hotels && (
-          <>
-            <span className="img-dec-country">{hotel.hotels.country}</span>
-            <div className="coutryname">{hotel.hotels.hotel_title}</div>
-          </>
-        )}
-      </div>
-      <div className="thumbnail" style={{backgroundImage: `url(${hotel.hotel_images[0]})`}}>
-        <div>
-          <NavLink
-            to={`/hotel-details/${hotel.hotel_id}/${hotel.hotels.country}/${hotel.hotels.hotel_title}`}
-            className="readmore"
-          >
-            Read More
-          </NavLink>
-        </div>
-        {/* <Image src={hotel.hotel_images[0]} /> */}
-      </div>
-    </figure>
-  </div>
-))}
-                </Slider>
-                </Container></section> 
+                                <Form.Label>
+                                   Your Name
+                                </Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    className="mb-3"
+                                    placeholder="Your Name"
+                                >
 
-{/* <Collections/> */}
+                                </Form.Control>
+                                <Form.Label>
+                                    Your Email
+                                </Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    className="mb-3"
+                                    placeholder="Your Email"
+                                >
 
+                                </Form.Control>
+                                <Form.Label>
+                                    What Hotel Are You Representing?
+                                </Form.Label>
+                                <Form.Control
+                                    as="textarea"
+                                    rows={3} // You can adjust the number of rows as needed
+                                    className="mb-3"
+                                    placeholder="Leave Your Message"
+                                />
+
+                                <Form.Label>
+                                    Attach Photos
+                                </Form.Label>
+                                <Form.Control
+                                    type="file"
+                                    className="mb-3"
+                                >
+                                </Form.Control>
+
+                                <Form.Label>
+                                    YouTube Link
+                                </Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    className="mb-3"
+                                    placeholder="YouTube Link Here"
+                                >
+                                </Form.Control>
+                                <div className=" w-25">
+                                <PayPalButton/>
+                                </div>
+                                <button className="mt-4 w-25">SUBMIT</button>
+                            </Form>
+
+                        </div>
+
+                    </Container>
+
+                </section>
+            </Parallax>
+            {/* <Collections/> */}
+<Collections/>
             <section >
                 <div className="rounddiv">
                     <Col lg={6} md={6} className="what-we-do p-0">

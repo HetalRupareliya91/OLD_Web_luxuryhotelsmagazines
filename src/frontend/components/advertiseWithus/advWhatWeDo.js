@@ -123,6 +123,7 @@ function Advertise() {
                                     </div>
                                 </div>
                             </Col>
+                            
                             <Col lg={4} md={6} className="p-5">
                                 <div className="flip-box">
                                     <div className="flip-box-inner">
