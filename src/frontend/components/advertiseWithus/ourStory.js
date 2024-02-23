@@ -54,13 +54,13 @@ function OurStory() {
                                 <span className="sep_line">
                                 </span>
                             </div>
-                            <div class="text_container">
-                                <div class="box_text">Waitrose</div>
-                                <div class="box_text">TESCO</div>
-                                <div class="box_text">Sainsbury's</div>
-                                <div class="box_text">MARKERS&<br />SPENCER</div>
-                                <div class="box_text">WHSmith</div>
-                                <div class="box_text">BARNES<br />&NOBEL</div>
+                            <div className="text_container">
+                                <div className="box_text">Waitrose</div>
+                                <div className="box_text">TESCO</div>
+                                <div className="box_text">Sainsbury's</div>
+                                <div className="box_text">MARKERS&<br />SPENCER</div>
+                                <div className="box_text">WHSmith</div>
+                                <div className="box_text">BARNES<br />&NOBEL</div>
                             </div>
 
                             {/* <div className="logos">

@@ -66,7 +66,7 @@ function AboutUs() {
     try {
       const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.homeApi}`,
         {
-          Hotel_count: 15,
+          Hotel_count: 7,
           magazine_count: 0,
           News_count: 0,
         },
@@ -112,7 +112,8 @@ function AboutUs() {
                       <figure>
 
                         <div className="img-dec"><span className="img-dec-country">{hotel.country}</span><div className="coutryname">{hotel.hotel_title}</div></div>
-                        <div className="thumbnail">
+                        <div className="thumbnail" style={{backgroundImage: `url(${hotel.hotel_images[0]})`}}>
+
                           <div>
                             <Link
                               to={`/hotel-details/${hotel.id}/${hotel.country}/${hotel.hotel_title}`}
@@ -121,9 +122,9 @@ function AboutUs() {
                               Read More
                             </Link>
                           </div>
-                          {hotel.hotel_images && hotel.hotel_images[0] && (
+                          {/* {hotel.hotel_images && hotel.hotel_images[0] && (
                             <Image src={hotel.hotel_images[0]} alt={hotel.hotel_title} />
-                          )}
+                          )} */}
                         </div>
                       </figure>
                     </Col>
@@ -133,7 +134,7 @@ function AboutUs() {
                       <figure>
 
                         <div className="img-dec"><span className="img-dec-country">{hotel.country}</span><div className="coutryname">{hotel.hotel_title}</div></div>
-                        <div className="thumbnail">
+                        <div className="thumbnail" style={{backgroundImage: `url(${hotel.hotel_images[0]})`}}>
                           <div>
                             <Link
                               to={`/hotel-details/${hotel.id}/${hotel.country}/${hotel.hotel_title}`}
@@ -142,9 +143,9 @@ function AboutUs() {
                               Read More
                             </Link>
                           </div>
-                          {hotel.hotel_images && hotel.hotel_images[0] && (
+                          {/* {hotel.hotel_images && hotel.hotel_images[0] && (
                             <Image src={hotel.hotel_images[0]} alt={hotel.hotel_title}  style={{ width: "100%", height: "100%" }}/>
-                          )}
+                          )} */}
                         </div>
                       </figure>
                     </Col>

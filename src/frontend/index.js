@@ -3,7 +3,7 @@ import Hero from './components/hero';
 import Search from './components/search';
 import AboutUs from './components/aboutUs';
 import LatestNews from './components/latestnews';
-import Collections from './components/collection';
+import Collections from './components/bestLuxuryHotels';
 import InstagramWidget from './components/instagramWidget';
 import MostPopular from './components/mostPopular';
 import KnoledgeTest from './components/exclusiveDeals';
@@ -15,6 +15,7 @@ import ClientLogo from './components/clientLogo';
 import Tabs from './components/tabs';
 import VideoBackground from './components/videos';
 function IndexPage(){
+
     return(
         <><Header/>
     <Hero/>

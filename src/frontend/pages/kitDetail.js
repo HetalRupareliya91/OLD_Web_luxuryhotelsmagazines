@@ -13,8 +13,9 @@ function KitDetail() {
     const { media_kit_id } = useParams();
     console.log("media_kit_id",media_kit_id)
 
-
+   
     useEffect(() => {
+      window.scrollTo(0, 0);
         const fetchData = async () => {
           // const token = localStorage.getItem("token");
           try {
@@ -62,7 +63,7 @@ function KitDetail() {
                             </center>
                         </Col>
                         <Col md={12}>
-                            <h4 class="py-3 text_yellow">
+                            <h4 className="py-3 text_yellow">
                                 Media Kit for All Advertisers (accept Hotels) Luxury Hotels Digital &amp; Printed Editions 2024
                             </h4>
                         </Col>

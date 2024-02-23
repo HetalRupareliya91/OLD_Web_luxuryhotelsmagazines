@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import bg2 from "../../assets/img/magazines/bg4.jpg"
 import { Parallax } from "react-parallax";
@@ -10,7 +10,9 @@ import ConnectWithUS from "../components/connectwithus";
 import video from "../../assets/video/video.webm"
 
 function ContactUs() {
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    } , []);
     return (
         <>
             <Header />

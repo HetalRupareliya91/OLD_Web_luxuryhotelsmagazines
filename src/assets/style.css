@@ -105,6 +105,8 @@ a:focus {
 	/* color: #b5191fff; */
 }
 
+
+
 ul,
 ol {
 	padding: 0;
@@ -3678,7 +3680,11 @@ figure {
 	width: 100%;
 	height: 100%;
 	margin-bottom: 10px;
-	overflow: hidden
+	overflow: hidden;
+	background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+	
 }
 
 .thumbnail>img {
@@ -5295,7 +5301,7 @@ form {
 }
 
 .exclusive-deals .valid {
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .exclusive-deals .banner {
@@ -5330,7 +5336,6 @@ form {
 .card-img-top {
 	height: 30vh;
 }
-
 .VideoBackground-main {
 	position: absolute;
 }
@@ -5738,12 +5743,6 @@ form {
 	margin: 15px 0;
 	background-color: #fff;
 }
-
-.hotel-selection-section {
-	background-color: #fff;
-}
-
-ul.social-icons {}
 
 ul .social-icons li {
 	display: inline-block;
@@ -6218,6 +6217,7 @@ top: 250px;
 .media-pack-section h5 {
 	color: #846316 !important;
 	font-size: 20px;
+	text-transform: uppercase;
 
 }
 
@@ -6303,6 +6303,7 @@ top: 250px;
 
 .signup_numbers h1 {
 	color: #ffff !important;
+	font-size: 36px !important;
 }
 
 .signup_numbers p {
@@ -6327,11 +6328,6 @@ button .subscribe_text {
 .duration_select {
 	border: 1px solid #cccccc;
 	border-radius: 5px;
-}
-
-.publish_news_div {
-	margin: 30px 45px;
-	text-align: center;
 }
 
 .room-details-aminites .aminites {
@@ -6829,9 +6825,9 @@ ul.dropdown-menu a:hover {
 	cursor: pointer;
 }
 
-.alternate-hotels {
+/* .alternate-hotels {
 	z-index: -3;
-}
+} */
 
 .topics .readreview.active {
 	color: #0071c2;
@@ -6890,6 +6886,10 @@ ul.dropdown-menu a:hover {
 
 .img-dec .coutryname {
 	margin-top: -25px;
+	text-transform: uppercase;
+}
+.latestNewscoutryname{
+	margin-top: -13px;
 	text-transform: uppercase;
 }
 
@@ -7132,3 +7132,6 @@ ul.dropdown-menu a:hover {
     /* transition: all .4s ease; */
 }
 
+.card-title{
+	color:#846316 !important;
+}

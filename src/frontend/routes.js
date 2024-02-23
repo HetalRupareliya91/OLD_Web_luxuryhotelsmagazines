@@ -33,7 +33,6 @@ import MagazineDetails from "./pages/luxuryMagazineDetails";
 import ModalComponent from "./modalPopUp/newsLetterPopup";
 import AllHotels from "./pages/userprofile/allHotels";
 import PublishNews from "./pages/userprofile/publishNews";
-import NewsSidebar from "./components/newsSidebar";
 import EditHotel from "./pages/userprofile/editHotel";
 import BenifitsWorkingWithUs from "./components/benifitsWorkingWithUs";
 import GeneralNews from "./pages/userprofile/generalNews";
@@ -59,7 +58,7 @@ function RoutesPage() {
       <Route exact path="/what-we-do" element={<WhatWeDo />} />
       <Route exact path="/advertise-with-us" element={<AdvertiseWithUs />} />
       <Route exact path="/hotels-selection" element={<HotelSelection />} />
-      <Route exact path="/hotels-editions" element={<HotelEditions />} />
+      <Route exact path="/luxury-hotels-magazines" element={<HotelEditions />} />
       <Route exact path="/our-team" element={<OurTeam />} />
       <Route exact path="/about-us" element={<AboutUsPage />} />
       <Route exact path="/distribution" element={<Distribution />} />
@@ -71,14 +70,11 @@ function RoutesPage() {
       <Route exact path="/subcribe-print-copy" element={<SubscribeToPrintCopy />} />
       <Route exact path="/publish-video-banner" element={<PublishVideoBanner />} />
       <Route exact path="/publish-animated-banner" element={<PublishAnimatedBanner />} />
-      <Route exact path="/publish-hotel-news" element={<PublishHotelNews />} />
+      <Route exact path="/publish-news-pr" element={<PublishHotelNews />} />
       <Route exact path="/kit-detail/:media_kit_id/:media_kit_name" element={<KitDetail />} />
       <Route exact path="/forgot-password" element={<ForgotPassword />} />
       <Route exact path="/edit-hotel-profile" element={<EditHotel />} />
       <Route exact path="/magazine-details/:hotel_magazine_id/:hotel_magazine_name" element={<MagazineDetails />} />
-      {/* <Route exact path="/magazine-details" element={<MagazineDetails />} /> */}
-      <Route exact path="/publish-news-pr" element={<NewsSidebar />} />
-
       <Route exact path="/general-news" element={<GeneralNews />} />
       <Route exact path="/hotel-news" element={<HotelNews />} />
 

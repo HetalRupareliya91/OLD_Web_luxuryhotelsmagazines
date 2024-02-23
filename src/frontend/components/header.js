@@ -192,7 +192,7 @@ function Header() {
               <NavLink  className='menu-content' > News</NavLink>
               <ul className="dropdown-menu">
                 <li><NavLink to="/general-news" >General News</NavLink></li>
-                <li><NavLink to="hotel-news" >Hotel News</NavLink></li>
+                <li><NavLink to="/hotel-news" >Hotel News</NavLink></li>
               </ul>
             </li>
                       {/* <li><a href="/">Login</a></li> */}

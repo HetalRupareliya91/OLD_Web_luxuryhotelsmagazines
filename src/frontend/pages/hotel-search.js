@@ -47,6 +47,8 @@ function HotelSearch(){
   
       fetchDetails();
       fetchAllHotels();
+      window.scrollTo(0, 0);
+
   
   }, []); // Add countryFilter to the dependency array
   

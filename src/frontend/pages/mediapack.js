@@ -36,7 +36,7 @@ const [mediapack, setMediaPack]=useState([])
     
       useEffect(() => {
         fetchMediaPack();
-       
+        window.scrollTo(0, 0);
       }, []);
     return (
         <>

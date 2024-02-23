@@ -37,6 +37,8 @@ function HotelNews (){
     
       useEffect(() => {
         fetchAllNewsData();
+        window.scrollTo(0, 0);
+
       }, []);
 
     return(

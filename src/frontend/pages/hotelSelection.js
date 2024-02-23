@@ -22,6 +22,8 @@ const countryFilter = state?.filter || '';
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const fetchDetails = async (e) => {
         if (e) e.preventDefault();
 

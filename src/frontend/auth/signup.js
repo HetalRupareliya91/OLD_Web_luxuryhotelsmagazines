@@ -103,7 +103,6 @@ function Signup() {
     };
 
     const handleSignup = async (e) => {
-        debugger
         if (e) e.preventDefault();
 
         try {

@@ -30,7 +30,7 @@ function Footer(){
                                                      
                        </div>
                        <p><NavLink to="/hotels-selection" className="footer-links">Luxury Hotel And Resorts</NavLink></p>
-                    <p><NavLink to="/hotels-editions" className="footer-links">Luxury Hotels Magazines</NavLink></p>
+                    <p><NavLink to="/luxury-hotels-magazines" className="footer-links">Luxury Hotels Magazines</NavLink></p>
 
                        {/* <p>BRAND RECOGNITION</p> */}
                       
@@ -42,6 +42,7 @@ function Footer(){
                        <h6>About Us</h6>
                        <p><NavLink to="/our-team" className="footer-links">Our Team</NavLink></p>
                        <p><NavLink to="/about-us" className="footer-links">About Us</NavLink></p>
+                       <p><NavLink to="/what-we-do" className="footer-links">What We Do</NavLink></p>
                          <p> <NavLink to="/trademark-registration" className="footer-links">Trademark Registry</NavLink></p>
                        <p> <NavLink to="/trademark-registration" className="footer-links">Branding Registration</NavLink></p>
                        <p><NavLink to="/benifits-working-with-us" className="footer-links">Collaborative Advantages</NavLink></p>
@@ -51,8 +52,7 @@ function Footer(){
                     <div className="ft-newslatter">
                        <h6>ADVERTISERS</h6>
                        <p><NavLink to="/distribution" className="footer-links">Distribution</NavLink></p>
-                       {/* <p><a href="/publish-news-pr" className="footer-links">Publish Hotels News</a></p> */}
-                       <p><NavLink className="footer-links" onClick={handlePublishNewsClick}>Publish News </NavLink></p>
+                       <p><NavLink className="footer-links" to="/publish-news-pr" >Publish News </NavLink></p>
                        <p><NavLink to="/mediapack" className="footer-links">Media Pack</NavLink></p>
                        <p><NavLink to="/advertise-with-us" className="footer-links">Advertise With Us</NavLink></p>
                        <p><NavLink to="/signup" className="footer-links">List Your Hotel</NavLink></p>

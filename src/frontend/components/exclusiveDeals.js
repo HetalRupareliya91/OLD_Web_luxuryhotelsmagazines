@@ -14,10 +14,10 @@ function KnoledgeTest() {
   const[hotels, sethotels]=useState([])
   const[apiData, setApiData]=useState([])
       useEffect(() => {
-          fetchBestLuxuryHotels();
+        allSpecialOffers();
       
         }, []);
-        const fetchBestLuxuryHotels = async () => {
+        const allSpecialOffers = async () => {
       
           try {
             const response = await axios.get(`${API.BASE_URL}${API.ENDPOINTS.allSpecialOffers}`,
@@ -70,8 +70,8 @@ function KnoledgeTest() {
     ],
   };
 
-  const handleClaimClick = () => {
-    navigate('hotel-details/13/Cyprus/LONDA%20RESIDENCES%20CYPRUS', { state: { showOfferSection: true } });
+  const handleClaimClick = (deal) => {
+    navigate( `/hotel-details/${deal.hotel_id}/${deal.hotels.country}/${deal.hotels.hotel_title}`, { state: { showOfferSection: true,specialOffersId: deal.id } });
   };
   const deals = [
     {
@@ -132,7 +132,7 @@ function KnoledgeTest() {
         <Container>
 
           <Slider {...sliderSettings} ref={sliderRef}>
-            {deals.map((deal, index) => (
+            {apiData.map((deal, index) => (
 
               <div key={index} className="text-center exclusive-deals">
                 <div className="mb-2 flip-box">
@@ -140,13 +140,13 @@ function KnoledgeTest() {
                     <div className="flip-box-front">
                       <div className="banner">
                         <a>
-                          <h6 className="title">{deal.title}</h6>
+                          <h6 className="title">{deal.hotels.hotel_title}</h6>
                         </a> 
                       </div>
-                      <div className="mt-2"><button onClick={handleClaimClick} className="my-3 btn_nav">CLAIM</button></div>
+                      <div className="mt-2"><button  onClick={() => handleClaimClick(deal)}  className="my-3 btn_nav">CLAIM</button></div>
                     </div>
 
-                    <div class="flip-box-back">
+                    <div className="flip-box-back">
                       <div>
                         <FaPhoneSquare className="phone-icon m-0" />
                       </div>
@@ -157,11 +157,11 @@ function KnoledgeTest() {
                       </div>
                       <div>
                         <a>
-                          <h6 className="subtitle">{deal.subtitle}</h6>
+                          <h6 className="subtitle">{deal.offer_title}</h6>
                         </a>
                       </div>
                       <div>
-                        <span className="valid">{deal.valid}</span>
+                        <span className="valid">Valid from {deal.from_date} to {deal.to_date}</span>
                       </div>
                       <hr className="m-0" />
                       <div>
@@ -169,7 +169,7 @@ function KnoledgeTest() {
                           <h6>{deal.description}</h6>
                         </a>
                       </div>
-                      <div className="mt-2"><button className="my-3 btn_nav" onClick={handleClaimClick} >CLAIM</button></div>
+                      <div className="mt-2"><button className="my-3 btn_nav" onClick={() => handleClaimClick(deal)} >CLAIM</button></div>
                     </div>                  
                   </div>
                 </div>

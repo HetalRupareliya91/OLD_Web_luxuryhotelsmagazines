@@ -54,13 +54,13 @@ function Advertise() {
                         <Slider {...sliderSettings}>
 
                             <Col lg={4} md={6} className="p-5">
-                                <div class="flip-box">
-                                    <div class="flip-box-inner">
-                                        <div class="flip-box-front">
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
                                             <Image src={Magazines1} alt="Paris" />
 
                                         </div>
-                                        <div class="flip-box-back">
+                                        <div className="flip-box-back">
                                             <h3>The UK's longest-running travel magazine</h3>
                                             <p className="heading">Relaunched in 2021 with a higher design spefication, more pages than ever and even further distribution. Our six collectable double issues a year reach an average readership of 100k</p>
                                         </div>
@@ -79,12 +79,12 @@ function Advertise() {
                             </Col>
 
                             <Col lg={4} md={6} className="p-5">
-                                <div class="flip-box">
-                                    <div class="flip-box-inner">
-                                        <div class="flip-box-front">
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
                                             <Image src={Magazines2} alt="Paris" />
                                         </div>
-                                        <div class="flip-box-back">
+                                        <div className="flip-box-back">
                                             <h3>The UK's longest-running travel magazine</h3>
                                             <p className="heading">Relaunched in 2021 with a higher design spefication, more pages than ever and even further distribution. Our six collectable double issues a year reach an average readership of 100k</p>
                                         </div>
@@ -103,12 +103,12 @@ function Advertise() {
                             </Col>
 
                             <Col lg={4} md={6} className="p-5">
-                                <div class="flip-box">
-                                    <div class="flip-box-inner">
-                                        <div class="flip-box-front">
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
                                             <Image src={Magazines3} alt="Paris" />
                                         </div>
-                                        <div class="flip-box-back">
+                                        <div className="flip-box-back">
                                             <h3>The UK's longest-running travel magazine</h3>
                                             <p className="heading">Relaunched in 2021 with a higher design spefication, more pages than ever and even further distribution. Our six collectable double issues a year reach an average readership of 100k</p>
                                         </div>
@@ -124,12 +124,12 @@ function Advertise() {
                                 </div>
                             </Col>
                             <Col lg={4} md={6} className="p-5">
-                                <div class="flip-box">
-                                    <div class="flip-box-inner">
-                                        <div class="flip-box-front">
+                                <div className="flip-box">
+                                    <div className="flip-box-inner">
+                                        <div className="flip-box-front">
                                             <Image src={Magazines4} alt="Paris" />
                                         </div>
-                                        <div class="flip-box-back">
+                                        <div className="flip-box-back">
                                             <h3>The UK's longest-running travel magazine</h3>
                                             <p className="heading">Relaunched in 2021 with a higher design spefication, more pages than ever and even further distribution. Our six collectable double issues a year reach an average readership of 100k</p>
                                         </div>

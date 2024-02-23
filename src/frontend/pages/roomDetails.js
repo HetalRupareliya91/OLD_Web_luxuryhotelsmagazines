@@ -4,11 +4,8 @@ import Footer from "../components/footer";
 import { Col, Container, Form, Image, Row } from "react-bootstrap";
 import { FaEnvelope, FaFacebook, FaYoutube, FaInstagram, FaTwitter, FaWhatsapp, FaTelegram, FaLinkedin, FaSnapchat, FaEye, FaHeart, FaMapMarker, FaBuilding, FaSpaceShuttle, FaHome, FaList, FaPencilAlt, FaWifi, FaSwimmingPool, FaBars, FaWineBottle, FaCloudMeatball, FaTableTennis, FaRedRiver, FaRestroom, FaFootballBall, FaConciergeBell, FaFileSignature, FaGlasses, FaRProject, FaPhone, FaPhoneSquare, FaWeight, FaMeetup, FaCloudsmith, FaIntercom } from 'react-icons/fa';
 
-
 import Slider from 'react-slick';
 
-import News5 from '../../assets/img/news5.jpg'
-import News6 from '../../assets/img/news6.jpg'
 import Logo from "../../assets/img/logo.svg"
 // import video from "../../assets/videos/hotelVideo.mp4"
 import API from "../../utils";
@@ -20,7 +17,7 @@ import HotelSlider from "../components/youMayLikeHotel";
 import VotingForm from "../components/votingForm";
 import ShareThisButtons from "../components/shareButtons";
 function RoomDetails() {
-
+   const [sepcialOffersData, setSpecialOffersData]=useState("")
 
     const settings = {
         dots: true,
@@ -48,10 +45,40 @@ function RoomDetails() {
     const [facilitiesData, setFacilitiesData] = useState([])
 
     const location = useLocation();
-    const showOfferSection = location.state && location.state.showOfferSection;
+    const showOfferSection = location.state ? location.state.showOfferSection : false;
+        console.log("showOfferSection",showOfferSection)
+
+        const showOfferId =location.state?location.state.specialOffersId:false
+        console.log("specialOffersId",showOfferId)
+
+        const fetchSpecialOffer = async () => {
+            try {
+                const response = await axios.post(
+                    `${API.BASE_URL}${API.ENDPOINTS.editSpecialOffer}`,
+                    { special_offer_id: showOfferId },
+                    {
+                        headers: {
+                            Authorization: "hXuRUGsEGuhGf6KM",
+                        },
+                    }
+                );
+
+                const data = response.data;
+
+                if (data.status === true) {
+
+                  setSpecialOffersData(data.data)
+
+                } else {
+                    console.error('Failed to fetch post data');
+                }
+            } catch (error) {
+                console.error('Error:', error.message);
+            }
+        };
+
 
     const { hotelId } = useParams();
-    console.log(hotelId);
     const [hotelImages, setImages] = useState([])
     const [postData, setPostData] = useState("");
 
@@ -115,6 +142,9 @@ function RoomDetails() {
 
     useEffect(() => {
         fetchAmenities();
+        fetchSpecialOffer();
+        window.scrollTo(0, 0);
+
     }, []);
 
 
@@ -450,14 +480,14 @@ function RoomDetails() {
     <h4>EXCLUSIVE OFFER</h4>
 </div>
 <div><FaPhoneSquare className="phone-icon m-0"/></div>
-<div><a className="contact">9718000 311 1234</a></div>
-<div><p>More rewards with Bonus Journeys</p></div>
-<div className="valid"> Valid from <span>20-03-2023 </span> to <span>30-04-2024</span></div>
+<div><a className="contact">{sepcialOffersData.contact_no}</a></div>
+<div><p>{sepcialOffersData.offer_title}</p></div>
+<div className="valid"> Valid from <span>{sepcialOffersData.from_date} </span> to <span>{sepcialOffersData.to_date}</span></div>
 <hr className="m-0" />
-<div className="span-div"><span >Always leave rewarded with Bonus Journeys—earn 3,000 Bonus Points every two qualifying nights, up to 30 nights, completed between March 20 and May 26 starting with your second stay. Registration required by April 30, 2023.</span>
+<div className="span-div"><span >{sepcialOffersData.description}</span>
 </div>
 <hr className="m-0" />
-<button className="mt-3"><NavLink>Reedem</NavLink></button>
+<button className="mt-3"><NavLink to={sepcialOffersData.reedem_link}>Reedem</NavLink></button>
 </div>
  )}
 

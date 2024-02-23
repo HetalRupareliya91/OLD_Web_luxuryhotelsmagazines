@@ -85,14 +85,14 @@ function LatestNews() {
                             <figure>
                             {/* <div className="img-dec"><span className="img-dec-country">{hotel.country}</span><div className="coutryname">{hotel.hotel_title}</div></div> */}
 
-                                <div className="img-dec"><div className="coutryname">{news.bussiness_name}</div></div>
-                                <div className="thumbnail">
+                                <div className="img-dec"><div className="latestNewscoutryname">{news.bussiness_name}</div></div>
+                                <div className="thumbnail" style={{backgroundImage: `url(${news.news_image})`}}>
                                     <div>
                                         <NavLink to="/news-details/9/Grand Opening ceremony" className="readmore">
                                             Read More
                                         </NavLink>
                                     </div>
-                                    <Image src={news.news_image} alt="" />
+                                    {/* <Image src={news.news_image} alt="" /> */}
                                 </div>
                             </figure>
                         </div>

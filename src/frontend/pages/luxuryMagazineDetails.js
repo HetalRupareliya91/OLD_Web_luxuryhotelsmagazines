@@ -71,7 +71,7 @@ function MagazineDetails (){
 
     <div className="mb-3 text-end">
         <button>
-        <Link to="/hotels-editions">
+        <Link to="/luxury-hotels-magazines">
             Back To Magazine
         </Link>
         </button>
@@ -95,7 +95,7 @@ function MagazineDetails (){
             ))}
           </Row>
 
-{/* <div class="sharethis-inline-share-buttons"></div> */}
+{/* <div className="sharethis-inline-share-buttons"></div> */}
 <ShareThisButtons/>
  
     </Container>

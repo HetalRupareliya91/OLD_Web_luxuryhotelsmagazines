@@ -158,9 +158,8 @@ function Distribution() {
             </h5>
           </div> */}
           <Row>
-            <Col lg={6} md={6}>
-              <div>
-                <Image src={edition.hotel_image} alt={edition.title} />
+            <Col lg={6} md={6} style={{backgroundImage: `url(${edition.hotel_image})`}}>
+              <div >
               </div>
             </Col>
             <Col lg={6} md={6} className="content-section">

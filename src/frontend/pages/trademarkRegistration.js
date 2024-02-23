@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -7,7 +7,9 @@ import TrademarkUKPDF from '../../assets/pdf/TradeMarkUK.pdf';
 import CallToAction from "../components/callToAction";
 
 function TrademarkRegistration() {
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    } , []);
     return (
         <>
             <Header />

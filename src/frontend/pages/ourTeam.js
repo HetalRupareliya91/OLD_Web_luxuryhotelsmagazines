@@ -57,6 +57,8 @@ function OurTeam() {
         
             fetchDetails();
             fetchTeam()
+            window.scrollTo(0, 0);
+
         }, []);
 
 

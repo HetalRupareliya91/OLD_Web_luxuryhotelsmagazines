@@ -50,6 +50,8 @@ function HotelEditions(){
   
       fetchDetails();
       fetchMagazines()
+      window.scrollTo(0, 0);
+
   }, []);
 
   

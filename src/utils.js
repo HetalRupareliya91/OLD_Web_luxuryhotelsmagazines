@@ -79,7 +79,8 @@ allSpecialOffers:"all_special_offer",
 // offer_title
 
 
-addSpecialOffers:"add_special_offer"
+addSpecialOffers:"add_special_offer",
+editSpecialOffer:"edit_special_offer"
       },
     }; 
 

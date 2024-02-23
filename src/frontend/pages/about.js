@@ -37,6 +37,8 @@ function AboutUsPage() {
 
     useEffect(() => {
         fetchDetails()
+        window.scrollTo(0, 0);
+
     }, []);
 
 

@@ -1,34 +1,22 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Col, Container, Form, Image, Row } from "react-bootstrap";
 import Logo from "../../assets/img/logo.svg"
-import { FaBook, FaBookOpen, FaHandshake, FaLaptopMedical, FaLeaf, FaQuestionCircle, FaTrophy } from "react-icons/fa";
-import MagazineImage from "../../assets/img/magazines/whatwedomagazineimage.png"
-import icons from "../../assets/img/magazines/RETAILERS-LOGOS-4.png";
-import printImage1 from "../../assets/img//magazines/1.jpg"
-import printImage2 from "../../assets/img//magazines/2.jpg"
-import printImage3 from "../../assets/img//magazines/4.jpg"
-import printImage4 from "../../assets/img//magazines/5.jpg"
-import printImage5 from "../../assets/img//magazines/3 (1).jpg"
-import printImage6 from "../../assets/img//magazines/6.jpg"
-import magazineImage from "../../assets/img/advertise/advmagazineimg.png"
-import Tabs from "../components/tabs";
+import { FaBook, FaBookOpen, FaHandshake, FaQuestionCircle, FaTrophy } from "react-icons/fa";
+
 import ClientLogo from "../components/clientLogo";
 import advimg1 from "../../assets/img/advertise/advertiseAustria.png"
 import advimg2 from "../../assets/img/advertise/advertiseGreece.png"
 import advimg3 from "../../assets/img/advertise/advertiseTasMania.png"
 import advimg4 from "../../assets/img/advertise/advTaiwan.png"
 import advimg5 from "../../assets/img/advertise/advbelize.png"
-import { FaPhoneSquare, FaStar } from "react-icons/fa";
 import News1 from '../../assets/img/news1.jpg'
 import News2 from '../../assets/img/news2.jpg'
 import News5 from '../../assets/img/news5.jpg'
-import Slider from "react-slick";
 import CallToAction from "../components/callToAction";
 import Footer from "../components/footer";
     import Magazines1 from "../../assets/img/magazines/magazines.webp"
     import Magazines2 from "../../assets/img/magazines/magazines2.webp"
-    import Magazines3 from "../../assets/img/magazines/magazines3.webp"
-    import Magazines4 from "../../assets/img/magazines/magazines4.webp"
+  
 import Header from "../components/header";
 import AdvertiseTestimonial from "../components/advertiseWithus/advertiseTestimonial";
 import HeroImage3 from "../../assets/img/hero/hero-1.jpg"
@@ -37,10 +25,48 @@ import bg1 from "../../assets/img/magazines/BG7.jpg"
 import bg2 from "../../assets/img/magazines/BG16.jpg"
 import WhatWeDoTop from "../components/whatWeDo/whatWeDoTop";
 import WhatWeDoPrint from "../components/whatWeDo/WhatWeDoPrint";
-import Collections from "../components/collection";
+import Collections from "../components/bestLuxuryHotels";
+import axios from "axios";
+import API from "../../utils";
+import Slider from 'react-slick';
+import { NavLink } from 'react-router-dom';
 
 function WhatWeDo() {
 
+    const[hotels, sethotels]=useState([])
+const[apiData, setApiData]=useState([])
+    useEffect(() => {
+        fetchBestLuxuryHotels();
+    
+      }, []);
+      const fetchBestLuxuryHotels = async () => {
+    
+        try {
+          const response = await axios.post(`${API.BASE_URL}${API.ENDPOINTS.allVotingDetals}`,
+            {
+              type: "1",
+            },
+    
+            {
+              headers: {
+                Authorization: "hXuRUGsEGuhGf6KM",
+              }
+            });
+          const data = response.data;
+    
+    
+          if (data.status === true) {
+            setApiData(data.data)
+            sethotels(data.data.hotels);
+          
+
+          } else {
+            console.error("Failed to fetch data");
+          }
+        } catch (error) {
+          console.error("Error:", error.message);
+        }
+      };
 
     const sliderRef = useRef(null);
 
@@ -133,14 +159,14 @@ function WhatWeDo() {
                                 <h3>Hotel Spread</h3>
 
                             </div>
-                            <div class="flip-box">
-                                <div class="flip-box-inner">
-                                    <div class="flip-box-front">
+                            <div className="flip-box">
+                                <div className="flip-box-inner">
+                                    <div className="flip-box-front">
                                         <Image src={Magazines1} />
 
 
                                     </div>
-                                    <div class="flip-box-back">
+                                    <div className="flip-box-back">
                                         <p className="heading">From bookazines and beautiful coffee table books to a ‘how to’ series and a quiz book, LUXURY HOTEL has numerous titles under its belt. We can work with you to publish content in book form. </p>
                                     </div>
                                 </div>
@@ -152,14 +178,14 @@ function WhatWeDo() {
                         <Col lg={3} md={6} className="p-5">
                             <div className="text-center">
                                 <h3>Company Ads</h3> </div>
-                            <div class="flip-box">
-                                <div class="flip-box-inner">
-                                    <div class="flip-box-front">
+                            <div className="flip-box">
+                                <div className="flip-box-inner">
+                                    <div className="flip-box-front">
                                         <Image src={Magazines2} />
 
 
                                     </div>
-                                    <div class="flip-box-back">
+                                    <div className="flip-box-back">
                                         <p className="heading">Sponsor one of our regular features to consistently get in serious travellers. Not only will this raise brand awareness but gives you an opportunity to show your expertise to our readers</p>
                                     </div>
                                 </div>
@@ -172,12 +198,12 @@ function WhatWeDo() {
                         <Col lg={3} md={6} className="p-5">
                             <div className="text-center">
                                 <h3>Editorial</h3> </div>
-                            <div class="flip-box">
-                                <div class="flip-box-inner">
-                                    <div class="flip-box-front">
+                            <div className="flip-box">
+                                <div className="flip-box-inner">
+                                    <div className="flip-box-front">
                                         <Image src={Magazines1} />
                                     </div>
-                                    <div class="flip-box-back">
+                                    <div className="flip-box-back">
                                         <p className="heading">LUXURY HOTEL can produce a bespoke,  you that gives you the space to showcase all that your brand has to offer in a long-form piece with expert-written copy and stunning visuals.</p>
                                     </div>
                                 </div>
@@ -189,14 +215,14 @@ function WhatWeDo() {
                         <Col lg={3} md={6} className="p-5">
                             <div >
                                 <h3>Best Hotel Of The Year</h3> </div>
-                            <div class="flip-box">
-                                <div class="flip-box-inner">
-                                    <div class="flip-box-front">
+                            <div className="flip-box">
+                                <div className="flip-box-inner">
+                                    <div className="flip-box-front">
                                         <Image src={Magazines2} />
 
 
                                     </div>
-                                    <div class="flip-box-back">
+                                    <div className="flip-box-back">
                                         <p className="heading">Where better to advertise your brand than in  higher design specification and even further distribution (including many of the top UK high street stores).</p>
                                     </div>
                                 </div>
@@ -330,14 +356,14 @@ function WhatWeDo() {
                                 <h3>Video Campaign</h3>
 
                             </div>
-                            <div class="flip-box">
-                                <div class="flip-box-inner">
-                                    <div class="flip-box-front">
+                            <div className="flip-box">
+                                <div className="flip-box-inner">
+                                    <div className="flip-box-front">
                                         <Image src={Magazines1} />
 
 
                                     </div>
-                                    <div class="flip-box-back">
+                                    <div className="flip-box-back">
                                         <p className="heading">From bookazines and beautiful coffee table books to a ‘how to’ series and a quiz book, luxury hotel has numerous titles under its belt. We can work with you to publish high-quality evergreen content in book form. </p>
                                     </div>
                                 </div>
@@ -349,14 +375,14 @@ function WhatWeDo() {
                         <Col lg={4} md={6} className="p-5">
                             <div className="text-center">
                                 <h3>Promote Your Video To Luxury Hotel Clientele</h3> </div>
-                            <div class="flip-box">
-                                <div class="flip-box-inner">
-                                    <div class="flip-box-front">
+                            <div className="flip-box">
+                                <div className="flip-box-inner">
+                                    <div className="flip-box-front">
                                         <Image src={Magazines2} />
 
 
                                     </div>
-                                    <div class="flip-box-back">
+                                    <div className="flip-box-back">
                                         <p className="heading">Sponsor one of our regular features to consistently get in front of our audience of serious travellers. Not only will this raise brand awareness but gives you an opportunity to show your expertise to our readers   Sponsor one of our regular features to consistently get in front of our audience of serious travellers. Not only will this raise brand awareness but gives you an opportunity.</p>
                                     </div>
                                 </div>
@@ -369,12 +395,12 @@ function WhatWeDo() {
                         <Col lg={4} md={6} className="p-5">
                             <div className="text-center">
                                 <h3>Partners & Ambassador Campaign</h3> </div>
-                            <div class="flip-box">
-                                <div class="flip-box-inner">
-                                    <div class="flip-box-front">
+                            <div className="flip-box">
+                                <div className="flip-box-inner">
+                                    <div className="flip-box-front">
                                         <Image src={Magazines1} />
                                     </div>
-                                    <div class="flip-box-back">
+                                    <div className="flip-box-back">
                                         <p className="heading">LUXURY HOTEL can produce a bespoke, high-quality print supplement for you that gives you the space to showcase all that your brand has to offer in a long-form piece with expert-written copy and stunning visuals.</p>
                                     </div>
                                 </div>
@@ -520,44 +546,39 @@ function WhatWeDo() {
             </section>
 
 
-             <section className="case-study spad">   <Container>
-                <div className="alternate-hotels mt-3">
-                    <div className="text-center m-4">
-                        <h1>Case Studies</h1>
+             <section className="case-study spad"> 
+               <Container>
+               <div className="text-center">
+                        <h1>Best Luxury Hotels Of The Year</h1>
                     </div>
-                    <div className="card-deck">
-                        <Row>
-                            <Col lg={4} md={6} className="mb-3">
-                                <div className="card">
-                                    <img className="card-img-top" src={News5} alt="Card image cap" />
-                                    <div className="card-body">
-                                        <h5 className="card-title">Londa Residences Cyprus</h5>
-                                        <h6 className="card-title">Dubai</h6>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col lg={4} md={6} className="mb-3">
-                                <div className="card">
-                                    <img className="card-img-top" src={News1} alt="Card image cap" />
-                                    <div className="card-body">
-                                        <h5 className="card-title">Radisson Blu Hotel, Lusa</h5>
-                                        <h6 className="card-title">England</h6>
-                                       
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col lg={4} md={6} className="mb-3">
-                                <div className="card">
-                                    <img className="card-img-top" src={News2} alt="Card image cap" />
-                                    <div className="card-body">
-                                        <h5 className="card-title">The Mandarin Oriental, Sa</h5>
-                                        <h6 className="card-title">Dubai</h6>
-                                        </div>
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </div></Container></section> 
+               <Slider {...sliderSettings}>
+                {apiData.map((hotel, index) => (
+  <div key={index}>
+    <figure>
+      <div className="img-dec">
+        {hotel.hotels && (
+          <>
+            <span className="img-dec-country">{hotel.hotels.country}</span>
+            <div className="coutryname">{hotel.hotels.hotel_title}</div>
+          </>
+        )}
+      </div>
+      <div className="thumbnail" style={{backgroundImage: `url(${hotel.hotel_images[0]})`}}>
+        <div>
+          <NavLink
+            to={`/hotel-details/${hotel.hotel_id}/${hotel.hotels.country}/${hotel.hotels.hotel_title}`}
+            className="readmore"
+          >
+            Read More
+          </NavLink>
+        </div>
+        {/* <Image src={hotel.hotel_images[0]} /> */}
+      </div>
+    </figure>
+  </div>
+))}
+                </Slider>
+                </Container></section> 
 
 {/* <Collections/> */}
 

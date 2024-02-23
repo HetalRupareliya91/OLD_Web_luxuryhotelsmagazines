@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Carousel } from "react-bootstrap";
+import { Col, Container, Row, Carousel, Image } from "react-bootstrap";
 import axios from "axios";
 import API from "../../utils";
 
 function Hero() {
   const [sliderData, setSliderData] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0); // Parent carousel's active index
   const [activeFileImages, setActiveFileImages] = useState([]);
+  const [activeFileIndex, setActiveFileIndex] = useState(0); // Child carousel's active index
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -38,8 +39,20 @@ function Hero() {
 
   const handleSelect = (selectedIndex) => {
     setActiveIndex(selectedIndex);
-    setActiveFileImages(sliderData[selectedIndex]?.file_image || []);
-    console.log(activeFileImages);
+    setActiveFileIndex(0);
+    const newActiveFileImages = sliderData[selectedIndex]?.file_image;
+    if (newActiveFileImages !== null && newActiveFileImages !== undefined) {
+      setActiveFileImages(newActiveFileImages);
+    } else {
+      // Handle the case when file_image is null or undefined
+      // You can set it to an empty array or take appropriate action
+      setActiveFileImages([]);
+    }
+  };
+  
+
+  const handleFileSelect = (selectedIndex) => {
+    setActiveFileIndex(selectedIndex); // Update child carousel's active index
   };
 
   return (
@@ -48,25 +61,24 @@ function Hero() {
         <div className="hero-slider">
           <Row>
             <Col lg={4} md={4} className="mt-3">             
-                <Carousel activeIndex={activeIndex} onSelect={handleSelect}>
-                  {sliderData.map((magazine, index) => (
-                    <Carousel.Item key={index}>
-                      <img
-                        src={magazine.thumbnail}
-                        alt={`Slide ${index + 1}`}
-                        className="slider-img"
-                      />
-                    </Carousel.Item>
-                  ))}
-                </Carousel>
+              <Carousel activeIndex={activeIndex} onSelect={handleSelect} interval={null}>
+                {sliderData.map((magazine, index) => (
+                  <Carousel.Item key={index}>
+                    <img
+                      src={magazine.thumbnail}
+                      alt={`Slide ${index + 1}`}
+                      className="slider-img"
+                    />
+                  </Carousel.Item>
+                ))}
+              </Carousel>
             </Col>
             <Col lg={8} md={8} className="mt-3">
-              {/* Render child carousel only when activeFileImages is available */}
               {activeFileImages.length > 0 && (
-                <Carousel>
+                <Carousel activeIndex={activeFileIndex} onSelect={handleFileSelect} interval={null}>
                   {activeFileImages.map((image, index) => (
                     <Carousel.Item key={index}>
-                      <img
+                      <Image
                         src={image}
                         alt={`Image ${index + 1}`}
                         className="pdf-img"
