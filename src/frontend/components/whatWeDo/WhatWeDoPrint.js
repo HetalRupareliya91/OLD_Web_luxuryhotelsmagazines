@@ -25,7 +25,7 @@ function WhatWeDoPrint() {
 
                         <div>
                             <Row>
-                            
+
                                 <Col lg={6} md={6}>
                                     <div className="print-image-div mt-5 mb-5">
                                         <Image src={Magazines1} className="what-we-do-print-section-image"></Image>
@@ -40,26 +40,29 @@ function WhatWeDoPrint() {
                                         <div className="mb-4">
                                             <p>With a new redesign, a readership of 100,000 and a bigger, higher-quality magazine than ever before, LUXURY HOTEL’s six collectable double issues a year take its engaged readers on a journey all across the world. Covering everywhere from the far-flung, undiscovered corners of the world to hidden sides of well-known destinations, our award-winning magazine inspires our audience of super travellers through powerful photography and expert-written copy and gives them a real insight into diversity of cultures, histories, people and nature from across the globe.</p>
                                         </div>
-                                        <div>
-                                            <p>6 times a year Readership – 100,000 </p>
-                                            <p> (average per issue in 2020)</p>
-                                        </div>
+
                                     </div>
                                 </Col>
                             </Row>
                         </div>
+                        <Row>
+                            <Col lg={12} className="avail my-3">
+                                <div>
+                                    <h1 >AVAILABLE IN</h1>
+                                </div>
+                                <div>
+                                    <span className="sep_line">
+                                    </span>
+                                </div>
+                                <div className="box_text">
+                                    Luxury Hotels connecting high-end hotels with discerning luxury clientele globally. In the current competitive market, attracting and retaining esteemed clients poses a considerable challenge. 
+                                </div>
 
-                        <div className="available-in">
-                            <span className="left-line"></span>
-                            <div>
-                                <h2 >AVAILABLE  IN</h2>
-                            </div>
-
-
-                        </div>
-                        <div className="logos">
-                            <Image src={icons}></Image>
-                        </div>
+                                {/* <div className="logos">
+                                <Image src={icons}></Image>
+                            </div> */}
+                            </Col>
+                        </Row>
 
                         <Row>
                             <Col lg={6} >
