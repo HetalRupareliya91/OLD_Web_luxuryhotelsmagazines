@@ -38,6 +38,7 @@ import BenifitsWorkingWithUs from "./components/benifitsWorkingWithUs";
 import GeneralNews from "./pages/userprofile/generalNews";
 import HotelNews from "./pages/userprofile/hotelNews";
 import CampaignDetail from "./pages/campaignDetail";
+import Nominee from "./pages/nominee";
 
 
 function RoutesPage() {
@@ -81,6 +82,7 @@ function RoutesPage() {
       <Route exact path="/campaign-detail/:campaignName" element={<CampaignDetail/>} />
       <Route exact path="/userprofile/hotels" element={<AllHotels />} />
       <Route exact path="/benifits-working-with-us" element={<BenifitsWorkingWithUs />} />
+      <Route exact path="/nominee" element={<Nominee />} />
       
       
       

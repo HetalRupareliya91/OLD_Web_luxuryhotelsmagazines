@@ -56,7 +56,7 @@ function Footer(){
                        <p><NavLink to="/mediapack" className="footer-links">Media Pack</NavLink></p>
                        <p><NavLink to="/advertise-with-us" className="footer-links">Advertise With Us</NavLink></p>
                        <p><NavLink to="/signup" className="footer-links">List Your Hotel</NavLink></p>
-                      
+                       <p><NavLink to="/nominee" className="footer-links">Nominate Your Hotel</NavLink></p>                      
                     </div>
                  </Col>
                  <Col lg={3}>
